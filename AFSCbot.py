@@ -79,7 +79,7 @@ else:  # if it doesn't, create it
 
 # subreddit instance of /r/AirForce. 'AFSCbot' must be changed to 'airforce' for a production version of the
 # script.
-# subreddit = 'airforce'
+#subreddit = 'airforce+airnationalguard'
 subreddit = 'AFSCbot'
 rAirForce = reddit.subreddit(subreddit)
 
@@ -140,19 +140,19 @@ while True:
                         matchList.append(AFSC)
                         commentList += AFSC + " = " + AFSCdict[AFSC] + "\n\n"
                     continue
+                if commentList != "":
+                    print("Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author)
+                          + ". Comment ID: " + rAirForceComments.id)
+                    logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") +
+                                 "Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author) + ". Comment ID: " +
+                                 rAirForceComments.id)
+                    CommentReply = '^^You\'ve ^^mentioned ^^an ^^AFSC, ^^here\'s ^^the ^^associated ^^job ^^title:\n\n' \
+                                   + commentList
 
-                print("Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author)
-                      + ". Comment ID: " + rAirForceComments.id)
-                logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") +
-                             "Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author) + ". Comment ID: " +
-                             rAirForceComments.id)
-                CommentReply = '^^You\'ve ^^mentioned ^^an ^^AFSC, ^^here\'s ^^the ^^associated ^^job ^^title:\n\n' \
-                               + commentList
-
-                rAirForceComments.reply(CommentReply)
-                dbCommentRecord.execute(
-                'INSERT INTO comments VALUES (?);', (rAirForceComments.id,))
-                conn.commit()
+                    rAirForceComments.reply(CommentReply)
+                    dbCommentRecord.execute(
+                    'INSERT INTO comments VALUES (?);', (rAirForceComments.id,))
+                    conn.commit()
 
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
