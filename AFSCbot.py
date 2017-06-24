@@ -87,16 +87,17 @@ logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") +
              "Starting processing loop for subreddit: " + subreddit)
 
 AFSCdict = {}
-AFSClist =  []
+#AFSClist =  []
 
+#Load the AFSCs into a dictionary, then use the AFSC as the key to the Job Title
 with open('AFSClist.csv', newline='') as f:
     reader = csv.reader(f, delimiter='#')
     for row in reader:
         afsc, jt = row
         AFSCdict[afsc] = jt
 
-for keys in AFSCdict.keys():
-    AFSClist.append(keys)
+#for keys in AFSCdict.keys():
+#    AFSClist.append(keys)
 
 while True:
     try:
