@@ -171,9 +171,9 @@ while True:
 
 
     except Exception as err:
-        print("Exception: " + str(err.with_traceback()))
+        print("Exception: " + str(err))
         logging.error(time.strftime("%Y/%m/%d %H:%M:%S ")
-                      + "Unhandled exception: " + str(err.with_traceback()))
+                      + "Unhandled exception: " + str(err))
 
 
     finally:
