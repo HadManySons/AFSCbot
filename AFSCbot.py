@@ -134,13 +134,15 @@ while True:
             else:
                 formattedComment = rAirForceComments.body
                 formattedComment = formattedComment.upper()
-
-                # Sub out all remaining links explicitly in the comment that match http(s)
-                formattedComment =  re.sub('http(s?):\/\/[\S]*[\s]?', '', formattedComment)
-
+                
                 # Sub out all HTML tags, should remove links from anchor tags
                 # that could contain AFSCs by chance.
                 formattedComment = re.sub('<[^<]+?>', '', formattedComment)
+                
+                # Sub out all remaining links explicitly in the comment that match http(s)
+                formattedComment = re.sub(r'http(s?)://[\S]*[\s]?', '', formattedComment)
+
+
 
                 commentList = ""
                 matchList = []
