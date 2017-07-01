@@ -124,84 +124,86 @@ def get_AFSCs():
 def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
     logging.info(time.strftime(LOG_TIME_FORMAT) + "Starting processing loop for subreddit: " + SUBREDDIT)
     comments_seen = 0
-    while True:
-        try:
-            # stream all comments from /r/AirForce
-            for rAirForceComments in rAirForce.stream.comments():
-                comments_seen += 1
-                print("\nComments processed since start of script: " + str(comments_seen))
-                print("Processing comment: " + rAirForceComments.id)
-
-                # prints a link to the comment. A True for permalink generates a fast find (but is not an accurate link,
-                # just makes the script faster (SIGNIFICANTLY FASTER)
-                permlink = "http://www.reddit.com" + \
-                           rAirForceComments.permalink(True) + "/"
-                print(permlink)
-                logging.info(time.strftime(LOG_TIME_FORMAT) +
-                             "Processing comment: " + permlink)
-
-                # Pulls all comments previously commented on
-                dbCommentRecord.execute(
-                    "SELECT * FROM comments WHERE comment=?", (rAirForceComments.id,))
-
-                id_exists = dbCommentRecord.fetchone()
-
-                # Make sure we don't reply to the same comment twice or to the bot
-                # itself
-                if id_exists:
-                    print("Already processed comment: " +
-                          str(rAirForceComments.id) + ", skipping")
-                    continue
-                elif rAirForceComments.author == "AFSCbot":
-                    print("Author was the bot, skipping...")
-                    continue
-                else:
-                    formattedComment = rAirForceComments.body.upper()
-
-                    commentList = ""
-                    matchList = []
-                    for AFSC in AFSCdict.keys():
-                        if AFSC in formattedComment:
-                            matchList.append(AFSC)
-                            commentList += AFSC + " = " + AFSCdict[AFSC] + "\n\n"
+    try:
+        while True:
+            try:
+                # stream all comments from /r/AirForce
+                for rAirForceComments in rAirForce.stream.comments():
+                    comments_seen += 1
+                    print("\nComments processed since start of script: " + str(comments_seen))
+                    print("Processing comment: " + rAirForceComments.id)
+    
+                    # prints a link to the comment. A True for permalink generates a fast find (but is not an accurate link,
+                    # just makes the script faster (SIGNIFICANTLY FASTER)
+                    permlink = "http://www.reddit.com" + \
+                               rAirForceComments.permalink(True) + "/"
+                    print(permlink)
+                    logging.info(time.strftime(LOG_TIME_FORMAT) +
+                                 "Processing comment: " + permlink)
+    
+                    # Pulls all comments previously commented on
+                    dbCommentRecord.execute(
+                        "SELECT * FROM comments WHERE comment=?", (rAirForceComments.id,))
+    
+                    id_exists = dbCommentRecord.fetchone()
+    
+                    # Make sure we don't reply to the same comment twice or to the bot
+                    # itself
+                    if id_exists:
+                        print("Already processed comment: " +
+                              str(rAirForceComments.id) + ", skipping")
                         continue
-                    if commentList != "":
-                        print("Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author)
-                              + ". Comment ID: " + rAirForceComments.id)
-                        logging.info(time.strftime(LOG_TIME_FORMAT) +
-                                     "Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author) + ". Comment ID: " +
-                                     rAirForceComments.id)
-                        CommentReply = '^^You\'ve ^^mentioned ^^an ^^AFSC, ^^here\'s ^^the ^^associated ^^job ^^title:\n\n' \
-                                       + commentList
-
-                        rAirForceComments.reply(CommentReply)
-                        dbCommentRecord.execute(
-                        'INSERT INTO comments VALUES (?);', (rAirForceComments.id,))
-                        conn.commit()
-
-        # what to do if Ctrl-C is pressed while script is running
-        except KeyboardInterrupt:
-            print("Keyboard Interrupt experienced, cleaning up and exiting")
-            print("Exiting due to keyboard interrupt")
-            logging.info(time.strftime(LOG_TIME_FORMAT)
-                         + "Exiting due to keyboard interrupt")
-            sys.exit(0)
-
-        except KeyError:
-            print("AFSC not found in the dictionary, but the dict was called for some reason")
-            logging.error(time.strftime(LOG_TIME_FORMAT)
-                          + "AFSC not found in the dictionary, but the dict was called for some reason")
-
-        except Exception as err:
-            print("Exception: " + str(err))
-            logging.error(time.strftime(LOG_TIME_FORMAT)
-                          + "Unhandled exception: " + str(err))
-
-        finally:
-            conn.commit()
-            conn.close()
-            os.unlink(PID_FILE)
-
-
+                    elif rAirForceComments.author == "AFSCbot":
+                        print("Author was the bot, skipping...")
+                        continue
+                    else:
+                        formattedComment = rAirForceComments.body.upper()
+    
+                        commentList = ""
+                        matchList = []
+                        for AFSC in AFSCdict.keys():
+                            if AFSC in formattedComment:
+                                matchList.append(AFSC)
+                                commentList += AFSC + " = " + AFSCdict[AFSC] + "\n\n"
+                            continue
+                        if commentList != "":
+                            print("Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author)
+                                  + ". Comment ID: " + rAirForceComments.id)
+                            logging.info(time.strftime(LOG_TIME_FORMAT) +
+                                         "Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author) + ". Comment ID: " +
+                                         rAirForceComments.id)
+                            CommentReply = '^^You\'ve ^^mentioned ^^an ^^AFSC, ^^here\'s ^^the ^^associated ^^job ^^title:\n\n' \
+                                           + commentList
+    
+                            rAirForceComments.reply(CommentReply)
+                            dbCommentRecord.execute(
+                            'INSERT INTO comments VALUES (?);', (rAirForceComments.id,))
+                            conn.commit()
+    
+            # what to do if Ctrl-C is pressed while script is running
+            except KeyboardInterrupt:
+                print("Keyboard Interrupt experienced, cleaning up and exiting")
+                print("Exiting due to keyboard interrupt")
+                logging.info(time.strftime(LOG_TIME_FORMAT)
+                             + "Exiting due to keyboard interrupt")
+                sys.exit(0)
+    
+            except KeyError:
+                print("AFSC not found in the dictionary, but the dict was called for some reason")
+                logging.error(time.strftime(LOG_TIME_FORMAT)
+                              + "AFSC not found in the dictionary, but the dict was called for some reason")
+    
+            except Exception as err:
+                print("Exception: " + str(err))
+                logging.error(time.strftime(LOG_TIME_FORMAT)
+                              + "Unhandled exception: " + str(err))
+    
+            finally:
+                conn.commit()
+    finally:
+        conn.commit()
+        conn.close()
+        os.unlink(PID_FILE)
+                
 if __name__ == "__main__":
     main()
