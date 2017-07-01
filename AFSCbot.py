@@ -42,7 +42,7 @@ def open_pid():
     # Get the PID of this process
     # Exit if a version of the script is already running
     if os.path.isfile(PID_FILE):
-        print("pid already open, exiting script")
+        print("PID already open, exiting script")
         sys.exit(1)
     else:
         # Create the lock file for the script
@@ -121,7 +121,6 @@ def get_AFSCs():
 
     return AFSCdict
 
-
 def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
     logging.info(time.strftime(LOG_TIME_FORMAT) + "Starting processing loop for subreddit: " + SUBREDDIT)
     comments_seen = 0
@@ -183,12 +182,10 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
         # what to do if Ctrl-C is pressed while script is running
         except KeyboardInterrupt:
             print("Keyboard Interrupt experienced, cleaning up and exiting")
-            conn.commit()
-            conn.close()
             print("Exiting due to keyboard interrupt")
             logging.info(time.strftime(LOG_TIME_FORMAT)
                          + "Exiting due to keyboard interrupt")
-            exit(0)
+            sys.exit(0)
 
         except KeyError:
             print("AFSC not found in the dictionary, but the dict was called for some reason")
@@ -201,6 +198,8 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                           + "Unhandled exception: " + str(err))
 
         finally:
+            conn.commit()
+            conn.close()
             os.unlink(PID_FILE)
 
 
