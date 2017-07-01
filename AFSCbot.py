@@ -188,7 +188,6 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
             print("Exiting due to keyboard interrupt")
             logging.info(time.strftime(LOG_TIME_FORMAT)
                          + "Exiting due to keyboard interrupt")
-            os.unlink(PID_FILE)
             exit(0)
 
         except KeyError:
@@ -200,7 +199,9 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
             print("Exception: " + str(err))
             logging.error(time.strftime(LOG_TIME_FORMAT)
                           + "Unhandled exception: " + str(err))
-    #os.unlink(PID_FILE)
+
+        finally:
+            os.unlink(PID_FILE)
 
 
 if __name__ == "__main__":
