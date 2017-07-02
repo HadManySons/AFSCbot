@@ -121,6 +121,7 @@ def get_AFSCs():
 
     return AFSCdict
 
+
 def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
     logging.info(time.strftime(LOG_TIME_FORMAT) + "Starting processing loop for subreddit: " + SUBREDDIT)
     comments_seen = 0
@@ -135,15 +136,13 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
     
                     # prints a link to the comment. A True for permalink generates a fast find (but is not an accurate link,
                     # just makes the script faster (SIGNIFICANTLY FASTER)
-                    permlink = "http://www.reddit.com" + \
-                               rAirForceComments.permalink(True) + "/"
+                    permlink = "http://www.reddit.com" + rAirForceComments.permalink(True) + "/"
                     print(permlink)
                     logging.info(time.strftime(LOG_TIME_FORMAT) +
                                  "Processing comment: " + permlink)
     
                     # Pulls all comments previously commented on
-                    dbCommentRecord.execute(
-                        "SELECT * FROM comments WHERE comment=?", (rAirForceComments.id,))
+                    dbCommentRecord.execute("SELECT * FROM comments WHERE comment=?", (rAirForceComments.id,))
     
                     id_exists = dbCommentRecord.fetchone()
     
@@ -152,10 +151,8 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                     if id_exists:
                         print("Already processed comment: " +
                               str(rAirForceComments.id) + ", skipping")
-                        continue
                     elif rAirForceComments.author == "AFSCbot":
                         print("Author was the bot, skipping...")
-                        continue
                     else:
                         formattedComment = rAirForceComments.body.upper()
     
@@ -165,7 +162,7 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                             if AFSC in formattedComment:
                                 matchList.append(AFSC)
                                 commentList += AFSC + " = " + AFSCdict[AFSC] + "\n\n"
-                            continue
+
                         if commentList != "":
                             print("Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author)
                                   + ". Comment ID: " + rAirForceComments.id)
