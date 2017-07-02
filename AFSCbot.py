@@ -22,7 +22,7 @@ def main():
 
     # Initialize a logging object and have some examples below from the Python Doc page
     logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
-    logging.info(time.strftime(LOG_TIME_FORMAT) + "Starting script")
+    print_and_log("Starting script")
 
     # setup pid, database, and AFSC dict
     open_pid()
@@ -42,7 +42,7 @@ def open_pid():
     # Get the PID of this process
     # Exit if a version of the script is already running
     if os.path.isfile(PID_FILE):
-        print("PID already open, exiting script")
+        print_and_log("PID already open, exiting script", error=True)
         sys.exit(1)
     else:
         # Create the lock file for the script
@@ -53,11 +53,9 @@ def open_pid():
 def login():
     try:
         creds = open(CRED_FILE, 'r')
-        print("Opened creds file")
-        logging.info(time.strftime(LOG_TIME_FORMAT) + "Opened creds file")
+        print_and_log("Opened creds file")
     except OSError:
-        print("Couldn't open {}".format(CRED_FILE))
-        logging.error(time.strftime(LOG_TIME_FORMAT) + "Couldn't open {}".format(CRED_FILE))
+        print_and_log("Couldn't open {}".format(CRED_FILE), error=True)
         sys.exit(1)
 
     agent = creds.readline().strip()
@@ -77,14 +75,13 @@ def login():
                 client_secret=secret,
                 username=client_user,
                 password=client_password)
-            print("Logged in")
+            print_and_log("Logged in")
             NotLoggedIn = False
         except praw.errors.InvalidUserPass:
-            print("Wrong username or password")
-            logging.error(time.strftime(LOG_TIME_FORMAT) + "Wrong username or password")
+            print_and_log("Wrong username or password", error=True)
             exit(1)
         except Exception as err:
-            print(str(err))
+            print_and_log(str(err), error=True)
             time.sleep(5)
     return reddit
 
@@ -123,7 +120,7 @@ def get_AFSCs():
 
 
 def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
-    logging.info(time.strftime(LOG_TIME_FORMAT) + "Starting processing loop for subreddit: " + SUBREDDIT)
+    print_and_log("Starting processing loop for subreddit: " + SUBREDDIT)
     comments_seen = 0
     try:
         while True:
@@ -133,14 +130,12 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                     comments_seen += 1
                     print()
                     print("Comments processed since start of script: " + str(comments_seen))
-                    print("Processing comment: " + rAirForceComment.id)
     
                     # prints a link to the comment. A True for permalink generates a fast find (but is not an accurate link,
                     # just makes the script faster (SIGNIFICANTLY FASTER)
                     permlink = "http://www.reddit.com" + rAirForceComment.permalink(True) + "/"
-                    print(permlink)
-                    logging.info(time.strftime(LOG_TIME_FORMAT) +
-                                 "Processing comment: " + permlink)
+
+                    print_and_log("Processing comment: " + permlink)
     
                     # Pulls all comments previously commented on
                     dbCommentRecord.execute("SELECT * FROM comments WHERE comment=?", (rAirForceComment.id,))
@@ -165,8 +160,7 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                         if commentText != "":
                             comment_info_text = "Commenting on AFSC: {} by: {}. Comment ID: {}".format(
                                                 matchList, rAirForceComment.author, rAirForceComment.id)
-                            print(comment_info_text)
-                            logging.info(time.strftime(LOG_TIME_FORMAT) + comment_info_text)
+                            print_and_log(comment_info_text)
 
                             commentHeader = "^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the ^^associated ^^job ^^title:\n\n"
                             rAirForceComment.reply(commentHeader + commentText)
@@ -176,21 +170,14 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
     
             # what to do if Ctrl-C is pressed while script is running
             except KeyboardInterrupt:
-                print("Keyboard Interrupt experienced, cleaning up and exiting")
-                print("Exiting due to keyboard interrupt")
-                logging.info(time.strftime(LOG_TIME_FORMAT)
-                             + "Exiting due to keyboard interrupt")
+                print_and_log("Exiting due to keyboard interrupt", error=True)
                 sys.exit(0)
     
             except KeyError:
-                print("AFSC not found in the dictionary, but the dict was called for some reason")
-                logging.error(time.strftime(LOG_TIME_FORMAT)
-                              + "AFSC not found in the dictionary, but the dict was called for some reason")
+                print_and_log("AFSC not found in the dictionary, but the dict was called for some reason", error=True)
     
             except Exception as err:
-                print("Exception: " + str(err))
-                logging.error(time.strftime(LOG_TIME_FORMAT)
-                              + "Unhandled exception: " + str(err))
+                print_and_log("Unhandled Exception: " + str(err), error=True)
     
             finally:
                 conn.commit()
@@ -198,6 +185,15 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
         conn.commit()
         conn.close()
         os.unlink(PID_FILE)
-                
+
+
+def print_and_log(text, error=False):
+    print(text)
+    if error:
+        logging.error(time.strftime(LOG_TIME_FORMAT) + text)
+    else:
+        logging.info(time.strftime(LOG_TIME_FORMAT) + text)
+
+
 if __name__ == "__main__":
     main()
