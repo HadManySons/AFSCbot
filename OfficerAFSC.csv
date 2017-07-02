@@ -1,360 +1,360 @@
-10C0,Operations Commander
-11BX,Bomber Pilot
-11EX,Experimental Test Pilot
-11FX,Fighter Pilot
-11GX,Generalist Pilot
-11HX,Combat Rescue Pilot
-11KX,Trainer Pilot
-11MX,Mobility Pilot
-11RX,Recce/Surv/Elect Warfare Pilot
-11SX,Special Operations Pilot
-11UX,Remotely Piloted Aircraft Pilot
-12BX,Bomber Combat Systems Officer
-12EX,Experimental Test Combat Systems Officer
-12FX,Fighter Weapon Systems Officer
-12GX,Generalist Combat Systems Officer
-12HX,Combat Rescue Combat Systems Officer
-12KX,Trainer Combat Systems Officer
-12MX,Mobility Combat Systems Officer
-12RX,Recce/Surv/Elect Warfare Combat Systems Officer
-12SX,Special Operations Combat Systems Officer
-12UX,Remotely Piloted Aircraft
-13AX,Astronaut
-13BX,Air Battle Manager
-13CX,Special Tactics Officer
-13DX,Combat Rescue Officer
-13LX,Air Liaison Officer
-13MX,Airfield Operations
-13NX,Nuclear and Missile Operations
-13SX,Space Operations
-14FX,Information Operations
-14NX,Intelligence
-15WX,Weather
-16FX,Regional Affairs Strategist
-16GX,Air Force Operations Staff Officer
-16PX,Political-Military Affairs Strategist
-16RX,Planning & Programming
-17CX,Cyberspace Operations Commander
-17DX,Network Operations Officer
-17SX,Cyberspace Warfare Operations Officer
-18AX,Attack Remotely Piloted Aircraft Pilot
-18GX,Generalist Remotely Piloted Aircraft Pilot
-18RX,Recce Remotely Piloted Aircraft Pilot
-20C0,Maintenance Group Commander or Deputy Group Commander
-21AX,Aircraft Maintenance Officer
-21MX,Munitions and Missile Maintenance
-21RX,Logistics Readiness Officer
-2T2X,Air Transportation
-30C0,Mission Support Group Commander or Deputy Group Commander
-31PX,Security Forces
-32EX,Civil Engineer
-35BX,Band
-35PX,Public Affairs
-38PX,Force Support
-40C0,Medical Commander
-41AX,Hospital Administration, Health Services Administrator and Medical Service Corps
-42BX,Physical Therapist
-42EX,Optometrist
-42FX,Podiatrist
-42GX,Physician Assistant
-42NX,Audiology/Speech Pathologist
-42PX,Clinical Psychologist
-42SX,Clinical Social Worker
-42TX,Occupational Therapist Biomedical Specialists
-43AX,Aerospace & Operational Physiologist
-43BX,Biomedical Scientist
-43DX,Dietitian
-43EX,Bioenvironmental Engineer
-43HX,Public Health
-43MX,Medical Entomologist
-43PX,Pharmacist
-43TX,Biomedical Laboratory
-44AX,Chief, Hospital/Clinic Services
-44BX,Preventive Medicine
-44DX,Pathologist
-44EX,Emergency Services Physician
-44FX,Family Physician
-44GX,General Practice Physician
-44HX,Nuclear Medicine Physician
-44JX,Clinical Geneticist
-44KX,Pediatrician
-44MX,Internist
-44NX,Neurologist
-44PX,Psychiatrist
-44RX,Diagnostic Radiologist
-44SX,Dermatologist
-44TX,Radiotherapist
-44UX,Occupational Medicine
-44YX,Critical Care Medicine
-44ZX,Allergist
-45AX,Anesthesiologist
-45BX,Orthopedic Surgeon
-45EX,Ophthalmologist
-45GX,OB/GYN
-45NX,Otorhinolaryngologist
-45PX,Physical Medicine Physician
-45SX,Surgeon
-45UX,Urologist
-46AX,Nurse Administrator
-46FX,Flight Nurse
-46GX,Nurse-Midwife
-46MX,Nurse Anesthetist
-46NX,Clinical Nurse
-46PX,Mental Health Nurse
-46SX,Operating Room Nurse
-46YX,Privileged Advanced Practice Nurse
-47BX,Orthodontist
-47DX,Oral and Maxillofacial Pathologist
-47EX,Endodontist
-47GX,Dentist
-47HX,Periodontist
-47KX,Pediatric Dentist
-47PX,Prosthodontist
-47SX,Oral and Maxillofacial Surgeon
-48AX,Aerospace Medicine Specialist
-48GX,General Medical Officer
-48RX,Residency Trained Flight Surgeon
-48VX,Pilot-Physician
-51JX,Judge Advocate
-52RX,Chaplain
-60C0,Program Director
-61AX,Operations Research Analyst
-61BX,Behavioral Science/Human Factors Scientist
-61CX,Chemist/Biologist
-61DX,Physicist/Nuclear Engineer
-62EX,Developmental Engineer
-62EXA,Aeronautical Engineer
-62EXB,Astronautical Engineer
-62EXC,Computer Systems Engineer
-62EXE,Electrical/Electronic Engineer
-62EXF,Flight Test Engineer
-62EXG,Project Engineer
-62EXH,Mechanical Engineer
-62S0,Materiel Leader
-63AX,Acquisition Manager
-63G0,Senior Materiel Leader
-63S0,Materiel Leader
-64PX,Contracting
-65AX,Auditor
-65FX,Financial Management
-65WX,Cost Analysis
-71SX,Special Investigator
-80C0,Commander, Cadet Squadron, USAFA
-81C0,Training Commander, OTS
-81T0,Instructor
-82A0,Academic Program Manager
-83R0,Recruiting Service
-84H0,Historian
-85G0,USAF Honor Guard
-86M0,Operations Management
-86P0,Command and Control
-87G0,Installation Inspector General
-88A0,Aide-de-Camp
-90G0,General Officer
-91C0,Commander
-91W0,Wing Commander
-92J0,Nondesignated Lawyer
-92J1,AFROTC Educational Delay-Law Student
-92J2,Funded Legal Education Program Law Student
-92J3,Excess Leave Law Student
-92M0,Health Professions Scholarship Program Medical Student
-92M1,Uniformed Services University of Health Sciences Student
-92M2,HPSP Biomedical Science Student
-92R0,Chaplain Candidate
-92S0,Student Officer Authorization
-92T0,Pilot Trainee
-92T1,Navigator/Combat Systems Officer Trainee
-92T2,Air Battle Manager Trainee
-92T3,Remotely Piloted Aircraft Pilot Trainee
-92W0,Wounded Warrior,Combat Related
-92W2,Wounded Warrior
-92W3,Wounded Warrior-Returned to Duty
-92W4,Wounded Warrior-Limited Assignment Status
-92W5,Wounded Warrior-Retired/Discharged
-92W9,Warrior Care
-93P0,Patient
-94N0,Nuclear Weapons Custodian
-95A0,Non-Extended Active Duty AFRC or ANG USAFA Liaison Officer or CAP Liaison Officer
-96D0,Officer not available in awarded AFSC for cause
-96U0,Unclassified Officer
-97E0,Executive Officer
-10C,Operations Commander
-11B,Bomber Pilot
-11E,Experimental Test Pilot
-11F,Fighter Pilot
-11G,Generalist Pilot
-11H,Combat Rescue Pilot
-11K,Trainer Pilot
-11M,Mobility Pilot
-11R,Recce/Surv/Elect Warfare Pilot
-11S,Special Operations Pilot
-11U,Remotely Piloted Aircraft Pilot
-12B,Bomber Combat Systems Officer
-12E,Experimental Test Combat Systems Officer
-12F,Fighter Weapon Systems Officer
-12G,Generalist Combat Systems Officer
-12H,Combat Rescue Combat Systems Officer
-12K,Trainer Combat Systems Officer
-12M,Mobility Combat Systems Officer
-12R,Recce/Surv/Elect Warfare Combat Systems Officer
-12S,Special Operations Combat Systems Officer
-12U,Remotely Piloted Aircraft
-13A,Astronaut
-13B,Air Battle Manager
-13C,Special Tactics Officer
-13D,Combat Rescue Officer
-13L,Air Liaison Officer
-13M,Airfield Operations
-13N,Nuclear and Missile Operations
-13S,Space Operations
-14F,Information Operations
-14N,Intelligence
-15W,Weather
-16F,Regional Affairs Strategist
-16G,Air Force Operations Staff Officer
-16P,Political-Military Affairs Strategist
-16R,Planning & Programming
-17C,Cyberspace Operations Commander
-17D,Network Operations Officer
-17S,Cyberspace Warfare Operations Officer
-18A,Attack Remotely Piloted Aircraft Pilot
-18G,Generalist Remotely Piloted Aircraft Pilot
-18R,Recce Remotely Piloted Aircraft Pilot
-20C,Maintenance Group Commander or Deputy Group Commander
-21A,Aircraft Maintenance Officer
-21M,Munitions and Missile Maintenance
-21R,Logistics Readiness Officer
-2T2,Air Transportation
-30C,Mission Support Group Commander or Deputy Group Commander
-31P,Security Forces
-32E,Civil Engineer
-35B,Band
-35P,Public Affairs
-38P,Force Support
-40C,Medical Commander
-41A,Hospital Administration, Health Services Administrator and Medical Service Corps
-42B,Physical Therapist
-42E,Optometrist
-42F,Podiatrist
-42G,Physician Assistant
-42N,Audiology/Speech Pathologist
-42P,Clinical Psychologist
-42S,Clinical Social Worker
-42T,Occupational Therapist Biomedical Specialists
-43A,Aerospace & Operational Physiologist
-43B,Biomedical Scientist
-43D,Dietitian
-43E,Bioenvironmental Engineer
-43H,Public Health
-43M,Medical Entomologist
-43P,Pharmacist
-43T,Biomedical Laboratory
-44A,Chief, Hospital/Clinic Services
-44B,Preventive Medicine
-44D,Pathologist
-44E,Emergency Services Physician
-44F,Family Physician
-44G,General Practice Physician
-44H,Nuclear Medicine Physician
-44J,Clinical Geneticist
-44K,Pediatrician
-44M,Internist
-44N,Neurologist
-44P,Psychiatrist
-44R,Diagnostic Radiologist
-44S,Dermatologist
-44T,Radiotherapist
-44U,Occupational Medicine
-44Y,Critical Care Medicine
-44Z,Allergist
-45A,Anesthesiologist
-45B,Orthopedic Surgeon
-45E,Ophthalmologist
-45G,OB/GYN
-45N,Otorhinolaryngologist
-45P,Physical Medicine Physician
-45S,Surgeon
-45U,Urologist
-46A,Nurse Administrator
-46F,Flight Nurse
-46G,Nurse-Midwife
-46M,Nurse Anesthetist
-46N,Clinical Nurse
-46P,Mental Health Nurse
-46S,Operating Room Nurse
-46Y,Privileged Advanced Practice Nurse
-47B,Orthodontist
-47D,Oral and Maxillofacial Pathologist
-47E,Endodontist
-47G,Dentist
-47H,Periodontist
-47K,Pediatric Dentist
-47P,Prosthodontist
-47S,Oral and Maxillofacial Surgeon
-48A,Aerospace Medicine Specialist
-48G,General Medical Officer
-48R,Residency Trained Flight Surgeon
-48V,Pilot-Physician
-51J,Judge Advocate
-52R,Chaplain
-60C,Program Director
-61A,Operations Research Analyst
-61B,Behavioral Science/Human Factors Scientist
-61C,Chemist/Biologist
-61D,Physicist/Nuclear Engineer
-62E,Developmental Engineer
-62EA,Aeronautical Engineer
-62EB,Astronautical Engineer
-62EC,Computer Systems Engineer
-62EE,Electrical/Electronic Engineer
-62EF,Flight Test Engineer
-62EG,Project Engineer
-62EH,Mechanical Engineer
-62S,Materiel Leader
-63A,Acquisition Manager
-63G,Senior Materiel Leader
-63S,Materiel Leader
-64P,Contracting
-65A,Auditor
-65F,Financial Management
-65W,Cost Analysis
-71S,Special Investigator
-80C,Commander, Cadet Squadron, USAFA
-81C,Training Commander, OTS
-81T,Instructor
-82A,Academic Program Manager
-83R,Recruiting Service
-84H,Historian
-85G,USAF Honor Guard
-86M,Operations Management
-86P,Command and Control
-87G,Installation Inspector General
-88A,Aide-de-Camp
-90G,General Officer
-91C,Commander
-91W,Wing Commander
-92J,Nondesignated Lawyer
-92J,AFROTC Educational Delay-Law Student
-92J,Funded Legal Education Program Law Student
-92J,Excess Leave Law Student
-92M,Health Professions Scholarship Program Medical Student
-92M,Uniformed Services University of Health Sciences Student
-92M,HPSP Biomedical Science Student
-92R,Chaplain Candidate
-92S,Student Officer Authorization
-92T,Pilot Trainee
-92T,Navigator/Combat Systems Officer Trainee
-92T,Air Battle Manager Trainee
-92T,Remotely Piloted Aircraft Pilot Trainee
-92W,Wounded Warrior,Combat Related
-92W,Wounded Warrior
-92W,Wounded Warrior-Returned to Duty
-92W,Wounded Warrior-Limited Assignment Status
-92W,Wounded Warrior-Retired/Discharged
-92W,Warrior Care
-93P,Patient
-94N,Nuclear Weapons Custodian
-95A,Non-Extended Active Duty AFRC or ANG USAFA Liaison Officer or CAP Liaison Officer
-96D,Officer not available in awarded AFSC for cause
-96U,Unclassified Officer
-97E,Executive Officer
+10C0#Operations Commander
+11BX#Bomber Pilot
+11EX#Experimental Test Pilot
+11FX#Fighter Pilot
+11GX#Generalist Pilot
+11HX#Combat Rescue Pilot
+11KX#Trainer Pilot
+11MX#Mobility Pilot
+11RX#Recce/Surv/Elect Warfare Pilot
+11SX#Special Operations Pilot
+11UX#Remotely Piloted Aircraft Pilot
+12BX#Bomber Combat Systems Officer
+12EX#Experimental Test Combat Systems Officer
+12FX#Fighter Weapon Systems Officer
+12GX#Generalist Combat Systems Officer
+12HX#Combat Rescue Combat Systems Officer
+12KX#Trainer Combat Systems Officer
+12MX#Mobility Combat Systems Officer
+12RX#Recce/Surv/Elect Warfare Combat Systems Officer
+12SX#Special Operations Combat Systems Officer
+12UX#Remotely Piloted Aircraft
+13AX#Astronaut
+13BX#Air Battle Manager
+13CX#Special Tactics Officer
+13DX#Combat Rescue Officer
+13LX#Air Liaison Officer
+13MX#Airfield Operations
+13NX#Nuclear and Missile Operations
+13SX#Space Operations
+14FX#Information Operations
+14NX#Intelligence
+15WX#Weather
+16FX#Regional Affairs Strategist
+16GX#Air Force Operations Staff Officer
+16PX#Political-Military Affairs Strategist
+16RX#Planning & Programming
+17CX#Cyberspace Operations Commander
+17DX#Network Operations Officer
+17SX#Cyberspace Warfare Operations Officer
+18AX#Attack Remotely Piloted Aircraft Pilot
+18GX#Generalist Remotely Piloted Aircraft Pilot
+18RX#Recce Remotely Piloted Aircraft Pilot
+20C0#Maintenance Group Commander or Deputy Group Commander
+21AX#Aircraft Maintenance Officer
+21MX#Munitions and Missile Maintenance
+21RX#Logistics Readiness Officer
+2T2X#Air Transportation
+30C0#Mission Support Group Commander or Deputy Group Commander
+31PX#Security Forces
+32EX#Civil Engineer
+35BX#Band
+35PX#Public Affairs
+38PX#Force Support
+40C0#Medical Commander
+41AX#Hospital Administration, Health Services Administrator and Medical Service Corps
+42BX#Physical Therapist
+42EX#Optometrist
+42FX#Podiatrist
+42GX#Physician Assistant
+42NX#Audiology/Speech Pathologist
+42PX#Clinical Psychologist
+42SX#Clinical Social Worker
+42TX#Occupational Therapist Biomedical Specialists
+43AX#Aerospace & Operational Physiologist
+43BX#Biomedical Scientist
+43DX#Dietitian
+43EX#Bioenvironmental Engineer
+43HX#Public Health
+43MX#Medical Entomologist
+43PX#Pharmacist
+43TX#Biomedical Laboratory
+44AX#Chief, Hospital/Clinic Services
+44BX#Preventive Medicine
+44DX#Pathologist
+44EX#Emergency Services Physician
+44FX#Family Physician
+44GX#General Practice Physician
+44HX#Nuclear Medicine Physician
+44JX#Clinical Geneticist
+44KX#Pediatrician
+44MX#Internist
+44NX#Neurologist
+44PX#Psychiatrist
+44RX#Diagnostic Radiologist
+44SX#Dermatologist
+44TX#Radiotherapist
+44UX#Occupational Medicine
+44YX#Critical Care Medicine
+44ZX#Allergist
+45AX#Anesthesiologist
+45BX#Orthopedic Surgeon
+45EX#Ophthalmologist
+45GX#OB/GYN
+45NX#Otorhinolaryngologist
+45PX#Physical Medicine Physician
+45SX#Surgeon
+45UX#Urologist
+46AX#Nurse Administrator
+46FX#Flight Nurse
+46GX#Nurse-Midwife
+46MX#Nurse Anesthetist
+46NX#Clinical Nurse
+46PX#Mental Health Nurse
+46SX#Operating Room Nurse
+46YX#Privileged Advanced Practice Nurse
+47BX#Orthodontist
+47DX#Oral and Maxillofacial Pathologist
+47EX#Endodontist
+47GX#Dentist
+47HX#Periodontist
+47KX#Pediatric Dentist
+47PX#Prosthodontist
+47SX#Oral and Maxillofacial Surgeon
+48AX#Aerospace Medicine Specialist
+48GX#General Medical Officer
+48RX#Residency Trained Flight Surgeon
+48VX#Pilot-Physician
+51JX#Judge Advocate
+52RX#Chaplain
+60C0#Program Director
+61AX#Operations Research Analyst
+61BX#Behavioral Science/Human Factors Scientist
+61CX#Chemist/Biologist
+61DX#Physicist/Nuclear Engineer
+62EX#Developmental Engineer
+62EXA#Aeronautical Engineer
+62EXB#Astronautical Engineer
+62EXC#Computer Systems Engineer
+62EXE#Electrical/Electronic Engineer
+62EXF#Flight Test Engineer
+62EXG#Project Engineer
+62EXH#Mechanical Engineer
+62S0#Materiel Leader
+63AX#Acquisition Manager
+63G0#Senior Materiel Leader
+63S0#Materiel Leader
+64PX#Contracting
+65AX#Auditor
+65FX#Financial Management
+65WX#Cost Analysis
+71SX#Special Investigator
+80C0#Commander, Cadet Squadron, USAFA
+81C0#Training Commander, OTS
+81T0#Instructor
+82A0#Academic Program Manager
+83R0#Recruiting Service
+84H0#Historian
+85G0#USAF Honor Guard
+86M0#Operations Management
+86P0#Command and Control
+87G0#Installation Inspector General
+88A0#Aide-de-Camp
+90G0#General Officer
+91C0#Commander
+91W0#Wing Commander
+92J0#Nondesignated Lawyer
+92J1#AFROTC Educational Delay-Law Student
+92J2#Funded Legal Education Program Law Student
+92J3#Excess Leave Law Student
+92M0#Health Professions Scholarship Program Medical Student
+92M1#Uniformed Services University of Health Sciences Student
+92M2#HPSP Biomedical Science Student
+92R0#Chaplain Candidate
+92S0#Student Officer Authorization
+92T0#Pilot Trainee
+92T1#Navigator/Combat Systems Officer Trainee
+92T2#Air Battle Manager Trainee
+92T3#Remotely Piloted Aircraft Pilot Trainee
+92W0#Wounded Warrior,Combat Related
+92W2#Wounded Warrior
+92W3#Wounded Warrior-Returned to Duty
+92W4#Wounded Warrior-Limited Assignment Status
+92W5#Wounded Warrior-Retired/Discharged
+92W9#Warrior Care
+93P0#Patient
+94N0#Nuclear Weapons Custodian
+95A0#Non-Extended Active Duty AFRC or ANG USAFA Liaison Officer or CAP Liaison Officer
+96D0#Officer not available in awarded AFSC for cause
+96U0#Unclassified Officer
+97E0#Executive Officer
+10C#Operations Commander
+11B#Bomber Pilot
+11E#Experimental Test Pilot
+11F#Fighter Pilot
+11G#Generalist Pilot
+11H#Combat Rescue Pilot
+11K#Trainer Pilot
+11M#Mobility Pilot
+11R#Recce/Surv/Elect Warfare Pilot
+11S#Special Operations Pilot
+11U#Remotely Piloted Aircraft Pilot
+12B#Bomber Combat Systems Officer
+12E#Experimental Test Combat Systems Officer
+12F#Fighter Weapon Systems Officer
+12G#Generalist Combat Systems Officer
+12H#Combat Rescue Combat Systems Officer
+12K#Trainer Combat Systems Officer
+12M#Mobility Combat Systems Officer
+12R#Recce/Surv/Elect Warfare Combat Systems Officer
+12S#Special Operations Combat Systems Officer
+12U#Remotely Piloted Aircraft
+13A#Astronaut
+13B#Air Battle Manager
+13C#Special Tactics Officer
+13D#Combat Rescue Officer
+13L#Air Liaison Officer
+13M#Airfield Operations
+13N#Nuclear and Missile Operations
+13S#Space Operations
+14F#Information Operations
+14N#Intelligence
+15W#Weather
+16F#Regional Affairs Strategist
+16G#Air Force Operations Staff Officer
+16P#Political-Military Affairs Strategist
+16R#Planning & Programming
+17C#Cyberspace Operations Commander
+17D#Network Operations Officer
+17S#Cyberspace Warfare Operations Officer
+18A#Attack Remotely Piloted Aircraft Pilot
+18G#Generalist Remotely Piloted Aircraft Pilot
+18R#Recce Remotely Piloted Aircraft Pilot
+20C#Maintenance Group Commander or Deputy Group Commander
+21A#Aircraft Maintenance Officer
+21M#Munitions and Missile Maintenance
+21R#Logistics Readiness Officer
+2T2#Air Transportation
+30C#Mission Support Group Commander or Deputy Group Commander
+31P#Security Forces
+32E#Civil Engineer
+35B#Band
+35P#Public Affairs
+38P#Force Support
+40C#Medical Commander
+41A#Hospital Administration, Health Services Administrator and Medical Service Corps
+42B#Physical Therapist
+42E#Optometrist
+42F#Podiatrist
+42G#Physician Assistant
+42N#Audiology/Speech Pathologist
+42P#Clinical Psychologist
+42S#Clinical Social Worker
+42T#Occupational Therapist Biomedical Specialists
+43A#Aerospace & Operational Physiologist
+43B#Biomedical Scientist
+43D#Dietitian
+43E#Bioenvironmental Engineer
+43H#Public Health
+43M#Medical Entomologist
+43P#Pharmacist
+43T#Biomedical Laboratory
+44A#Chief, Hospital/Clinic Services
+44B#Preventive Medicine
+44D#Pathologist
+44E#Emergency Services Physician
+44F#Family Physician
+44G#General Practice Physician
+44H#Nuclear Medicine Physician
+44J#Clinical Geneticist
+44K#Pediatrician
+44M#Internist
+44N#Neurologist
+44P#Psychiatrist
+44R#Diagnostic Radiologist
+44S#Dermatologist
+44T#Radiotherapist
+44U#Occupational Medicine
+44Y#Critical Care Medicine
+44Z#Allergist
+45A#Anesthesiologist
+45B#Orthopedic Surgeon
+45E#Ophthalmologist
+45G#OB/GYN
+45N#Otorhinolaryngologist
+45P#Physical Medicine Physician
+45S#Surgeon
+45U#Urologist
+46A#Nurse Administrator
+46F#Flight Nurse
+46G#Nurse-Midwife
+46M#Nurse Anesthetist
+46N#Clinical Nurse
+46P#Mental Health Nurse
+46S#Operating Room Nurse
+46Y#Privileged Advanced Practice Nurse
+47B#Orthodontist
+47D#Oral and Maxillofacial Pathologist
+47E#Endodontist
+47G#Dentist
+47H#Periodontist
+47K#Pediatric Dentist
+47P#Prosthodontist
+47S#Oral and Maxillofacial Surgeon
+48A#Aerospace Medicine Specialist
+48G#General Medical Officer
+48R#Residency Trained Flight Surgeon
+48V#Pilot-Physician
+51J#Judge Advocate
+52R#Chaplain
+60C#Program Director
+61A#Operations Research Analyst
+61B#Behavioral Science/Human Factors Scientist
+61C#Chemist/Biologist
+61D#Physicist/Nuclear Engineer
+62E#Developmental Engineer
+62EA#Aeronautical Engineer
+62EB#Astronautical Engineer
+62EC#Computer Systems Engineer
+62EE#Electrical/Electronic Engineer
+62EF#Flight Test Engineer
+62EG#Project Engineer
+62EH#Mechanical Engineer
+62S#Materiel Leader
+63A#Acquisition Manager
+63G#Senior Materiel Leader
+63S#Materiel Leader
+64P#Contracting
+65A#Auditor
+65F#Financial Management
+65W#Cost Analysis
+71S#Special Investigator
+80C#Commander, Cadet Squadron, USAFA
+81C#Training Commander, OTS
+81T#Instructor
+82A#Academic Program Manager
+83R#Recruiting Service
+84H#Historian
+85G#USAF Honor Guard
+86M#Operations Management
+86P#Command and Control
+87G#Installation Inspector General
+88A#Aide-de-Camp
+90G#General Officer
+91C#Commander
+91W#Wing Commander
+92J#Nondesignated Lawyer
+92J#AFROTC Educational Delay-Law Student
+92J#Funded Legal Education Program Law Student
+92J#Excess Leave Law Student
+92M#Health Professions Scholarship Program Medical Student
+92M#Uniformed Services University of Health Sciences Student
+92M#HPSP Biomedical Science Student
+92R#Chaplain Candidate
+92S#Student Officer Authorization
+92T#Pilot Trainee
+92T#Navigator/Combat Systems Officer Trainee
+92T#Air Battle Manager Trainee
+92T#Remotely Piloted Aircraft Pilot Trainee
+92W#Wounded Warrior,Combat Related
+92W#Wounded Warrior
+92W#Wounded Warrior-Returned to Duty
+92W#Wounded Warrior-Limited Assignment Status
+92W#Wounded Warrior-Retired/Discharged
+92W#Warrior Care
+93P#Patient
+94N#Nuclear Weapons Custodian
+95A#Non-Extended Active Duty AFRC or ANG USAFA Liaison Officer or CAP Liaison Officer
+96D#Officer not available in awarded AFSC for cause
+96U#Unclassified Officer
+97E#Executive Officer

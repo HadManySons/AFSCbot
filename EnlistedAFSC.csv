@@ -1,912 +1,912 @@
-1A0X1,In-Flight Refueling
-1A1X1,Flight Engineer
-1A2X1,Aircraft Loadmaster
-1A3X1,Airborne Mission Systems Operator
-1A6X1,Flight Attendant
-1A8X1,Airborne Cryptologic Language Analyst
-1A8X2,Airborne Intelligence, Surveillance, and Reconnaissance Operator
-1A9X1,Special Missions Aviator
-1B4X1,Cyber Warfare Operations
-1C0X2,Aviation Resource Management
-1C1X1,Air Traffic Control
-1C2X1,Combat Control
-1C3X1,Command Post
-1C4X1,Tactical Air Control Party
-1C5X1,Command & Control Battle Management Ops
-1C6X1,Space Systems Operations
-1C7X1,Airfield Management
-1C8X1,Ground Radar Systems
-1C8X2,Airfield Systems
-1N0X1,All Source Intelligence Analyst/Operations Intelligence Specialist
-1N1X1,Geospatial Intelligence
-1N2X1,Signals Intelligence Analyst
-1N3X1,Cryptologic Language Analyst
-1N4X1,Fusion Analyst
-1N7X1,Human Intelligence Specialist
-1P0X1,Aircrew Flight Equipment
-1S0X1,Safety
-1T0X1,Survival, Evasion, Resistance, and Escape
-1T2X1,Pararescue
-1U0X1,Remotely Piloted Aircraft Sensor Operator
-1U1X1,Remotely Piloted Aircraft Pilot
-1W0X1,Weather
-1W0X2,Special Operations Weather
-2A0X1,Avionics Test Station and Components
-2A2X1,Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems
-2A2X2,Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems
-2A2X3,Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems
-2A3X3,Tactical Aircraft Maintenance
-2A3X4,Fighter Aircraft Integrated Avionics
-2A3X5,Advanced Fighter Aircraft Integrated Avionics
-2A3X7,Tactical Aircraft Maintenance
-2A3X8,Remotely Piloted Aircraft Maintenance
-2A5X1,Airlift/Special Mission Aircraft Maintenance
-2A5X2,Helicopter/Tiltrotor Aircraft Maintenance
-2A5X3,Mobility Air Forces Electronic Warfare Systems
-2A5X4,Refuel/Bomber Aircraft Maintenance
-2A6X1,Aerospace Propulsion
-2A6X2,Aerospace Ground Equipment
-2A6X3,Aircrew Egress Systems
-2A6X4,Aircraft Fuel Systems
-2A6X5,Aircraft Hydraulic Systems
-2A6X6,Aircraft Electrical and Environmental Systems
-2A7X1,Aircraft Metals Technology
-2A7X2,Nondestructive Inspection
-2A7X3,Aircraft Structural Maintenance
-2A7X5,Low Observable Aircraft Structural Maintenance
-2A8X1,Mobility Air Forces Communication/Navigation/Mission Systems
-2A8X2,Mobility Air Forces Integrated Instrument and Flight Control Systems
-2A9X1,Bomber/Special Integrated Communication/Navigation/Mission Systems
-2A9X2,Bomber/Special Integrated Instrument and Flight Control Systems
-2A9X3,Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics
-2F0X1,Fuels
-2G0X1,Logistics Plans
-2M0X1,Missile and Space Systems Electronics Maintenance
-2M0X2,Missile and Space Systems Maintenance
-2M0X3,Missile and Space Facilities
-2P0X1,Precision Measurement Equipment Laboratory
-2R0X1,Maintenance Management Analysis
-2R1X1,Maintenance Management Production
-2S0X1,Materiel Management
-2T0X1,Traffic Management
-2T1X1,Vehicle Operations
-2T2X1,Air Transportation
-2T3X1,Mission Generation Vehicular Equipment Maintenance
-2T3X7,Fleet Management and Analysis
-2W0X1,Munitions Systems
-2W1X1,Aircraft Armament Systems
-2W2X1,Nuclear Weapons
-3A1X1,Administration
-3D0X1,Knowledge Operations Management
-3D0X2,Cyber Systems Operations
-3D0X3,Cyber Surety
-3D0X4,Computer Systems Programming
-3D1X1,Client Systems
-3D1X2,Cyber Transport Systems
-3D1X3,RF Transmission Systems
-3D1X4,Spectrum Operations
-3D1X7,Cable and antenna systems
-3E0X1,Electrical Systems
-3E0X2,Electrical Power Production
-3E1X1,Heating, Ventilation, AC, and Refrigeration
-3E2X1,Pavements and Construction Equipment
-3E3X1,Structural
-3E4X1,Water and Fuel Systems Maintenance
-3E4X3,Pest Management
-3E5X1,Engineering
-3E6X1,Operations Management
-3E7X1,Fire Protection
-3E8X1,Explosive Ordnance Disposal
-3E9X1,U.S. Air Force Emergency Management
-3G0X1,Air National Guard Strength Management
-3H0X1,Historian
-3M0X1,Services
-3N0X2,Broadcast Journalist
-3N0X5,Photojournalist
-3N1X1,Regional Band
-3N2X1,Premier Band
-3P0X1,Security Forces
-3P0X1A,Military Working Dog Handler
-3P0X1B,Combat Arms Training and Maintenance
-3S0X1,Personnel
-3S1X1,Equal Opportunity
-3S2X1,Education and Training
-3S3X3,Manpower
-4A0X1,Health Services Management
-4A1X1,Medical Material
-4A2X1,Biomedical Equipment
-4B0X1,Bioenvironmental Engineering
-4C0X1,Mental Health Service
-4D0X1,Diet Therapy
-4E0X1,Public Health
-4H0X1,Cardiopulmonary Laboratory
-4J0X2,Physical Medicine
-4J0X2A,Orthotics
-4M0X1,Aerospace and Operational Physiology
-4N0X1,Aerospace Medical Service
-4N0X1B,Neurodiagnostic Medical Technician
-4N0X1C,Independent Duty Medical Technician
-4N0X1F,Flight and Operational Medical Technician
-4N1X1,Surgical Service
-4P0X1,Pharmacy
-4R0X1,Diagnostic Imaging
-4T0X1,Medical Laboratory
-4T0X2,Histopathology
-4V0X1,Ophthalmic
-4Y0X1,Dental Assistant
-4Y0X1H,Dental Hygienist
-4Y0X2,Dental Laboratory
-5J0X1,Paralegal
-5R0X1,Chaplain Assistant
-6C0X1,Contracting
-6F0X1,Financial Management & Comptroller
-7S0X1,Special Investigations
-8A100,Career Assistance Advisor
-8A200,Enlisted Aide
-8A300,Protocol
-8B000,Military Training Instructor
-8B100,Military Training Leader
-8B200,Academy Military Training NCO
-8C000,Airman & Family Readiness Center RNCO
-8D100,Language & Culture Advisor
-8F000,First Sergeant
-8G000,Honor Guard
-8G100,USAF Installation Honor Guard Program Manager
-8H000,Airman Dorm Leader
-8I000,IG Superintendent, Inspections
-8M000,Postal service
-8P000,Courier
-8P100,Defense Attaché
-8R000,Enlisted Accessions Recruiter
-8R200,Second-Tier Recruiter
-8R300,Third-Tier Recruiter
-8S000,Missile Facility Manager
-8T000,Professional Military Education Instructor
-8T100,Enlisted Professional Military Education Instructional System Designer
-8U000,Unit Deployment Manager
-9A000,Awaiting Retraining-Reasons beyond Control
-9A100,Awaiting Retraining-Reasons within Control
-9A200,Awaiting Discharge/Separation/Retirement for Reasons Within Their Control
-9A300,Awaiting Discharge/Separation/Retirement for Reasons Beyond Their Control
-9A400,Disqualified Airman, Return to Duty Program
-9A500,Temporarily Ineligible for Retraining – Disqualified for Reasons Beyond Control
-9C000,CMSgt of the Air Force
-9D100,Key Developmental Senior Enlisted Positions on Headquarters Air Force Staff and Air Force Senior Noncommissioned Officer Academy at Maxwell-Gunter Annex
-9E000,Command Chief Master Sergeant
-9F000,First Term Airmen Center NCOIC
-9G100,Group Superintendent
-9J000,Prisoner
-9L000,Interpreter/Translator
-9L100,Enlisted Engagement Manager/International Affairs
-9M000,Military Entrance Processing Command Senior Enlisted Advisor
-9M200,International Health Specialists
-9M400,Chief, Medical Enlisted Force
-9N000,Secretary of the Air Force Enlisted Legislative Fellows
-9P000,Patient
-9R000,Civil Air Patrol USAF Reserve Assistance NCO
-9S100,Scientific Applications Specialist
-9T000,Basic Enlisted Airman
-9T100,Officer Trainee
-9T200,Pre-Cadet Assignee
-9U000,Enlisted Airman Ineligible for Local Utilization
-9U100,Unallotted Enlisted Authorization
-9W000,Combat Wounded Warrior
-9W200,Combat Wounded Warrior with Exemptions
-9W300,Non-Combat Wounded Warrior
-9W400,Wounded Warrior-Limited Assignment Status
-1A011,In-Flight Refueling Helper
-1A111,Flight Engineer Helper
-1A211,Aircraft Loadmaster Helper
-1A311,Airborne Mission Systems Operator Helper
-1A611,Flight Attendant Helper
-1A811,Airborne Cryptologic Language Analyst Helper
-1A812,Airborne Intelligence, Surveillance, and Reconnaissance Operator Helper
-1A911,Special Missions Aviator Helper
-1B411,Cyber Warfare Operations Helper
-1C012,Aviation Resource Management Helper
-1C111,Air Traffic Control Helper
-1C211,Combat Control Helper
-1C311,Command Post Helper
-1C411,Tactical Air Control Party Helper
-1C511,Command & Control Battle Management Ops Helper
-1C611,Space Systems Operations Helper
-1C711,Airfield Management Helper
-1C811,Ground Radar Systems Helper
-1C812,Airfield Systems Helper
-1N011,All Source Intelligence Analyst/Operations Intelligence Specialist Helper
-1N111,Geospatial Intelligence Helper
-1N211,Signals Intelligence Analyst Helper
-1N311,Cryptologic Language Analyst Helper
-1N411,Fusion Analyst Helper
-1N711,Human Intelligence Specialist Helper
-1P011,Aircrew Flight Equipment Helper
-1S011,Safety Helper
-1T011,Survival, Evasion, Resistance, and Escape Helper
-1T211,Pararescue Helper
-1U011,Remotely Piloted Aircraft Sensor Operator Helper
-1U111,Remotely Piloted Aircraft Pilot Helper
-1W011,Weather Helper
-1W012,Special Operations Weather Helper
-2A011,Avionics Test Station and Components Helper
-2A211,Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Helper
-2A212,Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Helper
-2A213,Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Helper
-2A313,Tactical Aircraft Maintenance Helper
-2A314,Fighter Aircraft Integrated Avionics Helper
-2A315,Advanced Fighter Aircraft Integrated Avionics Helper
-2A317,Tactical Aircraft Maintenance Helper
-2A318,Remotely Piloted Aircraft Maintenance Helper
-2A511,Airlift/Special Mission Aircraft Maintenance Helper
-2A512,Helicopter/Tiltrotor Aircraft Maintenance Helper
-2A513,Mobility Air Forces Electronic Warfare Systems Helper
-2A514,Refuel/Bomber Aircraft Maintenance Helper
-2A611,Aerospace Propulsion Helper
-2A612,Aerospace Ground Equipment Helper
-2A613,Aircrew Egress Systems Helper
-2A614,Aircraft Fuel Systems Helper
-2A615,Aircraft Hydraulic Systems Helper
-2A616,Aircraft Electrical and Environmental Systems Helper
-2A711,Aircraft Metals Technology Helper
-2A712,Nondestructive Inspection Helper
-2A713,Aircraft Structural Maintenance Helper
-2A715,Low Observable Aircraft Structural Maintenance Helper
-2A811,Mobility Air Forces Communication/Navigation/Mission Systems Helper
-2A812,Mobility Air Forces Integrated Instrument and Flight Control Systems Helper
-2A911,Bomber/Special Integrated Communication/Navigation/Mission Systems Helper
-2A912,Bomber/Special Integrated Instrument and Flight Control Systems Helper
-2A913,Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Helper
-2F011,Fuels Helper
-2G011,Logistics Plans Helper
-2M011,Missile and Space Systems Electronics Maintenance Helper
-2M012,Missile and Space Systems Maintenance Helper
-2M013,Missile and Space Facilities Helper
-2P011,Precision Measurement Equipment Laboratory Helper
-2R011,Maintenance Management Analysis Helper
-2R111,Maintenance Management Production Helper
-2S011,Materiel Management Helper
-2T011,Traffic Management Helper
-2T111,Vehicle Operations Helper
-2T211,Air Transportation Helper
-2T311,Mission Generation Vehicular Equipment Maintenance Helper
-2T317,Fleet Management and Analysis Helper
-2W011,Munitions Systems Helper
-2W111,Aircraft Armament Systems Helper
-2W211,Nuclear Weapons Helper
-3A111,Administration Helper
-3D011,Knowledge Operations Management Helper
-3D012,Cyber Systems Operations Helper
-3D013,Cyber Surety Helper
-3D014,Computer Systems Programming Helper
-3D111,Client Systems Helper
-3D112,Cyber Transport Systems Helper
-3D113,RF Transmission Systems Helper
-3D114,Spectrum Operations Helper
-3D117,Cable and antenna systems Helper
-3E011,Electrical Systems Helper
-3E012,Electrical Power Production Helper
-3E111,Heating, Ventilation, AC, and Refrigeration Helper
-3E211,Pavements and Construction Equipment Helper
-3E311,Structural Helper
-3E411,Water and Fuel Systems Maintenance Helper
-3E413,Pest Management Helper
-3E511,Engineering Helper
-3E611,Operations Management Helper
-3E711,Fire Protection Helper
-3E811,Explosive Ordnance Disposal Helper
-3E911,U.S. Air Force Emergency Management Helper
-3G011,Air National Guard Strength Management Helper
-3H011,Historian Helper
-3M011,Services Helper
-3N012,Broadcast Journalist Helper
-3N015,Photojournalist Helper
-3N111,Regional Band Helper
-3N211,Premier Band Helper
-3P011,Security Forces Helper
-3P011A,Military Working Dog Handler Helper
-3P011B,Combat Arms Training and Maintenance Helper
-3S011,Personnel Helper
-3S111,Equal Opportunity Helper
-3S211,Education and Training Helper
-3S313,Manpower Helper
-4A011,Health Services Management Helper
-4A111,Medical Material Helper
-4A211,Biomedical Equipment Helper
-4B011,Bioenvironmental Engineering Helper
-4C011,Mental Health Service Helper
-4D011,Diet Therapy Helper
-4E011,Public Health Helper
-4H011,Cardiopulmonary Laboratory Helper
-4J012,Physical Medicine Helper
-4J012A,Orthotics Helper
-4M011,Aerospace and Operational Physiology Helper
-4N011,Aerospace Medical Service Helper
-4N011B,Neurodiagnostic Medical Technician Helper
-4N011C,Independent Duty Medical Technician Helper
-4N011F,Flight and Operational Medical Technician Helper
-4N111,Surgical Service Helper
-4P011,Pharmacy Helper
-4R011,Diagnostic Imaging Helper
-4T011,Medical Laboratory Helper
-4T012,Histopathology Helper
-4V011,Ophthalmic Helper
-4Y011,Dental Assistant Helper
-4Y011H,Dental Hygienist Helper
-4Y012,Dental Laboratory Helper
-5J011,Paralegal Helper
-5R011,Chaplain Assistant Helper
-6C011,Contracting Helper
-6F011,Financial Management & Comptroller Helper
-7S011,Special Investigations Helper
-9W500,Wounded Warrior-Retired/Discharged
-1A031,In-Flight Refueling Apprentice
-1A131,Flight Engineer Apprentice
-1A231,Aircraft Loadmaster Apprentice
-1A331,Airborne Mission Systems Operator Apprentice
-1A631,Flight Attendant Apprentice
-1A831,Airborne Cryptologic Language Analyst Apprentice
-1A832,Airborne Intelligence, Surveillance, and Reconnaissance Operator Apprentice
-1A931,Special Missions Aviator Apprentice
-1B431,Cyber Warfare Operations Apprentice
-1C032,Aviation Resource Management Apprentice
-1C131,Air Traffic Control Apprentice
-1C231,Combat Control Apprentice
-1C331,Command Post Apprentice
-1C431,Tactical Air Control Party Apprentice
-1C531,Command & Control Battle Management Ops Apprentice
-1C631,Space Systems Operations Apprentice
-1C731,Airfield Management Apprentice
-1C831,Ground Radar Systems Apprentice
-1C832,Airfield Systems Apprentice
-1N031,All Source Intelligence Analyst/Operations Intelligence Specialist Apprentice
-1N131,Geospatial Intelligence Apprentice
-1N231,Signals Intelligence Analyst Apprentice
-1N331,Cryptologic Language Analyst Apprentice
-1N431,Fusion Analyst Apprentice
-1N731,Human Intelligence Specialist Apprentice
-1P031,Aircrew Flight Equipment Apprentice
-1S031,Safety Apprentice
-1T031,Survival, Evasion, Resistance, and Escape Apprentice
-1T231,Pararescue Apprentice
-1U031,Remotely Piloted Aircraft Sensor Operator Apprentice
-1U131,Remotely Piloted Aircraft Pilot Apprentice
-1W031,Weather Apprentice
-1W032,Special Operations Weather Apprentice
-2A031,Avionics Test Station and Components Apprentice
-2A231,Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Apprentice
-2A232,Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Apprentice
-2A233,Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Apprentice
-2A333,Tactical Aircraft Maintenance Apprentice
-2A334,Fighter Aircraft Integrated Avionics Apprentice
-2A335,Advanced Fighter Aircraft Integrated Avionics Apprentice
-2A337,Tactical Aircraft Maintenance Apprentice
-2A338,Remotely Piloted Aircraft Maintenance Apprentice
-2A531,Airlift/Special Mission Aircraft Maintenance Apprentice
-2A532,Helicopter/Tiltrotor Aircraft Maintenance Apprentice
-2A533,Mobility Air Forces Electronic Warfare Systems Apprentice
-2A534,Refuel/Bomber Aircraft Maintenance Apprentice
-2A631,Aerospace Propulsion Apprentice
-2A632,Aerospace Ground Equipment Apprentice
-2A633,Aircrew Egress Systems Apprentice
-2A634,Aircraft Fuel Systems Apprentice
-2A635,Aircraft Hydraulic Systems Apprentice
-2A636,Aircraft Electrical and Environmental Systems Apprentice
-2A731,Aircraft Metals Technology Apprentice
-2A732,Nondestructive Inspection Apprentice
-2A733,Aircraft Structural Maintenance Apprentice
-2A735,Low Observable Aircraft Structural Maintenance Apprentice
-2A831,Mobility Air Forces Communication/Navigation/Mission Systems Apprentice
-2A832,Mobility Air Forces Integrated Instrument and Flight Control Systems Apprentice
-2A931,Bomber/Special Integrated Communication/Navigation/Mission Systems Apprentice
-2A932,Bomber/Special Integrated Instrument and Flight Control Systems Apprentice
-2A933,Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Apprentice
-2F031,Fuels Apprentice
-2G031,Logistics Plans Apprentice
-2M031,Missile and Space Systems Electronics Maintenance Apprentice
-2M032,Missile and Space Systems Maintenance Apprentice
-2M033,Missile and Space Facilities Apprentice
-2P031,Precision Measurement Equipment Laboratory Apprentice
-2R031,Maintenance Management Analysis Apprentice
-2R131,Maintenance Management Production Apprentice
-2S031,Materiel Management Apprentice
-2T031,Traffic Management Apprentice
-2T131,Vehicle Operations Apprentice
-2T231,Air Transportation Apprentice
-2T331,Mission Generation Vehicular Equipment Maintenance Apprentice
-2T337,Fleet Management and Analysis Apprentice
-2W031,Munitions Systems Apprentice
-2W131,Aircraft Armament Systems Apprentice
-2W231,Nuclear Weapons Apprentice
-3A131,Administration Apprentice
-3D031,Knowledge Operations Management Apprentice
-3D032,Cyber Systems Operations Apprentice
-3D033,Cyber Surety Apprentice
-3D034,Computer Systems Programming Apprentice
-3D131,Client Systems Apprentice
-3D132,Cyber Transport Systems Apprentice
-3D133,RF Transmission Systems Apprentice
-3D134,Spectrum Operations Apprentice
-3D137,Cable and antenna systems Apprentice
-3E031,Electrical Systems Apprentice
-3E032,Electrical Power Production Apprentice
-3E131,Heating, Ventilation, AC, and Refrigeration Apprentice
-3E231,Pavements and Construction Equipment Apprentice
-3E331,Structural Apprentice
-3E431,Water and Fuel Systems Maintenance Apprentice
-3E433,Pest Management Apprentice
-3E531,Engineering Apprentice
-3E631,Operations Management Apprentice
-3E731,Fire Protection Apprentice
-3E831,Explosive Ordnance Disposal Apprentice
-3E931,U.S. Air Force Emergency Management Apprentice
-3G031,Air National Guard Strength Management Apprentice
-3H031,Historian Apprentice
-3M031,Services Apprentice
-3N032,Broadcast Journalist Apprentice
-3N035,Photojournalist Apprentice
-3N131,Regional Band Apprentice
-3N231,Premier Band Apprentice
-3P031,Security Forces Apprentice
-3P031A,Military Working Dog Handler Apprentice
-3P031B,Combat Arms Training and Maintenance Apprentice
-3S031,Personnel Apprentice
-3S131,Equal Opportunity Apprentice
-3S231,Education and Training Apprentice
-3S333,Manpower Apprentice
-4A031,Health Services Management Apprentice
-4A131,Medical Material Apprentice
-4A231,Biomedical Equipment Apprentice
-4B031,Bioenvironmental Engineering Apprentice
-4C031,Mental Health Service Apprentice
-4D031,Diet Therapy Apprentice
-4E031,Public Health Apprentice
-4H031,Cardiopulmonary Laboratory Apprentice
-4J032,Physical Medicine Apprentice
-4J032A,Orthotics Apprentice
-4M031,Aerospace and Operational Physiology Apprentice
-4N031,Aerospace Medical Service Apprentice
-4N031B,Neurodiagnostic Medical Technician Apprentice
-4N031C,Independent Duty Medical Technician Apprentice
-4N031F,Flight and Operational Medical Technician Apprentice
-4N131,Surgical Service Apprentice
-4P031,Pharmacy Apprentice
-4R031,Diagnostic Imaging Apprentice
-4T031,Medical Laboratory Apprentice
-4T032,Histopathology Apprentice
-4V031,Ophthalmic Apprentice
-4Y031,Dental Assistant Apprentice
-4Y031H,Dental Hygienist Apprentice
-4Y032,Dental Laboratory Apprentice
-5J031,Paralegal Apprentice
-5R031,Chaplain Assistant Apprentice
-6C031,Contracting Apprentice
-6F031,Financial Management & Comptroller Apprentice
-7S031,Special Investigations Apprentice
-1A051,In-Flight Refueling Journeyman
-1A151,Flight Engineer Journeyman
-1A251,Aircraft Loadmaster Journeyman
-1A351,Airborne Mission Systems Operator Journeyman
-1A651,Flight Attendant Journeyman
-1A851,Airborne Cryptologic Language Analyst Journeyman
-1A852,Airborne Intelligence, Surveillance, and Reconnaissance Operator Journeyman
-1A951,Special Missions Aviator Journeyman
-1B451,Cyber Warfare Operations Journeyman
-1C052,Aviation Resource Management Journeyman
-1C151,Air Traffic Control Journeyman
-1C251,Combat Control Journeyman
-1C351,Command Post Journeyman
-1C451,Tactical Air Control Party Journeyman
-1C551,Command & Control Battle Management Ops Journeyman
-1C651,Space Systems Operations Journeyman
-1C751,Airfield Management Journeyman
-1C851,Ground Radar Systems Journeyman
-1C852,Airfield Systems Journeyman
-1N051,All Source Intelligence Analyst/Operations Intelligence Specialist Journeyman
-1N151,Geospatial Intelligence Journeyman
-1N251,Signals Intelligence Analyst Journeyman
-1N351,Cryptologic Language Analyst Journeyman
-1N451,Fusion Analyst Journeyman
-1N751,Human Intelligence Specialist Journeyman
-1P051,Aircrew Flight Equipment Journeyman
-1S051,Safety Journeyman
-1T051,Survival, Evasion, Resistance, and Escape Journeyman
-1T251,Pararescue Journeyman
-1U051,Remotely Piloted Aircraft Sensor Operator Journeyman
-1U151,Remotely Piloted Aircraft Pilot Journeyman
-1W051,Weather Journeyman
-1W052,Special Operations Weather Journeyman
-2A051,Avionics Test Station and Components Journeyman
-2A251,Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Journeyman
-2A252,Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Journeyman
-2A253,Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Journeyman
-2A353,Tactical Aircraft Maintenance Journeyman
-2A354,Fighter Aircraft Integrated Avionics Journeyman
-2A355,Advanced Fighter Aircraft Integrated Avionics Journeyman
-2A357,Tactical Aircraft Maintenance Journeyman
-2A358,Remotely Piloted Aircraft Maintenance Journeyman
-2A551,Airlift/Special Mission Aircraft Maintenance Journeyman
-2A552,Helicopter/Tiltrotor Aircraft Maintenance Journeyman
-2A553,Mobility Air Forces Electronic Warfare Systems Journeyman
-2A554,Refuel/Bomber Aircraft Maintenance Journeyman
-2A651,Aerospace Propulsion Journeyman
-2A652,Aerospace Ground Equipment Journeyman
-2A653,Aircrew Egress Systems Journeyman
-2A654,Aircraft Fuel Systems Journeyman
-2A655,Aircraft Hydraulic Systems Journeyman
-2A656,Aircraft Electrical and Environmental Systems Journeyman
-2A751,Aircraft Metals Technology Journeyman
-2A752,Nondestructive Inspection Journeyman
-2A753,Aircraft Structural Maintenance Journeyman
-2A755,Low Observable Aircraft Structural Maintenance Journeyman
-2A851,Mobility Air Forces Communication/Navigation/Mission Systems Journeyman
-2A852,Mobility Air Forces Integrated Instrument and Flight Control Systems Journeyman
-2A951,Bomber/Special Integrated Communication/Navigation/Mission Systems Journeyman
-2A952,Bomber/Special Integrated Instrument and Flight Control Systems Journeyman
-2A953,Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Journeyman
-2F051,Fuels Journeyman
-2G051,Logistics Plans Journeyman
-2M051,Missile and Space Systems Electronics Maintenance Journeyman
-2M052,Missile and Space Systems Maintenance Journeyman
-2M053,Missile and Space Facilities Journeyman
-2P051,Precision Measurement Equipment Laboratory Journeyman
-2R051,Maintenance Management Analysis Journeyman
-2R151,Maintenance Management Production Journeyman
-2S051,Materiel Management Journeyman
-2T051,Traffic Management Journeyman
-2T151,Vehicle Operations Journeyman
-2T251,Air Transportation Journeyman
-2T351,Mission Generation Vehicular Equipment Maintenance Journeyman
-2T357,Fleet Management and Analysis Journeyman
-2W051,Munitions Systems Journeyman
-2W151,Aircraft Armament Systems Journeyman
-2W251,Nuclear Weapons Journeyman
-3A151,Administration Journeyman
-3D051,Knowledge Operations Management Journeyman
-3D052,Cyber Systems Operations Journeyman
-3D053,Cyber Surety Journeyman
-3D054,Computer Systems Programming Journeyman
-3D151,Client Systems Journeyman
-3D152,Cyber Transport Systems Journeyman
-3D153,RF Transmission Systems Journeyman
-3D154,Spectrum Operations Journeyman
-3D157,Cable and antenna systems Journeyman
-3E051,Electrical Systems Journeyman
-3E052,Electrical Power Production Journeyman
-3E151,Heating, Ventilation, AC, and Refrigeration Journeyman
-3E251,Pavements and Construction Equipment Journeyman
-3E351,Structural Journeyman
-3E451,Water and Fuel Systems Maintenance Journeyman
-3E453,Pest Management Journeyman
-3E551,Engineering Journeyman
-3E651,Operations Management Journeyman
-3E751,Fire Protection Journeyman
-3E851,Explosive Ordnance Disposal Journeyman
-3E951,U.S. Air Force Emergency Management Journeyman
-3G051,Air National Guard Strength Management Journeyman
-3H051,Historian Journeyman
-3M051,Services Journeyman
-3N052,Broadcast Journalist Journeyman
-3N055,Photojournalist Journeyman
-3N151,Regional Band Journeyman
-3N251,Premier Band Journeyman
-3P051,Security Forces Journeyman
-3P051A,Military Working Dog Handler Journeyman
-3P051B,Combat Arms Training and Maintenance Journeyman
-3S051,Personnel Journeyman
-3S151,Equal Opportunity Journeyman
-3S251,Education and Training Journeyman
-3S353,Manpower Journeyman
-4A051,Health Services Management Journeyman
-4A151,Medical Material Journeyman
-4A251,Biomedical Equipment Journeyman
-4B051,Bioenvironmental Engineering Journeyman
-4C051,Mental Health Service Journeyman
-4D051,Diet Therapy Journeyman
-4E051,Public Health Journeyman
-4H051,Cardiopulmonary Laboratory Journeyman
-4J052,Physical Medicine Journeyman
-4J052A,Orthotics Journeyman
-4M051,Aerospace and Operational Physiology Journeyman
-4N051,Aerospace Medical Service Journeyman
-4N051B,Neurodiagnostic Medical Technician Journeyman
-4N051C,Independent Duty Medical Technician Journeyman
-4N051F,Flight and Operational Medical Technician Journeyman
-4N151,Surgical Service Journeyman
-4P051,Pharmacy Journeyman
-4R051,Diagnostic Imaging Journeyman
-4T051,Medical Laboratory Journeyman
-4T052,Histopathology Journeyman
-4V051,Ophthalmic Journeyman
-4Y051,Dental Assistant Journeyman
-4Y051H,Dental Hygienist Journeyman
-4Y052,Dental Laboratory Journeyman
-5J051,Paralegal Journeyman
-5R051,Chaplain Assistant Journeyman
-6C051,Contracting Journeyman
-6F051,Financial Management & Comptroller Journeyman
-7S051,Special Investigations Journeyman
-1A071,In-Flight Refueling Craftsman
-1A171,Flight Engineer Craftsman
-1A271,Aircraft Loadmaster Craftsman
-1A371,Airborne Mission Systems Operator Craftsman
-1A671,Flight Attendant Craftsman
-1A871,Airborne Cryptologic Language Analyst Craftsman
-1A872,Airborne Intelligence, Surveillance, and Reconnaissance Operator Craftsman
-1A971,Special Missions Aviator Craftsman
-1B471,Cyber Warfare Operations Craftsman
-1C072,Aviation Resource Management Craftsman
-1C171,Air Traffic Control Craftsman
-1C271,Combat Control Craftsman
-1C371,Command Post Craftsman
-1C471,Tactical Air Control Party Craftsman
-1C571,Command & Control Battle Management Ops Craftsman
-1C671,Space Systems Operations Craftsman
-1C771,Airfield Management Craftsman
-1C871,Ground Radar Systems Craftsman
-1C872,Airfield Systems Craftsman
-1N071,All Source Intelligence Analyst/Operations Intelligence Specialist Craftsman
-1N171,Geospatial Intelligence Craftsman
-1N271,Signals Intelligence Analyst Craftsman
-1N371,Cryptologic Language Analyst Craftsman
-1N471,Fusion Analyst Craftsman
-1N771,Human Intelligence Specialist Craftsman
-1P071,Aircrew Flight Equipment Craftsman
-1S071,Safety Craftsman
-1T071,Survival, Evasion, Resistance, and Escape Craftsman
-1T271,Pararescue Craftsman
-1U071,Remotely Piloted Aircraft Sensor Operator Craftsman
-1U171,Remotely Piloted Aircraft Pilot Craftsman
-1W071,Weather Craftsman
-1W072,Special Operations Weather Craftsman
-2A071,Avionics Test Station and Components Craftsman
-2A271,Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Craftsman
-2A272,Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Craftsman
-2A273,Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Craftsman
-2A373,Tactical Aircraft Maintenance Craftsman
-2A374,Fighter Aircraft Integrated Avionics Craftsman
-2A375,Advanced Fighter Aircraft Integrated Avionics Craftsman
-2A377,Tactical Aircraft Maintenance Craftsman
-2A378,Remotely Piloted Aircraft Maintenance Craftsman
-2A571,Airlift/Special Mission Aircraft Maintenance Craftsman
-2A572,Helicopter/Tiltrotor Aircraft Maintenance Craftsman
-2A573,Mobility Air Forces Electronic Warfare Systems Craftsman
-2A574,Refuel/Bomber Aircraft Maintenance Craftsman
-2A671,Aerospace Propulsion Craftsman
-2A672,Aerospace Ground Equipment Craftsman
-2A673,Aircrew Egress Systems Craftsman
-2A674,Aircraft Fuel Systems Craftsman
-2A675,Aircraft Hydraulic Systems Craftsman
-2A676,Aircraft Electrical and Environmental Systems Craftsman
-2A771,Aircraft Metals Technology Craftsman
-2A772,Nondestructive Inspection Craftsman
-2A773,Aircraft Structural Maintenance Craftsman
-2A775,Low Observable Aircraft Structural Maintenance Craftsman
-2A871,Mobility Air Forces Communication/Navigation/Mission Systems Craftsman
-2A872,Mobility Air Forces Integrated Instrument and Flight Control Systems Craftsman
-2A971,Bomber/Special Integrated Communication/Navigation/Mission Systems Craftsman
-2A972,Bomber/Special Integrated Instrument and Flight Control Systems Craftsman
-2A973,Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Craftsman
-2F071,Fuels Craftsman
-2G071,Logistics Plans Craftsman
-2M071,Missile and Space Systems Electronics Maintenance Craftsman
-2M072,Missile and Space Systems Maintenance Craftsman
-2M073,Missile and Space Facilities Craftsman
-2P071,Precision Measurement Equipment Laboratory Craftsman
-2R071,Maintenance Management Analysis Craftsman
-2R171,Maintenance Management Production Craftsman
-2S071,Materiel Management Craftsman
-2T071,Traffic Management Craftsman
-2T171,Vehicle Operations Craftsman
-2T271,Air Transportation Craftsman
-2T371,Mission Generation Vehicular Equipment Maintenance Craftsman
-2T377,Fleet Management and Analysis Craftsman
-2W071,Munitions Systems Craftsman
-2W171,Aircraft Armament Systems Craftsman
-2W271,Nuclear Weapons Craftsman
-3A171,Administration Craftsman
-3D071,Knowledge Operations Management Craftsman
-3D072,Cyber Systems Operations Craftsman
-3D073,Cyber Surety Craftsman
-3D074,Computer Systems Programming Craftsman
-3D171,Client Systems Craftsman
-3D172,Cyber Transport Systems Craftsman
-3D173,RF Transmission Systems Craftsman
-3D174,Spectrum Operations Craftsman
-3D177,Cable and antenna systems Craftsman
-3E071,Electrical Systems Craftsman
-3E072,Electrical Power Production Craftsman
-3E171,Heating, Ventilation, AC, and Refrigeration Craftsman
-3E271,Pavements and Construction Equipment Craftsman
-3E371,Structural Craftsman
-3E471,Water and Fuel Systems Maintenance Craftsman
-3E473,Pest Management Craftsman
-3E571,Engineering Craftsman
-3E671,Operations Management Craftsman
-3E771,Fire Protection Craftsman
-3E871,Explosive Ordnance Disposal Craftsman
-3E971,U.S. Air Force Emergency Management Craftsman
-3G071,Air National Guard Strength Management Craftsman
-3H071,Historian Craftsman
-3M071,Services Craftsman
-3N072,Broadcast Journalist Craftsman
-3N075,Photojournalist Craftsman
-3N171,Regional Band Craftsman
-3N271,Premier Band Craftsman
-3P071,Security Forces Craftsman
-3P071A,Military Working Dog Handler Craftsman
-3P071B,Combat Arms Training and Maintenance Craftsman
-3S071,Personnel Craftsman
-3S171,Equal Opportunity Craftsman
-3S271,Education and Training Craftsman
-3S373,Manpower Craftsman
-4A071,Health Services Management Craftsman
-4A171,Medical Material Craftsman
-4A271,Biomedical Equipment Craftsman
-4B071,Bioenvironmental Engineering Craftsman
-4C071,Mental Health Service Craftsman
-4D071,Diet Therapy Craftsman
-4E071,Public Health Craftsman
-4H071,Cardiopulmonary Laboratory Craftsman
-4J072,Physical Medicine Craftsman
-4J072A,Orthotics Craftsman
-4M071,Aerospace and Operational Physiology Craftsman
-4N071,Aerospace Medical Service Craftsman
-4N071B,Neurodiagnostic Medical Technician Craftsman
-4N071C,Independent Duty Medical Technician Craftsman
-4N071F,Flight and Operational Medical Technician Craftsman
-4N171,Surgical Service Craftsman
-4P071,Pharmacy Craftsman
-4R071,Diagnostic Imaging Craftsman
-4T071,Medical Laboratory Craftsman
-4T072,Histopathology Craftsman
-4V071,Ophthalmic Craftsman
-4Y071,Dental Assistant Craftsman
-4Y071H,Dental Hygienist Craftsman
-4Y072,Dental Laboratory Craftsman
-5J071,Paralegal Craftsman
-5R071,Chaplain Assistant Craftsman
-6C071,Contracting Craftsman
-6F071,Financial Management & Comptroller Craftsman
-7S071,Special Investigations Craftsman
-1A091,In-Flight Refueling Superintendent
-1A191,Flight Engineer Superintendent
-1A291,Aircraft Loadmaster Superintendent
-1A391,Airborne Mission Systems Operator Superintendent
-1A691,Flight Attendant Superintendent
-1A891,Airborne Cryptologic Language Analyst Superintendent
-1A892,Airborne Intelligence, Surveillance, and Reconnaissance Operator Superintendent
-1A991,Special Missions Aviator Superintendent
-1B491,Cyber Warfare Operations Superintendent
-1C092,Aviation Resource Management Superintendent
-1C191,Air Traffic Control Superintendent
-1C291,Combat Control Superintendent
-1C391,Command Post Superintendent
-1C491,Tactical Air Control Party Superintendent
-1C591,Command & Control Battle Management Ops Superintendent
-1C691,Space Systems Operations Superintendent
-1C791,Airfield Management Superintendent
-1C891,Ground Radar Systems Superintendent
-1C892,Airfield Systems Superintendent
-1N091,All Source Intelligence Analyst/Operations Intelligence Specialist Superintendent
-1N191,Geospatial Intelligence Superintendent
-1N291,Signals Intelligence Analyst Superintendent
-1N391,Cryptologic Language Analyst Superintendent
-1N491,Fusion Analyst Superintendent
-1N791,Human Intelligence Specialist Superintendent
-1P091,Aircrew Flight Equipment Superintendent
-1S091,Safety Superintendent
-1T091,Survival, Evasion, Resistance, and Escape Superintendent
-1T291,Pararescue Superintendent
-1U091,Remotely Piloted Aircraft Sensor Operator Superintendent
-1U191,Remotely Piloted Aircraft Pilot Superintendent
-1W091,Weather Superintendent
-1W092,Special Operations Weather Superintendent
-2A091,Avionics Test Station and Components Superintendent
-2A291,Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Superintendent
-2A292,Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Superintendent
-2A293,Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Superintendent
-2A393,Tactical Aircraft Maintenance Superintendent
-2A394,Fighter Aircraft Integrated Avionics Superintendent
-2A395,Advanced Fighter Aircraft Integrated Avionics Superintendent
-2A397,Tactical Aircraft Maintenance Superintendent
-2A398,Remotely Piloted Aircraft Maintenance Superintendent
-2A591,Airlift/Special Mission Aircraft Maintenance Superintendent
-2A592,Helicopter/Tiltrotor Aircraft Maintenance Superintendent
-2A593,Mobility Air Forces Electronic Warfare Systems Superintendent
-2A594,Refuel/Bomber Aircraft Maintenance Superintendent
-2A691,Aerospace Propulsion Superintendent
-2A692,Aerospace Ground Equipment Superintendent
-2A693,Aircrew Egress Systems Superintendent
-2A694,Aircraft Fuel Systems Superintendent
-2A695,Aircraft Hydraulic Systems Superintendent
-2A696,Aircraft Electrical and Environmental Systems Superintendent
-2A791,Aircraft Metals Technology Superintendent
-2A792,Nondestructive Inspection Superintendent
-2A793,Aircraft Structural Maintenance Superintendent
-2A795,Low Observable Aircraft Structural Maintenance Superintendent
-2A891,Mobility Air Forces Communication/Navigation/Mission Systems Superintendent
-2A892,Mobility Air Forces Integrated Instrument and Flight Control Systems Superintendent
-2A991,Bomber/Special Integrated Communication/Navigation/Mission Systems Superintendent
-2A992,Bomber/Special Integrated Instrument and Flight Control Systems Superintendent
-2A993,Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Superintendent
-2F091,Fuels Superintendent
-2G091,Logistics Plans Superintendent
-2M091,Missile and Space Systems Electronics Maintenance Superintendent
-2M092,Missile and Space Systems Maintenance Superintendent
-2M093,Missile and Space Facilities Superintendent
-2P091,Precision Measurement Equipment Laboratory Superintendent
-2R091,Maintenance Management Analysis Superintendent
-2R191,Maintenance Management Production Superintendent
-2S091,Materiel Management Superintendent
-2T091,Traffic Management Superintendent
-2T191,Vehicle Operations Superintendent
-2T291,Air Transportation Superintendent
-2T391,Mission Generation Vehicular Equipment Maintenance Superintendent
-2T397,Fleet Management and Analysis Superintendent
-2W091,Munitions Systems Superintendent
-2W191,Aircraft Armament Systems Superintendent
-2W291,Nuclear Weapons Superintendent
-3A191,Administration Superintendent
-3D091,Knowledge Operations Management Superintendent
-3D092,Cyber Systems Operations Superintendent
-3D093,Cyber Surety Superintendent
-3D094,Computer Systems Programming Superintendent
-3D191,Client Systems Superintendent
-3D192,Cyber Transport Systems Superintendent
-3D193,RF Transmission Systems Superintendent
-3D194,Spectrum Operations Superintendent
-3D197,Cable and antenna systems Superintendent
-3E091,Electrical Systems Superintendent
-3E092,Electrical Power Production Superintendent
-3E191,Heating, Ventilation, AC, and Refrigeration Superintendent
-3E291,Pavements and Construction Equipment Superintendent
-3E391,Structural Superintendent
-3E491,Water and Fuel Systems Maintenance Superintendent
-3E493,Pest Management Superintendent
-3E591,Engineering Superintendent
-3E691,Operations Management Superintendent
-3E791,Fire Protection Superintendent
-3E891,Explosive Ordnance Disposal Superintendent
-3E991,U.S. Air Force Emergency Management Superintendent
-3G091,Air National Guard Strength Management Superintendent
-3H091,Historian Superintendent
-3M091,Services Superintendent
-3N092,Broadcast Journalist Superintendent
-3N095,Photojournalist Superintendent
-3N191,Regional Band Superintendent
-3N291,Premier Band Superintendent
-3P091,Security Forces Superintendent
-3P091A,Military Working Dog Handler Superintendent
-3P091B,Combat Arms Training and Maintenance Superintendent
-3S091,Personnel Superintendent
-3S191,Equal Opportunity Superintendent
-3S291,Education and Training Superintendent
-3S393,Manpower Superintendent
-4A091,Health Services Management Superintendent
-4A191,Medical Material Superintendent
-4A291,Biomedical Equipment Superintendent
-4B091,Bioenvironmental Engineering Superintendent
-4C091,Mental Health Service Superintendent
-4D091,Diet Therapy Superintendent
-4E091,Public Health Superintendent
-4H091,Cardiopulmonary Laboratory Superintendent
-4J092,Physical Medicine Superintendent
-4J092A,Orthotics Superintendent
-4M091,Aerospace and Operational Physiology Superintendent
-4N091,Aerospace Medical Service Superintendent
-4N091B,Neurodiagnostic Medical Technician Superintendent
-4N091C,Independent Duty Medical Technician Superintendent
-4N091F,Flight and Operational Medical Technician Superintendent
-4N191,Surgical Service Superintendent
-4P091,Pharmacy Superintendent
-4R091,Diagnostic Imaging Superintendent
-4T091,Medical Laboratory Superintendent
-4T092,Histopathology Superintendent
-4V091,Ophthalmic Superintendent
-4Y091,Dental Assistant Superintendent
-4Y091H,Dental Hygienist Superintendent
-4Y092,Dental Laboratory Superintendent
-5J091,Paralegal Superintendent
-5R091,Chaplain Assistant Superintendent
-6C091,Contracting Superintendent
-6F091,Financial Management & Comptroller Superintendent
-7S091,Special Investigations Superintendent
+1A0X1#In-Flight Refueling
+1A1X1#Flight Engineer
+1A2X1#Aircraft Loadmaster
+1A3X1#Airborne Mission Systems Operator
+1A6X1#Flight Attendant
+1A8X1#Airborne Cryptologic Language Analyst
+1A8X2#Airborne Intelligence, Surveillance, and Reconnaissance Operator
+1A9X1#Special Missions Aviator
+1B4X1#Cyber Warfare Operations
+1C0X2#Aviation Resource Management
+1C1X1#Air Traffic Control
+1C2X1#Combat Control
+1C3X1#Command Post
+1C4X1#Tactical Air Control Party
+1C5X1#Command & Control Battle Management Ops
+1C6X1#Space Systems Operations
+1C7X1#Airfield Management
+1C8X1#Ground Radar Systems
+1C8X2#Airfield Systems
+1N0X1#All Source Intelligence Analyst/Operations Intelligence Specialist
+1N1X1#Geospatial Intelligence
+1N2X1#Signals Intelligence Analyst
+1N3X1#Cryptologic Language Analyst
+1N4X1#Fusion Analyst
+1N7X1#Human Intelligence Specialist
+1P0X1#Aircrew Flight Equipment
+1S0X1#Safety
+1T0X1#Survival, Evasion, Resistance, and Escape
+1T2X1#Pararescue
+1U0X1#Remotely Piloted Aircraft Sensor Operator
+1U1X1#Remotely Piloted Aircraft Pilot
+1W0X1#Weather
+1W0X2#Special Operations Weather
+2A0X1#Avionics Test Station and Components
+2A2X1#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems
+2A2X2#Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems
+2A2X3#Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems
+2A3X3#Tactical Aircraft Maintenance
+2A3X4#Fighter Aircraft Integrated Avionics
+2A3X5#Advanced Fighter Aircraft Integrated Avionics
+2A3X7#Tactical Aircraft Maintenance
+2A3X8#Remotely Piloted Aircraft Maintenance
+2A5X1#Airlift/Special Mission Aircraft Maintenance
+2A5X2#Helicopter/Tiltrotor Aircraft Maintenance
+2A5X3#Mobility Air Forces Electronic Warfare Systems
+2A5X4#Refuel/Bomber Aircraft Maintenance
+2A6X1#Aerospace Propulsion
+2A6X2#Aerospace Ground Equipment
+2A6X3#Aircrew Egress Systems
+2A6X4#Aircraft Fuel Systems
+2A6X5#Aircraft Hydraulic Systems
+2A6X6#Aircraft Electrical and Environmental Systems
+2A7X1#Aircraft Metals Technology
+2A7X2#Nondestructive Inspection
+2A7X3#Aircraft Structural Maintenance
+2A7X5#Low Observable Aircraft Structural Maintenance
+2A8X1#Mobility Air Forces Communication/Navigation/Mission Systems
+2A8X2#Mobility Air Forces Integrated Instrument and Flight Control Systems
+2A9X1#Bomber/Special Integrated Communication/Navigation/Mission Systems
+2A9X2#Bomber/Special Integrated Instrument and Flight Control Systems
+2A9X3#Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics
+2F0X1#Fuels
+2G0X1#Logistics Plans
+2M0X1#Missile and Space Systems Electronics Maintenance
+2M0X2#Missile and Space Systems Maintenance
+2M0X3#Missile and Space Facilities
+2P0X1#Precision Measurement Equipment Laboratory
+2R0X1#Maintenance Management Analysis
+2R1X1#Maintenance Management Production
+2S0X1#Materiel Management
+2T0X1#Traffic Management
+2T1X1#Vehicle Operations
+2T2X1#Air Transportation
+2T3X1#Mission Generation Vehicular Equipment Maintenance
+2T3X7#Fleet Management and Analysis
+2W0X1#Munitions Systems
+2W1X1#Aircraft Armament Systems
+2W2X1#Nuclear Weapons
+3A1X1#Administration
+3D0X1#Knowledge Operations Management
+3D0X2#Cyber Systems Operations
+3D0X3#Cyber Surety
+3D0X4#Computer Systems Programming
+3D1X1#Client Systems
+3D1X2#Cyber Transport Systems
+3D1X3#RF Transmission Systems
+3D1X4#Spectrum Operations
+3D1X7#Cable and antenna systems
+3E0X1#Electrical Systems
+3E0X2#Electrical Power Production
+3E1X1#Heating, Ventilation, AC, and Refrigeration
+3E2X1#Pavements and Construction Equipment
+3E3X1#Structural
+3E4X1#Water and Fuel Systems Maintenance
+3E4X3#Pest Management
+3E5X1#Engineering
+3E6X1#Operations Management
+3E7X1#Fire Protection
+3E8X1#Explosive Ordnance Disposal
+3E9X1#U.S. Air Force Emergency Management
+3G0X1#Air National Guard Strength Management
+3H0X1#Historian
+3M0X1#Services
+3N0X2#Broadcast Journalist
+3N0X5#Photojournalist
+3N1X1#Regional Band
+3N2X1#Premier Band
+3P0X1#Security Forces
+3P0X1A#Military Working Dog Handler
+3P0X1B#Combat Arms Training and Maintenance
+3S0X1#Personnel
+3S1X1#Equal Opportunity
+3S2X1#Education and Training
+3S3X3#Manpower
+4A0X1#Health Services Management
+4A1X1#Medical Material
+4A2X1#Biomedical Equipment
+4B0X1#Bioenvironmental Engineering
+4C0X1#Mental Health Service
+4D0X1#Diet Therapy
+4E0X1#Public Health
+4H0X1#Cardiopulmonary Laboratory
+4J0X2#Physical Medicine
+4J0X2A#Orthotics
+4M0X1#Aerospace and Operational Physiology
+4N0X1#Aerospace Medical Service
+4N0X1B#Neurodiagnostic Medical Technician
+4N0X1C#Independent Duty Medical Technician
+4N0X1F#Flight and Operational Medical Technician
+4N1X1#Surgical Service
+4P0X1#Pharmacy
+4R0X1#Diagnostic Imaging
+4T0X1#Medical Laboratory
+4T0X2#Histopathology
+4V0X1#Ophthalmic
+4Y0X1#Dental Assistant
+4Y0X1H#Dental Hygienist
+4Y0X2#Dental Laboratory
+5J0X1#Paralegal
+5R0X1#Chaplain Assistant
+6C0X1#Contracting
+6F0X1#Financial Management & Comptroller
+7S0X1#Special Investigations
+8A100#Career Assistance Advisor
+8A200#Enlisted Aide
+8A300#Protocol
+8B000#Military Training Instructor
+8B100#Military Training Leader
+8B200#Academy Military Training NCO
+8C000#Airman & Family Readiness Center RNCO
+8D100#Language & Culture Advisor
+8F000#First Sergeant
+8G000#Honor Guard
+8G100#USAF Installation Honor Guard Program Manager
+8H000#Airman Dorm Leader
+8I000#IG Superintendent, Inspections
+8M000#Postal service
+8P000#Courier
+8P100#Defense Attaché
+8R000#Enlisted Accessions Recruiter
+8R200#Second-Tier Recruiter
+8R300#Third-Tier Recruiter
+8S000#Missile Facility Manager
+8T000#Professional Military Education Instructor
+8T100#Enlisted Professional Military Education Instructional System Designer
+8U000#Unit Deployment Manager
+9A000#Awaiting Retraining-Reasons beyond Control
+9A100#Awaiting Retraining-Reasons within Control
+9A200#Awaiting Discharge/Separation/Retirement for Reasons Within Their Control
+9A300#Awaiting Discharge/Separation/Retirement for Reasons Beyond Their Control
+9A400#Disqualified Airman, Return to Duty Program
+9A500#Temporarily Ineligible for Retraining – Disqualified for Reasons Beyond Control
+9C000#CMSgt of the Air Force
+9D100#Key Developmental Senior Enlisted Positions on Headquarters Air Force Staff and Air Force Senior Noncommissioned Officer Academy at Maxwell-Gunter Annex
+9E000#Command Chief Master Sergeant
+9F000#First Term Airmen Center NCOIC
+9G100#Group Superintendent
+9J000#Prisoner
+9L000#Interpreter/Translator
+9L100#Enlisted Engagement Manager/International Affairs
+9M000#Military Entrance Processing Command Senior Enlisted Advisor
+9M200#International Health Specialists
+9M400#Chief, Medical Enlisted Force
+9N000#Secretary of the Air Force Enlisted Legislative Fellows
+9P000#Patient
+9R000#Civil Air Patrol USAF Reserve Assistance NCO
+9S100#Scientific Applications Specialist
+9T000#Basic Enlisted Airman
+9T100#Officer Trainee
+9T200#Pre-Cadet Assignee
+9U000#Enlisted Airman Ineligible for Local Utilization
+9U100#Unallotted Enlisted Authorization
+9W000#Combat Wounded Warrior
+9W200#Combat Wounded Warrior with Exemptions
+9W300#Non-Combat Wounded Warrior
+9W400#Wounded Warrior-Limited Assignment Status
+1A011#In-Flight Refueling Helper
+1A111#Flight Engineer Helper
+1A211#Aircraft Loadmaster Helper
+1A311#Airborne Mission Systems Operator Helper
+1A611#Flight Attendant Helper
+1A811#Airborne Cryptologic Language Analyst Helper
+1A812#Airborne Intelligence, Surveillance, and Reconnaissance Operator Helper
+1A911#Special Missions Aviator Helper
+1B411#Cyber Warfare Operations Helper
+1C012#Aviation Resource Management Helper
+1C111#Air Traffic Control Helper
+1C211#Combat Control Helper
+1C311#Command Post Helper
+1C411#Tactical Air Control Party Helper
+1C511#Command & Control Battle Management Ops Helper
+1C611#Space Systems Operations Helper
+1C711#Airfield Management Helper
+1C811#Ground Radar Systems Helper
+1C812#Airfield Systems Helper
+1N011#All Source Intelligence Analyst/Operations Intelligence Specialist Helper
+1N111#Geospatial Intelligence Helper
+1N211#Signals Intelligence Analyst Helper
+1N311#Cryptologic Language Analyst Helper
+1N411#Fusion Analyst Helper
+1N711#Human Intelligence Specialist Helper
+1P011#Aircrew Flight Equipment Helper
+1S011#Safety Helper
+1T011#Survival, Evasion, Resistance, and Escape Helper
+1T211#Pararescue Helper
+1U011#Remotely Piloted Aircraft Sensor Operator Helper
+1U111#Remotely Piloted Aircraft Pilot Helper
+1W011#Weather Helper
+1W012#Special Operations Weather Helper
+2A011#Avionics Test Station and Components Helper
+2A211#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Helper
+2A212#Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Helper
+2A213#Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Helper
+2A313#Tactical Aircraft Maintenance Helper
+2A314#Fighter Aircraft Integrated Avionics Helper
+2A315#Advanced Fighter Aircraft Integrated Avionics Helper
+2A317#Tactical Aircraft Maintenance Helper
+2A318#Remotely Piloted Aircraft Maintenance Helper
+2A511#Airlift/Special Mission Aircraft Maintenance Helper
+2A512#Helicopter/Tiltrotor Aircraft Maintenance Helper
+2A513#Mobility Air Forces Electronic Warfare Systems Helper
+2A514#Refuel/Bomber Aircraft Maintenance Helper
+2A611#Aerospace Propulsion Helper
+2A612#Aerospace Ground Equipment Helper
+2A613#Aircrew Egress Systems Helper
+2A614#Aircraft Fuel Systems Helper
+2A615#Aircraft Hydraulic Systems Helper
+2A616#Aircraft Electrical and Environmental Systems Helper
+2A711#Aircraft Metals Technology Helper
+2A712#Nondestructive Inspection Helper
+2A713#Aircraft Structural Maintenance Helper
+2A715#Low Observable Aircraft Structural Maintenance Helper
+2A811#Mobility Air Forces Communication/Navigation/Mission Systems Helper
+2A812#Mobility Air Forces Integrated Instrument and Flight Control Systems Helper
+2A911#Bomber/Special Integrated Communication/Navigation/Mission Systems Helper
+2A912#Bomber/Special Integrated Instrument and Flight Control Systems Helper
+2A913#Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Helper
+2F011#Fuels Helper
+2G011#Logistics Plans Helper
+2M011#Missile and Space Systems Electronics Maintenance Helper
+2M012#Missile and Space Systems Maintenance Helper
+2M013#Missile and Space Facilities Helper
+2P011#Precision Measurement Equipment Laboratory Helper
+2R011#Maintenance Management Analysis Helper
+2R111#Maintenance Management Production Helper
+2S011#Materiel Management Helper
+2T011#Traffic Management Helper
+2T111#Vehicle Operations Helper
+2T211#Air Transportation Helper
+2T311#Mission Generation Vehicular Equipment Maintenance Helper
+2T317#Fleet Management and Analysis Helper
+2W011#Munitions Systems Helper
+2W111#Aircraft Armament Systems Helper
+2W211#Nuclear Weapons Helper
+3A111#Administration Helper
+3D011#Knowledge Operations Management Helper
+3D012#Cyber Systems Operations Helper
+3D013#Cyber Surety Helper
+3D014#Computer Systems Programming Helper
+3D111#Client Systems Helper
+3D112#Cyber Transport Systems Helper
+3D113#RF Transmission Systems Helper
+3D114#Spectrum Operations Helper
+3D117#Cable and antenna systems Helper
+3E011#Electrical Systems Helper
+3E012#Electrical Power Production Helper
+3E111#Heating, Ventilation, AC, and Refrigeration Helper
+3E211#Pavements and Construction Equipment Helper
+3E311#Structural Helper
+3E411#Water and Fuel Systems Maintenance Helper
+3E413#Pest Management Helper
+3E511#Engineering Helper
+3E611#Operations Management Helper
+3E711#Fire Protection Helper
+3E811#Explosive Ordnance Disposal Helper
+3E911#U.S. Air Force Emergency Management Helper
+3G011#Air National Guard Strength Management Helper
+3H011#Historian Helper
+3M011#Services Helper
+3N012#Broadcast Journalist Helper
+3N015#Photojournalist Helper
+3N111#Regional Band Helper
+3N211#Premier Band Helper
+3P011#Security Forces Helper
+3P011A#Military Working Dog Handler Helper
+3P011B#Combat Arms Training and Maintenance Helper
+3S011#Personnel Helper
+3S111#Equal Opportunity Helper
+3S211#Education and Training Helper
+3S313#Manpower Helper
+4A011#Health Services Management Helper
+4A111#Medical Material Helper
+4A211#Biomedical Equipment Helper
+4B011#Bioenvironmental Engineering Helper
+4C011#Mental Health Service Helper
+4D011#Diet Therapy Helper
+4E011#Public Health Helper
+4H011#Cardiopulmonary Laboratory Helper
+4J012#Physical Medicine Helper
+4J012A#Orthotics Helper
+4M011#Aerospace and Operational Physiology Helper
+4N011#Aerospace Medical Service Helper
+4N011B#Neurodiagnostic Medical Technician Helper
+4N011C#Independent Duty Medical Technician Helper
+4N011F#Flight and Operational Medical Technician Helper
+4N111#Surgical Service Helper
+4P011#Pharmacy Helper
+4R011#Diagnostic Imaging Helper
+4T011#Medical Laboratory Helper
+4T012#Histopathology Helper
+4V011#Ophthalmic Helper
+4Y011#Dental Assistant Helper
+4Y011H#Dental Hygienist Helper
+4Y012#Dental Laboratory Helper
+5J011#Paralegal Helper
+5R011#Chaplain Assistant Helper
+6C011#Contracting Helper
+6F011#Financial Management & Comptroller Helper
+7S011#Special Investigations Helper
+9W500#Wounded Warrior-Retired/Discharged
+1A031#In-Flight Refueling Apprentice
+1A131#Flight Engineer Apprentice
+1A231#Aircraft Loadmaster Apprentice
+1A331#Airborne Mission Systems Operator Apprentice
+1A631#Flight Attendant Apprentice
+1A831#Airborne Cryptologic Language Analyst Apprentice
+1A832#Airborne Intelligence, Surveillance, and Reconnaissance Operator Apprentice
+1A931#Special Missions Aviator Apprentice
+1B431#Cyber Warfare Operations Apprentice
+1C032#Aviation Resource Management Apprentice
+1C131#Air Traffic Control Apprentice
+1C231#Combat Control Apprentice
+1C331#Command Post Apprentice
+1C431#Tactical Air Control Party Apprentice
+1C531#Command & Control Battle Management Ops Apprentice
+1C631#Space Systems Operations Apprentice
+1C731#Airfield Management Apprentice
+1C831#Ground Radar Systems Apprentice
+1C832#Airfield Systems Apprentice
+1N031#All Source Intelligence Analyst/Operations Intelligence Specialist Apprentice
+1N131#Geospatial Intelligence Apprentice
+1N231#Signals Intelligence Analyst Apprentice
+1N331#Cryptologic Language Analyst Apprentice
+1N431#Fusion Analyst Apprentice
+1N731#Human Intelligence Specialist Apprentice
+1P031#Aircrew Flight Equipment Apprentice
+1S031#Safety Apprentice
+1T031#Survival, Evasion, Resistance, and Escape Apprentice
+1T231#Pararescue Apprentice
+1U031#Remotely Piloted Aircraft Sensor Operator Apprentice
+1U131#Remotely Piloted Aircraft Pilot Apprentice
+1W031#Weather Apprentice
+1W032#Special Operations Weather Apprentice
+2A031#Avionics Test Station and Components Apprentice
+2A231#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Apprentice
+2A232#Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Apprentice
+2A233#Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Apprentice
+2A333#Tactical Aircraft Maintenance Apprentice
+2A334#Fighter Aircraft Integrated Avionics Apprentice
+2A335#Advanced Fighter Aircraft Integrated Avionics Apprentice
+2A337#Tactical Aircraft Maintenance Apprentice
+2A338#Remotely Piloted Aircraft Maintenance Apprentice
+2A531#Airlift/Special Mission Aircraft Maintenance Apprentice
+2A532#Helicopter/Tiltrotor Aircraft Maintenance Apprentice
+2A533#Mobility Air Forces Electronic Warfare Systems Apprentice
+2A534#Refuel/Bomber Aircraft Maintenance Apprentice
+2A631#Aerospace Propulsion Apprentice
+2A632#Aerospace Ground Equipment Apprentice
+2A633#Aircrew Egress Systems Apprentice
+2A634#Aircraft Fuel Systems Apprentice
+2A635#Aircraft Hydraulic Systems Apprentice
+2A636#Aircraft Electrical and Environmental Systems Apprentice
+2A731#Aircraft Metals Technology Apprentice
+2A732#Nondestructive Inspection Apprentice
+2A733#Aircraft Structural Maintenance Apprentice
+2A735#Low Observable Aircraft Structural Maintenance Apprentice
+2A831#Mobility Air Forces Communication/Navigation/Mission Systems Apprentice
+2A832#Mobility Air Forces Integrated Instrument and Flight Control Systems Apprentice
+2A931#Bomber/Special Integrated Communication/Navigation/Mission Systems Apprentice
+2A932#Bomber/Special Integrated Instrument and Flight Control Systems Apprentice
+2A933#Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Apprentice
+2F031#Fuels Apprentice
+2G031#Logistics Plans Apprentice
+2M031#Missile and Space Systems Electronics Maintenance Apprentice
+2M032#Missile and Space Systems Maintenance Apprentice
+2M033#Missile and Space Facilities Apprentice
+2P031#Precision Measurement Equipment Laboratory Apprentice
+2R031#Maintenance Management Analysis Apprentice
+2R131#Maintenance Management Production Apprentice
+2S031#Materiel Management Apprentice
+2T031#Traffic Management Apprentice
+2T131#Vehicle Operations Apprentice
+2T231#Air Transportation Apprentice
+2T331#Mission Generation Vehicular Equipment Maintenance Apprentice
+2T337#Fleet Management and Analysis Apprentice
+2W031#Munitions Systems Apprentice
+2W131#Aircraft Armament Systems Apprentice
+2W231#Nuclear Weapons Apprentice
+3A131#Administration Apprentice
+3D031#Knowledge Operations Management Apprentice
+3D032#Cyber Systems Operations Apprentice
+3D033#Cyber Surety Apprentice
+3D034#Computer Systems Programming Apprentice
+3D131#Client Systems Apprentice
+3D132#Cyber Transport Systems Apprentice
+3D133#RF Transmission Systems Apprentice
+3D134#Spectrum Operations Apprentice
+3D137#Cable and antenna systems Apprentice
+3E031#Electrical Systems Apprentice
+3E032#Electrical Power Production Apprentice
+3E131#Heating, Ventilation, AC, and Refrigeration Apprentice
+3E231#Pavements and Construction Equipment Apprentice
+3E331#Structural Apprentice
+3E431#Water and Fuel Systems Maintenance Apprentice
+3E433#Pest Management Apprentice
+3E531#Engineering Apprentice
+3E631#Operations Management Apprentice
+3E731#Fire Protection Apprentice
+3E831#Explosive Ordnance Disposal Apprentice
+3E931#U.S. Air Force Emergency Management Apprentice
+3G031#Air National Guard Strength Management Apprentice
+3H031#Historian Apprentice
+3M031#Services Apprentice
+3N032#Broadcast Journalist Apprentice
+3N035#Photojournalist Apprentice
+3N131#Regional Band Apprentice
+3N231#Premier Band Apprentice
+3P031#Security Forces Apprentice
+3P031A#Military Working Dog Handler Apprentice
+3P031B#Combat Arms Training and Maintenance Apprentice
+3S031#Personnel Apprentice
+3S131#Equal Opportunity Apprentice
+3S231#Education and Training Apprentice
+3S333#Manpower Apprentice
+4A031#Health Services Management Apprentice
+4A131#Medical Material Apprentice
+4A231#Biomedical Equipment Apprentice
+4B031#Bioenvironmental Engineering Apprentice
+4C031#Mental Health Service Apprentice
+4D031#Diet Therapy Apprentice
+4E031#Public Health Apprentice
+4H031#Cardiopulmonary Laboratory Apprentice
+4J032#Physical Medicine Apprentice
+4J032A#Orthotics Apprentice
+4M031#Aerospace and Operational Physiology Apprentice
+4N031#Aerospace Medical Service Apprentice
+4N031B#Neurodiagnostic Medical Technician Apprentice
+4N031C#Independent Duty Medical Technician Apprentice
+4N031F#Flight and Operational Medical Technician Apprentice
+4N131#Surgical Service Apprentice
+4P031#Pharmacy Apprentice
+4R031#Diagnostic Imaging Apprentice
+4T031#Medical Laboratory Apprentice
+4T032#Histopathology Apprentice
+4V031#Ophthalmic Apprentice
+4Y031#Dental Assistant Apprentice
+4Y031H#Dental Hygienist Apprentice
+4Y032#Dental Laboratory Apprentice
+5J031#Paralegal Apprentice
+5R031#Chaplain Assistant Apprentice
+6C031#Contracting Apprentice
+6F031#Financial Management & Comptroller Apprentice
+7S031#Special Investigations Apprentice
+1A051#In-Flight Refueling Journeyman
+1A151#Flight Engineer Journeyman
+1A251#Aircraft Loadmaster Journeyman
+1A351#Airborne Mission Systems Operator Journeyman
+1A651#Flight Attendant Journeyman
+1A851#Airborne Cryptologic Language Analyst Journeyman
+1A852#Airborne Intelligence, Surveillance, and Reconnaissance Operator Journeyman
+1A951#Special Missions Aviator Journeyman
+1B451#Cyber Warfare Operations Journeyman
+1C052#Aviation Resource Management Journeyman
+1C151#Air Traffic Control Journeyman
+1C251#Combat Control Journeyman
+1C351#Command Post Journeyman
+1C451#Tactical Air Control Party Journeyman
+1C551#Command & Control Battle Management Ops Journeyman
+1C651#Space Systems Operations Journeyman
+1C751#Airfield Management Journeyman
+1C851#Ground Radar Systems Journeyman
+1C852#Airfield Systems Journeyman
+1N051#All Source Intelligence Analyst/Operations Intelligence Specialist Journeyman
+1N151#Geospatial Intelligence Journeyman
+1N251#Signals Intelligence Analyst Journeyman
+1N351#Cryptologic Language Analyst Journeyman
+1N451#Fusion Analyst Journeyman
+1N751#Human Intelligence Specialist Journeyman
+1P051#Aircrew Flight Equipment Journeyman
+1S051#Safety Journeyman
+1T051#Survival, Evasion, Resistance, and Escape Journeyman
+1T251#Pararescue Journeyman
+1U051#Remotely Piloted Aircraft Sensor Operator Journeyman
+1U151#Remotely Piloted Aircraft Pilot Journeyman
+1W051#Weather Journeyman
+1W052#Special Operations Weather Journeyman
+2A051#Avionics Test Station and Components Journeyman
+2A251#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Journeyman
+2A252#Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Journeyman
+2A253#Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Journeyman
+2A353#Tactical Aircraft Maintenance Journeyman
+2A354#Fighter Aircraft Integrated Avionics Journeyman
+2A355#Advanced Fighter Aircraft Integrated Avionics Journeyman
+2A357#Tactical Aircraft Maintenance Journeyman
+2A358#Remotely Piloted Aircraft Maintenance Journeyman
+2A551#Airlift/Special Mission Aircraft Maintenance Journeyman
+2A552#Helicopter/Tiltrotor Aircraft Maintenance Journeyman
+2A553#Mobility Air Forces Electronic Warfare Systems Journeyman
+2A554#Refuel/Bomber Aircraft Maintenance Journeyman
+2A651#Aerospace Propulsion Journeyman
+2A652#Aerospace Ground Equipment Journeyman
+2A653#Aircrew Egress Systems Journeyman
+2A654#Aircraft Fuel Systems Journeyman
+2A655#Aircraft Hydraulic Systems Journeyman
+2A656#Aircraft Electrical and Environmental Systems Journeyman
+2A751#Aircraft Metals Technology Journeyman
+2A752#Nondestructive Inspection Journeyman
+2A753#Aircraft Structural Maintenance Journeyman
+2A755#Low Observable Aircraft Structural Maintenance Journeyman
+2A851#Mobility Air Forces Communication/Navigation/Mission Systems Journeyman
+2A852#Mobility Air Forces Integrated Instrument and Flight Control Systems Journeyman
+2A951#Bomber/Special Integrated Communication/Navigation/Mission Systems Journeyman
+2A952#Bomber/Special Integrated Instrument and Flight Control Systems Journeyman
+2A953#Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Journeyman
+2F051#Fuels Journeyman
+2G051#Logistics Plans Journeyman
+2M051#Missile and Space Systems Electronics Maintenance Journeyman
+2M052#Missile and Space Systems Maintenance Journeyman
+2M053#Missile and Space Facilities Journeyman
+2P051#Precision Measurement Equipment Laboratory Journeyman
+2R051#Maintenance Management Analysis Journeyman
+2R151#Maintenance Management Production Journeyman
+2S051#Materiel Management Journeyman
+2T051#Traffic Management Journeyman
+2T151#Vehicle Operations Journeyman
+2T251#Air Transportation Journeyman
+2T351#Mission Generation Vehicular Equipment Maintenance Journeyman
+2T357#Fleet Management and Analysis Journeyman
+2W051#Munitions Systems Journeyman
+2W151#Aircraft Armament Systems Journeyman
+2W251#Nuclear Weapons Journeyman
+3A151#Administration Journeyman
+3D051#Knowledge Operations Management Journeyman
+3D052#Cyber Systems Operations Journeyman
+3D053#Cyber Surety Journeyman
+3D054#Computer Systems Programming Journeyman
+3D151#Client Systems Journeyman
+3D152#Cyber Transport Systems Journeyman
+3D153#RF Transmission Systems Journeyman
+3D154#Spectrum Operations Journeyman
+3D157#Cable and antenna systems Journeyman
+3E051#Electrical Systems Journeyman
+3E052#Electrical Power Production Journeyman
+3E151#Heating, Ventilation, AC, and Refrigeration Journeyman
+3E251#Pavements and Construction Equipment Journeyman
+3E351#Structural Journeyman
+3E451#Water and Fuel Systems Maintenance Journeyman
+3E453#Pest Management Journeyman
+3E551#Engineering Journeyman
+3E651#Operations Management Journeyman
+3E751#Fire Protection Journeyman
+3E851#Explosive Ordnance Disposal Journeyman
+3E951#U.S. Air Force Emergency Management Journeyman
+3G051#Air National Guard Strength Management Journeyman
+3H051#Historian Journeyman
+3M051#Services Journeyman
+3N052#Broadcast Journalist Journeyman
+3N055#Photojournalist Journeyman
+3N151#Regional Band Journeyman
+3N251#Premier Band Journeyman
+3P051#Security Forces Journeyman
+3P051A#Military Working Dog Handler Journeyman
+3P051B#Combat Arms Training and Maintenance Journeyman
+3S051#Personnel Journeyman
+3S151#Equal Opportunity Journeyman
+3S251#Education and Training Journeyman
+3S353#Manpower Journeyman
+4A051#Health Services Management Journeyman
+4A151#Medical Material Journeyman
+4A251#Biomedical Equipment Journeyman
+4B051#Bioenvironmental Engineering Journeyman
+4C051#Mental Health Service Journeyman
+4D051#Diet Therapy Journeyman
+4E051#Public Health Journeyman
+4H051#Cardiopulmonary Laboratory Journeyman
+4J052#Physical Medicine Journeyman
+4J052A#Orthotics Journeyman
+4M051#Aerospace and Operational Physiology Journeyman
+4N051#Aerospace Medical Service Journeyman
+4N051B#Neurodiagnostic Medical Technician Journeyman
+4N051C#Independent Duty Medical Technician Journeyman
+4N051F#Flight and Operational Medical Technician Journeyman
+4N151#Surgical Service Journeyman
+4P051#Pharmacy Journeyman
+4R051#Diagnostic Imaging Journeyman
+4T051#Medical Laboratory Journeyman
+4T052#Histopathology Journeyman
+4V051#Ophthalmic Journeyman
+4Y051#Dental Assistant Journeyman
+4Y051H#Dental Hygienist Journeyman
+4Y052#Dental Laboratory Journeyman
+5J051#Paralegal Journeyman
+5R051#Chaplain Assistant Journeyman
+6C051#Contracting Journeyman
+6F051#Financial Management & Comptroller Journeyman
+7S051#Special Investigations Journeyman
+1A071#In-Flight Refueling Craftsman
+1A171#Flight Engineer Craftsman
+1A271#Aircraft Loadmaster Craftsman
+1A371#Airborne Mission Systems Operator Craftsman
+1A671#Flight Attendant Craftsman
+1A871#Airborne Cryptologic Language Analyst Craftsman
+1A872#Airborne Intelligence, Surveillance, and Reconnaissance Operator Craftsman
+1A971#Special Missions Aviator Craftsman
+1B471#Cyber Warfare Operations Craftsman
+1C072#Aviation Resource Management Craftsman
+1C171#Air Traffic Control Craftsman
+1C271#Combat Control Craftsman
+1C371#Command Post Craftsman
+1C471#Tactical Air Control Party Craftsman
+1C571#Command & Control Battle Management Ops Craftsman
+1C671#Space Systems Operations Craftsman
+1C771#Airfield Management Craftsman
+1C871#Ground Radar Systems Craftsman
+1C872#Airfield Systems Craftsman
+1N071#All Source Intelligence Analyst/Operations Intelligence Specialist Craftsman
+1N171#Geospatial Intelligence Craftsman
+1N271#Signals Intelligence Analyst Craftsman
+1N371#Cryptologic Language Analyst Craftsman
+1N471#Fusion Analyst Craftsman
+1N771#Human Intelligence Specialist Craftsman
+1P071#Aircrew Flight Equipment Craftsman
+1S071#Safety Craftsman
+1T071#Survival, Evasion, Resistance, and Escape Craftsman
+1T271#Pararescue Craftsman
+1U071#Remotely Piloted Aircraft Sensor Operator Craftsman
+1U171#Remotely Piloted Aircraft Pilot Craftsman
+1W071#Weather Craftsman
+1W072#Special Operations Weather Craftsman
+2A071#Avionics Test Station and Components Craftsman
+2A271#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Craftsman
+2A272#Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Craftsman
+2A273#Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Craftsman
+2A373#Tactical Aircraft Maintenance Craftsman
+2A374#Fighter Aircraft Integrated Avionics Craftsman
+2A375#Advanced Fighter Aircraft Integrated Avionics Craftsman
+2A377#Tactical Aircraft Maintenance Craftsman
+2A378#Remotely Piloted Aircraft Maintenance Craftsman
+2A571#Airlift/Special Mission Aircraft Maintenance Craftsman
+2A572#Helicopter/Tiltrotor Aircraft Maintenance Craftsman
+2A573#Mobility Air Forces Electronic Warfare Systems Craftsman
+2A574#Refuel/Bomber Aircraft Maintenance Craftsman
+2A671#Aerospace Propulsion Craftsman
+2A672#Aerospace Ground Equipment Craftsman
+2A673#Aircrew Egress Systems Craftsman
+2A674#Aircraft Fuel Systems Craftsman
+2A675#Aircraft Hydraulic Systems Craftsman
+2A676#Aircraft Electrical and Environmental Systems Craftsman
+2A771#Aircraft Metals Technology Craftsman
+2A772#Nondestructive Inspection Craftsman
+2A773#Aircraft Structural Maintenance Craftsman
+2A775#Low Observable Aircraft Structural Maintenance Craftsman
+2A871#Mobility Air Forces Communication/Navigation/Mission Systems Craftsman
+2A872#Mobility Air Forces Integrated Instrument and Flight Control Systems Craftsman
+2A971#Bomber/Special Integrated Communication/Navigation/Mission Systems Craftsman
+2A972#Bomber/Special Integrated Instrument and Flight Control Systems Craftsman
+2A973#Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Craftsman
+2F071#Fuels Craftsman
+2G071#Logistics Plans Craftsman
+2M071#Missile and Space Systems Electronics Maintenance Craftsman
+2M072#Missile and Space Systems Maintenance Craftsman
+2M073#Missile and Space Facilities Craftsman
+2P071#Precision Measurement Equipment Laboratory Craftsman
+2R071#Maintenance Management Analysis Craftsman
+2R171#Maintenance Management Production Craftsman
+2S071#Materiel Management Craftsman
+2T071#Traffic Management Craftsman
+2T171#Vehicle Operations Craftsman
+2T271#Air Transportation Craftsman
+2T371#Mission Generation Vehicular Equipment Maintenance Craftsman
+2T377#Fleet Management and Analysis Craftsman
+2W071#Munitions Systems Craftsman
+2W171#Aircraft Armament Systems Craftsman
+2W271#Nuclear Weapons Craftsman
+3A171#Administration Craftsman
+3D071#Knowledge Operations Management Craftsman
+3D072#Cyber Systems Operations Craftsman
+3D073#Cyber Surety Craftsman
+3D074#Computer Systems Programming Craftsman
+3D171#Client Systems Craftsman
+3D172#Cyber Transport Systems Craftsman
+3D173#RF Transmission Systems Craftsman
+3D174#Spectrum Operations Craftsman
+3D177#Cable and antenna systems Craftsman
+3E071#Electrical Systems Craftsman
+3E072#Electrical Power Production Craftsman
+3E171#Heating, Ventilation, AC, and Refrigeration Craftsman
+3E271#Pavements and Construction Equipment Craftsman
+3E371#Structural Craftsman
+3E471#Water and Fuel Systems Maintenance Craftsman
+3E473#Pest Management Craftsman
+3E571#Engineering Craftsman
+3E671#Operations Management Craftsman
+3E771#Fire Protection Craftsman
+3E871#Explosive Ordnance Disposal Craftsman
+3E971#U.S. Air Force Emergency Management Craftsman
+3G071#Air National Guard Strength Management Craftsman
+3H071#Historian Craftsman
+3M071#Services Craftsman
+3N072#Broadcast Journalist Craftsman
+3N075#Photojournalist Craftsman
+3N171#Regional Band Craftsman
+3N271#Premier Band Craftsman
+3P071#Security Forces Craftsman
+3P071A#Military Working Dog Handler Craftsman
+3P071B#Combat Arms Training and Maintenance Craftsman
+3S071#Personnel Craftsman
+3S171#Equal Opportunity Craftsman
+3S271#Education and Training Craftsman
+3S373#Manpower Craftsman
+4A071#Health Services Management Craftsman
+4A171#Medical Material Craftsman
+4A271#Biomedical Equipment Craftsman
+4B071#Bioenvironmental Engineering Craftsman
+4C071#Mental Health Service Craftsman
+4D071#Diet Therapy Craftsman
+4E071#Public Health Craftsman
+4H071#Cardiopulmonary Laboratory Craftsman
+4J072#Physical Medicine Craftsman
+4J072A#Orthotics Craftsman
+4M071#Aerospace and Operational Physiology Craftsman
+4N071#Aerospace Medical Service Craftsman
+4N071B#Neurodiagnostic Medical Technician Craftsman
+4N071C#Independent Duty Medical Technician Craftsman
+4N071F#Flight and Operational Medical Technician Craftsman
+4N171#Surgical Service Craftsman
+4P071#Pharmacy Craftsman
+4R071#Diagnostic Imaging Craftsman
+4T071#Medical Laboratory Craftsman
+4T072#Histopathology Craftsman
+4V071#Ophthalmic Craftsman
+4Y071#Dental Assistant Craftsman
+4Y071H#Dental Hygienist Craftsman
+4Y072#Dental Laboratory Craftsman
+5J071#Paralegal Craftsman
+5R071#Chaplain Assistant Craftsman
+6C071#Contracting Craftsman
+6F071#Financial Management & Comptroller Craftsman
+7S071#Special Investigations Craftsman
+1A091#In-Flight Refueling Superintendent
+1A191#Flight Engineer Superintendent
+1A291#Aircraft Loadmaster Superintendent
+1A391#Airborne Mission Systems Operator Superintendent
+1A691#Flight Attendant Superintendent
+1A891#Airborne Cryptologic Language Analyst Superintendent
+1A892#Airborne Intelligence, Surveillance, and Reconnaissance Operator Superintendent
+1A991#Special Missions Aviator Superintendent
+1B491#Cyber Warfare Operations Superintendent
+1C092#Aviation Resource Management Superintendent
+1C191#Air Traffic Control Superintendent
+1C291#Combat Control Superintendent
+1C391#Command Post Superintendent
+1C491#Tactical Air Control Party Superintendent
+1C591#Command & Control Battle Management Ops Superintendent
+1C691#Space Systems Operations Superintendent
+1C791#Airfield Management Superintendent
+1C891#Ground Radar Systems Superintendent
+1C892#Airfield Systems Superintendent
+1N091#All Source Intelligence Analyst/Operations Intelligence Specialist Superintendent
+1N191#Geospatial Intelligence Superintendent
+1N291#Signals Intelligence Analyst Superintendent
+1N391#Cryptologic Language Analyst Superintendent
+1N491#Fusion Analyst Superintendent
+1N791#Human Intelligence Specialist Superintendent
+1P091#Aircrew Flight Equipment Superintendent
+1S091#Safety Superintendent
+1T091#Survival, Evasion, Resistance, and Escape Superintendent
+1T291#Pararescue Superintendent
+1U091#Remotely Piloted Aircraft Sensor Operator Superintendent
+1U191#Remotely Piloted Aircraft Pilot Superintendent
+1W091#Weather Superintendent
+1W092#Special Operations Weather Superintendent
+2A091#Avionics Test Station and Components Superintendent
+2A291#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems Superintendent
+2A292#Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems Superintendent
+2A293#Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems Superintendent
+2A393#Tactical Aircraft Maintenance Superintendent
+2A394#Fighter Aircraft Integrated Avionics Superintendent
+2A395#Advanced Fighter Aircraft Integrated Avionics Superintendent
+2A397#Tactical Aircraft Maintenance Superintendent
+2A398#Remotely Piloted Aircraft Maintenance Superintendent
+2A591#Airlift/Special Mission Aircraft Maintenance Superintendent
+2A592#Helicopter/Tiltrotor Aircraft Maintenance Superintendent
+2A593#Mobility Air Forces Electronic Warfare Systems Superintendent
+2A594#Refuel/Bomber Aircraft Maintenance Superintendent
+2A691#Aerospace Propulsion Superintendent
+2A692#Aerospace Ground Equipment Superintendent
+2A693#Aircrew Egress Systems Superintendent
+2A694#Aircraft Fuel Systems Superintendent
+2A695#Aircraft Hydraulic Systems Superintendent
+2A696#Aircraft Electrical and Environmental Systems Superintendent
+2A791#Aircraft Metals Technology Superintendent
+2A792#Nondestructive Inspection Superintendent
+2A793#Aircraft Structural Maintenance Superintendent
+2A795#Low Observable Aircraft Structural Maintenance Superintendent
+2A891#Mobility Air Forces Communication/Navigation/Mission Systems Superintendent
+2A892#Mobility Air Forces Integrated Instrument and Flight Control Systems Superintendent
+2A991#Bomber/Special Integrated Communication/Navigation/Mission Systems Superintendent
+2A992#Bomber/Special Integrated Instrument and Flight Control Systems Superintendent
+2A993#Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics Superintendent
+2F091#Fuels Superintendent
+2G091#Logistics Plans Superintendent
+2M091#Missile and Space Systems Electronics Maintenance Superintendent
+2M092#Missile and Space Systems Maintenance Superintendent
+2M093#Missile and Space Facilities Superintendent
+2P091#Precision Measurement Equipment Laboratory Superintendent
+2R091#Maintenance Management Analysis Superintendent
+2R191#Maintenance Management Production Superintendent
+2S091#Materiel Management Superintendent
+2T091#Traffic Management Superintendent
+2T191#Vehicle Operations Superintendent
+2T291#Air Transportation Superintendent
+2T391#Mission Generation Vehicular Equipment Maintenance Superintendent
+2T397#Fleet Management and Analysis Superintendent
+2W091#Munitions Systems Superintendent
+2W191#Aircraft Armament Systems Superintendent
+2W291#Nuclear Weapons Superintendent
+3A191#Administration Superintendent
+3D091#Knowledge Operations Management Superintendent
+3D092#Cyber Systems Operations Superintendent
+3D093#Cyber Surety Superintendent
+3D094#Computer Systems Programming Superintendent
+3D191#Client Systems Superintendent
+3D192#Cyber Transport Systems Superintendent
+3D193#RF Transmission Systems Superintendent
+3D194#Spectrum Operations Superintendent
+3D197#Cable and antenna systems Superintendent
+3E091#Electrical Systems Superintendent
+3E092#Electrical Power Production Superintendent
+3E191#Heating, Ventilation, AC, and Refrigeration Superintendent
+3E291#Pavements and Construction Equipment Superintendent
+3E391#Structural Superintendent
+3E491#Water and Fuel Systems Maintenance Superintendent
+3E493#Pest Management Superintendent
+3E591#Engineering Superintendent
+3E691#Operations Management Superintendent
+3E791#Fire Protection Superintendent
+3E891#Explosive Ordnance Disposal Superintendent
+3E991#U.S. Air Force Emergency Management Superintendent
+3G091#Air National Guard Strength Management Superintendent
+3H091#Historian Superintendent
+3M091#Services Superintendent
+3N092#Broadcast Journalist Superintendent
+3N095#Photojournalist Superintendent
+3N191#Regional Band Superintendent
+3N291#Premier Band Superintendent
+3P091#Security Forces Superintendent
+3P091A#Military Working Dog Handler Superintendent
+3P091B#Combat Arms Training and Maintenance Superintendent
+3S091#Personnel Superintendent
+3S191#Equal Opportunity Superintendent
+3S291#Education and Training Superintendent
+3S393#Manpower Superintendent
+4A091#Health Services Management Superintendent
+4A191#Medical Material Superintendent
+4A291#Biomedical Equipment Superintendent
+4B091#Bioenvironmental Engineering Superintendent
+4C091#Mental Health Service Superintendent
+4D091#Diet Therapy Superintendent
+4E091#Public Health Superintendent
+4H091#Cardiopulmonary Laboratory Superintendent
+4J092#Physical Medicine Superintendent
+4J092A#Orthotics Superintendent
+4M091#Aerospace and Operational Physiology Superintendent
+4N091#Aerospace Medical Service Superintendent
+4N091B#Neurodiagnostic Medical Technician Superintendent
+4N091C#Independent Duty Medical Technician Superintendent
+4N091F#Flight and Operational Medical Technician Superintendent
+4N191#Surgical Service Superintendent
+4P091#Pharmacy Superintendent
+4R091#Diagnostic Imaging Superintendent
+4T091#Medical Laboratory Superintendent
+4T092#Histopathology Superintendent
+4V091#Ophthalmic Superintendent
+4Y091#Dental Assistant Superintendent
+4Y091H#Dental Hygienist Superintendent
+4Y092#Dental Laboratory Superintendent
+5J091#Paralegal Superintendent
+5R091#Chaplain Assistant Superintendent
+6C091#Contracting Superintendent
+6F091#Financial Management & Comptroller Superintendent
+7S091#Special Investigations Superintendent
