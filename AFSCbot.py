@@ -6,12 +6,15 @@ import sys
 import csv
 import praw
 import sqlite3
+import re
 
 PID_FILE = "AFSCbot.pid"
 CRED_FILE = 'AFSCbotCreds.txt'
 DB_FILE = "AFSCbotCommentRecord.db"
-AFSC_FILE = 'AFSClist.csv'
+OFFICER_AFSC_FILE = 'OfficerAFSC.csv'
+ENLISTED_AFSC_FILE = 'EnlistedAFSC.csv'
 LOG_TIME_FORMAT = "%Y/%m/%d %H:%M:%S "
+AFSC_PATTERN = re.compile(r'\b(\d{1,2}\w\w{1,3}|\dX\d|\d\d\d|\d\w\d)\b')
 
 # 'AFSCbot' must be changed to 'airforce' for a production version of the script
 #SUBREDDIT = 'airforce+airnationalguard'
@@ -27,7 +30,8 @@ def main():
     # setup pid, database, and AFSC dict
     open_pid()
     conn, dbCommentRecord = setup_database()
-    AFSCdict = get_AFSCs()
+    AFSCdict = get_enlisted_AFSCs()
+    AFSCdict.update(get_officer_AFSCs())
 
     # reddit user object
     reddit = login()
@@ -106,10 +110,18 @@ def setup_database():
     return conn, dbCommentRecord
 
 
-def get_AFSCs():
+def get_officer_AFSCs():
+    return get_AFSCs(OFFICER_AFSC_FILE)
+
+
+def get_enlisted_AFSCs():
+    return get_AFSCs(ENLISTED_AFSC_FILE)
+
+
+def get_AFSCs(file_name):
     # Load the AFSCs into a dictionary, then use the AFSC as the key to the Job Title
     AFSCdict = {}
-    with open(AFSC_FILE, newline='') as f:
+    with open(file_name, newline='') as f:
         reader = csv.reader(f, delimiter='#')
         for row in reader:
             afsc, jt = row
@@ -120,6 +132,7 @@ def get_AFSCs():
         sys.exit(1)
 
     return AFSCdict
+
 
 def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
     logging.info(time.strftime(LOG_TIME_FORMAT) + "Starting processing loop for subreddit: " + SUBREDDIT)
@@ -132,21 +145,21 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                     comments_seen += 1
                     print("\nComments processed since start of script: " + str(comments_seen))
                     print("Processing comment: " + rAirForceComments.id)
-    
-                    # prints a link to the comment. A True for permalink generates a fast find (but is not an accurate link,
-                    # just makes the script faster (SIGNIFICANTLY FASTER)
+
+                    # prints a link to the comment. A True for permalink generates a fast find (but is not an accurate
+                    # link, just makes the script faster (SIGNIFICANTLY FASTER)
                     permlink = "http://www.reddit.com" + \
                                rAirForceComments.permalink(True) + "/"
                     print(permlink)
                     logging.info(time.strftime(LOG_TIME_FORMAT) +
                                  "Processing comment: " + permlink)
-    
+
                     # Pulls all comments previously commented on
                     dbCommentRecord.execute(
                         "SELECT * FROM comments WHERE comment=?", (rAirForceComments.id,))
-    
+
                     id_exists = dbCommentRecord.fetchone()
-    
+
                     # Make sure we don't reply to the same comment twice or to the bot
                     # itself
                     if id_exists:
@@ -158,28 +171,30 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                         continue
                     else:
                         formattedComment = rAirForceComments.body.upper()
-    
-                        commentList = ""
-                        matchList = []
-                        for AFSC in AFSCdict.keys():
-                            if AFSC in formattedComment:
-                                matchList.append(AFSC)
-                                commentList += AFSC + " = " + AFSCdict[AFSC] + "\n\n"
-                            continue
-                        if commentList != "":
-                            print("Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author)
+
+                        matches = list(set(AFSC_PATTERN.findall(formattedComment)))
+                        if matches:
+                            print("AFSC patterns found " + matches + " by: " + str(rAirForceComments.author)
                                   + ". Comment ID: " + rAirForceComments.id)
-                            logging.info(time.strftime(LOG_TIME_FORMAT) +
-                                         "Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author) + ". Comment ID: " +
-                                         rAirForceComments.id)
-                            CommentReply = '^^You\'ve ^^mentioned ^^an ^^AFSC, ^^here\'s ^^the ^^associated ^^job ^^title:\n\n' \
-                                           + commentList
-    
-                            rAirForceComments.reply(CommentReply)
-                            dbCommentRecord.execute(
-                            'INSERT INTO comments VALUES (?);', (rAirForceComments.id,))
-                            conn.commit()
-    
+                            comment_list = ""
+                            afscs_found = 0
+                            for afsc in ((afsc, AFSCdict[afsc]) for afsc in AFSCdict[afsc]):
+                                comment_list += afsc(0) + ' = ' + afsc(1) + "\n\n"
+                                print("Commenting on AFSC: " + afsc(0) + " by: " + str(rAirForceComments.author)
+                                      + ". Comment ID: " + rAirForceComments.id)
+                                logging.info(time.strftime(LOG_TIME_FORMAT) +
+                                             "Commenting on AFSC: " + afsc(0) + " by: " + str(rAirForceComments.author) + ". Comment ID: " +
+                                             rAirForceComments.id)
+                                afscs_found += afscs_found + 1
+                            if comment_list != "":
+                                CommentReply = '^^You\'ve ^^mentioned ^^an ^^AFSC, ^^here\'s ^^the ^^associated ^^job ^^title' \
+                                               + ('s' if afscs_found > 1 else '') + ':\n\n' \
+                                               + comment_list
+                                rAirForceComments.reply(CommentReply)
+                                dbCommentRecord.execute(
+                                    'INSERT INTO comments VALUES (?);', (rAirForceComments.id,))
+                                conn.commit()
+
             # what to do if Ctrl-C is pressed while script is running
             except KeyboardInterrupt:
                 print("Keyboard Interrupt experienced, cleaning up and exiting")
@@ -187,23 +202,23 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                 logging.info(time.strftime(LOG_TIME_FORMAT)
                              + "Exiting due to keyboard interrupt")
                 sys.exit(0)
-    
+
             except KeyError:
                 print("AFSC not found in the dictionary, but the dict was called for some reason")
                 logging.error(time.strftime(LOG_TIME_FORMAT)
                               + "AFSC not found in the dictionary, but the dict was called for some reason")
-    
+
             except Exception as err:
                 print("Exception: " + str(err))
                 logging.error(time.strftime(LOG_TIME_FORMAT)
                               + "Unhandled exception: " + str(err))
-    
+
             finally:
                 conn.commit()
     finally:
         conn.commit()
         conn.close()
         os.unlink(PID_FILE)
-                
+
 if __name__ == "__main__":
     main()
