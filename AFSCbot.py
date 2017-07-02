@@ -131,7 +131,8 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                 # stream all comments from /r/AirForce
                 for rAirForceComments in rAirForce.stream.comments():
                     comments_seen += 1
-                    print("\nComments processed since start of script: " + str(comments_seen))
+                    print()
+                    print("Comments processed since start of script: " + str(comments_seen))
                     print("Processing comment: " + rAirForceComments.id)
     
                     # prints a link to the comment. A True for permalink generates a fast find (but is not an accurate link,
@@ -156,25 +157,24 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                     else:
                         formattedComment = rAirForceComments.body.upper()
     
-                        commentList = ""
+                        commentText = ""
                         matchList = []
                         for AFSC in AFSCdict.keys():
                             if AFSC in formattedComment:
                                 matchList.append(AFSC)
-                                commentList += AFSC + " = " + AFSCdict[AFSC] + "\n\n"
+                                commentText += "{} = {}\n\n".format(AFSC, AFSCdict[AFSC])
 
-                        if commentList != "":
-                            print("Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author)
-                                  + ". Comment ID: " + rAirForceComments.id)
-                            logging.info(time.strftime(LOG_TIME_FORMAT) +
-                                         "Commenting on AFSC: " + str(matchList) + " by: " + str(rAirForceComments.author) + ". Comment ID: " +
-                                         rAirForceComments.id)
+                        if commentText != "":
+                            comment_info_text = "Commenting on AFSC: {} by: {}. Comment ID: {}".format(
+                                                matchList, rAirForceComments.author, rAirForceComments.id)
+                            print(comment_info_text)
+                            logging.info(time.strftime(LOG_TIME_FORMAT) + comment_info_text)
+
                             CommentReply = '^^You\'ve ^^mentioned ^^an ^^AFSC, ^^here\'s ^^the ^^associated ^^job ^^title:\n\n' \
-                                           + commentList
+                                           + commentText
     
                             rAirForceComments.reply(CommentReply)
-                            dbCommentRecord.execute(
-                            'INSERT INTO comments VALUES (?);', (rAirForceComments.id,))
+                            dbCommentRecord.execute('INSERT INTO comments VALUES (?);', (rAirForceComments.id,))
                             conn.commit()
     
             # what to do if Ctrl-C is pressed while script is running
