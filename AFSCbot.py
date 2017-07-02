@@ -172,7 +172,7 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                     else:
                         formattedComment = rAirForceComments.body.upper()
 
-                        matches = AFSC_PATTERN.findall(formattedComment)
+                        matches = list(set(AFSC_PATTERN.findall(formattedComment)))
                         if matches:
                             print("AFSC patterns found " + matches + " by: " + str(rAirForceComments.author)
                                   + ". Comment ID: " + rAirForceComments.id)
