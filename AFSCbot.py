@@ -6,6 +6,7 @@ import sys
 import csv
 import praw
 import sqlite3
+from bs4 import BeautifulSoup
 
 PID_FILE = "AFSCbot.pid"
 CRED_FILE = 'AFSCbotCreds.txt'
@@ -20,17 +21,18 @@ SUBREDDIT = 'AFSCbot'
 
 def main():
 
-    # Initialize a logging object and have some examples below from the Python Doc page
+    # Initialize a logging object
     logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
     print_and_log("Starting script")
 
-    # setup pid, database, and AFSC dict
+    # reddit user object
+    reddit = login()
+
+    # setup pid, database, and AFSC dicts
     open_pid()
     conn, dbCommentRecord = setup_database()
     AFSCdict = get_AFSCs()
-
-    # reddit user object
-    reddit = login()
+    AFSC_links = get_AFSC_links(reddit)
 
     # subreddit instance of /r/AirForce.
     rAirForce = reddit.subreddit(SUBREDDIT)
@@ -199,6 +201,23 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
         conn.commit()
         conn.close()
         os.unlink(PID_FILE)
+
+
+def get_AFSC_links(reddit):
+    # gets dict of AFSC to link on /r/AirForce wiki
+    wiki_page = reddit.subreddit("AirForce").wiki["index"]
+    wiki_soup = BeautifulSoup(wiki_page.content_html, "html.parser")
+    links = wiki_soup.find_all("a")
+
+
+    AFSC_links = {}
+    for link in links:
+        # not all links have /r/AirForce/wiki/jobs so this is more generalized
+        # using only /r/AirForce/wiki/
+        if "www.reddit.com/r/AirForce/wiki/" in link["href"]:
+            AFSC_code = link["href"].split("/")[-1]
+            AFSC_links[AFSC_code] = link["href"]
+    return AFSC_links
 
 
 def print_and_log(text, error=False):
