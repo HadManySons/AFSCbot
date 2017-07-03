@@ -104,7 +104,8 @@ def setup_database():
 
 
 def get_AFSCs():
-    # Load the AFSCs into a dictionary, then use the AFSC as the key to the Job Title
+    # Load the AFSCs into a dictionary,
+    # then use the AFSC as the key to the Job Title
     AFSCdict = {}
     with open(AFSC_FILE, newline='') as f:
         reader = csv.reader(f, delimiter='#')
@@ -129,22 +130,28 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                 for rAirForceComment in rAirForce.stream.comments():
                     comments_seen += 1
                     print()
-                    print("Comments processed since start of script: " + str(comments_seen))
+                    print("Comments processed since start of script: {}".format(
+                            comments_seen))
     
-                    # prints a link to the comment. A True for permalink generates a fast find (but is not an accurate link,
+                    # prints a link to the comment. A True for permalink
+                    # generates a fast find (but is not an accurate link,
                     # just makes the script faster (SIGNIFICANTLY FASTER)
-                    permlink = "http://www.reddit.com" + rAirForceComment.permalink(True) + "/"
+                    permlink = "http://www.reddit.com{}/".format(
+                                rAirForceComment.permalink(True))
 
                     print_and_log("Processing comment: " + permlink)
     
                     # Pulls all comments previously commented on
-                    dbCommentRecord.execute("SELECT * FROM comments WHERE comment=?", (rAirForceComment.id,))
+                    dbCommentRecord.execute("SELECT * FROM comments WHERE comment=?",
+                                            (rAirForceComment.id,))
     
                     id_exists = dbCommentRecord.fetchone()
     
-                    # Make sure we don't reply to the same comment twice or to the bot itself
+                    # Make sure we don't reply to the same comment twice
+                    # or to the bot itself
                     if id_exists:
-                        print("Already processed comment: {}, skipping".format(rAirForceComment.id))
+                        print("Already processed comment: {}, skipping".format(
+                                rAirForceComment.id))
                     elif rAirForceComment.author == "AFSCbot":
                         print("Author was the bot, skipping...")
                     else:
@@ -155,17 +162,23 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                         for AFSC in AFSCdict.keys():
                             if AFSC in formattedComment:
                                 matchList.append(AFSC)
-                                commentText += "{} = {}\n\n".format(AFSC, AFSCdict[AFSC])
+                                commentText += "{} = {}\n\n".format(
+                                    AFSC, AFSCdict[AFSC])
 
                         if commentText != "":
-                            comment_info_text = "Commenting on AFSC: {} by: {}. Comment ID: {}".format(
-                                                matchList, rAirForceComment.author, rAirForceComment.id)
+                            comment_info_text = ("Commenting on AFSC: {} by:"
+                                                 " {}. Comment ID: {}".format(
+                                                matchList, rAirForceComment.author,
+                                                rAirForceComment.id))
                             print_and_log(comment_info_text)
 
-                            commentHeader = "^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the ^^associated ^^job ^^title:\n\n"
+                            commentHeader = ("^^You've ^^mentioned ^^an ^^AFSC,"
+                                             " ^^here's ^^the ^^associated ^^job"
+                                             " ^^title:\n\n")
                             rAirForceComment.reply(commentHeader + commentText)
 
-                            dbCommentRecord.execute('INSERT INTO comments VALUES (?);', (rAirForceComment.id,))
+                            dbCommentRecord.execute('INSERT INTO comments VALUES (?);',
+                                                    (rAirForceComment.id,))
                             conn.commit()
     
             # what to do if Ctrl-C is pressed while script is running
@@ -174,7 +187,8 @@ def process_comments(rAirForce, conn, dbCommentRecord, AFSCdict):
                 sys.exit(0)
     
             except KeyError:
-                print_and_log("AFSC not found in the dictionary, but the dict was called for some reason", error=True)
+                print_and_log("AFSC not found in the dictionary, but "
+                              "the dict was called for some reason", error=True)
     
             except Exception as err:
                 print_and_log("Unhandled Exception: " + str(err), error=True)
