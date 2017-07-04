@@ -106,8 +106,6 @@
 3N1X1#Regional Band
 3N2X1#Premier Band
 3P0X1#Security Forces
-3P0X1A#Military Working Dog Handler
-3P0X1B#Combat Arms Training and Maintenance
 3S0X1#Personnel
 3S1X1#Equal Opportunity
 3S2X1#Education and Training
@@ -121,12 +119,8 @@
 4E0X1#Public Health
 4H0X1#Cardiopulmonary Laboratory
 4J0X2#Physical Medicine
-4J0X2A#Orthotics
 4M0X1#Aerospace and Operational Physiology
 4N0X1#Aerospace Medical Service
-4N0X1B#Neurodiagnostic Medical Technician
-4N0X1C#Independent Duty Medical Technician
-4N0X1F#Flight and Operational Medical Technician
 4N1X1#Surgical Service
 4P0X1#Pharmacy
 4R0X1#Diagnostic Imaging
@@ -134,7 +128,6 @@
 4T0X2#Histopathology
 4V0X1#Ophthalmic
 4Y0X1#Dental Assistant
-4Y0X1H#Dental Hygienist
 4Y0X2#Dental Laboratory
 5J0X1#Paralegal
 5R0X1#Chaplain Assistant
