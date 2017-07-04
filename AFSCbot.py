@@ -209,7 +209,7 @@ def process_comments(rAirForce, conn, dbCommentRecord, enlistedBaseAFSClist, enl
             officer_shred_list, officer_shred_title):
 
     #regex for locating AFSCs
-    EnlAFSCregex = "([A-Z]?)(\d[A-Z]\d([13579]|X)\d)([A-Z]?)"
+    EnlAFSCregex = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
     enlistedSkillLevels = ['Helper', '', 'Apprentice', '', 'Journeyman', '', 'Craftsman', '', 'Superintendent']
     office_AFSC_regex = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
 
@@ -289,6 +289,8 @@ def process_comments(rAirForce, conn, dbCommentRecord, enlistedBaseAFSClist, enl
                                         commentText += enlistedBaseAFSCjt[i]
 
                                         if enlisted_individual_matches.group(3) == 'X':
+                                            pass
+                                        elif enlisted_individual_matches.group(3) == '0':
                                             pass
                                         else:
                                             commentText += " " + \
