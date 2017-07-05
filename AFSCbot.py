@@ -353,31 +353,27 @@ def process_enlisted(commentText, enlisted_individual_matches, matchList,
         for i in range(len(enlistedBaseAFSClist)):
             #did we get a match on the base AFSC?
             if tempAFSC in enlistedBaseAFSClist[i]:
-                matchList.append(
-                    enlisted_individual_matches.group(0))
-                commentText += enlisted_individual_matches.group(0) + " = "
+                matchList.append(whole_match)
+                commentText += whole_match + " = "
 
                 #Is there a prefix? If so, add it
                 if prefix:
                     for j in range(len(enlistedPrefixList)):
-                        if prefix in enlistedPrefixList[j]:
+                        if prefix == enlistedPrefixList[j]:
                             commentText += enlistedPrefixTitle[j] + " "
                 commentText += enlistedBaseAFSCjt[i]
 
-                if skill_level == 'X':
-                    pass
-                elif skill_level == '0':
-                    pass
-                else:
+                if skill_level != 'X' and skill_level != '0':
                     commentText += " " + \
                     ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
 
+                # Is there a suffix? If so, add it
                 if suffix:
                     for j in range(len(enlistedShredList)):
-                        if tempAFSC in enlistedShredAFSC[j]:
-                            if suffix in enlistedShredList[j]:
-                                print(enlistedShredTitle[j])
-                                commentText += ", " + enlistedShredTitle[j]
+                        if (tempAFSC == enlistedShredAFSC[j]
+                                and suffix == enlistedShredList[j]):
+                            print(enlistedShredTitle[j])
+                            commentText += ", " + enlistedShredTitle[j]
 
                 commentText += "\n\n"
     return commentText
@@ -408,9 +404,7 @@ def process_officer(commentText, officer_individual_matches, matchList,
     else:
         tempAFSC = afsc
         print("Pre temp: " + tempAFSC)
-        if skill_level:
-            pass
-        else:
+        if not skill_level:
             tempAFSC = tempAFSC + 'X'
             print("Post temp: " + tempAFSC)
 
@@ -421,16 +415,16 @@ def process_officer(commentText, officer_individual_matches, matchList,
 
                 if prefix:
                     for j in range(len(officer_prefix_list)):
-                        if prefix in officer_prefix_list[j]:
+                        if prefix == officer_prefix_list[j]:
                             commentText += officer_prefix_title[j] + " "
                 commentText += officer_base_AFSC_jt[i]
 
                 if suffix:
                     for j in range(len(officer_shred_list)):
-                        if tempAFSC in officer_shred_AFSC[j]:
-                            if suffix in officer_shred_list[j]:
-                                print(officer_shred_title[j])
-                                commentText += ", " + officer_shred_title[j]
+                        if (tempAFSC == officer_shred_AFSC[j]
+                                and suffix == officer_shred_list[j]):
+                            print(officer_shred_title[j])
+                            commentText += ", " + officer_shred_title[j]
 
                 commentText += "\n\n"
     return commentText
