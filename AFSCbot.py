@@ -19,6 +19,12 @@ LOG_TIME_FORMAT = "%Y/%m/%d %H:%M:%S "
 #SUBREDDIT = 'airforce+airnationalguard'
 SUBREDDIT = 'AFSCbot'
 
+# regex for locating AFSCs
+ENLISTED_AFSC_REGEX = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
+OFFICER_AFSC_REGEX = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
+ENLISTED_SKILL_LEVELS = ['Helper', '', 'Apprentice', '', 'Journeyman', '',
+                       'Craftsman', '', 'Superintendent']
+
 
 def main():
 
@@ -45,12 +51,52 @@ def main():
     # subreddit instance of /r/AirForce.
     rAirForce = reddit.subreddit(SUBREDDIT)
 
-    #main loop for the bot
-    process_comments(rAirForce, conn, dbCommentRecord, enlistedBaseAFSClist, enlistedBaseAFSCjt, officer_base_AFSC_list,
-            officer_base_AFSC_jt, enlistedPrefixList, enlistedPrefixTitle,
-            officer_prefix_list, officer_prefix_title, enlistedShredAFSC,
-            enlistedShredList, enlistedShredTitle, officer_shred_AFSC,
-            officer_shred_list, officer_shred_title)
+    print_and_log("Starting processing loop for subreddit: " + SUBREDDIT)
+    comments_seen = 0
+    try:
+        while True:
+            try:
+                # stream all comments from /r/AirForce
+                for rAirForceComment in rAirForce.stream.comments():
+                    process_comment(rAirForceComment, rAirForce, conn,
+                         dbCommentRecord, enlistedBaseAFSClist,
+                         enlistedBaseAFSCjt, officer_base_AFSC_list,
+                         officer_base_AFSC_jt, enlistedPrefixList,
+                         enlistedPrefixTitle,
+                         officer_prefix_list, officer_prefix_title,
+                         enlistedShredAFSC,
+                         enlistedShredList, enlistedShredTitle,
+                         officer_shred_AFSC,
+                         officer_shred_list, officer_shred_title)
+                    comments_seen += 1
+                    print()
+                    print("Comments processed since start of script: {}".format(
+                            comments_seen))
+
+            # what to do if Ctrl-C is pressed while script is running
+            except KeyboardInterrupt:
+                print_and_log("Exiting due to keyboard interrupt",
+                              error=True)
+                sys.exit(0)
+
+            except KeyError:
+                print_and_log("AFSC not found in the dictionary, but "
+                              "the dict was called for some reason",
+                              error=True)
+
+            # is this necessary? shouldn't program just crash
+            # otherwise we can cover specific errors related to connection
+            # makes debugging harder without printing full exception info
+            #except Exception as err:
+            #    print_and_log("Unhandled Exception: " + str(err),
+            #                  error=True)
+
+            finally:
+                conn.commit()
+    finally:
+        conn.commit()
+        conn.close()
+        os.unlink(PID_FILE)
 
 
 def open_pid():
@@ -202,186 +248,156 @@ def get_AFSCs():
             officer_shred_list, officer_shred_title
 
 
-def process_comments(rAirForce, conn, dbCommentRecord, enlistedBaseAFSClist, enlistedBaseAFSCjt, officer_base_AFSC_list,
-            officer_base_AFSC_jt, enlistedPrefixList, enlistedPrefixTitle,
-            officer_prefix_list, officer_prefix_title, enlistedShredAFSC,
-            enlistedShredList, enlistedShredTitle, officer_shred_AFSC,
-            officer_shred_list, officer_shred_title):
+def process_comment(rAirForceComment, rAirForce, conn,
+                     dbCommentRecord, enlistedBaseAFSClist,
+                     enlistedBaseAFSCjt, officer_base_AFSC_list,
+                     officer_base_AFSC_jt, enlistedPrefixList,
+                     enlistedPrefixTitle,
+                     officer_prefix_list, officer_prefix_title,
+                     enlistedShredAFSC,
+                     enlistedShredList, enlistedShredTitle,
+                     officer_shred_AFSC,
+                     officer_shred_list, officer_shred_title):
 
-    #regex for locating AFSCs
-    EnlAFSCregex = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
-    enlistedSkillLevels = ['Helper', '', 'Apprentice', '', 'Journeyman', '', 'Craftsman', '', 'Superintendent']
-    office_AFSC_regex = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
+    # prints a link to the comment. A True for permalink
+    # generates a fast find (but is not an accurate link,
+    # just makes the script faster (SIGNIFICANTLY FASTER)
+    permlink = "http://www.reddit.com{}/".format(
+                rAirForceComment.permalink(True))
 
-    print_and_log("Starting processing loop for subreddit: " + SUBREDDIT)
-    comments_seen = 0
-    try:
-        while True:
-            try:
-                # stream all comments from /r/AirForce
-                for rAirForceComment in rAirForce.stream.comments():
-                    comments_seen += 1
-                    print()
-                    print("Comments processed since start of script: {}".format(comments_seen))
-    
-                    # prints a link to the comment. A True for permalink
-                    # generates a fast find (but is not an accurate link,
-                    # just makes the script faster (SIGNIFICANTLY FASTER)
-                    permlink = "http://www.reddit.com{}/".format(
-                                rAirForceComment.permalink(True))
+    print_and_log("Processing comment: " + permlink)
 
-                    print_and_log("Processing comment: " + permlink)
-    
-                    # Pulls all comments previously commented on
-                    dbCommentRecord.execute("SELECT * FROM comments WHERE comment=?",
-                                            (rAirForceComment.id,))
-    
-                    id_exists = dbCommentRecord.fetchone()
-    
-                    # Make sure we don't reply to the same comment twice
-                    # or to the bot itself
-                    if id_exists:
-                        print("Already processed comment: {}, skipping".format(
+    # Pulls all comments previously commented on
+    dbCommentRecord.execute("SELECT * FROM comments WHERE comment=?",
+                            (rAirForceComment.id,))
+
+    id_exists = dbCommentRecord.fetchone()
+
+    # Make sure we don't reply to the same comment twice
+    # or to the bot itself
+    if id_exists:
+        print("Already processed comment: {}, skipping".format(
+                rAirForceComment.id))
+    elif rAirForceComment.author == "AFSCbot":
+        print("Author was the bot, skipping...")
+    else:
+        formattedComment = rAirForceComment.body.upper()
+
+        # Search through the comments for things that look like enlisted AFSCs
+        enlisted_AFSC_search = re.compile(ENLISTED_AFSC_REGEX, re.IGNORECASE)
+        matched_comments_enlisted = enlisted_AFSC_search.finditer(
+            formattedComment)
+
+        officer_AFSC_search = re.compile(OFFICER_AFSC_REGEX,
+                                         re.IGNORECASE)
+
+        matched_comments_officer = officer_AFSC_search.finditer(
+            formattedComment)
+
+        # Keep a list of matched AFSCs so they're only posted once
+        matchList = []
+        commentText = ""
+
+        #check for mentions of enlisted AFSCs
+        for enlisted_individual_matches in matched_comments_enlisted:
+            if enlisted_individual_matches.group(0) in matchList:
+                continue
+            else:
+                #replaces the skill level with an X
+                tempAFSC = enlisted_individual_matches.group(2)
+                tempAFSC = list(tempAFSC)
+                tempAFSC[3] = 'X'
+                tempAFSC = "".join(tempAFSC)
+
+                for i in range(0, len(enlistedBaseAFSClist)):
+                    #did we get a match on the base AFSC?
+                    if tempAFSC in enlistedBaseAFSClist[i]:
+                        matchList.append(
+                            enlisted_individual_matches.group(0))
+                        commentText += enlisted_individual_matches.group(0) + " = "
+
+                        #Is there a prefix? If so, add it
+                        if enlisted_individual_matches.group(1):
+                            for j in range(0, len(enlistedPrefixList)):
+                                if enlisted_individual_matches.group(1) in enlistedPrefixList[j]:
+                                    commentText += enlistedPrefixTitle[j] + " "
+                        commentText += enlistedBaseAFSCjt[i]
+
+                        if enlisted_individual_matches.group(3) == 'X':
+                            pass
+                        elif enlisted_individual_matches.group(3) == '0':
+                            pass
+                        else:
+                            commentText += " " + \
+                                enlistedSkillLevels[int(enlisted_individual_matches.group(3)) - 1]
+
+                        if enlisted_individual_matches.group(4):
+                            for j in range(0, len(
+                                    enlistedShredList)):
+                                if tempAFSC in enlistedShredAFSC[j]:
+                                    if enlisted_individual_matches.group(4) in enlistedShredList[j]:
+                                        print(enlistedShredTitle[j])
+                                        commentText += ", " + enlistedShredTitle[j]
+
+                        commentText += "\n\n"
+
+        for officer_individual_matches in matched_comments_officer:
+            print("Whole match: " + officer_individual_matches.group(0))
+            if officer_individual_matches.group(1):
+                print("Prefix: " + officer_individual_matches.group(1))
+            print("AFSC: " + officer_individual_matches.group(2))
+            if officer_individual_matches.group(3):
+                print("Skill Level: " + officer_individual_matches.group(3))
+            if officer_individual_matches.group(4):
+                print("Suffix: " + officer_individual_matches.group(4))
+
+            if officer_individual_matches.group(0) in matchList:
+                continue
+            else:
+                tempAFSC = officer_individual_matches.group(2)
+                print("Pre temp: " + tempAFSC)
+                if officer_individual_matches.group(3):
+                    pass
+                else:
+                    tempAFSC = tempAFSC + 'X'
+                    print("Post temp: " + tempAFSC)
+
+                for i in range(0, len(officer_base_AFSC_list)):
+                    if tempAFSC in officer_base_AFSC_list[i]:
+                        matchList.append(
+                            officer_individual_matches.group(0))
+                        commentText += officer_individual_matches.group(0) + " = "
+
+                        if officer_individual_matches.group(1):
+                            for j in range(0, len(officer_prefix_list)):
+                                if officer_individual_matches.group(1) in officer_prefix_list[j]:
+                                    commentText += officer_prefix_title[j] + " "
+                        commentText += officer_base_AFSC_jt[i]
+
+                        if officer_individual_matches.group(4):
+                            for j in range(0, len(officer_shred_list)):
+                                if tempAFSC in officer_shred_AFSC[j]:
+                                    if officer_individual_matches.group(4) in officer_shred_list[j]:
+                                        print(officer_shred_title[j])
+                                        commentText += ", " + officer_shred_title[j]
+
+                        commentText += "\n\n"
+
+        if commentText != "":
+            comment_info_text = ("Commenting on AFSC: {} by:"
+                                 " {}. Comment ID: {}".format(
+                                matchList, rAirForceComment.author,
                                 rAirForceComment.id))
-                    elif rAirForceComment.author == "AFSCbot":
-                        print("Author was the bot, skipping...")
-                    else:
-                        formattedComment = rAirForceComment.body.upper()
+            print_and_log(comment_info_text)
 
-                        # Search through the comments for things that look like enlisted AFSCs
-                        enlisted_AFSC_search = re.compile(EnlAFSCregex, re.IGNORECASE)
-                        matched_comments_enlisted = enlisted_AFSC_search.finditer(
-                            formattedComment)
+            commentHeader = ("^^You've ^^mentioned ^^an ^^AFSC,"
+                             " ^^here's ^^the ^^associated ^^job"
+                             " ^^title:\n\n")
+            rAirForceComment.reply(commentHeader + commentText)
 
-                        officer_AFSC_search = re.compile(office_AFSC_regex,
-                                                         re.IGNORECASE)
-
-                        matched_comments_officer = officer_AFSC_search.finditer(
-                            formattedComment)
-
-                        # Keep a list of matched AFSCs so they're only posted once
-                        matchList = []
-                        commentText = ""
-
-                        #check for mentions of enlisted AFSCs
-                        for enlisted_individual_matches in matched_comments_enlisted:
-                            if enlisted_individual_matches.group(0) in matchList:
-                                continue
-                            else:
-                                #replaces the skill level with an X
-                                tempAFSC = enlisted_individual_matches.group(2)
-                                tempAFSC = list(tempAFSC)
-                                tempAFSC[3] = 'X'
-                                tempAFSC = "".join(tempAFSC)
-
-                                for i in range(0, len(enlistedBaseAFSClist)):
-                                    #did we get a match on the base AFSC?
-                                    if tempAFSC in enlistedBaseAFSClist[i]:
-                                        matchList.append(
-                                            enlisted_individual_matches.group(0))
-                                        commentText += enlisted_individual_matches.group(0) + " = "
-
-                                        #Is there a prefix? If so, add it
-                                        if enlisted_individual_matches.group(1):
-                                            for j in range(0, len(enlistedPrefixList)):
-                                                if enlisted_individual_matches.group(1) in enlistedPrefixList[j]:
-                                                    commentText += enlistedPrefixTitle[j] + " "
-                                        commentText += enlistedBaseAFSCjt[i]
-
-                                        if enlisted_individual_matches.group(3) == 'X':
-                                            pass
-                                        elif enlisted_individual_matches.group(3) == '0':
-                                            pass
-                                        else:
-                                            commentText += " " + \
-                                                enlistedSkillLevels[int(enlisted_individual_matches.group(3)) - 1]
-
-                                        if enlisted_individual_matches.group(4):
-                                            for j in range(0, len(
-                                                    enlistedShredList)):
-                                                if tempAFSC in enlistedShredAFSC[j]:
-                                                    if enlisted_individual_matches.group(4) in enlistedShredList[j]:
-                                                        print(enlistedShredTitle[j])
-                                                        commentText += ", " + enlistedShredTitle[j]
-
-                                        commentText += "\n\n"
-
-                        for officer_individual_matches in matched_comments_officer:
-                            print("Whole match: " + officer_individual_matches.group(0))
-                            if officer_individual_matches.group(1):
-                                print("Prefix: " + officer_individual_matches.group(1))
-                            print("AFSC: " + officer_individual_matches.group(2))
-                            if officer_individual_matches.group(3):
-                                print("Skill Level: " + officer_individual_matches.group(3))
-                            if officer_individual_matches.group(4):
-                                print("Suffix: " + officer_individual_matches.group(4))
-
-                            if officer_individual_matches.group(0) in matchList:
-                                continue
-                            else:
-                                tempAFSC = officer_individual_matches.group(2)
-                                print("Pre temp: " + tempAFSC)
-                                if officer_individual_matches.group(3):
-                                    pass
-                                else:
-                                    tempAFSC = tempAFSC + 'X'
-                                    print("Post temp: " + tempAFSC)
-
-                                for i in range(0, len(officer_base_AFSC_list)):
-                                    if tempAFSC in officer_base_AFSC_list[i]:
-                                        matchList.append(
-                                            officer_individual_matches.group(0))
-                                        commentText += officer_individual_matches.group(0) + " = "
-
-                                        if officer_individual_matches.group(1):
-                                            for j in range(0, len(officer_prefix_list)):
-                                                if officer_individual_matches.group(1) in officer_prefix_list[j]:
-                                                    commentText += officer_prefix_title[j] + " "
-                                        commentText += officer_base_AFSC_jt[i]
-
-                                        if officer_individual_matches.group(4):
-                                            for j in range(0, len(officer_shred_list)):
-                                                if tempAFSC in officer_shred_AFSC[j]:
-                                                    if officer_individual_matches.group(4) in officer_shred_list[j]:
-                                                        print(officer_shred_title[j])
-                                                        commentText += ", " + officer_shred_title[j]
-
-                                        commentText += "\n\n"
-
-                        if commentText != "":
-                            comment_info_text = ("Commenting on AFSC: {} by:"
-                                                 " {}. Comment ID: {}".format(
-                                                matchList, rAirForceComment.author,
-                                                rAirForceComment.id))
-                            print_and_log(comment_info_text)
-
-                            commentHeader = ("^^You've ^^mentioned ^^an ^^AFSC,"
-                                             " ^^here's ^^the ^^associated ^^job"
-                                             " ^^title:\n\n")
-                            rAirForceComment.reply(commentHeader + commentText)
-
-                            dbCommentRecord.execute('INSERT INTO comments VALUES (?);',
-                                                    (rAirForceComment.id,))
-                            conn.commit()
-    
-            # what to do if Ctrl-C is pressed while script is running
-            except KeyboardInterrupt:
-                print_and_log("Exiting due to keyboard interrupt", error=True)
-                sys.exit(0)
-    
-            except KeyError:
-                print_and_log("AFSC not found in the dictionary, but "
-                              "the dict was called for some reason", error=True)
-    
-            except Exception as err:
-                print_and_log("Unhandled Exception: " + str(err), error=True)
-    
-            finally:
-                conn.commit()
-    finally:
-        conn.commit()
-        conn.close()
-        os.unlink(PID_FILE)
+            dbCommentRecord.execute('INSERT INTO comments VALUES (?);',
+                                    (rAirForceComment.id,))
+            conn.commit()
 
 
 def get_AFSC_links(reddit):
@@ -389,7 +405,6 @@ def get_AFSC_links(reddit):
     wiki_page = reddit.subreddit("AirForce").wiki["index"]
     wiki_soup = BeautifulSoup(wiki_page.content_html, "html.parser")
     links = wiki_soup.find_all("a")
-
 
     AFSC_links = {}
     for link in links:
