@@ -25,6 +25,9 @@ OFFICER_AFSC_REGEX = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
 ENLISTED_SKILL_LEVELS = ['Helper', '', 'Apprentice', '', 'Journeyman', '',
                        'Craftsman', '', 'Superintendent']
 
+COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
+                  " ^^associated ^^job ^^title:\n\n")
+
 
 def main():
 
@@ -312,6 +315,7 @@ def process_comment(rAirForceComment, conn,
                                           officer_base_AFSC_jt, officer_shred_list,
                                           officer_shred_AFSC, officer_shred_title)
 
+        # if commentText is not empty, build reply
         if commentText != "":
             comment_info_text = ("Commenting on AFSC: {} by:"
                                  " {}. Comment ID: {}".format(
@@ -319,10 +323,8 @@ def process_comment(rAirForceComment, conn,
                                 rAirForceComment.id))
             print_and_log(comment_info_text)
 
-            commentHeader = ("^^You've ^^mentioned ^^an ^^AFSC,"
-                             " ^^here's ^^the ^^associated ^^job"
-                             " ^^title:\n\n")
-            rAirForceComment.reply(commentHeader + commentText)
+
+            rAirForceComment.reply(COMMENT_HEADER + commentText)
 
             dbCommentRecord.execute('INSERT INTO comments VALUES (?);',
                                     (rAirForceComment.id,))
@@ -333,17 +335,22 @@ def process_enlisted(commentText, enlisted_individual_matches, matchList,
                      enlistedBaseAFSClist, enlistedBaseAFSCjt, enlistedPrefixList,
                      enlistedPrefixTitle, enlistedShredAFSC, enlistedShredList,
                      enlistedShredTitle):
-    #check for mentions of enlisted AFSCs
-    if enlisted_individual_matches.group(0) in matchList:
+
+    whole_match = enlisted_individual_matches.group(0)
+    prefix = enlisted_individual_matches.group(1)
+    afsc = enlisted_individual_matches.group(2)
+    skill_level = enlisted_individual_matches.group(3)
+    suffix = enlisted_individual_matches.group(4)
+
+    if whole_match in matchList:
         return commentText
     else:
         #replaces the skill level with an X
-        tempAFSC = enlisted_individual_matches.group(2)
-        tempAFSC = list(tempAFSC)
+        tempAFSC = list(afsc)
         tempAFSC[3] = 'X'
         tempAFSC = "".join(tempAFSC)
 
-        for i in range(0, len(enlistedBaseAFSClist)):
+        for i in range(len(enlistedBaseAFSClist)):
             #did we get a match on the base AFSC?
             if tempAFSC in enlistedBaseAFSClist[i]:
                 matchList.append(
@@ -351,25 +358,24 @@ def process_enlisted(commentText, enlisted_individual_matches, matchList,
                 commentText += enlisted_individual_matches.group(0) + " = "
 
                 #Is there a prefix? If so, add it
-                if enlisted_individual_matches.group(1):
-                    for j in range(0, len(enlistedPrefixList)):
-                        if enlisted_individual_matches.group(1) in enlistedPrefixList[j]:
+                if prefix:
+                    for j in range(len(enlistedPrefixList)):
+                        if prefix in enlistedPrefixList[j]:
                             commentText += enlistedPrefixTitle[j] + " "
                 commentText += enlistedBaseAFSCjt[i]
 
-                if enlisted_individual_matches.group(3) == 'X':
+                if skill_level == 'X':
                     pass
-                elif enlisted_individual_matches.group(3) == '0':
+                elif skill_level == '0':
                     pass
                 else:
                     commentText += " " + \
-                    ENLISTED_SKILL_LEVELS[int(enlisted_individual_matches.group(3)) - 1]
+                    ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
 
-                if enlisted_individual_matches.group(4):
-                    for j in range(0, len(
-                            enlistedShredList)):
+                if suffix:
+                    for j in range(len(enlistedShredList)):
                         if tempAFSC in enlistedShredAFSC[j]:
-                            if enlisted_individual_matches.group(4) in enlistedShredList[j]:
+                            if suffix in enlistedShredList[j]:
                                 print(enlistedShredTitle[j])
                                 commentText += ", " + enlistedShredTitle[j]
 
@@ -381,42 +387,48 @@ def process_officer(commentText, officer_individual_matches, matchList,
                     officer_base_AFSC_list, officer_prefix_list,
                     officer_prefix_title, officer_base_AFSC_jt,
                     officer_shred_list, officer_shred_AFSC, officer_shred_title):
-    print("Whole match: " + officer_individual_matches.group(0))
-    if officer_individual_matches.group(1):
-        print("Prefix: " + officer_individual_matches.group(1))
-    print("AFSC: " + officer_individual_matches.group(2))
-    if officer_individual_matches.group(3):
-        print("Skill Level: " + officer_individual_matches.group(3))
-    if officer_individual_matches.group(4):
-        print("Suffix: " + officer_individual_matches.group(4))
 
-    if officer_individual_matches.group(0) in matchList:
+    whole_match = officer_individual_matches.group(0)
+    prefix = officer_individual_matches.group(1)
+    afsc = officer_individual_matches.group(2)
+    skill_level = officer_individual_matches.group(3)
+    suffix = officer_individual_matches.group(4)
+
+    print("Whole match: " + whole_match)
+    if prefix:
+        print("Prefix: " + prefix)
+    print("AFSC: " + afsc)
+    if skill_level:
+        print("Skill Level: " + skill_level)
+    if suffix:
+        print("Suffix: " + suffix)
+
+    if whole_match in matchList:
         return commentText
     else:
-        tempAFSC = officer_individual_matches.group(2)
+        tempAFSC = afsc
         print("Pre temp: " + tempAFSC)
-        if officer_individual_matches.group(3):
+        if skill_level:
             pass
         else:
             tempAFSC = tempAFSC + 'X'
             print("Post temp: " + tempAFSC)
 
-        for i in range(0, len(officer_base_AFSC_list)):
+        for i in range(len(officer_base_AFSC_list)):
             if tempAFSC in officer_base_AFSC_list[i]:
-                matchList.append(
-                    officer_individual_matches.group(0))
-                commentText += officer_individual_matches.group(0) + " = "
+                matchList.append(whole_match)
+                commentText += whole_match + " = "
 
-                if officer_individual_matches.group(1):
-                    for j in range(0, len(officer_prefix_list)):
-                        if officer_individual_matches.group(1) in officer_prefix_list[j]:
+                if prefix:
+                    for j in range(len(officer_prefix_list)):
+                        if prefix in officer_prefix_list[j]:
                             commentText += officer_prefix_title[j] + " "
                 commentText += officer_base_AFSC_jt[i]
 
-                if officer_individual_matches.group(4):
-                    for j in range(0, len(officer_shred_list)):
+                if suffix:
+                    for j in range(len(officer_shred_list)):
                         if tempAFSC in officer_shred_AFSC[j]:
-                            if officer_individual_matches.group(4) in officer_shred_list[j]:
+                            if suffix in officer_shred_list[j]:
                                 print(officer_shred_title[j])
                                 commentText += ", " + officer_shred_title[j]
 
