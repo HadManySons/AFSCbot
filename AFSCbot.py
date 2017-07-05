@@ -300,7 +300,10 @@ def process_comment(rAirForceComment, conn,
 
         for enlisted_individual_matches in matched_comments_enlisted:
             commentText = process_enlisted(commentText, enlisted_individual_matches,
-                                           matchList)
+                                           matchList, enlistedBaseAFSClist,
+                                           enlistedBaseAFSCjt, enlistedPrefixList,
+                                           enlistedPrefixTitle, enlistedShredAFSC,
+                                           enlistedShredList, enlistedShredTitle)
 
         for officer_individual_matches in matched_comments_officer:
             commentText = process_officer(commentText, officer_individual_matches,
@@ -326,7 +329,10 @@ def process_comment(rAirForceComment, conn,
             conn.commit()
 
 
-def process_enlisted(commentText, enlisted_individual_matches, matchList):
+def process_enlisted(commentText, enlisted_individual_matches, matchList,
+                     enlistedBaseAFSClist, enlistedBaseAFSCjt, enlistedPrefixList,
+                     enlistedPrefixTitle, enlistedShredAFSC, enlistedShredList,
+                     enlistedShredTitle):
     #check for mentions of enlisted AFSCs
     if enlisted_individual_matches.group(0) in matchList:
         return commentText
@@ -357,7 +363,7 @@ def process_enlisted(commentText, enlisted_individual_matches, matchList):
                     pass
                 else:
                     commentText += " " + \
-                        enlistedSkillLevels[int(enlisted_individual_matches.group(3)) - 1]
+                    ENLISTED_SKILL_LEVELS[int(enlisted_individual_matches.group(3)) - 1]
 
                 if enlisted_individual_matches.group(4):
                     for j in range(0, len(
