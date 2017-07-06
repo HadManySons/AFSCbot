@@ -58,7 +58,6 @@ def main():
     except KeyboardInterrupt:
         print_and_log("Exiting due to keyboard interrupt",
                       error=True)
-        return
 
     # may not need this anymore
     #except KeyError:

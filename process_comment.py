@@ -2,6 +2,8 @@ import re
 import unittest
 
 from helper_functions import print_and_log
+from setup_bot import setup_database
+from read_csv_files import get_AFSCs, get_prefixes
 
 # regex for locating AFSCs
 ENLISTED_AFSC_REGEX = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
@@ -56,10 +58,20 @@ def generate_reply(rAirForceComment, dbCommentRecord,
         enlisted_dict = full_afsc_dict["enlisted"]
         officer_dict = full_afsc_dict["officer"]
 
+        print("comment_text", comment_text)
+        print(type(comment_text))
+        for item in matched_comments_enlisted:
+            print(item)
+            print(type(item))
+        print("match_list", match_list)
+        print(type(match_list))
+
+        # process all enlisted
         for enlisted_individual_matches in matched_comments_enlisted:
             comment_text = process_enlisted(comment_text, enlisted_individual_matches,
                                            match_list, enlisted_dict, prefix_dict)
 
+        # process all officer
         for officer_individual_matches in matched_comments_officer:
             comment_text = process_officer(comment_text, officer_individual_matches,
                                           match_list, officer_dict, prefix_dict)
@@ -121,7 +133,7 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
     return comment_text
 
 
-def process_officer(comment_text, officer_individual_matches,matchList,
+def process_officer(comment_text, officer_individual_matches, matchList,
                     officer_dict, prefix_dict):
 
     whole_match = officer_individual_matches.group(0)
@@ -168,11 +180,18 @@ def process_officer(comment_text, officer_individual_matches,matchList,
     return comment_text
 
 
-class ProcessCommentTest(unittest.TestCase):
-    def test_normal_afsc_with_num(self):
-        comment = "some comment"
+class ProcessEnlistedTest(unittest.TestCase):
+    def test_officer_something(self):
+        comment_text = "" # it will be empty if no enlisted found
+        officer_individual_matches = "????"
+        matchList = "????"
+        officer_dict = get_AFSCs()["officer"]
+        prefix_dict = get_prefixes()
 
         expected_reply = "some string"
-        actual_reply = process_comment(comment, conn, dbCommentRecord,
-                        full_afsc_dict, prefix_dict)
+        actual_reply = process_officer(comment_text, officer_individual_matches, matchList,
+                    officer_dict, prefix_dict)
         self.assertEqual(expected_reply, actual_reply)
+
+if __name__ == "__main__":
+    unittest.main()
