@@ -1,6 +1,10 @@
 import csv
+import os
 from bs4 import BeautifulSoup
 from pprint import pprint
+
+CSV_FOLDER = os.getcwd() + "\csv_files\\"
+print(CSV_FOLDER + 'EnlistedAFSCs.csv')
 
 
 def get_AFSCs():
@@ -10,7 +14,7 @@ def get_AFSCs():
                       "officer": officer_dict}
 
     # setup job titles
-    with open('EnlistedAFSCs.csv', newline='') as f:
+    with open(CSV_FOLDER + 'EnlistedAFSCs.csv', newline='') as f:
         reader = csv.reader(f, delimiter='#')
         for row in reader:
             base_afsc = row[0]
@@ -19,7 +23,7 @@ def get_AFSCs():
                          "job_title": job_title}
             enlisted_dict[base_afsc] = afsc_dict
 
-    with open('OfficerAFSCs.csv', newline='') as f:
+    with open(CSV_FOLDER + 'OfficerAFSCs.csv', newline='') as f:
         reader = csv.reader(f, delimiter='#')
         for row in reader:
             base_afsc = row[0]
@@ -29,7 +33,7 @@ def get_AFSCs():
             officer_dict[base_afsc] = afsc_dict
 
     # setup shreds
-    with open('EnlistedShreds.csv', newline='') as f:
+    with open(CSV_FOLDER + 'EnlistedShreds.csv', newline='') as f:
         reader = csv.reader(f, delimiter=',')
         for row in reader:
             base_afsc = row[0]
@@ -43,7 +47,7 @@ def get_AFSCs():
             except KeyError:
                 pass
 
-    with open('OfficerShreds.csv', newline='') as f:
+    with open(CSV_FOLDER + 'OfficerShreds.csv', newline='') as f:
         reader = csv.reader(f, delimiter=',')
         for row in reader:
             base_afsc = row[0]
@@ -57,7 +61,8 @@ def get_AFSCs():
             except KeyError:
                 pass
 
-    pprint(full_afsc_dict)
+    # uncomment to see full dictionary
+    #pprint(full_afsc_dict)
 
     return full_afsc_dict
 
@@ -65,14 +70,14 @@ def get_AFSCs():
 def get_prefixes():
     prefix_dict = {"enlisted": {},
                    "officer": {}}
-    with open('EnlistedPrefixes.csv', newline='') as f:
+    with open(CSV_FOLDER + 'EnlistedPrefixes.csv', newline='') as f:
         reader = csv.reader(f, delimiter=',')
         for row in reader:
             prefix_char = row[0]
             prefix_title = row[1]
             prefix_dict["enlisted"][prefix_char] = prefix_title
 
-    with open('OfficerPrefixes.csv', newline='') as f:
+    with open(CSV_FOLDER + 'OfficerPrefixes.csv', newline='') as f:
         reader = csv.reader(f, delimiter=',')
         for row in reader:
             prefix_char = row[0]

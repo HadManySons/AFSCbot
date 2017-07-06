@@ -1,22 +1,25 @@
 from pathlib import Path
 import praw
 import sqlite3
+import os
+import sys
 
-PID_FILE = "AFSCbot.pid"
+from helper_functions import print_and_log
+
 CRED_FILE = 'AFSCbotCreds.txt'
 DB_FILE = "AFSCbotCommentRecord.db"
 
 
-def open_pid():
+def open_pid(fname):
     # Get the PID of this process
     # Exit if a version of the script is already running
-    if os.path.isfile(PID_FILE):
+    if os.path.isfile(fname):
         print_and_log("PID already open, exiting script", error=True)
         sys.exit(1)
     else:
         # Create the lock file for the script
         pid = str(os.getpid())
-        open(PID_FILE, 'w').write(pid)
+        open(fname, 'w').write(pid)
 
 
 def login():
