@@ -61,15 +61,13 @@ def login():
 def setup_database():
     dbFile = Path(DB_FILE)
 
-    # check to see if database file exists
-    if dbFile.is_file():
-        # connection to database file
-        conn = sqlite3.connect(DB_FILE)
-        # database cursor object
-        dbCommentRecord = conn.cursor()
+    # connection to database file
+    conn = sqlite3.connect(DB_FILE)
+    # database cursor object
+    dbCommentRecord = conn.cursor()
 
-    else:  # if it doesn't, create it
-        conn = sqlite3.connect(DB_FILE)
-        dbCommentRecord = conn.cursor()
+    # check to see if database file exists
+    if not dbFile.is_file():
         dbCommentRecord.execute('''CREATE TABLE comments(comment text)''')
+        conn.commit()
     return conn, dbCommentRecord

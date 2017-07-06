@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 from pprint import pprint
 
 CSV_FOLDER = os.getcwd() + "\csv_files\\"
-print(CSV_FOLDER + 'EnlistedAFSCs.csv')
 
 
 def get_AFSCs():

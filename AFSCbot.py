@@ -5,7 +5,7 @@ import sys
 
 from read_csv_files import get_AFSCs, get_AFSC_links, get_prefixes
 from setup_bot import open_pid, login, setup_database
-from process_comment import process_comment
+from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
 
 # 'AFSCbot' must be changed to 'airforce' for a production version of the script
@@ -41,36 +41,38 @@ def main():
     comments_seen = 0
     try:
         while True:
-            try:
-                # stream all comments from /r/AirForce
-                for rAirForceComment in rAirForce.stream.comments():
-                    process_comment(rAirForceComment, conn, dbCommentRecord,
-                                    full_afsc_dict, prefix_dict)
-                    comments_seen += 1
-                    print()
-                    print("Comments processed since start of script: {}".format(
-                            comments_seen))
+            # stream all comments from /r/AirForce
+            for rAirForceComment in rAirForce.stream.comments():
+                reply_text, match_list = generate_reply(rAirForceComment,
+                            dbCommentRecord, full_afsc_dict, prefix_dict)
+                if reply_text != "":
+                    send_reply(reply_text, match_list, rAirForceComment,
+                               dbCommentRecord, conn)
 
-            # what to do if Ctrl-C is pressed while script is running
-            except KeyboardInterrupt:
-                print_and_log("Exiting due to keyboard interrupt",
-                              error=True)
-                sys.exit(0)
+                comments_seen += 1
+                print()
+                print("Comments processed since start of script: {}".format(
+                        comments_seen))
 
-            except KeyError:
-                print_and_log("AFSC not found in the dictionary, but "
-                              "the dict was called for some reason",
-                              error=True)
+    # what to do if Ctrl-C is pressed while script is running
+    except KeyboardInterrupt:
+        print_and_log("Exiting due to keyboard interrupt",
+                      error=True)
+        return
 
-            # is this necessary? shouldn't program just crash
-            # otherwise we can cover specific errors related to connection
-            # makes debugging harder without printing full exception info
-            #except Exception as err:
-            #    print_and_log("Unhandled Exception: " + str(err),
-            #                  error=True)
+    # may not need this anymore
+    #except KeyError:
+    #    print_and_log("AFSC not found in the dictionary, but "
+    #                  "the dict was called for some reason",
+    #                  error=True)
 
-            finally:
-                conn.commit()
+    # is this necessary? shouldn't program just crash
+    # otherwise we can cover specific errors related to connection
+    # makes debugging harder without printing full exception info
+    #except Exception as err:
+    #    print_and_log("Unhandled Exception: " + str(err),
+    #                  error=True)
+
     finally:
         conn.commit()
         conn.close()
