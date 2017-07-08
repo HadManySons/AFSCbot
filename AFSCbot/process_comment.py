@@ -153,18 +153,226 @@ def process_officer(comment_text, officer_individual_matches, matchList,
     return comment_text
 
 
+def break_up_regex(matches):
+    new_matches = []
+    for match in matches:
+        whole_match = match.group(0)
+        prefix = match.group(1)
+        afsc = match.group(2)
+        skill_level = match.group(3)
+        suffix = match.group(4)
+        match_dict = {
+                      "whole_match": whole_match,
+                      "prefix": prefix,
+                      "afsc": afsc,
+                      "skill_level": skill_level,
+                      "suffix": suffix,
+                      }
+        new_matches.append(match_dict)
+    return new_matches
+
 #####################
 """ Unit tests """
 #####################
+
+"""
+bugs identified:
+- prefix is allowed to be a number (but shouldnt be?)
+- suffix is allowed to be a number (but shouldnt be?)
+- afsc within other words still gets picked up "someletters1T0X1moreletters" is this intended?
+- afsc within hyperlink should not be matched
+"""
 
 
 class EnlistedRegexMatch(unittest.TestCase):
     def test_normal_afsc(self):
         comment = "1W051"
-        expected = "????"
-        actual = get_enlisted_regex_matches(comment)
-        self.assertEqual(expected, actual)
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "1W051")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1W051")
+        self.assertEqual(str_matches[0]["skill_level"], "5")
+        self.assertEqual(str_matches[0]["suffix"], "")
 
+    def test_normal_prefix(self):
+        comment = "K3E491"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "K3E491")
+        self.assertEqual(str_matches[0]["prefix"], "K")
+        self.assertEqual(str_matches[0]["afsc"], "3E491")
+        self.assertEqual(str_matches[0]["skill_level"], "9")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_normal_suffix(self):
+        comment = "2A334L"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "2A334L")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "2A334")
+        self.assertEqual(str_matches[0]["skill_level"], "3")
+        self.assertEqual(str_matches[0]["suffix"], "L")
+
+    def test_normal_prefix_and_suffix(self):
+        comment = "K3N1X1Q"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "K3N1X1Q")
+        self.assertEqual(str_matches[0]["prefix"], "K")
+        self.assertEqual(str_matches[0]["afsc"], "3N1X1")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "Q")
+
+    def test_afsc_with_3_zeros(self):
+        # should skill level return 0 or X or blank?
+        comment = "9J000"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "9J000")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "9J000")
+        self.assertEqual(str_matches[0]["skill_level"], "0")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+        comment = "8P100"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "8P100")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "8P100")
+        self.assertEqual(str_matches[0]["skill_level"], "0")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_block_of_text(self):
+        comment = "here look at that 1C4X1 he is so cool"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "1C4X1")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1C4X1")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_similar_to_afsc(self):
+        comment = "1W0X"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+        comment = "1W01"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+        comment = "AW0X1"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+        comment = "1WOX1"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+    def test_shred_is_number(self):
+        comment = "1W0X12"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+        self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1W0X1")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+        comment = "1W0X123"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+        self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1W0X1")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_prefix_is_number(self):
+        comment = "11W0X1"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+        self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1W0X1")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+        comment = "121W0X1"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+        self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1W0X1")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_afsc_within_other_words(self):
+        comment = "someletters1T0X1moreletters"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+
+        self.assertEqual(len(str_matches), 0)
+
+    def test_afsc_with_punctuation(self):
+        comment = "1S071."
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "1S071")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1S071")
+        self.assertEqual(str_matches[0]["skill_level"], "7")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+        comment = "1S071,"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+
+        comment = "1S071?"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+
+        comment = "1S071,"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+
+    def test_afsc_in_hyperlink(self):
+        comment = "https://www.reddit.com/r/AirForce/wiki/jobs/1a8x1"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+        comment = "https://www.reddit.com/r/AirForce/wiki/jobs/1a8x1/other"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+"""
+Officer tests:
+13S1E should pick up on 13S and shred E and ignore skill level, currently doesnt
+"""
 
 if __name__ == "__main__":
     unittest.main()
