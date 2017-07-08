@@ -1,18 +1,15 @@
 import logging
 
 import os
-import sys
 
 from read_csv_files import get_AFSCs, get_AFSC_links, get_prefixes
-from setup_bot import open_pid, login, setup_database
+from setup_bot import open_pid, close_pid, login, setup_database
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
 
 # 'AFSCbot' must be changed to 'airforce' for a production version of the script
 #SUBREDDIT = 'airforce+airnationalguard'
 SUBREDDIT = 'AFSCbot'
-
-PID_FILE = "AFSCbot.pid"
 
 
 def main():
@@ -24,12 +21,12 @@ def main():
     reddit = login()
 
     # creates file tracking if script is currently running
-    open_pid(PID_FILE)
+    open_pid()
 
     # setup pid, database, and AFSC dicts
     conn, dbCommentRecord = setup_database()
 
-    # load all the AFSCs, prefixes and shreds into lists
+    # load all the AFSCs and prefixes into dictionaries
     full_afsc_dict = get_AFSCs()
     prefix_dict = get_prefixes()
     AFSC_links = get_AFSC_links(reddit)
@@ -51,7 +48,8 @@ def main():
                     rAirForceComment.permalink(True))
                 print_and_log("Processing comment: " + permlink)
 
-                # Pulls all comments previously commented on
+                # Pulls all comments previously commented on and checks
+                # if the current comment has been replied to
                 dbCommentRecord.execute(
                     "SELECT * FROM comments WHERE comment=?",
                     (rAirForceComment.id,))
@@ -83,23 +81,10 @@ def main():
     except KeyboardInterrupt:
         print_and_log("Exiting due to keyboard interrupt", error=True)
 
-    # may not need this anymore
-    #except KeyError:
-    #    print_and_log("AFSC not found in the dictionary, but "
-    #                  "the dict was called for some reason",
-    #                  error=True)
-
-    # is this necessary? shouldn't program just crash
-    # otherwise we can cover specific errors related to connection
-    # makes debugging harder without printing full exception info
-    #except Exception as err:
-    #    print_and_log("Unhandled Exception: " + str(err),
-    #                  error=True)
-
     finally:
         conn.commit()
         conn.close()
-        os.unlink(PID_FILE)
+        close_pid()
 
 
 if __name__ == "__main__":

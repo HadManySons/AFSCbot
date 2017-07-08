@@ -8,18 +8,23 @@ from helper_functions import print_and_log
 
 CRED_FILE = 'AFSCbotCreds.txt'
 DB_FILE = "AFSCbotCommentRecord.db"
+PID_FILE = "AFSCbot.pid"
 
 
-def open_pid(fname):
+def open_pid():
     # Get the PID of this process
     # Exit if a version of the script is already running
-    if os.path.isfile(fname):
+    if os.path.isfile(PID_FILE):
         print_and_log("PID already open, exiting script", error=True)
         sys.exit(1)
     else:
         # Create the lock file for the script
         pid = str(os.getpid())
-        open(fname, 'w').write(pid)
+        open(PID_FILE, 'w').write(pid)
+
+
+def close_pid():
+    os.unlink(PID_FILE)
 
 
 def login():

@@ -2,15 +2,13 @@ import re
 import unittest
 
 from helper_functions import print_and_log
-from setup_bot import setup_database
-from read_csv_files import get_AFSCs, get_prefixes
 
 # regex for locating AFSCs
 ENLISTED_AFSC_REGEX = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
 OFFICER_AFSC_REGEX = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
 
 ENLISTED_SKILL_LEVELS = ['Helper', '', 'Apprentice', '', 'Journeyman', '',
-                       'Craftsman', '', 'Superintendent']
+                         'Craftsman', '', 'Superintendent']
 
 COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
                   " ^^associated ^^job ^^title:\n\n")
@@ -18,43 +16,28 @@ COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
 
 def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
 
-    # Keep a list of matched AFSCs so they're only posted once
-    match_list = []
-    comment_text = ""
-
-    formattedComment = rAirForceComment.body.upper()
+    formatted_comment = rAirForceComment.body.upper()
 
     # Search through the comments for things that look like enlisted AFSCs
-    enlisted_AFSC_search = re.compile(ENLISTED_AFSC_REGEX, re.IGNORECASE)
-    matched_comments_enlisted = enlisted_AFSC_search.finditer(
-        formattedComment)
+    matched_comments_enlisted = get_enlisted_regex_matches(formatted_comment)
+    matched_comments_officer = get_officer_regex_matches(formatted_comment)
 
-    officer_AFSC_search = re.compile(OFFICER_AFSC_REGEX, re.IGNORECASE)
-    matched_comments_officer = officer_AFSC_search.finditer(
-        formattedComment)
-
+    # prepare dicts for enlisted and officer AFSCs
     enlisted_dict = full_afsc_dict["enlisted"]
     officer_dict = full_afsc_dict["officer"]
 
-    """
-    print("comment_text", comment_text)
-    print(type(comment_text))
-    for item in matched_comments_enlisted:
-        print(item)
-        print(type(item))
-    print("match_list", match_list)
-    print(type(match_list))
-    """
+    match_list = []
+    comment_text = ""
 
     # process all enlisted
     for enlisted_individual_matches in matched_comments_enlisted:
         comment_text = process_enlisted(comment_text, enlisted_individual_matches,
-                                       match_list, enlisted_dict, prefix_dict)
+                                        match_list, enlisted_dict, prefix_dict)
 
     # process all officer
     for officer_individual_matches in matched_comments_officer:
         comment_text = process_officer(comment_text, officer_individual_matches,
-                                      match_list, officer_dict, prefix_dict)
+                                       match_list, officer_dict, prefix_dict)
 
     # log that comment was prepared
     comment_info_text = ("Preparing to reply: {} by: {}. Comment ID: {}".format(
@@ -62,6 +45,18 @@ def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
     print_and_log(comment_info_text)
 
     return comment_text
+
+
+def get_enlisted_regex_matches(formatted_comment):
+    enlisted_AFSC_search = re.compile(ENLISTED_AFSC_REGEX, re.IGNORECASE)
+    matched_comments_enlisted = enlisted_AFSC_search.finditer(formatted_comment)
+    return matched_comments_enlisted
+
+
+def get_officer_regex_matches(formatted_comment):
+    officer_AFSC_search = re.compile(OFFICER_AFSC_REGEX, re.IGNORECASE)
+    matched_comments_officer = officer_AFSC_search.finditer(formatted_comment)
+    return matched_comments_officer
 
 
 def send_reply(comment_text, rAirForceComment):
@@ -158,18 +153,18 @@ def process_officer(comment_text, officer_individual_matches, matchList,
     return comment_text
 
 
-class ProcessEnlistedTest(unittest.TestCase):
-    def test_officer_something(self):
-        comment_text = "" # it will be empty if no enlisted found
-        officer_individual_matches = "????"
-        matchList = "????"
-        officer_dict = get_AFSCs()["officer"]
-        prefix_dict = get_prefixes()
+#####################
+""" Unit tests """
+#####################
 
-        expected_reply = "some string"
-        actual_reply = process_officer(comment_text, officer_individual_matches, matchList,
-                    officer_dict, prefix_dict)
-        self.assertEqual(expected_reply, actual_reply)
+
+class EnlistedRegexMatch(unittest.TestCase):
+    def test_normal_afsc(self):
+        comment = "1W051"
+        expected = "????"
+        actual = get_enlisted_regex_matches(comment)
+        self.assertEqual(expected, actual)
+
 
 if __name__ == "__main__":
     unittest.main()
