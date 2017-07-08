@@ -16,79 +16,57 @@ COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
                   " ^^associated ^^job ^^title:\n\n")
 
 
-def generate_reply(rAirForceComment, dbCommentRecord,
-                    full_afsc_dict, prefix_dict):
-
-    # prints a link to the comment. A True for permalink
-    # generates a fast find (but is not an accurate link,
-    # just makes the script faster (SIGNIFICANTLY FASTER)
-    permlink = "http://www.reddit.com{}/".format(
-                rAirForceComment.permalink(True))
-
-    print_and_log("Processing comment: " + permlink)
-
-    # Pulls all comments previously commented on
-    dbCommentRecord.execute("SELECT * FROM comments WHERE comment=?",
-                            (rAirForceComment.id,))
-
-    id_exists = dbCommentRecord.fetchone()
+def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
 
     # Keep a list of matched AFSCs so they're only posted once
     match_list = []
     comment_text = ""
 
-    # Make sure we don't reply to the same comment twice
-    # or to the bot itself
-    if id_exists:
-        print("Already processed comment: {}, skipping".format(
-                rAirForceComment.id))
-    elif rAirForceComment.author == "AFSCbot":
-        print("Author was the bot, skipping...")
-    else:
-        formattedComment = rAirForceComment.body.upper()
+    formattedComment = rAirForceComment.body.upper()
 
-        # Search through the comments for things that look like enlisted AFSCs
-        enlisted_AFSC_search = re.compile(ENLISTED_AFSC_REGEX, re.IGNORECASE)
-        matched_comments_enlisted = enlisted_AFSC_search.finditer(
-            formattedComment)
+    # Search through the comments for things that look like enlisted AFSCs
+    enlisted_AFSC_search = re.compile(ENLISTED_AFSC_REGEX, re.IGNORECASE)
+    matched_comments_enlisted = enlisted_AFSC_search.finditer(
+        formattedComment)
 
-        officer_AFSC_search = re.compile(OFFICER_AFSC_REGEX, re.IGNORECASE)
-        matched_comments_officer = officer_AFSC_search.finditer(
-            formattedComment)
+    officer_AFSC_search = re.compile(OFFICER_AFSC_REGEX, re.IGNORECASE)
+    matched_comments_officer = officer_AFSC_search.finditer(
+        formattedComment)
 
-        enlisted_dict = full_afsc_dict["enlisted"]
-        officer_dict = full_afsc_dict["officer"]
+    enlisted_dict = full_afsc_dict["enlisted"]
+    officer_dict = full_afsc_dict["officer"]
 
-        print("comment_text", comment_text)
-        print(type(comment_text))
-        for item in matched_comments_enlisted:
-            print(item)
-            print(type(item))
-        print("match_list", match_list)
-        print(type(match_list))
+    """
+    print("comment_text", comment_text)
+    print(type(comment_text))
+    for item in matched_comments_enlisted:
+        print(item)
+        print(type(item))
+    print("match_list", match_list)
+    print(type(match_list))
+    """
 
-        # process all enlisted
-        for enlisted_individual_matches in matched_comments_enlisted:
-            comment_text = process_enlisted(comment_text, enlisted_individual_matches,
-                                           match_list, enlisted_dict, prefix_dict)
+    # process all enlisted
+    for enlisted_individual_matches in matched_comments_enlisted:
+        comment_text = process_enlisted(comment_text, enlisted_individual_matches,
+                                       match_list, enlisted_dict, prefix_dict)
 
-        # process all officer
-        for officer_individual_matches in matched_comments_officer:
-            comment_text = process_officer(comment_text, officer_individual_matches,
-                                          match_list, officer_dict, prefix_dict)
-    return comment_text, match_list
+    # process all officer
+    for officer_individual_matches in matched_comments_officer:
+        comment_text = process_officer(comment_text, officer_individual_matches,
+                                      match_list, officer_dict, prefix_dict)
 
-
-def send_reply(comment_text, match_list, rAirForceComment, dbCommentRecord, conn):
-    comment_info_text = ("Commenting on AFSC: {} by: {}. Comment ID: {}".format(
-                        match_list, rAirForceComment.author, rAirForceComment.id))
+    # log that comment was prepared
+    comment_info_text = ("Preparing to reply: {} by: {}. Comment ID: {}".format(
+        match_list, rAirForceComment.author, rAirForceComment.id))
     print_and_log(comment_info_text)
 
-    rAirForceComment.reply(COMMENT_HEADER + comment_text)
+    return comment_text
 
-    dbCommentRecord.execute('INSERT INTO comments VALUES (?);',
-                            (rAirForceComment.id,))
-    conn.commit()
+
+def send_reply(comment_text, rAirForceComment):
+    rAirForceComment.reply(COMMENT_HEADER + comment_text)
+    print_and_log("Sent reply...")
 
 
 def process_enlisted(comment_text, enlisted_individual_matches, matchList,
@@ -151,15 +129,14 @@ def process_officer(comment_text, officer_individual_matches, matchList,
         print("Skill Level: " + skill_level)
     if suffix:
         print("Suffix: " + suffix)
+    print("-------")
 
     if whole_match in matchList:
         return comment_text
 
     tempAFSC = afsc
-    print("Pre temp: " + tempAFSC)
     if not skill_level:
         tempAFSC = tempAFSC + 'X'
-        print("Post temp: " + tempAFSC)
 
     for base_afsc in officer_dict:
         if base_afsc == tempAFSC:

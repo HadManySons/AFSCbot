@@ -43,11 +43,36 @@ def main():
         while True:
             # stream all comments from /r/AirForce
             for rAirForceComment in rAirForce.stream.comments():
-                reply_text, match_list = generate_reply(rAirForceComment,
-                            dbCommentRecord, full_afsc_dict, prefix_dict)
-                if reply_text != "":
-                    send_reply(reply_text, match_list, rAirForceComment,
-                               dbCommentRecord, conn)
+
+                # prints a link to the comment. A True for permalink
+                # generates a fast find (but is not an accurate link,
+                # just makes the script faster (SIGNIFICANTLY FASTER)
+                permlink = "http://www.reddit.com{}/".format(
+                    rAirForceComment.permalink(True))
+                print_and_log("Processing comment: " + permlink)
+
+                # Pulls all comments previously commented on
+                dbCommentRecord.execute(
+                    "SELECT * FROM comments WHERE comment=?",
+                    (rAirForceComment.id,))
+                id_already_exists = dbCommentRecord.fetchone()
+
+                # Make sure we don't reply to the same comment twice
+                # or to the bot itself
+                if id_already_exists:
+                    print_and_log("Already replied to comment, skipping...")
+                elif rAirForceComment.author == "AFSCbot":
+                    print_and_log("Author was the bot, skipping...")
+                else:
+                    reply_text = generate_reply(rAirForceComment,
+                                                    full_afsc_dict, prefix_dict)
+                    if reply_text != "":
+                        send_reply(reply_text, rAirForceComment)
+
+                        # insert comment id into database so it wont be repeated
+                        dbCommentRecord.execute('INSERT INTO comments VALUES (?);',
+                                                (rAirForceComment.id,))
+                        conn.commit()
 
                 comments_seen += 1
                 print()
@@ -56,8 +81,7 @@ def main():
 
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
-        print_and_log("Exiting due to keyboard interrupt",
-                      error=True)
+        print_and_log("Exiting due to keyboard interrupt", error=True)
 
     # may not need this anymore
     #except KeyError:
