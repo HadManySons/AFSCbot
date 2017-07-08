@@ -1,5 +1,5 @@
-"temp AFSC bot by /u/dgreenmachine"
-zENM1HmTDO1mUw
-stlo2j2rR2p6zy6OdYyCV35S9lk
-CSFAbot
-1vdfsd53gds2DFF2
+"Bot Description"
+Client ID
+Client Secret
+Bot_username
+SuperSecurePassword
