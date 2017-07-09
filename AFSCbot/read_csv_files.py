@@ -1,6 +1,7 @@
 import csv
 import os
 from bs4 import BeautifulSoup
+from helper_functions import has_number
 from pprint import pprint
 
 CSV_FOLDER = os.getcwd() + "\csv_files\\"
@@ -83,17 +84,18 @@ def get_prefixes():
     return prefix_dict
 
 
-def get_AFSC_links(reddit):
+def get_afsc_links(reddit, full_afsc_dict):
     # gets dict of AFSC to link on /r/AirForce wiki
     wiki_page = reddit.subreddit("AirForce").wiki["index"]
     wiki_soup = BeautifulSoup(wiki_page.content_html, "html.parser")
     links = wiki_soup.find_all("a")
 
-    AFSC_links = {}
     for link in links:
         # not all links have /r/AirForce/wiki/jobs so this is more generalized
-        # using only /r/AirForce/wiki/
+        # using only /r/AirForce/ wiki links
         if "www.reddit.com/r/AirForce/wiki/" in link["href"]:
-            AFSC_code = link["href"].split("/")[-1]
-            AFSC_links[AFSC_code] = link["href"]
-    return AFSC_links
+            AFSC_code = link["href"].split("/")[-1].upper()
+            base_afsc = AFSC_code[:5]
+            if base_afsc in full_afsc_dict["enlisted"].keys():
+                full_afsc_dict["enlisted"][base_afsc]["link"] = link["href"]
+    return full_afsc_dict

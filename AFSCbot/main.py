@@ -1,6 +1,6 @@
 import logging
 
-from read_csv_files import get_AFSCs, get_AFSC_links, get_prefixes
+from read_csv_files import get_AFSCs, get_afsc_links, get_prefixes
 from setup_bot import open_pid, close_pid, login, setup_database
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
@@ -26,8 +26,8 @@ def main():
 
     # load all the AFSCs and prefixes into dictionaries
     full_afsc_dict = get_AFSCs()
+    full_afsc_dict = get_afsc_links(reddit, full_afsc_dict)
     prefix_dict = get_prefixes()
-    AFSC_links = get_AFSC_links(reddit)
 
     # subreddit instance of /r/AirForce.
     rAirForce = reddit.subreddit(SUBREDDIT)

@@ -132,6 +132,15 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
                 print_and_log("could not find suffix {} under {}"
                               .format(suffix, tempAFSC))
 
+        try:
+            afsc_link = enlisted_dict[tempAFSC]["link"]
+            comment_line += "\n\n Look they have a [Wiki Page]({})"\
+                .format(afsc_link)
+            print_and_log("found a link for {} at {}"
+                          .format(tempAFSC, afsc_link))
+        except KeyError:
+            pass
+
         if comment_line not in comment_text:
             comment_text.append(comment_line)
     else:

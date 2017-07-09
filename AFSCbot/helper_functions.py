@@ -10,3 +10,10 @@ def print_and_log(text, error=False):
         logging.error(time.strftime(LOG_TIME_FORMAT) + text)
     else:
         logging.info(time.strftime(LOG_TIME_FORMAT) + text)
+
+
+def has_number(string):
+    for char in string:
+        if char.isdigit():
+            return True
+    return False
