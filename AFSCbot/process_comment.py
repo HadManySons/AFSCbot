@@ -27,7 +27,7 @@ def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
     officer_dict = full_afsc_dict["officer"]
 
     match_list = []
-    comment_text = ""
+    comment_text = []
 
     # process all enlisted
     for enlisted_individual_matches in matched_comments_enlisted:
@@ -60,7 +60,10 @@ def get_officer_regex_matches(formatted_comment):
 
 
 def send_reply(comment_text, rAirForceComment):
-    rAirForceComment.reply(COMMENT_HEADER + comment_text)
+    print_and_log("comment: {}".format(comment_text))
+    comment_str = "\n\n".join(comment_text)
+    rAirForceComment.reply(COMMENT_HEADER + comment_str)
+
     print_and_log("Sent reply...")
 
 
@@ -76,34 +79,50 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
     if whole_match in matchList:
         return comment_text
 
+    print("Whole match: " + whole_match)
+    if prefix:
+        print("Prefix: " + prefix)
+    print("AFSC: " + afsc)
+    if skill_level:
+        print("Skill Level: " + skill_level)
+    if suffix:
+        print("Suffix: " + suffix)
+
     # replaces the skill level with an X
     tempAFSC = list(afsc)
     tempAFSC[3] = 'X'
     tempAFSC = "".join(tempAFSC)
 
+    comment_line = ""
     # if comment base AFSC is in dict of base AFSC's
-    for base_afsc in enlisted_dict:
-        if base_afsc == tempAFSC:
-            matchList.append(whole_match)
-            comment_text += whole_match + " = "
+    if tempAFSC in enlisted_dict.keys():
+        print_and_log("from whole_match: {}, found {} in enlisted AFSCs"
+                      .format(whole_match, tempAFSC))
 
-            # Is there a prefix? If so, add it
-            if prefix and prefix in prefix_dict["enlisted"].keys():
-                comment_text += prefix_dict["enlisted"][prefix] + " "
+        matchList.append(whole_match)
+        comment_line += whole_match + " = "
 
-            # add job title
-            comment_text += enlisted_dict[base_afsc]["job_title"]
+        # Is there a prefix? If so, add it
+        if prefix and prefix in prefix_dict["enlisted"].keys():
+            comment_line += prefix_dict["enlisted"][prefix] + " "
 
-            # if skill level given is not X or O, describe skill level given
-            if skill_level != 'X' and skill_level != '0':
-                comment_text += " " + \
-                ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
+        # add job title
+        comment_line += enlisted_dict[tempAFSC]["job_title"]
 
-            # Is there a suffix? If so, add it
-            if suffix and suffix == enlisted_dict[base_afsc]["shred"]["char"]:
-                comment_text += ", " + enlisted_dict[base_afsc]["shred"]["title"]
+        # if skill level given is not X or O, describe skill level given
+        if skill_level != 'X' and skill_level != '0':
+            comment_line += " " + \
+            ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
 
-            comment_text += "\n\n"
+        # Is there a suffix? If so, add it
+        if suffix and suffix == enlisted_dict[tempAFSC]["shred"]["char"]:
+            comment_line += ", " + enlisted_dict[tempAFSC]["shred"]["title"]
+
+        if comment_line not in comment_text:
+            comment_text.append(comment_line)
+    else:
+        print_and_log("Did not find {} in enlisted AFSCs".format(tempAFSC))
+    print("-------")
     return comment_text
 
 
@@ -116,6 +135,10 @@ def process_officer(comment_text, officer_individual_matches, matchList,
     skill_level = officer_individual_matches.group(3)
     suffix = officer_individual_matches.group(4)
 
+    # if already commented, dont add it again
+    if whole_match in matchList:
+        return comment_text
+
     print("Whole match: " + whole_match)
     if prefix:
         print("Prefix: " + prefix)
@@ -124,32 +147,36 @@ def process_officer(comment_text, officer_individual_matches, matchList,
         print("Skill Level: " + skill_level)
     if suffix:
         print("Suffix: " + suffix)
+
+    if skill_level:
+        tempAFSC = afsc
+    else:
+        tempAFSC = afsc + 'X'
+
+    comment_line = ""
+    if tempAFSC in officer_dict.keys():
+        print_and_log("from whole_match: {}, found {} in officer AFSCs"
+                      .format(whole_match, tempAFSC))
+
+        matchList.append(whole_match)
+        comment_line += whole_match + " = "
+
+        # Is there a prefix? If so, add it
+        if prefix and prefix in prefix_dict["officer"].keys():
+            comment_line += prefix_dict["officer"][prefix] + " "
+
+        # add job title
+        comment_line += officer_dict[tempAFSC]["job_title"]
+
+        # Is there a suffix? If so, add it
+        if suffix and suffix == officer_dict[tempAFSC]["shred"]["char"]:
+            comment_line += ", " + officer_dict[tempAFSC]["shred"]["title"]
+
+        if comment_line not in comment_text:
+            comment_text.append(comment_line)
+    else:
+        print_and_log("Did not find {} in officer AFSCs".format(tempAFSC))
     print("-------")
-
-    if whole_match in matchList:
-        return comment_text
-
-    tempAFSC = afsc
-    if not skill_level:
-        tempAFSC = tempAFSC + 'X'
-
-    for base_afsc in officer_dict:
-        if base_afsc == tempAFSC:
-            matchList.append(whole_match)
-            comment_text += whole_match + " = "
-
-            # Is there a prefix? If so, add it
-            if prefix and prefix in prefix_dict["officer"].keys():
-                comment_text += prefix_dict["officer"][prefix] + " "
-
-            # add job title
-            comment_text += officer_dict[base_afsc]["job_title"]
-
-            # Is there a suffix? If so, add it
-            if suffix and suffix == officer_dict[base_afsc]["shred"]["char"]:
-                comment_text += ", " + officer_dict[base_afsc]["shred"]["title"]
-
-            comment_text += "\n\n"
     return comment_text
 
 
@@ -177,9 +204,8 @@ def break_up_regex(matches):
 
 """
 bugs identified:
-- prefix is allowed to be a number (but shouldnt be?)
-- suffix is allowed to be a number (but shouldnt be?)
-- afsc within other words still gets picked up "someletters1T0X1moreletters" is this intended?
+- afsc within other words still gets picked up "someletters1T0X1moreletters" 
+    is this intended?
 - afsc within hyperlink should not be matched
 """
 
@@ -287,7 +313,7 @@ class EnlistedRegexMatch(unittest.TestCase):
         comment = "1W0X12"
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 0)
+        self.assertEqual(len(str_matches), 1)
         self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
         self.assertEqual(str_matches[0]["prefix"], "")
         self.assertEqual(str_matches[0]["afsc"], "1W0X1")
@@ -297,7 +323,7 @@ class EnlistedRegexMatch(unittest.TestCase):
         comment = "1W0X123"
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 0)
+        self.assertEqual(len(str_matches), 1)
         self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
         self.assertEqual(str_matches[0]["prefix"], "")
         self.assertEqual(str_matches[0]["afsc"], "1W0X1")
@@ -308,7 +334,7 @@ class EnlistedRegexMatch(unittest.TestCase):
         comment = "11W0X1"
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 0)
+        self.assertEqual(len(str_matches), 1)
         self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
         self.assertEqual(str_matches[0]["prefix"], "")
         self.assertEqual(str_matches[0]["afsc"], "1W0X1")
@@ -318,7 +344,7 @@ class EnlistedRegexMatch(unittest.TestCase):
         comment = "121W0X1"
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 0)
+        self.assertEqual(len(str_matches), 1)
         self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
         self.assertEqual(str_matches[0]["prefix"], "")
         self.assertEqual(str_matches[0]["afsc"], "1W0X1")

@@ -1,7 +1,5 @@
 import logging
 
-import os
-
 from read_csv_files import get_AFSCs, get_AFSC_links, get_prefixes
 from setup_bot import open_pid, close_pid, login, setup_database
 from process_comment import generate_reply, send_reply
