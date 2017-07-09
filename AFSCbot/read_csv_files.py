@@ -19,7 +19,8 @@ def get_AFSCs():
             base_afsc = row[0]
             job_title = row[1]
             afsc_dict = {"base_afsc": base_afsc,
-                         "job_title": job_title}
+                         "job_title": job_title,
+                         "shreds": {}}
             enlisted_dict[base_afsc] = afsc_dict
 
     with open(CSV_FOLDER + 'OfficerAFSCs.csv', newline='') as f:
@@ -28,7 +29,8 @@ def get_AFSCs():
             base_afsc = row[0]
             job_title = row[1]
             afsc_dict = {"base_afsc": base_afsc,
-                         "job_title": job_title}
+                         "job_title": job_title,
+                         "shreds": {}}
             officer_dict[base_afsc] = afsc_dict
 
     # setup shreds
@@ -38,11 +40,9 @@ def get_AFSCs():
             base_afsc = row[0]
             shred_char = row[1]
             shred_title = row[2]
-            shred_dict = {"char": shred_char,
-                          "title": shred_title}
             # if shred AFSC not in base afsc, skip it
             try:
-                enlisted_dict[base_afsc]["shred"] = shred_dict
+                enlisted_dict[base_afsc]["shreds"][shred_char] = shred_title
             except KeyError:
                 pass
 
@@ -52,11 +52,9 @@ def get_AFSCs():
             base_afsc = row[0]
             shred_char = row[1]
             shred_title = row[2]
-            shred_dict = {"char": shred_char,
-                          "title": shred_title}
             # if shred AFSC not in base afsc, skip it
             try:
-                officer_dict[base_afsc]["shred"] = shred_dict
+                officer_dict[base_afsc]["shreds"][shred_char] = shred_title
             except KeyError:
                 pass
 

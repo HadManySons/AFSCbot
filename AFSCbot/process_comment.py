@@ -3,6 +3,8 @@ import unittest
 
 from helper_functions import print_and_log
 
+# adjust regex to require whitespace on the outside, and punctuation on the right
+
 # regex for locating AFSCs
 ENLISTED_AFSC_REGEX = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
 OFFICER_AFSC_REGEX = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
@@ -122,8 +124,8 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
 
         # Is there a suffix? If so, add it
         if suffix:
-            if suffix == enlisted_dict[tempAFSC]["shred"]["char"]:
-                comment_line += ", " + enlisted_dict[tempAFSC]["shred"]["title"]
+            if suffix in enlisted_dict[tempAFSC]["shreds"].keys():
+                comment_line += ", " + enlisted_dict[tempAFSC]["shreds"][suffix]
                 print_and_log("found suffix {} under {}"
                           .format(suffix, tempAFSC))
             else:
@@ -188,8 +190,8 @@ def process_officer(comment_text, officer_individual_matches, matchList,
 
         # Is there a suffix? If so, add it
         if suffix:
-            if suffix == officer_dict[tempAFSC]["shred"]["char"]:
-                comment_line += ", " + officer_dict[tempAFSC]["shred"]["title"]
+            if suffix in officer_dict[tempAFSC]["shreds"].keys():
+                comment_line += ", " + officer_dict[tempAFSC]["shreds"][suffix]
                 print_and_log("found suffix {} under {}"
                               .format(suffix, tempAFSC))
             else:
