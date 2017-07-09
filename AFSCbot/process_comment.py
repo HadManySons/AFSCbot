@@ -103,8 +103,14 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
         comment_line += whole_match + " = "
 
         # Is there a prefix? If so, add it
-        if prefix and prefix in prefix_dict["enlisted"].keys():
-            comment_line += prefix_dict["enlisted"][prefix] + " "
+        if prefix:
+            if prefix in prefix_dict["enlisted"].keys():
+                comment_line += prefix_dict["enlisted"][prefix] + " "
+                print_and_log("found prefix {} in enlisted dict"
+                              .format(prefix))
+            else:
+                print_and_log("could not fimd prefix {} in enlisted dict"
+                              .format(prefix))
 
         # add job title
         comment_line += enlisted_dict[tempAFSC]["job_title"]
@@ -115,8 +121,14 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
             ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
 
         # Is there a suffix? If so, add it
-        if suffix and suffix == enlisted_dict[tempAFSC]["shred"]["char"]:
-            comment_line += ", " + enlisted_dict[tempAFSC]["shred"]["title"]
+        if suffix:
+            if suffix == enlisted_dict[tempAFSC]["shred"]["char"]:
+                comment_line += ", " + enlisted_dict[tempAFSC]["shred"]["title"]
+                print_and_log("found suffix {} under {}"
+                          .format(suffix, tempAFSC))
+            else:
+                print_and_log("could not find suffix {} under {}"
+                              .format(suffix, tempAFSC))
 
         if comment_line not in comment_text:
             comment_text.append(comment_line)
@@ -162,15 +174,27 @@ def process_officer(comment_text, officer_individual_matches, matchList,
         comment_line += whole_match + " = "
 
         # Is there a prefix? If so, add it
-        if prefix and prefix in prefix_dict["officer"].keys():
-            comment_line += prefix_dict["officer"][prefix] + " "
+        if prefix:
+            if prefix in prefix_dict["officer"].keys():
+                comment_line += prefix_dict["officer"][prefix] + " "
+                print_and_log("found prefix {} in officer dict"
+                              .format(prefix))
+            else:
+                print_and_log("could not fimd prefix {} in officer dict"
+                              .format(prefix))
 
         # add job title
         comment_line += officer_dict[tempAFSC]["job_title"]
 
         # Is there a suffix? If so, add it
-        if suffix and suffix == officer_dict[tempAFSC]["shred"]["char"]:
-            comment_line += ", " + officer_dict[tempAFSC]["shred"]["title"]
+        if suffix:
+            if suffix == officer_dict[tempAFSC]["shred"]["char"]:
+                comment_line += ", " + officer_dict[tempAFSC]["shred"]["title"]
+                print_and_log("found suffix {} under {}"
+                              .format(suffix, tempAFSC))
+            else:
+                print_and_log("could not find suffix {} under {}"
+                              .format(suffix, tempAFSC))
 
         if comment_line not in comment_text:
             comment_text.append(comment_line)

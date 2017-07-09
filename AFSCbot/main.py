@@ -57,7 +57,7 @@ def main():
                 # or to the bot itself
                 if id_already_exists:
                     print_and_log("Already replied to comment, skipping...")
-                elif rAirForceComment.author == "AFSCbot":
+                elif rAirForceComment.author in ("AFSCbot", "CSFAbot"):
                     print_and_log("Author was the bot, skipping...")
                 else:
                     reply_text = generate_reply(rAirForceComment,
