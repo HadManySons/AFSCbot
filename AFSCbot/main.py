@@ -62,13 +62,15 @@ def main():
                 else:
                     reply_text = generate_reply(rAirForceComment,
                                                     full_afsc_dict, prefix_dict)
-                    if reply_text != "":
+                    if reply_text:
                         send_reply(reply_text, rAirForceComment)
 
                         # insert comment id into database so it wont be repeated
                         dbCommentRecord.execute('INSERT INTO comments VALUES (?);',
                                                 (rAirForceComment.id,))
                         conn.commit()
+                    else:
+                        print("No AFSC found, skipping...")
 
                 comments_seen += 1
                 print()

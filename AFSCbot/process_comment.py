@@ -3,11 +3,12 @@ import unittest
 
 from helper_functions import print_and_log
 
-# adjust regex to require whitespace on the outside, and punctuation on the right
+# old regex, incase we need
+#ENLISTED_AFSC_REGEX = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
+#OFFICER_AFSC_REGEX = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
 
-# regex for locating AFSCs
-ENLISTED_AFSC_REGEX = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
-OFFICER_AFSC_REGEX = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
+ENLISTED_AFSC_REGEX = "(?:^|\s)(([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?))(?:[\.\?\!\,]|\s|$)"
+OFFICER_AFSC_REGEX = "(?:^|\s)(([A-Z]?)(\d\d[A-Z]([013579]|X)?)([A-Z]?))(?:[\.\?\!\,]|\s|$)"
 
 ENLISTED_SKILL_LEVELS = ['Helper', '', 'Apprentice', '', 'Journeyman', '',
                          'Craftsman', '', 'Superintendent']
@@ -72,11 +73,11 @@ def send_reply(comment_text, rAirForceComment):
 def process_enlisted(comment_text, enlisted_individual_matches, matchList,
                      enlisted_dict, prefix_dict):
 
-    whole_match = enlisted_individual_matches.group(0)
-    prefix = enlisted_individual_matches.group(1)
-    afsc = enlisted_individual_matches.group(2)
-    skill_level = enlisted_individual_matches.group(3)
-    suffix = enlisted_individual_matches.group(4)
+    whole_match = enlisted_individual_matches.group(1)
+    prefix = enlisted_individual_matches.group(2)
+    afsc = enlisted_individual_matches.group(3)
+    skill_level = enlisted_individual_matches.group(4)
+    suffix = enlisted_individual_matches.group(5)
 
     if whole_match in matchList:
         return comment_text
@@ -152,11 +153,11 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
 def process_officer(comment_text, officer_individual_matches, matchList,
                     officer_dict, prefix_dict):
 
-    whole_match = officer_individual_matches.group(0)
-    prefix = officer_individual_matches.group(1)
-    afsc = officer_individual_matches.group(2)
-    skill_level = officer_individual_matches.group(3)
-    suffix = officer_individual_matches.group(4)
+    whole_match = officer_individual_matches.group(1)
+    prefix = officer_individual_matches.group(2)
+    afsc = officer_individual_matches.group(3)
+    skill_level = officer_individual_matches.group(4)
+    suffix = officer_individual_matches.group(5)
 
     # if already commented, dont add it again
     if whole_match in matchList:
@@ -218,11 +219,11 @@ def process_officer(comment_text, officer_individual_matches, matchList,
 def break_up_regex(matches):
     new_matches = []
     for match in matches:
-        whole_match = match.group(0)
-        prefix = match.group(1)
-        afsc = match.group(2)
-        skill_level = match.group(3)
-        suffix = match.group(4)
+        whole_match = match.group(1)
+        prefix = match.group(2)
+        afsc = match.group(3)
+        skill_level = match.group(4)
+        suffix = match.group(5)
         match_dict = {
                       "whole_match": whole_match,
                       "prefix": prefix,
@@ -237,13 +238,6 @@ def break_up_regex(matches):
 """ Unit tests """
 #####################
 
-"""
-bugs identified:
-- afsc within other words still gets picked up "someletters1T0X1moreletters" 
-    is this intended?
-- afsc within hyperlink should not be matched
-"""
-
 
 class EnlistedRegexMatch(unittest.TestCase):
     def test_normal_afsc(self):
@@ -256,6 +250,24 @@ class EnlistedRegexMatch(unittest.TestCase):
         self.assertEqual(str_matches[0]["afsc"], "1W051")
         self.assertEqual(str_matches[0]["skill_level"], "5")
         self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_match_two_afsc(self):
+        comment = "I once saw a 1W051 who thought he was a 1W091."
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+
+        self.assertEqual(len(str_matches), 2)
+        self.assertEqual(str_matches[0]["whole_match"], "1W051")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1W051")
+        self.assertEqual(str_matches[0]["skill_level"], "5")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+        self.assertEqual(str_matches[1]["whole_match"], "1W091")
+        self.assertEqual(str_matches[1]["prefix"], "")
+        self.assertEqual(str_matches[1]["afsc"], "1W091")
+        self.assertEqual(str_matches[1]["skill_level"], "9")
+        self.assertEqual(str_matches[1]["suffix"], "")
 
     def test_normal_prefix(self):
         comment = "K3E491"
@@ -348,43 +360,23 @@ class EnlistedRegexMatch(unittest.TestCase):
         comment = "1W0X12"
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 1)
-        self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
-        self.assertEqual(str_matches[0]["prefix"], "")
-        self.assertEqual(str_matches[0]["afsc"], "1W0X1")
-        self.assertEqual(str_matches[0]["skill_level"], "X")
-        self.assertEqual(str_matches[0]["suffix"], "")
+        self.assertEqual(len(str_matches), 0)
 
         comment = "1W0X123"
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 1)
-        self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
-        self.assertEqual(str_matches[0]["prefix"], "")
-        self.assertEqual(str_matches[0]["afsc"], "1W0X1")
-        self.assertEqual(str_matches[0]["skill_level"], "X")
-        self.assertEqual(str_matches[0]["suffix"], "")
+        self.assertEqual(len(str_matches), 0)
 
     def test_prefix_is_number(self):
         comment = "11W0X1"
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 1)
-        self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
-        self.assertEqual(str_matches[0]["prefix"], "")
-        self.assertEqual(str_matches[0]["afsc"], "1W0X1")
-        self.assertEqual(str_matches[0]["skill_level"], "X")
-        self.assertEqual(str_matches[0]["suffix"], "")
+        self.assertEqual(len(str_matches), 0)
 
         comment = "121W0X1"
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 1)
-        self.assertEqual(str_matches[0]["whole_match"], "1W0X1")
-        self.assertEqual(str_matches[0]["prefix"], "")
-        self.assertEqual(str_matches[0]["afsc"], "1W0X1")
-        self.assertEqual(str_matches[0]["skill_level"], "X")
-        self.assertEqual(str_matches[0]["suffix"], "")
+        self.assertEqual(len(str_matches), 0)
 
     def test_afsc_within_other_words(self):
         comment = "someletters1T0X1moreletters"
@@ -430,10 +422,94 @@ class EnlistedRegexMatch(unittest.TestCase):
         str_matches = break_up_regex(matches)
         self.assertEqual(len(str_matches), 0)
 
-"""
-Officer tests:
-13S1E should pick up on 13S and shred E and ignore skill level, currently doesnt
-"""
+
+class OfficerRegexMatch(unittest.TestCase):
+    def test_normal_afsc(self):
+        comment = "12HX"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "12HX")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "12HX")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_multiple_afsc(self):
+        comment = "Look at that 12HX. More like a Q13AX."
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 2)
+        self.assertEqual(str_matches[0]["whole_match"], "12HX")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "12HX")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+        self.assertEqual(str_matches[1]["whole_match"], "Q13AX")
+        self.assertEqual(str_matches[1]["prefix"], "Q")
+        self.assertEqual(str_matches[1]["afsc"], "13AX")
+        self.assertEqual(str_matches[1]["skill_level"], "X")
+        self.assertEqual(str_matches[1]["suffix"], "")
+
+    def test_prefix_is_a_number(self):
+        comment = "112HX 9913AX"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+    def test_suffix_is_a_number(self):
+        comment = "12HX5 13AX66"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+    def test_surrounded_by_text(self):
+        comment = "fdsfjdf12HX123123  12HXasfsdf   asdfsdf12HX"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+    def test_punctuation(self):
+        comment = "13BX, 14NX, and 16GX! What about W11F5H?"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 4)
+        self.assertEqual(str_matches[0]["whole_match"], "13BX")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "13BX")
+        self.assertEqual(str_matches[0]["skill_level"], "X")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
+        self.assertEqual(str_matches[1]["whole_match"], "14NX")
+        self.assertEqual(str_matches[1]["prefix"], "")
+        self.assertEqual(str_matches[1]["afsc"], "14NX")
+        self.assertEqual(str_matches[1]["skill_level"], "X")
+        self.assertEqual(str_matches[1]["suffix"], "")
+
+        self.assertEqual(str_matches[2]["whole_match"], "16GX")
+        self.assertEqual(str_matches[2]["prefix"], "")
+        self.assertEqual(str_matches[2]["afsc"], "16GX")
+        self.assertEqual(str_matches[2]["skill_level"], "X")
+        self.assertEqual(str_matches[2]["suffix"], "")
+
+        self.assertEqual(str_matches[3]["whole_match"], "W11F5H")
+        self.assertEqual(str_matches[3]["prefix"], "W")
+        self.assertEqual(str_matches[3]["afsc"], "11F5")
+        self.assertEqual(str_matches[3]["skill_level"], "5")
+        self.assertEqual(str_matches[3]["suffix"], "H")
+
+    def test_afsc_in_hyperlink(self):
+        comment = "https://www.reddit.com/r/AirForce/wiki/jobs/13BX"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+        comment = "https://www.reddit.com/r/AirForce/wiki/jobs/13BX/other"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
