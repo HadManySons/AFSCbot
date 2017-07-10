@@ -1,0 +1,189 @@
+1A0X1#In-Flight Refueling
+1A1X1#Flight Engineer
+1A2X1#Aircraft Loadmaster
+1A3X1#Airborne Mission Systems Operator
+1A6X1#Flight Attendant
+1A8X1#Airborne Cryptologic Language Analyst
+1A8X2#Airborne Intelligence, Surveillance, and Reconnaissance Operator
+1A9X1#Special Missions Aviator
+1B4X1#Cyber Warfare Operations
+1C0X2#Aviation Resource Management
+1C1X1#Air Traffic Control
+1C2X1#Combat Control
+1C3X1#Command Post
+1C4X1#Tactical Air Control Party
+1C5X1#Command & Control Battle Management Ops
+1C6X1#Space Systems Operations
+1C7X1#Airfield Management
+1C8X1#Ground Radar Systems
+1C8X2#Airfield Systems
+1N0X1#All Source Intelligence Analyst/Operations Intelligence Specialist
+1N1X1#Geospatial Intelligence
+1N2X1#Signals Intelligence Analyst
+1N3X1#Cryptologic Language Analyst
+1N4X1#Fusion Analyst
+1N7X1#Human Intelligence Specialist
+1P0X1#Aircrew Flight Equipment
+1S0X1#Safety
+1T0X1#Survival, Evasion, Resistance, and Escape
+1T2X1#Pararescue
+1U0X1#Remotely Piloted Aircraft Sensor Operator
+1U1X1#Remotely Piloted Aircraft Pilot
+1W0X1#Weather
+1W0X2#Special Operations Weather
+2A0X1#Avionics Test Station and Components
+2A2X1#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems
+2A2X2#Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems
+2A2X3#Special Operations Forces/Personnel Recover Integrated Electronic Warfare Systems
+2A3X3#Tactical Aircraft Maintenance
+2A3X4#Fighter Aircraft Integrated Avionics
+2A3X5#Advanced Fighter Aircraft Integrated Avionics
+2A3X7#Tactical Aircraft Maintenance
+2A3X8#Remotely Piloted Aircraft Maintenance
+2A5X1#Airlift/Special Mission Aircraft Maintenance
+2A5X2#Helicopter/Tiltrotor Aircraft Maintenance
+2A5X3#Mobility Air Forces Electronic Warfare Systems
+2A5X4#Refuel/Bomber Aircraft Maintenance
+2A6X1#Aerospace Propulsion
+2A6X2#Aerospace Ground Equipment
+2A6X3#Aircrew Egress Systems
+2A6X4#Aircraft Fuel Systems
+2A6X5#Aircraft Hydraulic Systems
+2A6X6#Aircraft Electrical and Environmental Systems
+2A7X1#Aircraft Metals Technology
+2A7X2#Nondestructive Inspection
+2A7X3#Aircraft Structural Maintenance
+2A7X5#Low Observable Aircraft Structural Maintenance
+2A8X1#Mobility Air Forces Communication/Navigation/Mission Systems
+2A8X2#Mobility Air Forces Integrated Instrument and Flight Control Systems
+2A9X1#Bomber/Special Integrated Communication/Navigation/Mission Systems
+2A9X2#Bomber/Special Integrated Instrument and Flight Control Systems
+2A9X3#Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics
+2F0X1#Fuels
+2G0X1#Logistics Plans
+2M0X1#Missile and Space Systems Electronics Maintenance
+2M0X2#Missile and Space Systems Maintenance
+2M0X3#Missile and Space Facilities
+2P0X1#Precision Measurement Equipment Laboratory
+2R0X1#Maintenance Management Analysis
+2R1X1#Maintenance Management Production
+2S0X1#Materiel Management
+2T0X1#Traffic Management
+2T1X1#Vehicle Operations
+2T2X1#Air Transportation
+2T3X1#Mission Generation Vehicular Equipment Maintenance
+2T3X7#Fleet Management and Analysis
+2W0X1#Munitions Systems
+2W1X1#Aircraft Armament Systems
+2W2X1#Nuclear Weapons
+3A1X1#Administration
+3D0X1#Knowledge Operations Management
+3D0X2#Cyber Systems Operations
+3D0X3#Cyber Surety
+3D0X4#Computer Systems Programming
+3D1X1#Client Systems
+3D1X2#Cyber Transport Systems
+3D1X3#RF Transmission Systems
+3D1X4#Spectrum Operations
+3D1X7#Cable and antenna systems
+3E0X1#Electrical Systems
+3E0X2#Electrical Power Production
+3E1X1#Heating, Ventilation, AC, and Refrigeration
+3E2X1#Pavements and Construction Equipment
+3E3X1#Structural
+3E4X1#Water and Fuel Systems Maintenance
+3E4X3#Pest Management
+3E5X1#Engineering
+3E6X1#Operations Management
+3E7X1#Fire Protection
+3E8X1#Explosive Ordnance Disposal
+3E9X1#U.S. Air Force Emergency Management
+3G0X1#Air National Guard Strength Management
+3H0X1#Historian
+3M0X1#Services
+3N0X2#Broadcast Journalist
+3N0X5#Photojournalist
+3N1X1#Regional Band
+3N2X1#Premier Band
+3P0X1#Security Forces
+3S0X1#Personnel
+3S1X1#Equal Opportunity
+3S2X1#Education and Training
+3S3X3#Manpower
+4A0X1#Health Services Management
+4A1X1#Medical Material
+4A2X1#Biomedical Equipment
+4B0X1#Bioenvironmental Engineering
+4C0X1#Mental Health Service
+4D0X1#Diet Therapy
+4E0X1#Public Health
+4H0X1#Cardiopulmonary Laboratory
+4J0X2#Physical Medicine
+4M0X1#Aerospace and Operational Physiology
+4N0X1#Aerospace Medical Service
+4N1X1#Surgical Service
+4P0X1#Pharmacy
+4R0X1#Diagnostic Imaging
+4T0X1#Medical Laboratory
+4T0X2#Histopathology
+4V0X1#Ophthalmic
+4Y0X1#Dental Assistant
+4Y0X2#Dental Laboratory
+5J0X1#Paralegal
+5R0X1#Chaplain Assistant
+6C0X1#Contracting
+6F0X1#Financial Management & Comptroller
+7S0X1#Special Investigations
+8A100#Career Assistance Advisor
+8A200#Enlisted Aide
+8A300#Protocol
+8B000#Military Training Instructor
+8B100#Military Training Leader
+8B200#Academy Military Training NCO
+8C000#Airman & Family Readiness Center RNCO
+8D100#Language & Culture Advisor
+8F000#First Sergeant
+8G000#Honor Guard
+8G100#USAF Installation Honor Guard Program Manager
+8H000#Airman Dorm Leader
+8I000#IG Superintendent, Inspections
+8M000#Postal service
+8P000#Courier
+8P100#Defense Attaché
+8R000#Enlisted Accessions Recruiter
+8R200#Second-Tier Recruiter
+8R300#Third-Tier Recruiter
+8S000#Missile Facility Manager
+8T000#Professional Military Education Instructor
+8T100#Enlisted Professional Military Education Instructional System Designer
+8U000#Unit Deployment Manager
+9A000#Awaiting Retraining-Reasons beyond Control
+9A100#Awaiting Retraining-Reasons within Control
+9A200#Awaiting Discharge/Separation/Retirement for Reasons Within Their Control
+9A300#Awaiting Discharge/Separation/Retirement for Reasons Beyond Their Control
+9A400#Disqualified Airman, Return to Duty Program
+9A500#Temporarily Ineligible for Retraining – Disqualified for Reasons Beyond Control
+9C000#CMSgt of the Air Force
+9D100#Key Developmental Senior Enlisted Positions on Headquarters Air Force Staff and Air Force Senior Noncommissioned Officer Academy at Maxwell-Gunter Annex
+9E000#Command Chief Master Sergeant
+9F000#First Term Airmen Center NCOIC
+9G100#Group Superintendent
+9J000#Prisoner
+9L000#Interpreter/Translator
+9L100#Enlisted Engagement Manager/International Affairs
+9M000#Military Entrance Processing Command Senior Enlisted Advisor
+9M200#International Health Specialists
+9M400#Chief, Medical Enlisted Force
+9N000#Secretary of the Air Force Enlisted Legislative Fellows
+9P000#Patient
+9R000#Civil Air Patrol USAF Reserve Assistance NCO
+9S100#Scientific Applications Specialist
+9T000#Basic Enlisted Airman
+9T100#Officer Trainee
+9T200#Pre-Cadet Assignee
+9U000#Enlisted Airman Ineligible for Local Utilization
+9U100#Unallotted Enlisted Authorization
+9W000#Combat Wounded Warrior
+9W200#Combat Wounded Warrior with Exemptions
+9W300#Non-Combat Wounded Warrior
+9W400#Wounded Warrior-Limited Assignment Status

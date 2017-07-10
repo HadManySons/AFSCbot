@@ -1,0 +1,150 @@
+1A8X1,F,Arabic
+1A8X1,G,Chinese
+1A8X1,H,Korean
+1A8X1,I,Russian
+1A8X1,J,Spanish
+1A8X1,K,Persian
+1A8X1,L,Hebrew
+1A8X1,M,Pashto
+1A8X1,Z,Low-Flow
+1C5X1,D,Weapons Director
+1N1X1,A,Imagery Analysis
+1N1X1,B,Targeteer
+1N2X1,A,Electronic
+1N2X1,C,Communications
+1N3X1,F,Arabic
+1N3X1,G,Chinese
+1N3X1,H,Korean
+1N3X1,I,Russian
+1N3X1,J,Spanish
+1N3X1,K,Persian
+1N3X1,L,Hebrew
+1N3X1,M,Pashto
+1N1X1,N,Urdu
+1N3X1,Z,Low-Flow
+1N4X1,A,Digital Network Analyst
+1N4X1,B,Analysis and Production
+2A0X1,K,A-10/B-2/C-17/CV-22/F-16/AFSOC Avionics Systems
+2A0X1,M,B-1/E-8/F-15 Avionics Systems
+2A0X1,P,Avionics Sensor Systems and Electronic Warfare Systems
+2A2X1,A,CV-22
+2A2X3,A,CV-22
+2A3X3,E,A-10/U-2
+2A3X3,L,F-15
+2A3X3,M,F-16
+2A3X4,E,A-10/U-2
+2A3X4,L,F-15
+2A3X4,M,F-16
+2A3X5,A,F-22
+2A3X5,B,F-35
+2A3X5,C,MQ-1/MQ-9/RQ-4
+2A3X7,A,F-22
+2A3X7,B,F-35
+2A3X8,A,MQ-1/MQ-9
+2A3X8,B,RQ-4
+2A5X1,A,C-20/C-21/C-22/C-37/C-40/E-4/VC-25
+2A5X1,B,C-130/C-27J
+2A5X1,C,C-5
+2A5X1,D,C-17
+2A5X2,B,H-60
+2A5X2,D,CV-22
+2A5X4,A,Any C-135/E-3/E-8
+2A5X4,B,KC-10
+2A5X4,C,KC-46
+2A5X4,D,B-52
+2A5X4,E,B-1
+2A5X4,F,B-2
+2A6X1,C,TF33/CF6/F103/F108/F117/TFE-731/TF34/TF39/PW 2040/F138 Jet Engines
+2A6X1,D,F100/F119/F135 Jet Engines
+2A6X1,E,F101/F110/F118 Jet Engines
+2A6X1,F,F100/F101/F110/F118/F119/F135 Jet Engines
+2A6X1,G,Turbofan and Turbojet Propulsion
+2A6X1,H,Turboprop and Turboshaft Propulsion
+2A8X1,A,C-5
+2A8X1,B,C-17
+2A8X1,C,C-130/WC-130 (except SOF/PR & EC-130)
+2A8X1,D,C-12/21/27/32/37/38/39/40
+2A8X1,E,Cargo Comm/Counter/Nav Systems
+2A8X1,F,KC-10
+2A8X1,G,KC-135
+2A8X1,H,KC-46
+2A8X1,J,Tanker Comm/Counter/Nav Systems
+2A8X2,A,C-5
+2A8X2,B,C-17
+2A8X2,C,C-130/WC-130 (except SOF/PR & EC-130)
+2A8X2,D,C-12/21/27/32/37/38/39/40
+2A8X2,E,Cargo IFCS
+2A8X2,F,KC-10
+2A8X2,G,KC-135
+2A8X2,H,KC-46
+2A8X2,J,Tanker IFCS
+2A9X1,A,E-3
+2A9X1,B,E-V/VC-25
+2A9X1,C,E-8
+2A9X1,D,RC-135
+2A9X1,E,B-1
+2A9X1,F,B-2
+2A9X1,G,B-52
+2A9X2,A,E-3
+2A9X2,B,E-V/VC-25
+2A9X2,C,E-8
+2A9X2,D,RC-135
+2A9X2,E,B-1
+2A9X2,F,B-2
+2A9X2,G,B-52
+2A9X3,A,E-3 Radar Surveillance
+2A9X3,B,E-3 Computer/Electronic Warfare System
+2A9X3,C,E-8
+2A9X3,D,RC-135/AFISRA Systems/Carry-on EW
+2A9X3,E,B-1
+2A9X3,F,B-2
+2A9X3,G,B-52
+2A9X3,H,EC-130 Compass Call
+2A9X3,J,VC-25
+2M0X1,A,ICBM
+2M0X1,B,ALCM
+2T3X1,A,Firefighting and Refueling Vehicle & Equipment Maintenance
+2T3X1,C,Material Handling Equipment (MHE)/463L Maintenance
+2W1X1,C,A-10
+2W1X1,E,F-15
+2W1X1,F,F-16
+2W1X1,J,F-35
+2W1X1,K,B-52/B-2
+2W1X1,L,B-1
+2W1X1,N,F-22
+2W1X1,Q,RPA (MQ-1/MQ-9)
+2W1X1,Z,All Other
+3N1X1,A,Clarinet
+3N1X1,B,Saxophone
+3N1X1,C,Bassoon
+3N1X1,D,Oboe
+3N1X1,E,Flute & Piccolo
+3N1X1,F,Horn
+3N1X1,G,Cornet & Trumpet
+3N1X1,H,Baritone & Euphonium
+3N1X1,J,Trombone
+3N1X1,K,Tuba
+3N1X1,L,Percussion
+3N1X1,M,Piano
+3N1X1,N,Guitar
+3N1X1,P,Music Arranger
+3N1X1,Q,Bagpipe
+3N1X1,R,Vocalist
+3N1X1,S,Electric Bass/String Bass
+3N1X1,U,Steel Guitar
+3N1X1,V,Audio and Light Engineer
+3N1X1,Z,Instrumentalist/General (Air National Guard Bands)
+3P0X1,A,Military Working Dog Handler
+3P0X1,B,Combat Arms
+4J0X2,A,Orthotic
+4N0X1,B,Neurodiagnostic Medical Technician
+4N0X1,C,Independent Duty Medical Technician
+4N0X1,F,Flight and Operational Medical Technician
+4N1X1,B,Urology
+4N1X1,C,Orthopedics
+4N1X1,D,Otolaryngology
+4R0X1,A,Nuclear Medicine
+4R0X1,B,Diagnostic Medical Sonography
+4R0X1,C,Magnetic Resonance Imaging
+4V0X1,S,Ophthalmology
+4Y0X1,H,Dental Hygienist
