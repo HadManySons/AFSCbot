@@ -19,7 +19,7 @@ COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
 
 def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
 
-    formatted_comment = rAirForceComment.body.upper()
+    formatted_comment = rAirForceComment.body
 
     # Search through the comments for things that look like enlisted AFSCs
     matched_comments_enlisted = get_enlisted_regex_matches(formatted_comment)
@@ -51,13 +51,15 @@ def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
 
 
 def get_enlisted_regex_matches(formatted_comment):
+    # enlisted afsc are not case-sensitive
     enlisted_AFSC_search = re.compile(ENLISTED_AFSC_REGEX, re.IGNORECASE)
     matched_comments_enlisted = enlisted_AFSC_search.finditer(formatted_comment)
     return matched_comments_enlisted
 
 
 def get_officer_regex_matches(formatted_comment):
-    officer_AFSC_search = re.compile(OFFICER_AFSC_REGEX, re.IGNORECASE)
+    # officer afsc are case-sensitive
+    officer_AFSC_search = re.compile(OFFICER_AFSC_REGEX)
     matched_comments_officer = officer_AFSC_search.finditer(formatted_comment)
     return matched_comments_officer
 
@@ -73,11 +75,11 @@ def send_reply(comment_text, rAirForceComment):
 def process_enlisted(comment_text, enlisted_individual_matches, matchList,
                      enlisted_dict, prefix_dict):
 
-    whole_match = enlisted_individual_matches.group(1)
-    prefix = enlisted_individual_matches.group(2)
-    afsc = enlisted_individual_matches.group(3)
-    skill_level = enlisted_individual_matches.group(4)
-    suffix = enlisted_individual_matches.group(5)
+    whole_match = enlisted_individual_matches.group(1).upper()
+    prefix = enlisted_individual_matches.group(2).upper()
+    afsc = enlisted_individual_matches.group(3).upper()
+    skill_level = enlisted_individual_matches.group(4).upper()
+    suffix = enlisted_individual_matches.group(5).upper()
 
     if whole_match in matchList:
         return comment_text
@@ -225,11 +227,11 @@ def break_up_regex(matches):
         skill_level = match.group(4)
         suffix = match.group(5)
         match_dict = {
-                      "whole_match": whole_match,
-                      "prefix": prefix,
-                      "afsc": afsc,
-                      "skill_level": skill_level,
-                      "suffix": suffix,
+                      "whole_match": whole_match.upper(),
+                      "prefix": prefix.upper(),
+                      "afsc": afsc.upper(),
+                      "skill_level": skill_level.upper(),
+                      "suffix": suffix.upper(),
                       }
         new_matches.append(match_dict)
     return new_matches
@@ -250,6 +252,17 @@ class EnlistedRegexMatch(unittest.TestCase):
         self.assertEqual(str_matches[0]["afsc"], "1W051")
         self.assertEqual(str_matches[0]["skill_level"], "5")
         self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_lowercase_afsc(self):
+        comment = "k1w051c"
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "K1W051C")
+        self.assertEqual(str_matches[0]["prefix"], "K")
+        self.assertEqual(str_matches[0]["afsc"], "1W051")
+        self.assertEqual(str_matches[0]["skill_level"], "5")
+        self.assertEqual(str_matches[0]["suffix"], "C")
 
     def test_match_two_afsc(self):
         comment = "I once saw a 1W051 who thought he was a 1W091."
@@ -434,6 +447,23 @@ class OfficerRegexMatch(unittest.TestCase):
         self.assertEqual(str_matches[0]["afsc"], "12HX")
         self.assertEqual(str_matches[0]["skill_level"], "X")
         self.assertEqual(str_matches[0]["suffix"], "")
+
+    def test_lowercase_afsc(self):
+        comment = "12hx"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+        comment = "12h"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+        comment = "12s"
+        matches = get_officer_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
 
     def test_multiple_afsc(self):
         comment = "Look at that 12HX. More like a Q13AX."
