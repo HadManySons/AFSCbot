@@ -3,9 +3,6 @@ import os
 
 from helper_functions import print_and_log
 
-# old regex, incase we need
-#ENLISTED_AFSC_REGEX = "([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?)"
-#OFFICER_AFSC_REGEX = "([A-Z]?)(\d\d[A-Z](X?))([A-Z]?)"
 
 ENLISTED_AFSC_REGEX = "(?:^|\s|[\,])(([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?))"
 OFFICER_AFSC_REGEX = "(?:^|\s)(([A-Z]?)(\d\d[A-Z]([013579]|X?))([A-Z]?))"
@@ -35,12 +32,12 @@ def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
     # process all enlisted
     for enlisted_individual_matches in matched_comments_enlisted:
         comment_text = process_enlisted(comment_text, enlisted_individual_matches,
-                                        match_list, enlisted_dict, prefix_dict)
+                                        enlisted_dict, prefix_dict)
 
     # process all officer
     for officer_individual_matches in matched_comments_officer:
         comment_text = process_officer(comment_text, officer_individual_matches,
-                                       match_list, officer_dict, prefix_dict)
+                                       officer_dict, prefix_dict)
 
     # log that comment was prepared
     comment_info_text = ("Preparing to reply: {} by: {}. Comment ID: {}".format(
@@ -72,17 +69,14 @@ def send_reply(comment_text, rAirForceComment):
     print_and_log("Sent reply...")
 
 
-def process_enlisted(comment_text, enlisted_individual_matches, matchList,
-                     enlisted_dict, prefix_dict):
+def process_enlisted(comment_text, enlisted_individual_matches, enlisted_dict,
+                     prefix_dict):
 
     whole_match = enlisted_individual_matches.group(1).upper()
     prefix = enlisted_individual_matches.group(2).upper()
     afsc = enlisted_individual_matches.group(3).upper()
     skill_level = enlisted_individual_matches.group(4).upper()
     suffix = enlisted_individual_matches.group(5).upper()
-
-    if whole_match in matchList:
-        return comment_text
 
     print("Whole match: " + whole_match)
     if prefix:
@@ -94,9 +88,7 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
         print("Suffix: " + suffix)
 
     # replaces the skill level with an X
-    tempAFSC = list(afsc)
-    tempAFSC[3] = 'X'
-    tempAFSC = "".join(tempAFSC)
+    tempAFSC = afsc[:3] + "X" + afsc[4:]
 
     comment_line = ""
     # if comment base AFSC is in dict of base AFSC's
@@ -104,10 +96,15 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
         print_and_log("from whole_match: {}, found {} in enlisted AFSCs"
                       .format(whole_match, tempAFSC))
 
-        matchList.append(whole_match)
-        comment_line += whole_match + " = "
+        # build whole AFSC only if prefix and suffix exist
+        if prefix in prefix_dict["enlisted"].keys():
+            comment_line += prefix
+        comment_line += afsc
+        if suffix in enlisted_dict[tempAFSC]["shreds"].keys():
+            comment_line += suffix
+        comment_line += " = "
 
-        # Is there a prefix? If so, add it
+        # Is there a prefix? If so, add its title
         if prefix:
             if prefix in prefix_dict["enlisted"].keys():
                 comment_line += prefix_dict["enlisted"][prefix] + " "
@@ -125,7 +122,7 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
             comment_line += " " + \
             ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
 
-        # Is there a suffix? If so, add it
+        # Is there a suffix? If so, add its title
         if suffix:
             if suffix in enlisted_dict[tempAFSC]["shreds"].keys():
                 comment_line += ", " + enlisted_dict[tempAFSC]["shreds"][suffix]
@@ -142,6 +139,7 @@ def process_enlisted(comment_text, enlisted_individual_matches, matchList,
             print_and_log("found a link for {} at {}"
                           .format(tempAFSC, afsc_link))
         except KeyError:
+            # tempAFSC doesn't have a link
             pass
 
         if comment_line not in comment_text:
