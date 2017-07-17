@@ -8,8 +8,8 @@ CSV_FOLDER = os.getcwd() + "\csv_files\\"
 
 
 def get_AFSCs():
-    enlisted_dict = {}
-    officer_dict = {}
+    enlisted_dict = {"dict_type": "enlisted"}
+    officer_dict = {"dict_type": "officer"}
     full_afsc_dict = {"enlisted": enlisted_dict,
                       "officer": officer_dict}
 
