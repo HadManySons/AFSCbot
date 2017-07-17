@@ -3,6 +3,7 @@ import praw
 import sqlite3
 import os
 import sys
+import time
 
 from helper_functions import print_and_log
 
