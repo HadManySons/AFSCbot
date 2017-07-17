@@ -95,9 +95,12 @@ def process_comment(comment_text, matches, afsc_dict, prefix_dict):
         # replaces the skill level with an X
         tempAFSC = afsc[:3] + "X" + afsc[4:]
     else:
-        # if skill level doesnt exist, add X to tempAFSC
-        if skill_level:
+        # standardize officer tempAFSC to be 12SX
+        if skill_level == "X":
             tempAFSC = afsc
+        elif skill_level.isnumeric():
+            afsc = afsc[:-1] + "X"  # skill level printed as X
+            tempAFSC = afsc[:-1] + "X"
         else:
             tempAFSC = afsc + 'X'
 
