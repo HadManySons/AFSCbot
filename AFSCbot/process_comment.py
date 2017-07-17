@@ -150,18 +150,14 @@ def process_enlisted(comment_text, enlisted_individual_matches, enlisted_dict,
     return comment_text
 
 
-def process_officer(comment_text, officer_individual_matches, matchList,
-                    officer_dict, prefix_dict):
+def process_officer(comment_text, officer_individual_matches, officer_dict,
+                    prefix_dict):
 
     whole_match = officer_individual_matches.group(1)
     prefix = officer_individual_matches.group(2)
     afsc = officer_individual_matches.group(3)
     skill_level = officer_individual_matches.group(4)
     suffix = officer_individual_matches.group(5)
-
-    # if already commented, dont add it again
-    if whole_match in matchList:
-        return comment_text
 
     print("Whole match: " + whole_match)
     if prefix:
@@ -182,8 +178,13 @@ def process_officer(comment_text, officer_individual_matches, matchList,
         print_and_log("from whole_match: {}, found {} in officer AFSCs"
                       .format(whole_match, tempAFSC))
 
-        matchList.append(whole_match)
-        comment_line += whole_match + " = "
+        # build whole AFSC only if prefix and suffix exist
+        if prefix in prefix_dict["officer"].keys():
+            comment_line += prefix
+        comment_line += afsc
+        if suffix in officer_dict[tempAFSC]["shreds"].keys():
+            comment_line += suffix
+        comment_line += " = "
 
         # Is there a prefix? If so, add it
         if prefix:
@@ -197,6 +198,8 @@ def process_officer(comment_text, officer_individual_matches, matchList,
 
         # add job title
         comment_line += officer_dict[tempAFSC]["job_title"]
+
+        # skill level printout ignored for officers
 
         # Is there a suffix? If so, add it
         if suffix:
