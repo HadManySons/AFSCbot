@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from read_csv_files import get_AFSCs, get_afsc_links, get_prefixes
 from setup_bot import open_pid, close_pid, login, setup_database
@@ -29,11 +30,14 @@ def main():
         full_afsc_dict = get_AFSCs()
         full_afsc_dict = get_afsc_links(reddit, full_afsc_dict)
         prefix_dict = get_prefixes()
-    finally:
-        close_pid()
-
         # subreddit instance of /r/AirForce.
         rAirForce = reddit.subreddit(SUBREDDIT)
+    except:
+        print_and_log("Couldn't load dicts, exiting", error=True)
+        close_pid()
+        sys.exit(1)
+
+
 
 
     print_and_log("Starting processing loop for subreddit: " + SUBREDDIT)
