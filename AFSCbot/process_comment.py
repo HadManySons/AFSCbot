@@ -23,21 +23,23 @@ def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
     matched_comments_officer = get_officer_regex_matches(formatted_comment)
 
     # prepare dicts for enlisted and officer AFSCs
-    enlisted_dict = full_afsc_dict["enlisted"]
-    officer_dict = full_afsc_dict["officer"]
+    enlisted_afsc_dict = full_afsc_dict["enlisted"]
+    enlisted_prefix_dict = prefix_dict["enlisted"]
+    officer_afsc_dict = full_afsc_dict["officer"]
+    officer_prefix_dict = prefix_dict["officer"]
 
     match_list = []
     comment_text = []
 
     # process all enlisted
-    for enlisted_individual_matches in matched_comments_enlisted:
-        comment_text = process_enlisted(comment_text, enlisted_individual_matches,
-                                        enlisted_dict, prefix_dict)
+    for matches in matched_comments_enlisted:
+        comment_text = process_comment(comment_text, matches,
+                                        enlisted_afsc_dict, enlisted_prefix_dict)
 
     # process all officer
-    for officer_individual_matches in matched_comments_officer:
-        comment_text = process_officer(comment_text, officer_individual_matches,
-                                       officer_dict, prefix_dict)
+    for matches in matched_comments_officer:
+        comment_text = process_comment(comment_text, matches,
+                                       officer_afsc_dict, officer_prefix_dict)
 
     # log that comment was prepared
     comment_info_text = ("Preparing to reply: {} by: {}. Comment ID: {}".format(
@@ -69,14 +71,15 @@ def send_reply(comment_text, rAirForceComment):
     print_and_log("Sent reply...")
 
 
-def process_enlisted(comment_text, enlisted_individual_matches, enlisted_dict,
-                     prefix_dict):
+def process_comment(comment_text, matches, afsc_dict, prefix_dict):
 
-    whole_match = enlisted_individual_matches.group(1).upper()
-    prefix = enlisted_individual_matches.group(2).upper()
-    afsc = enlisted_individual_matches.group(3).upper()
-    skill_level = enlisted_individual_matches.group(4).upper()
-    suffix = enlisted_individual_matches.group(5).upper()
+    whole_match = matches.group(1).upper()
+    prefix = matches.group(2).upper()
+    afsc = matches.group(3).upper()
+    skill_level = matches.group(4).upper()
+    suffix = matches.group(5).upper()
+
+    dict_type = afsc_dict["dict_type"]
 
     print("Whole match: " + whole_match)
     if prefix:
@@ -87,45 +90,58 @@ def process_enlisted(comment_text, enlisted_individual_matches, enlisted_dict,
     if suffix:
         print("Suffix: " + suffix)
 
-    # replaces the skill level with an X
-    tempAFSC = afsc[:3] + "X" + afsc[4:]
+    # handle skill levels
+    if dict_type == "enlisted":
+        # replaces the skill level with an X
+        tempAFSC = afsc[:3] + "X" + afsc[4:]
+    else:
+        # standardize officer tempAFSC to be 12SX
+        if skill_level == "X":
+            tempAFSC = afsc
+        elif skill_level.isnumeric():
+            afsc = afsc[:-1] + "X"  # skill level printed as X
+            tempAFSC = afsc[:-1] + "X"
+        else:
+            tempAFSC = afsc + 'X'
 
     comment_line = ""
     # if comment base AFSC is in dict of base AFSC's
-    if tempAFSC in enlisted_dict.keys():
-        print_and_log("from whole_match: {}, found {} in enlisted AFSCs"
-                      .format(whole_match, tempAFSC))
+    if tempAFSC in afsc_dict.keys():
+        print_and_log("from whole_match: {}, found {} in {} AFSCs"
+                      .format(whole_match, tempAFSC, dict_type))
 
         # build whole AFSC only if prefix and suffix exist
-        if prefix in prefix_dict["enlisted"].keys():
+        if prefix in prefix_dict.keys():
             comment_line += prefix
         comment_line += afsc
-        if suffix in enlisted_dict[tempAFSC]["shreds"].keys():
+        if suffix in afsc_dict[tempAFSC]["shreds"].keys():
             comment_line += suffix
         comment_line += " = "
 
         # Is there a prefix? If so, add its title
         if prefix:
-            if prefix in prefix_dict["enlisted"].keys():
-                comment_line += prefix_dict["enlisted"][prefix] + " "
-                print_and_log("found prefix {} in enlisted dict"
-                              .format(prefix))
+            if prefix in prefix_dict.keys():
+                comment_line += prefix_dict[prefix] + " "
+                print_and_log("found prefix {} in {} dict"
+                              .format(prefix, dict_type))
             else:
-                print_and_log("could not fimd prefix {} in enlisted dict"
-                              .format(prefix))
+                print_and_log("could not find prefix {} in {} dict"
+                              .format(prefix, dict_type))
 
         # add job title
-        comment_line += enlisted_dict[tempAFSC]["job_title"]
+        comment_line += afsc_dict[tempAFSC]["job_title"]
 
-        # if skill level given is not X or O, describe skill level given
-        if skill_level != 'X' and skill_level != '0':
-            comment_line += " " + \
-            ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
+        # add skill level, officer skill level is ignored
+        if dict_type == "enlisted":
+            # if skill level given is not X or O, describe skill level given
+            if skill_level != 'X' and skill_level != '0':
+                comment_line += " " + \
+                ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
 
         # Is there a suffix? If so, add its title
         if suffix:
-            if suffix in enlisted_dict[tempAFSC]["shreds"].keys():
-                comment_line += ", " + enlisted_dict[tempAFSC]["shreds"][suffix]
+            if suffix in afsc_dict[tempAFSC]["shreds"].keys():
+                comment_line += ", " + afsc_dict[tempAFSC]["shreds"][suffix]
                 print_and_log("found suffix {} under {}"
                           .format(suffix, tempAFSC))
             else:
@@ -133,7 +149,7 @@ def process_enlisted(comment_text, enlisted_individual_matches, enlisted_dict,
                               .format(suffix, tempAFSC))
 
         try:
-            afsc_link = enlisted_dict[tempAFSC]["link"]
+            afsc_link = afsc_dict[tempAFSC]["link"]
             comment_line += "\n\n Look they have a [Wiki Page]({})"\
                 .format(afsc_link)
             print_and_log("found a link for {} at {}"
@@ -145,73 +161,7 @@ def process_enlisted(comment_text, enlisted_individual_matches, enlisted_dict,
         if comment_line not in comment_text:
             comment_text.append(comment_line)
     else:
-        print_and_log("Did not find {} in enlisted AFSCs".format(tempAFSC))
-    print("-------")
-    return comment_text
-
-
-def process_officer(comment_text, officer_individual_matches, matchList,
-                    officer_dict, prefix_dict):
-
-    whole_match = officer_individual_matches.group(1)
-    prefix = officer_individual_matches.group(2)
-    afsc = officer_individual_matches.group(3)
-    skill_level = officer_individual_matches.group(4)
-    suffix = officer_individual_matches.group(5)
-
-    # if already commented, dont add it again
-    if whole_match in matchList:
-        return comment_text
-
-    print("Whole match: " + whole_match)
-    if prefix:
-        print("Prefix: " + prefix)
-    print("AFSC: " + afsc)
-    if skill_level:
-        print("Skill Level: " + skill_level)
-    if suffix:
-        print("Suffix: " + suffix)
-
-    if skill_level:
-        tempAFSC = afsc
-    else:
-        tempAFSC = afsc + 'X'
-
-    comment_line = ""
-    if tempAFSC in officer_dict.keys():
-        print_and_log("from whole_match: {}, found {} in officer AFSCs"
-                      .format(whole_match, tempAFSC))
-
-        matchList.append(whole_match)
-        comment_line += whole_match + " = "
-
-        # Is there a prefix? If so, add it
-        if prefix:
-            if prefix in prefix_dict["officer"].keys():
-                comment_line += prefix_dict["officer"][prefix] + " "
-                print_and_log("found prefix {} in officer dict"
-                              .format(prefix))
-            else:
-                print_and_log("could not fimd prefix {} in officer dict"
-                              .format(prefix))
-
-        # add job title
-        comment_line += officer_dict[tempAFSC]["job_title"]
-
-        # Is there a suffix? If so, add it
-        if suffix:
-            if suffix in officer_dict[tempAFSC]["shreds"].keys():
-                comment_line += ", " + officer_dict[tempAFSC]["shreds"][suffix]
-                print_and_log("found suffix {} under {}"
-                              .format(suffix, tempAFSC))
-            else:
-                print_and_log("could not find suffix {} under {}"
-                              .format(suffix, tempAFSC))
-
-        if comment_line not in comment_text:
-            comment_text.append(comment_line)
-    else:
-        print_and_log("Did not find {} in officer AFSCs".format(tempAFSC))
+        print_and_log("Did not find {} in {} AFSCs".format(tempAFSC, dict_type))
     print("-------")
     return comment_text
 

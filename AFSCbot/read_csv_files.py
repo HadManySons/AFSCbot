@@ -8,8 +8,8 @@ CSV_FOLDER = os.getcwd() + "\csv_files\\"
 
 
 def get_AFSCs():
-    enlisted_dict = {}
-    officer_dict = {}
+    enlisted_dict = {"dict_type": "enlisted"}
+    officer_dict = {"dict_type": "officer"}
     full_afsc_dict = {"enlisted": enlisted_dict,
                       "officer": officer_dict}
 
@@ -68,6 +68,7 @@ def get_AFSCs():
 def get_prefixes():
     prefix_dict = {"enlisted": {},
                    "officer": {}}
+
     with open(CSV_FOLDER + 'EnlistedPrefixes.csv', newline='') as f:
         reader = csv.reader(f, delimiter=',')
         for row in reader:
@@ -90,12 +91,13 @@ def get_afsc_links(reddit, full_afsc_dict):
     wiki_soup = BeautifulSoup(wiki_page.content_html, "html.parser")
     links = wiki_soup.find_all("a")
 
+    # currently all wiki AFSC are enlisted
     for link in links:
         # not all links have /r/AirForce/wiki/jobs so this is more generalized
         # using only /r/AirForce/ wiki links
         if "www.reddit.com/r/AirForce/wiki/" in link["href"]:
             AFSC_code = link["href"].split("/")[-1].upper()
-            base_afsc = AFSC_code[:5]
+            base_afsc = AFSC_code[:5]  # shaves off any prefixes
             if base_afsc in full_afsc_dict["enlisted"].keys():
                 full_afsc_dict["enlisted"][base_afsc]["link"] = link["href"]
     return full_afsc_dict
