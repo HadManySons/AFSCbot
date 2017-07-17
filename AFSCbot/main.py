@@ -25,12 +25,16 @@ def main():
     conn, dbCommentRecord = setup_database()
 
     # load all the AFSCs and prefixes into dictionaries
-    full_afsc_dict = get_AFSCs()
-    full_afsc_dict = get_afsc_links(reddit, full_afsc_dict)
-    prefix_dict = get_prefixes()
+    try:
+        full_afsc_dict = get_AFSCs()
+        full_afsc_dict = get_afsc_links(reddit, full_afsc_dict)
+        prefix_dict = get_prefixes()
+    finally:
+        close_pid()
 
-    # subreddit instance of /r/AirForce.
-    rAirForce = reddit.subreddit(SUBREDDIT)
+        # subreddit instance of /r/AirForce.
+        rAirForce = reddit.subreddit(SUBREDDIT)
+
 
     print_and_log("Starting processing loop for subreddit: " + SUBREDDIT)
     comments_seen = 0
