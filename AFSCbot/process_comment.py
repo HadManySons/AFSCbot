@@ -143,8 +143,11 @@ def process_comment(comment_text, match, afsc_dict, prefix_dict):
 
     # handle skill levels
     if dict_type == "enlisted":
-        # replaces the skill level with an X
-        tempAFSC = afsc[:3] + "X" + afsc[4:]
+        if skill_level != "0":
+            # replaces the skill level with an X
+            tempAFSC = afsc[:3] + "X" + afsc[4:]
+        else:
+            tempAFSC = afsc
     else:
         # standardize officer tempAFSC to be 12SX
         if skill_level == "X":
