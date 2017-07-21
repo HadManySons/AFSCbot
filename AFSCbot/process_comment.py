@@ -17,9 +17,16 @@ COMMENT_FOOTER = ("\n\n \n[^^Source](https://github.com/HadManySons/AFSCbot)"
                   " ^^| [^^Author](https://www.reddit.com/user/HadManySons)")
 
 
-def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
+def generate_reply(comment, full_afsc_dict, prefix_dict):
+    """
+    Generates a reply to a given comment based on any AFSC mentioned.
+    :param comment: string body of comment to be replied to 
+    :param full_afsc_dict: dict used for afsc lookups
+    :param prefix_dict: dict used for prefix lookups
+    :return: a list of strings representing lines that will be in the reply
+    """
 
-    formatted_comment = filter_out_quotes(rAirForceComment.body)
+    formatted_comment = filter_out_quotes(comment)
 
     # Search through the comments for things that look like enlisted AFSCs
     matched_comments_enlisted = get_enlisted_regex_matches(formatted_comment)
@@ -31,42 +38,54 @@ def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
     officer_afsc_dict = full_afsc_dict["officer"]
     officer_prefix_dict = prefix_dict["officer"]
 
-    match_list = []
     comment_text = []
 
     # process all enlisted
-    for matches in matched_comments_enlisted:
-        comment_text = process_comment(comment_text, matches,
+    for match in matched_comments_enlisted:
+        comment_text = process_comment(comment_text, match,
                                         enlisted_afsc_dict, enlisted_prefix_dict)
 
     # process all officer
-    for matches in matched_comments_officer:
-        comment_text = process_comment(comment_text, matches,
+    for match in matched_comments_officer:
+        comment_text = process_comment(comment_text, match,
                                        officer_afsc_dict, officer_prefix_dict)
-
-    # log that comment was prepared
-    comment_info_text = ("Preparing to reply: {} by: {}. Comment ID: {}".format(
-        match_list, rAirForceComment.author, rAirForceComment.id))
-    print_and_log(comment_info_text)
 
     return comment_text
 
 
 def get_enlisted_regex_matches(formatted_comment):
-    # enlisted afsc are not case-sensitive
+    """
+    Gets a regex match for enlisted AFSCs. 
+    Note: Enlisted matching is NOT case sensitive.
+    :param formatted_comment: string not including any quoted text
+    :return: regex matches
+    """
     enlisted_AFSC_search = re.compile(ENLISTED_AFSC_REGEX, re.IGNORECASE)
     matched_comments_enlisted = enlisted_AFSC_search.finditer(formatted_comment)
     return matched_comments_enlisted
 
 
 def get_officer_regex_matches(formatted_comment):
-    # officer afsc are case-sensitive
+    """
+    Gets a regex match for officer AFSCs. 
+    Note: Officer matching IS case sensitive.
+    :param formatted_comment: string not including any quoted text
+    :return: regex matches
+    """
+    # officer afsc matching is case sensitive to prevent 12s
+    # from matching 12S and other officer AFSCs
     officer_AFSC_search = re.compile(OFFICER_AFSC_REGEX)
     matched_comments_officer = officer_AFSC_search.finditer(formatted_comment)
     return matched_comments_officer
 
 
 def send_reply(comment_text, rAirForceComment):
+    """
+    Replies to rAirForceComment with comment_text using Bot that is 
+    currently logged in.
+    :param comment_text: list of strings representing lines in the reply
+    :param rAirForceComment: reddit comment to be replied to
+    """
     print_and_log("comment: {}".format(comment_text))
 
     comment_str = "\n\n".join(comment_text)
@@ -75,8 +94,15 @@ def send_reply(comment_text, rAirForceComment):
     print_and_log("Sent reply...")
 
 
-def filter_out_quotes(comment_text):
-    lines = comment_text.split("\n\n")
+def filter_out_quotes(comment):
+    """
+    Removes any quoted text from reddit comment text. On reddit, lines of 
+    quoted text begin with \n\n>. Single \n dont register as new line 
+    in regards to quotes.
+    :param comment_text: string of comment
+    :return:
+    """
+    lines = comment.split("\n\n")
     i = 0
     while i < len(lines):
         if lines[i].startswith(">"):
@@ -86,13 +112,23 @@ def filter_out_quotes(comment_text):
     return "\n\n".join(lines)
 
 
-def process_comment(comment_text, matches, afsc_dict, prefix_dict):
+def process_comment(comment_text, match, afsc_dict, prefix_dict):
+    """
+    Takes the given enlisted AFSC match and appends a line of reply 
+    to comment_text. If there is a wiki page it will also reply with that. If 
+    there are no matches to AFSC dict then there is no change to comment_text.
+    :param comment_text: list of strings representing lines in the reply
+    :param match: regex match of enlisted AFSC
+    :param afsc_dict: dict used for AFSC lookup
+    :param prefix_dict: dict used for prefix lookup
+    :return: modified comment_text with 0, 1, or 2 appended
+    """
 
-    whole_match = matches.group(1).upper()
-    prefix = matches.group(2).upper()
-    afsc = matches.group(3).upper()
-    skill_level = matches.group(4).upper()
-    suffix = matches.group(5).upper()
+    whole_match = match.group(1).upper()
+    prefix = match.group(2).upper()
+    afsc = match.group(3).upper()
+    skill_level = match.group(4).upper()
+    suffix = match.group(5).upper()
 
     dict_type = afsc_dict["dict_type"]
 
@@ -181,8 +217,13 @@ def process_comment(comment_text, matches, afsc_dict, prefix_dict):
     return comment_text
 
 
-def break_up_regex(matches):
-    new_matches = []
+def break_up_regex(match):
+    """
+    Creates a dict of regex matches for testing purposes.
+    :param match: regex match of either enlisted or officer AFSC 
+    :return: dict mapping an identifier string to the correct regex group
+    """
+    new_match = []
     for match in matches:
         whole_match = match.group(1)
         prefix = match.group(2)
@@ -196,8 +237,8 @@ def break_up_regex(matches):
                       "skill_level": skill_level.upper(),
                       "suffix": suffix.upper(),
                       }
-        new_matches.append(match_dict)
-    return new_matches
+        new_match.append(match_dict)
+    return new_match
 
 
 if __name__ == "__main__":

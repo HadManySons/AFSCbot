@@ -65,8 +65,15 @@ def main():
                 elif rAirForceComment.author in ("AFSCbot", "CSFAbot"):
                     print_and_log("Author was the bot, skipping...")
                 else:
-                    reply_text = generate_reply(rAirForceComment,
+                    reply_text = generate_reply(rAirForceComment.body,
                                                     full_afsc_dict, prefix_dict)
+
+                    # log that comment was prepared
+                    comment_info_text = (
+                    "Preparing to reply to id {} by author: {}".format(
+                        rAirForceComment.id, rAirForceComment.author))
+                    print_and_log(comment_info_text)
+
                     if reply_text:
                         send_reply(reply_text, rAirForceComment)
 
