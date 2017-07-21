@@ -65,8 +65,21 @@ class GenerateReply(unittest.TestCase):
         comment = "doesnt matter what caps I use with k1n2x1 or 1C8X2\n\n" \
                   "but it DOES matter what I use with W13BXY. 16f doesn't work."
         expected = ["K1N2X1 = Instructor Signals Intelligence Analyst\n\nLook they have a [Wiki Page](https://www.reddit.com/r/AirForce/wiki/jobs/1n2x1ac)",
-                    "1C8X2 = Airfield Systems"
+                    "1C8X2 = Airfield Systems",
                     "W13BXY = Weapons Officer Air Battle Manager, General"]
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_afsc_doesnt_exist(self):
+        comment = "These are valid AFSCs but they don't exist 1C4X2 and 14V"
+        expected = []
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_afsc_repeated(self):
+        comment = "Here's a 1W051, there's a 1W051, everywhere's a 1W091"
+        expected = ["1W051 = Weather Journeyman\n\nLook they have a [Wiki Page](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)",
+                    "1W091 = Weather Superintendent\n\nLook they have a [Wiki Page](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
         actual = generate_reply(comment, full_afsc_dict, prefix_dict)
         self.assertEqual(expected, actual)
 
