@@ -3,10 +3,14 @@ from process_comment import (get_enlisted_regex_matches,
                              get_officer_regex_matches,
                              break_up_regex,
                              filter_out_quotes)
+from setup_bot import
+
 
 #####################
 """ Unit tests """
 #####################
+
+
 
 
 class FilterQuotes(unittest.TestCase):

@@ -1,7 +1,7 @@
 import logging
 import sys
 
-from read_csv_files import get_AFSCs, get_afsc_links, get_prefixes
+from read_csv_files import get_AFSCs, get_prefixes
 from setup_bot import open_pid, close_pid, login, setup_database
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
@@ -27,12 +27,11 @@ def main():
 
     # load all the AFSCs and prefixes into dictionaries
     try:
-        full_afsc_dict = get_AFSCs()
-        full_afsc_dict = get_afsc_links(reddit, full_afsc_dict)
+        full_afsc_dict = get_AFSCs(reddit)
         prefix_dict = get_prefixes()
         # subreddit instance of /r/AirForce.
         rAirForce = reddit.subreddit(SUBREDDIT)
-    except Error as e:
+    except Exception as e:
         print_and_log("Couldn't load dicts, {}".format(e), error=True)
         close_pid()
         sys.exit(1)
