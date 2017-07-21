@@ -13,7 +13,7 @@ ENLISTED_SKILL_LEVELS = ['Helper', '', 'Apprentice', '', 'Journeyman', '',
 COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
                   " ^^associated ^^job ^^title:\n\n")
 
-COMMENT_FOOTER = ("\n\n \n[^^Source](https://github.com/HadManySons/AFSCbot)"
+COMMENT_FOOTER = ("\n\n[^^Source](https://github.com/HadManySons/AFSCbot)"
                   " ^^| [^^Author](https://www.reddit.com/user/HadManySons)")
 
 
@@ -205,7 +205,7 @@ def process_comment(comment_text, match, afsc_dict, prefix_dict):
         # Is there a link? If so, add its link
         afsc_link = afsc_dict[tempAFSC]["link"]
         if afsc_link:
-            comment_line += "\n\n Look they have a [Wiki Page]({})"\
+            comment_line += "\n\nLook they have a [Wiki Page]({})"\
                 .format(afsc_link)
             print_and_log("found a link for {} at {}"
                           .format(tempAFSC, afsc_link))
@@ -218,7 +218,7 @@ def process_comment(comment_text, match, afsc_dict, prefix_dict):
     return comment_text
 
 
-def break_up_regex(match):
+def break_up_regex(matches):
     """
     Creates a dict of regex matches for testing purposes.
     :param match: regex match of either enlisted or officer AFSC 
