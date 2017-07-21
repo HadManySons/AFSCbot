@@ -13,6 +13,9 @@ ENLISTED_SKILL_LEVELS = ['Helper', '', 'Apprentice', '', 'Journeyman', '',
 COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
                   " ^^associated ^^job ^^title:\n\n")
 
+COMMENT_FOOTER = ("\n\n \n[^^Source](https://github.com/HadManySons/AFSCbot)"
+                  " ^^| [^^Author](https://www.reddit.com/user/HadManySons)")
+
 
 def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
 
@@ -65,8 +68,9 @@ def get_officer_regex_matches(formatted_comment):
 
 def send_reply(comment_text, rAirForceComment):
     print_and_log("comment: {}".format(comment_text))
+
     comment_str = "\n\n".join(comment_text)
-    rAirForceComment.reply(COMMENT_HEADER + comment_str)
+    rAirForceComment.reply(COMMENT_HEADER + comment_str + COMMENT_FOOTER)
 
     print_and_log("Sent reply...")
 

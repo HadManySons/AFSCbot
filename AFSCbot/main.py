@@ -32,13 +32,10 @@ def main():
         prefix_dict = get_prefixes()
         # subreddit instance of /r/AirForce.
         rAirForce = reddit.subreddit(SUBREDDIT)
-    except:
-        print_and_log("Couldn't load dicts, exiting", error=True)
+    except Error as e:
+        print_and_log("Couldn't load dicts, {}".format(e), error=True)
         close_pid()
         sys.exit(1)
-
-
-
 
     print_and_log("Starting processing loop for subreddit: " + SUBREDDIT)
     comments_seen = 0
@@ -87,7 +84,7 @@ def main():
 
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
-        print_and_log("Exiting due to keyboard interrupt", error=True)
+        print("Exiting due to keyboard interrupt")
 
     finally:
         conn.commit()

@@ -401,32 +401,5 @@ Some of these tests may fail because the csv files update.
 In that case, double check if any titles have changed.
 """
 
-'''
-global test_prefix_dict
-global test_afsc_dict
-
-test_afsc_dict = get_AFSCs()
-test_afsc_dict = get_afsc_links(test_afsc_dict)
-test_prefix_dict = get_prefixes()
-'''
-
-class OfficerProcessComment(unittest.TestCase):
-
-    def test_setup_prefix_dict(self):
-        print(test_prefix_dict)
-
-    def test_normal_afsc(self):
-        print(self._prefix_dict)
-        comment = "12HX"
-        matches = get_officer_regex_matches(comment)
-        str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 1)
-        self.assertEqual(str_matches[0]["whole_match"], "12HX")
-        self.assertEqual(str_matches[0]["prefix"], "")
-        self.assertEqual(str_matches[0]["afsc"], "12HX")
-        self.assertEqual(str_matches[0]["skill_level"], "X")
-        self.assertEqual(str_matches[0]["suffix"], "")
-
-
 
 unittest.main(module=__name__)
