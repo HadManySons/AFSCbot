@@ -3,9 +3,7 @@ from process_comment import (get_enlisted_regex_matches,
                              get_officer_regex_matches,
                              break_up_regex,
                              filter_out_quotes,
-                             generate_reply,
-                             COMMENT_HEADER,
-                             COMMENT_FOOTER)
+                             generate_reply)
 
 from read_csv_files import get_AFSCs, get_prefixes
 from setup_bot import login
@@ -45,13 +43,13 @@ class FilterQuotes(unittest.TestCase):
 class GenerateReply(unittest.TestCase):
     def test_normal_afsc(self):
         comment = "Hi I am a 1W051"
-        expected = ["1W051 = Weather Journeyman\n\nLook they have a [Wiki Page](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
+        expected = ["1W051 = Weather Journeyman [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
         actual = generate_reply(comment, full_afsc_dict, prefix_dict)
         self.assertEqual(expected, actual)
 
     def test_quoted_afsc(self):
         comment = ">I heard you were a 1W0X1\n\nYou are mistaken, clearly I'm a 1W051"
-        expected = ["1W051 = Weather Journeyman\n\nLook they have a [Wiki Page](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
+        expected = ["1W051 = Weather Journeyman [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
         actual = generate_reply(comment, full_afsc_dict, prefix_dict)
         self.assertEqual(expected, actual)
 
@@ -64,7 +62,7 @@ class GenerateReply(unittest.TestCase):
     def test_caps(self):
         comment = "doesnt matter what caps I use with k1n2x1 or 1C8X2\n\n" \
                   "but it DOES matter what I use with W13BXY. 16f doesn't work."
-        expected = ["K1N2X1 = Instructor Signals Intelligence Analyst\n\nLook they have a [Wiki Page](https://www.reddit.com/r/AirForce/wiki/jobs/1n2x1ac)",
+        expected = ["K1N2X1 = Instructor Signals Intelligence Analyst [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1n2x1ac)",
                     "1C8X2 = Airfield Systems",
                     "W13BXY = Weapons Officer Air Battle Manager, General"]
         actual = generate_reply(comment, full_afsc_dict, prefix_dict)
@@ -78,8 +76,14 @@ class GenerateReply(unittest.TestCase):
 
     def test_afsc_repeated(self):
         comment = "Here's a 1W051, there's a 1W051, everywhere's a 1W091"
-        expected = ["1W051 = Weather Journeyman\n\nLook they have a [Wiki Page](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)",
-                    "1W091 = Weather Superintendent\n\nLook they have a [Wiki Page](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
+        expected = ["1W051 = Weather Journeyman [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)",
+                    "1W091 = Weather Superintendent [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_hyperlink(self):
+        comment = "I just went to https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1"
+        expected = []
         actual = generate_reply(comment, full_afsc_dict, prefix_dict)
         self.assertEqual(expected, actual)
 

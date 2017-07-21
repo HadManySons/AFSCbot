@@ -14,7 +14,7 @@ COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
                   " ^^associated ^^job ^^title:\n\n")
 
 COMMENT_FOOTER = ("\n\n[^^Source](https://github.com/HadManySons/AFSCbot)"
-                  " ^^| [^^Author](https://www.reddit.com/user/HadManySons)")
+                  " ^^| [^^Subreddit](https://www.reddit.com/r/AFSCbot/)")
 
 
 def generate_reply(comment, full_afsc_dict, prefix_dict):
@@ -205,8 +205,7 @@ def process_comment(comment_text, match, afsc_dict, prefix_dict):
         # Is there a link? If so, add its link
         afsc_link = afsc_dict[tempAFSC]["link"]
         if afsc_link:
-            comment_line += "\n\nLook they have a [Wiki Page]({})"\
-                .format(afsc_link)
+            comment_line += " [^wiki]({})".format(afsc_link)
             print_and_log("found a link for {} at {}"
                           .format(tempAFSC, afsc_link))
 
