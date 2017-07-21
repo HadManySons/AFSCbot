@@ -1,10 +1,35 @@
 import unittest
-from process_comment import get_enlisted_regex_matches, get_officer_regex_matches, break_up_regex
-from read_csv_files import get_AFSCs, get_prefixes, get_afsc_links
+from process_comment import (get_enlisted_regex_matches,
+                             get_officer_regex_matches,
+                             break_up_regex,
+                             filter_out_quotes)
 
 #####################
 """ Unit tests """
 #####################
+
+
+class FilterQuotes(unittest.TestCase):
+    def test_quote_with_text(self):
+        comment = ">That is such a 1w051 thing to say\n\ndon't you agree 1C1X1?"
+        actual = filter_out_quotes(comment)
+        expected = "don't you agree 1C1X1?"
+        self.assertEqual(expected, actual)
+
+    def test_quote_with_no_text(self):
+        comment = ">That is such a 1w051 thing to say"
+        actual = filter_out_quotes(comment)
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_multiple_quotes(self):
+        comment = ">That is such a 1w051 thing to say\n\n" \
+                  "I don't agree with this\n\n" \
+                  ">Well you're stupid\n\n" \
+                  "Not what your mom said"
+        actual = filter_out_quotes(comment)
+        expected = "I don't agree with this\n\nNot what your mom said"
+        self.assertEqual(expected, actual)
 
 
 class EnlistedRegexMatch(unittest.TestCase):
@@ -245,6 +270,25 @@ class EnlistedRegexMatch(unittest.TestCase):
         matches = get_enlisted_regex_matches(comment)
         str_matches = break_up_regex(matches)
         self.assertEqual(len(str_matches), 0)
+
+    def test_quoted_afsc(self):
+        comment = "> I hate 1w051s\n\nI totally agree with you"
+        comment = filter_out_quotes(comment)
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+    def test_quotes_near_afsc(self):
+        comment = "> I hate 1w051s\n\nI like 1W071 tho"
+        comment = filter_out_quotes(comment)
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "1W071")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1W071")
+        self.assertEqual(str_matches[0]["skill_level"], "7")
+        self.assertEqual(str_matches[0]["suffix"], "")
 
 
 class OfficerRegexMatch(unittest.TestCase):

@@ -19,7 +19,7 @@ COMMENT_FOOTER = ("\n\n \n[^^Source](https://github.com/HadManySons/AFSCbot)"
 
 def generate_reply(rAirForceComment, full_afsc_dict, prefix_dict):
 
-    formatted_comment = rAirForceComment.body
+    formatted_comment = filter_out_quotes(rAirForceComment.body)
 
     # Search through the comments for things that look like enlisted AFSCs
     matched_comments_enlisted = get_enlisted_regex_matches(formatted_comment)
@@ -73,6 +73,17 @@ def send_reply(comment_text, rAirForceComment):
     rAirForceComment.reply(COMMENT_HEADER + comment_str + COMMENT_FOOTER)
 
     print_and_log("Sent reply...")
+
+
+def filter_out_quotes(comment_text):
+    lines = comment_text.split("\n\n")
+    i = 0
+    while i < len(lines):
+        if lines[i].startswith(">"):
+            lines.pop(i)
+        else:
+            i += 1
+    return "\n\n".join(lines)
 
 
 def process_comment(comment_text, matches, afsc_dict, prefix_dict):
