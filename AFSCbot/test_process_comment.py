@@ -1,10 +1,91 @@
 import unittest
-from process_comment import get_enlisted_regex_matches, get_officer_regex_matches, break_up_regex
-from read_csv_files import get_AFSCs, get_prefixes, get_afsc_links
+from process_comment import (get_enlisted_regex_matches,
+                             get_officer_regex_matches,
+                             break_up_regex,
+                             filter_out_quotes,
+                             generate_reply)
+
+from read_csv_files import get_AFSCs, get_prefixes
+from setup_bot import login
 
 #####################
 """ Unit tests """
 #####################
+
+reddit = login()
+full_afsc_dict = get_AFSCs(reddit)
+prefix_dict = get_prefixes()
+
+
+class FilterQuotes(unittest.TestCase):
+    def test_quote_with_text(self):
+        comment = ">That is such a 1w051 thing to say\n\ndon't you agree 1C1X1?"
+        actual = filter_out_quotes(comment)
+        expected = "don't you agree 1C1X1?"
+        self.assertEqual(expected, actual)
+
+    def test_quote_with_no_text(self):
+        comment = ">That is such a 1w051 thing to say"
+        actual = filter_out_quotes(comment)
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_multiple_quotes(self):
+        comment = ">That is such a 1w051 thing to say\n\n" \
+                  "I don't agree with this\n\n" \
+                  ">Well you're stupid\n\n" \
+                  "Not what your mom said"
+        actual = filter_out_quotes(comment)
+        expected = "I don't agree with this\n\nNot what your mom said"
+        self.assertEqual(expected, actual)
+
+
+class GenerateReply(unittest.TestCase):
+    def test_normal_afsc(self):
+        comment = "Hi I am a 1W051"
+        expected = ["1W051 = Weather Journeyman [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_quoted_afsc(self):
+        comment = ">I heard you were a 1W0X1\n\nYou are mistaken, clearly I'm a 1W051"
+        expected = ["1W051 = Weather Journeyman [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_12s(self):
+        comment = "I'm tired of working 12s as a K13SXB..."
+        expected = ["K13SXB = Instructor Space Operations, Spacelift"]
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_caps(self):
+        comment = "doesnt matter what caps I use with k1n2x1 or 1C8X2\n\n" \
+                  "but it DOES matter what I use with W13BXY. 16f doesn't work."
+        expected = ["K1N2X1 = Instructor Signals Intelligence Analyst [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1n2x1ac)",
+                    "1C8X2 = Airfield Systems",
+                    "W13BXY = Weapons Officer Air Battle Manager, General"]
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_afsc_doesnt_exist(self):
+        comment = "These are valid AFSCs but they don't exist 1C4X2 and 14V"
+        expected = []
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_afsc_repeated(self):
+        comment = "Here's a 1W051, there's a 1W051, everywhere's a 1W091"
+        expected = ["1W051 = Weather Journeyman [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)",
+                    "1W091 = Weather Superintendent [^wiki](https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1)"]
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
+
+    def test_hyperlink(self):
+        comment = "I just went to https://www.reddit.com/r/AirForce/wiki/jobs/1w0x1"
+        expected = []
+        actual = generate_reply(comment, full_afsc_dict, prefix_dict)
+        self.assertEqual(expected, actual)
 
 
 class EnlistedRegexMatch(unittest.TestCase):
@@ -246,6 +327,25 @@ class EnlistedRegexMatch(unittest.TestCase):
         str_matches = break_up_regex(matches)
         self.assertEqual(len(str_matches), 0)
 
+    def test_quoted_afsc(self):
+        comment = "> I hate 1w051s\n\nI totally agree with you"
+        comment = filter_out_quotes(comment)
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 0)
+
+    def test_quotes_near_afsc(self):
+        comment = "> I hate 1w051s\n\nI like 1W071 tho"
+        comment = filter_out_quotes(comment)
+        matches = get_enlisted_regex_matches(comment)
+        str_matches = break_up_regex(matches)
+        self.assertEqual(len(str_matches), 1)
+        self.assertEqual(str_matches[0]["whole_match"], "1W071")
+        self.assertEqual(str_matches[0]["prefix"], "")
+        self.assertEqual(str_matches[0]["afsc"], "1W071")
+        self.assertEqual(str_matches[0]["skill_level"], "7")
+        self.assertEqual(str_matches[0]["suffix"], "")
+
 
 class OfficerRegexMatch(unittest.TestCase):
     def test_normal_afsc(self):
@@ -400,33 +500,6 @@ class OfficerRegexMatch(unittest.TestCase):
 Some of these tests may fail because the csv files update.
 In that case, double check if any titles have changed.
 """
-
-'''
-global test_prefix_dict
-global test_afsc_dict
-
-test_afsc_dict = get_AFSCs()
-test_afsc_dict = get_afsc_links(test_afsc_dict)
-test_prefix_dict = get_prefixes()
-'''
-
-class OfficerProcessComment(unittest.TestCase):
-
-    def test_setup_prefix_dict(self):
-        print(test_prefix_dict)
-
-    def test_normal_afsc(self):
-        print(self._prefix_dict)
-        comment = "12HX"
-        matches = get_officer_regex_matches(comment)
-        str_matches = break_up_regex(matches)
-        self.assertEqual(len(str_matches), 1)
-        self.assertEqual(str_matches[0]["whole_match"], "12HX")
-        self.assertEqual(str_matches[0]["prefix"], "")
-        self.assertEqual(str_matches[0]["afsc"], "12HX")
-        self.assertEqual(str_matches[0]["skill_level"], "X")
-        self.assertEqual(str_matches[0]["suffix"], "")
-
 
 
 unittest.main(module=__name__)

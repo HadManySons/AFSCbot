@@ -1,7 +1,7 @@
 import logging
 import sys
 
-from read_csv_files import get_AFSCs, get_afsc_links, get_prefixes
+from read_csv_files import get_AFSCs, get_prefixes
 from setup_bot import open_pid, close_pid, login, setup_database
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
@@ -27,18 +27,14 @@ def main():
 
     # load all the AFSCs and prefixes into dictionaries
     try:
-        full_afsc_dict = get_AFSCs()
-        full_afsc_dict = get_afsc_links(reddit, full_afsc_dict)
+        full_afsc_dict = get_AFSCs(reddit)
         prefix_dict = get_prefixes()
         # subreddit instance of /r/AirForce.
         rAirForce = reddit.subreddit(SUBREDDIT)
-    except:
-        print_and_log("Couldn't load dicts, exiting", error=True)
+    except Exception as e:
+        print_and_log("Couldn't load dicts, {}".format(e), error=True)
         close_pid()
         sys.exit(1)
-
-
-
 
     print_and_log("Starting processing loop for subreddit: " + SUBREDDIT)
     comments_seen = 0
@@ -68,8 +64,15 @@ def main():
                 elif rAirForceComment.author in ("AFSCbot", "CSFAbot"):
                     print_and_log("Author was the bot, skipping...")
                 else:
-                    reply_text = generate_reply(rAirForceComment,
+                    reply_text = generate_reply(rAirForceComment.body,
                                                     full_afsc_dict, prefix_dict)
+
+                    # log that comment was prepared
+                    comment_info_text = (
+                    "Preparing to reply to id {} by author: {}".format(
+                        rAirForceComment.id, rAirForceComment.author))
+                    print_and_log(comment_info_text)
+
                     if reply_text:
                         send_reply(reply_text, rAirForceComment)
 
@@ -87,7 +90,7 @@ def main():
 
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
-        print_and_log("Exiting due to keyboard interrupt", error=True)
+        print("Exiting due to keyboard interrupt")
 
     finally:
         conn.commit()
