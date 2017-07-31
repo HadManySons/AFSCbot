@@ -7,7 +7,7 @@ from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
 
 # 'AFSCbot' must be changed to 'airforce' for a production version of the script
-#SUBREDDIT = 'airforce+airnationalguard'
+#SUBREDDIT = 'airforce+airnationalguard+afrotc'
 SUBREDDIT = 'AFSCbot'
 
 
