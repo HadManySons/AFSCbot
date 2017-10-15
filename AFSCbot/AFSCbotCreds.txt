@@ -1,5 +1,0 @@
-"Bot Description"
-Client ID
-Client Secret
-Bot_username
-SuperSecurePassword
