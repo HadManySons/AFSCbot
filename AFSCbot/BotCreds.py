@@ -1,0 +1,5 @@
+credsUserAgent = ""
+credsClientID = ""
+credsClientSecret = ""
+credsUserName = ""
+credsPassword = ""

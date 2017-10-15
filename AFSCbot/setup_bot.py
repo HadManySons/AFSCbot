@@ -4,10 +4,10 @@ import sqlite3
 import os
 import sys
 import time
+from BotCreds import credsUserAgent,credsClientID, credsClientSecret, credsUserName, credsPassword
 
 from helper_functions import print_and_log
 
-CRED_FILE = 'AFSCbotCreds.txt'
 DB_FILE = "AFSCbotCommentRecord.db"
 PID_FILE = "AFSCbot.pid"
 
@@ -29,30 +29,17 @@ def close_pid():
 
 
 def login():
-    try:
-        creds = open(CRED_FILE, 'r')
-        print_and_log("Opened creds file")
-    except OSError:
-        print_and_log("Couldn't open {}".format(CRED_FILE), error=True)
-        sys.exit(1)
-
-    agent = creds.readline().strip()
-    ID = creds.readline().strip()
-    secret = creds.readline().strip()
-    client_user = creds.readline().strip()
-    client_password = creds.readline().strip()
-    creds.close()
 
     # Try to login or sleep/wait until logged in, or exit if user/pass wrong
     NotLoggedIn = True
     while NotLoggedIn:
         try:
             reddit = praw.Reddit(
-                user_agent=agent,
-                client_id=ID,
-                client_secret=secret,
-                username=client_user,
-                password=client_password)
+                user_agent=credsUserAgent,
+                client_id=credsClientID,
+                client_secret=credsClientSecret,
+                username=credsUserName,
+                password=credsPassword)
             print_and_log("Logged in")
             NotLoggedIn = False
         except praw.errors.InvalidUserPass:
