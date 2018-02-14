@@ -1,4 +1,4 @@
-1A0X1#In-Flight Refueling
+﻿1A0X1#In-Flight Refueling
 1A1X1#Flight Engineer
 1A2X1#Aircraft Loadmaster
 1A3X1#Airborne Mission Systems Operator
@@ -15,8 +15,7 @@
 1C5X1#Command & Control Battle Management Ops
 1C6X1#Space Systems Operations
 1C7X1#Airfield Management
-1C8X1#Ground Radar Systems
-1C8X2#Airfield Systems
+1C8X3#Radar, Airfield & Weather Systems (RAWS)
 1N0X1#All Source Intelligence Analyst/Operations Intelligence Specialist
 1N1X1#Geospatial Intelligence
 1N2X1#Signals Intelligence Analyst
@@ -98,18 +97,19 @@
 3E7X1#Fire Protection
 3E8X1#Explosive Ordnance Disposal
 3E9X1#U.S. Air Force Emergency Management
+3F0X1#Personnel
+3F1X1#Services
+3F2X1#Education and Training
+3F3X1#Manpower
+3F4X1#Equal Opportunity
+3F5X1#Administration
 3G0X1#Air National Guard Strength Management
 3H0X1#Historian
-3M0X1#Services
 3N0X2#Broadcast Journalist
 3N0X5#Photojournalist
 3N1X1#Regional Band
 3N2X1#Premier Band
 3P0X1#Security Forces
-3S0X1#Personnel
-3S1X1#Equal Opportunity
-3S2X1#Education and Training
-3S3X3#Manpower
 4A0X1#Health Services Management
 4A1X1#Medical Material
 4A2X1#Biomedical Equipment
@@ -164,6 +164,7 @@
 9A400#Disqualified Airman, Return to Duty Program
 9A500#Temporarily Ineligible for Retraining – Disqualified for Reasons Beyond Control
 9C000#CMSgt of the Air Force
+9C100#Executive Assistant to the Chief Master Sergeant of the Air Force
 9D100#Key Developmental Senior Enlisted Positions on Headquarters Air Force Staff and Air Force Senior Noncommissioned Officer Academy at Maxwell-Gunter Annex
 9E000#Command Chief Master Sergeant
 9F000#First Term Airmen Center NCOIC
@@ -181,6 +182,7 @@
 9T000#Basic Enlisted Airman
 9T100#Officer Trainee
 9T200#Pre-Cadet Assignee
+9T400#AFIT/EWI Enlisted Students
 9U000#Enlisted Airman Ineligible for Local Utilization
 9U100#Unallotted Enlisted Authorization
 9W000#Combat Wounded Warrior

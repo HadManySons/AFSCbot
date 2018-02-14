@@ -99,7 +99,7 @@
 11UX,Y,General
 11UX,Z,Other
 12BX,C,B-1 WSO
-12BX,D,B-52 WSO
+12BX,D,B-52 EWO
 12BX,E,B-52 Navigator/Radar Navigator
 12BX,U,Air Liaison Officer (ALO)
 12BX,W,EWO, General
@@ -170,8 +170,8 @@
 12SX,N,AC-130W
 12SX,O,AC-130W FCO
 12SX,P,MC-130J
-12SX,Q,AC-130J FCO
-12SX,R,AC-130J
+12SX,Q,AC-130J CSO
+12SX,R,AC-130J WSO
 12SX,S,EC-130J
 12SX,U,Air Liaison Officer
 12SX,W,EWO
@@ -264,8 +264,8 @@
 32EX,I,Industrial Engineer
 32EX,J,Environmental Engineer
 32EX,K,Explosive Ordnance Disposal (Non-Engineer)
-38PX,A,Analyst
-38PX,Q,Section Commander
+38FX,A,Analyst
+38FX,Q,Section Commander
 42GX,A,Orthopedics
 42GX,B,Otolaryngology
 42GX,C,General Surgery

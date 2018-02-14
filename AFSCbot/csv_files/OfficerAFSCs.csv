@@ -35,7 +35,7 @@
 16PX#Political-Military Affairs Strategist
 16RX#Planning & Programming
 17CX#Cyberspace Operations Commander
-17DX#Network Operations Officer
+17DX#Cyberspace Operations Officer
 17SX#Cyberspace Warfare Operations Officer
 18AX#Attack Remotely Piloted Aircraft Pilot
 18GX#Generalist Remotely Piloted Aircraft Pilot
@@ -50,7 +50,7 @@
 32EX#Civil Engineer
 35BX#Band
 35PX#Public Affairs
-38PX#Force Support
+38FX#Force Support
 40C0#Medical Commander
 41AX#Hospital Administration, Health Services Administrator and Medical Service Corps
 42BX#Physical Therapist
@@ -154,6 +154,7 @@
 92M1#Uniformed Services University of Health Sciences Student
 92M2#HPSP Biomedical Science Student
 92R0#Chaplain Candidate
+92P0#Physician Assistant Student
 92S0#Student Officer Authorization
 92T0#Pilot Trainee
 92T1#Navigator/Combat Systems Officer Trainee
