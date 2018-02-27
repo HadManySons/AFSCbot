@@ -47,7 +47,7 @@ def main():
                 # generates a fast find (but is not an accurate link,
                 # just makes the script faster (SIGNIFICANTLY FASTER)
                 permlink = "http://www.reddit.com{}/".format(
-                    rAirForceComment.permalink(True))
+                    rAirForceComment.permalink)
                 print_and_log("Processing comment: " + permlink)
 
                 # Pulls all comments previously commented on and checks
