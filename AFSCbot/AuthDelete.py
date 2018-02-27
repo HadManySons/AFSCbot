@@ -64,7 +64,7 @@ while True:
 
             # prints a link to the comment.
             permlink = "http://www.reddit.com" + \
-                       rAirForceComments.permalink() + "/"
+                       rAirForceComments.permalink + "/"
             print(permlink)
             logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") +
                          "Processing comment: " + permlink)
