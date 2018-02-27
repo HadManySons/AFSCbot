@@ -61,13 +61,9 @@ while True:
             #print(unread_messages)
             print("\nComments processed since start of script: " + str(globalCount))
             print("Processing comment: " + rAirForceComments.id)
-
-            # prints a link to the comment.
-            permlink = "http://www.reddit.com" + \
-                       rAirForceComments.permalink + "/"
-            print(permlink)
+            print("Submission: {}".format(str(rAirForceComments.submission)))
             logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") +
-                         "Processing comment: " + permlink)
+                         "Processing comment: " + rAirForceComments.id)
 
             #If, for some odd reason, the bot is the author, ignore it.
             if rAirForceComments.author == "AFILinkerBot":
@@ -77,9 +73,6 @@ while True:
                 #Get the parent comment(the bot) and grandparent(comment originally replied to)
                 parent = rAirForceComments.parent()
                 grandparent = parent.parent()
-
-                grandparentPermalink = "http://www.reddit.com" + \
-                       grandparent.permalink() + "/"
 
                 formattedComment = rAirForceComments.body
                 formattedComment = formattedComment.lower()
@@ -92,10 +85,10 @@ while True:
                             print("Deleting comment per redditors request")
                             rAirForceComments.parent().delete()
                             logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") +
-                                     "Deleting comment: " + permlink)
+                                     "Deleting comment: " + rAirForceComments.id)
 
                             #Let them know we deleted the comment
-                            rAirForceComments.author.message("Comment deleted", "Comment deleted: " + grandparentPermalink)
+                            rAirForceComments.author.message("Comment deleted", "Comment deleted: " + rAirForceComments.id)
 
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
