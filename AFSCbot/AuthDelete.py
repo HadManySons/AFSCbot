@@ -66,7 +66,7 @@ while True:
                          "Processing comment: " + rAirForceComments.id)
 
             #If, for some odd reason, the bot is the author, ignore it.
-            if rAirForceComments.author == "AFILinkerBot":
+            if rAirForceComments.author == "AFSCbot":
                 print("Author was the bot, skipping...")
                 continue
             else:
