@@ -43,10 +43,15 @@ def main():
             # stream all comments from /r/AirForce
             for rAirForceComment in rAirForce.stream.comments():
 
+                #If the post is older than about 5 months, ignore it and move on.
+                if (time.time() - rAirForceComments.created) > 13148715:
+                    print("Post too old, continuing")
+                    continue
+                
                 # prints a link to the comment. A True for permalink
                 # generates a fast find (but is not an accurate link,
                 # just makes the script faster (SIGNIFICANTLY FASTER)
-                permlink = "http://www.reddit.com{}/".format(
+                permlink = "http://www.reddit.com{}".format(
                     rAirForceComment.permalink)
                 print_and_log("Processing comment: " + permlink)
 
