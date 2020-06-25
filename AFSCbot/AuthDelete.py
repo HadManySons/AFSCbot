@@ -78,7 +78,10 @@ while True:
                 formattedComment = formattedComment.lower()
                 formattedComment = formattedComment.replace(' ', '')
 
-
+                #Shutdown bot if mod commands it
+                if "shutdown!" in formattedComment and rAirForceComments.author == ("HadManySons" or "SilentD"):
+                    os.system("cat /home/redditbots/bots/AFILinkerBot/AFILinkerBot.pid | xargs kill -9")
+            
                 if "deletethis!" in formattedComment:
                         #Must be the original comment author
                         if rAirForceComments.author == grandparent.author:
