@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from helper_functions import has_number
 from pprint import pprint
 
-CSV_FOLDER = os.getcwd() + "\csv_files\\"
+CSV_FOLDER = os.getcwd() + "/csv_files/"
 
 
 def get_AFSCs(reddit):

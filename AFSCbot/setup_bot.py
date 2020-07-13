@@ -8,7 +8,7 @@ from BotCreds import credsUserAgent,credsClientID, credsClientSecret, credsUserN
 
 from helper_functions import print_and_log
 
-DB_FILE = "AFSCbotCommentRecord.db"
+DB_FILE = "./AFSCbotCommentRecord.db"
 PID_FILE = "AFSCbot.pid"
 
 
@@ -53,14 +53,10 @@ def login():
 
 def setup_database():
     dbFile = Path(DB_FILE)
-
     # connection to database file
     conn = sqlite3.connect(DB_FILE)
     # database cursor object
     dbCommentRecord = conn.cursor()
-
-    # check to see if database file exists
-    if not dbFile.is_file():
-        dbCommentRecord.execute('''CREATE TABLE comments(comment text)''')
-        conn.commit()
+    # check to see if table exists
+    dbCommentRecord.execute('''CREATE TABLE IF NOT EXISTS comments(comment text)''')
     return conn, dbCommentRecord

@@ -1,6 +1,7 @@
 import logging
 import sys
-
+import os
+import time
 from read_csv_files import get_AFSCs, get_prefixes
 from setup_bot import open_pid, close_pid, login, setup_database
 from process_comment import generate_reply, send_reply
@@ -44,7 +45,7 @@ def main():
             for rAirForceComment in rAirForce.stream.comments():
 
                 #If the post is older than about 5 months, ignore it and move on.
-                if (time.time() - rAirForceComments.created) > 13148715:
+                if (time.time() - rAirForceComment.created) > 13148715:
                     print("Post too old, continuing")
                     continue
                 
@@ -69,7 +70,7 @@ def main():
                 elif rAirForceComment.author in ("AFSCbot", "CSFAbot"):
                     print_and_log("Author was the bot, skipping...")
                 else:
-                    reply_text = generate_reply(rAirForceComment.body,
+                    reply_text = generate_reply(rAirForceComment,
                                                     full_afsc_dict, prefix_dict)
 
                     # log that comment was prepared

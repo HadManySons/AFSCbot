@@ -100,3 +100,4 @@ ENV/
 
 # project specific
 .idea
+/AFSCbot/AFSCbotCommentRecord.db

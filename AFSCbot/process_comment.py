@@ -3,7 +3,6 @@ import os
 
 from helper_functions import print_and_log
 
-
 ENLISTED_AFSC_REGEX = "(?:^|\s|[\,])(([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?))"
 OFFICER_AFSC_REGEX = "(?:^|\s)(([A-Z]?)(\d\d[A-Z]([013579]|X?))([A-Z]?))"
 
@@ -16,6 +15,19 @@ COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
 COMMENT_FOOTER = ("\n\n[^^Source](https://github.com/HadManySons/AFSCbot)"
                   " ^^| [^^Subreddit](https://www.reddit.com/r/AFSCbot/)")
 
+def check_parents_for_matches(comment, match):
+    if comment.is_root:
+        print("Is top level comment")
+        return False
+    else:
+        formatted_parent_comment = comment.parent().body
+        formatted_parent_comment = formatted_parent_comment.upper()
+        if match in formatted_parent_comment:
+            print("Previous match")
+            return True
+        else:
+            print("Checking next parent")
+            return check_parents_for_matches(comment.parent(), match)
 
 def generate_reply(comment, full_afsc_dict, prefix_dict):
     """
@@ -26,7 +38,7 @@ def generate_reply(comment, full_afsc_dict, prefix_dict):
     :return: a list of strings representing lines that will be in the reply
     """
 
-    formatted_comment = filter_out_quotes(comment)
+    formatted_comment = filter_out_quotes(comment.body)
 
     # Search through the comments for things that look like enlisted AFSCs
     matched_comments_enlisted = get_enlisted_regex_matches(formatted_comment)
@@ -42,11 +54,15 @@ def generate_reply(comment, full_afsc_dict, prefix_dict):
 
     # process all enlisted
     for match in matched_comments_enlisted:
+        if check_parents_for_matches(comment, match.group(1).upper()):
+            continue
         comment_text = process_comment(comment_text, match,
                                         enlisted_afsc_dict, enlisted_prefix_dict)
 
     # process all officer
     for match in matched_comments_officer:
+        if check_parents_for_matches(comment, match.group(1).upper()):
+            continue
         comment_text = process_comment(comment_text, match,
                                        officer_afsc_dict, officer_prefix_dict)
 
