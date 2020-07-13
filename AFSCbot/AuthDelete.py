@@ -3,6 +3,7 @@ import logging
 import time
 import os
 import sys
+from helper_functions import print_and_log
 from BotCreds import credsUserAgent, credsClientID, credsClientSecret, credsPassword, credsUserName
 
 # Initialize a logging object and have some examples below from the Python
@@ -15,7 +16,7 @@ pidfile = "AuthDelete.pid"
 
 # Exit if a version of the script is already running
 if os.path.isfile(pidfile):
-    print(pidfile + " already running, exiting")
+    print_and_log(pidfile + " already running, exiting")
     sys.exit()
 
 # Create the lock file for the script
@@ -33,14 +34,14 @@ while NotLoggedIn:
             client_secret=credsClientSecret.strip(),
             username=credsUserName.strip(),
             password=credsPassword.strip())
-        print("Logged in")
+        print_and_log("Logged in")
         NotLoggedIn = False
     except praw.errors.InvalidUserPass:
-        print("Wrong username or password")
+        print_and_log("Wrong username or password")
         logging.error(time.strftime("%Y/%m/%d %H:%M:%S ") + "Wrong username or password")
         exit(1)
     except Exception as err:
-        print(err)
+        print_and_log(err)
         time.sleep(5)
 
 # vars
@@ -59,15 +60,15 @@ while True:
             rAirForceComments.mark_read()
 
             #print(unread_messages)
-            print("\nComments processed since start of script: " + str(globalCount))
-            print("Processing comment: " + rAirForceComments.id)
-            print("Submission: {}".format(str(rAirForceComments.submission)))
+            print_and_log("\nComments processed since start of script: " + str(globalCount))
+            print_and_log("Processing comment: " + rAirForceComments.id)
+            print_and_log("Submission: {}".format(str(rAirForceComments.submission)))
             logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") +
                          "Processing comment: " + rAirForceComments.id)
 
             #If, for some odd reason, the bot is the author, ignore it.
             if rAirForceComments.author == "AFSCbot":
-                print("Author was the bot, skipping...")
+                print_and_log("Author was the bot, skipping...")
                 continue
             else:
                 #Get the parent comment(the bot) and grandparent(comment originally replied to)
@@ -85,7 +86,7 @@ while True:
                 if "deletethis!" in formattedComment:
                         #Must be the original comment author
                         if rAirForceComments.author == grandparent.author:
-                            print("Deleting comment per redditors request")
+                            print_and_log("Deleting comment per redditors request")
                             rAirForceComments.parent().delete()
                             logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") +
                                      "Deleting comment: " + rAirForceComments.id)
@@ -95,14 +96,14 @@ while True:
 
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
-        print("Keyboard Interrupt experienced, cleaning up and exiting")
-        print("Exiting due to keyboard interrupt")
+        print_and_log("Keyboard Interrupt experienced, cleaning up and exiting")
+        print_and_log("Exiting due to keyboard interrupt")
         logging.info(time.strftime("%Y/%m/%d %H:%M:%S ")
                      + "Exiting due to keyboard interrupt")
         exit(0)
 
     except Exception as err:
-        print("Exception: " + str(err.with_traceback()))
+        print_and_log("Exception: " + str(err.with_traceback()))
         logging.error(time.strftime("%Y/%m/%d %H:%M:%S ")
                       + "Unhandled exception: " + + str(err.with_traceback()))
 

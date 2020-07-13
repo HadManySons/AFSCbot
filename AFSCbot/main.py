@@ -7,14 +7,21 @@ from setup_bot import open_pid, close_pid, login, setup_database
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
 
-# 'AFSCbot' must be changed to 'airforce' for a production version of the script
-#SUBREDDIT = 'airforce+airnationalguard+afrotc'
+# 'AFSCbot' must be changed to 'airforce' or something else for a production version of the script
+# In the docker version, it will attempt to read an environment variable for SUBREDDIT,
+# otherwise it'll default to 'AFSCbot"
+#SUBREDDIT = 'airforce+airnationalguard+afrotc+airforcerecruits'
 SUBREDDIT = 'AFSCbot'
+if 'SUBREDDIT' in os.environ:
+    SUBREDDIT = os.getenv('SUBREDDIT')
 
+logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
+
+print_and_log(SUBREDDIT)
 
 def main():
     # Initialize a logging object
-    logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
+    #logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
     print_and_log("Starting script")
 
     # reddit user object
@@ -46,7 +53,7 @@ def main():
 
                 #If the post is older than about 5 months, ignore it and move on.
                 if (time.time() - rAirForceComment.created) > 13148715:
-                    print("Post too old, continuing")
+                    print_and_log("Post too old, continuing")
                     continue
                 
                 # prints a link to the comment. A True for permalink
@@ -87,16 +94,16 @@ def main():
                                                 (rAirForceComment.id,))
                         conn.commit()
                     else:
-                        print("No AFSC found, skipping...")
+                        print_and_log("No AFSC found, skipping...")
 
                 comments_seen += 1
-                print()
-                print("Comments processed since start of script: {}".format(
+                print_and_log("")
+                print_and_log("Comments processed since start of script: {}".format(
                         comments_seen))
 
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
-        print("Exiting due to keyboard interrupt")
+        print_and_log("Exiting due to keyboard interrupt")
 
     finally:
         conn.commit()

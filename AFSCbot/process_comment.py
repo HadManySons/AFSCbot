@@ -1,5 +1,4 @@
 import re
-import os
 
 from helper_functions import print_and_log
 
@@ -16,17 +15,26 @@ COMMENT_FOOTER = ("\n\n[^^Source](https://github.com/HadManySons/AFSCbot)"
                   " ^^| [^^Subreddit](https://www.reddit.com/r/AFSCbot/)")
 
 def check_parents_for_matches(comment, match):
+    """
+    Checks parent comments for any previous matches of an
+    AFSC, so the bot doesn't spam a comment thread
+    :param comment: a PRAW instance of a comment
+    :param match: a string containing an AFSC to check. "1A1X1" for example. Needs to be
+    in uppercase
+    :return: Returns true if a previous match was found, otherwise false if it
+    reaches a top level comment without finding a match.
+    """
     if comment.is_root:
-        print("Is top level comment")
+        print_and_log("Is top level comment")
         return False
     else:
         formatted_parent_comment = comment.parent().body
         formatted_parent_comment = formatted_parent_comment.upper()
         if match in formatted_parent_comment:
-            print("Previous match")
+            print_and_log("Previous match")
             return True
         else:
-            print("Checking next parent")
+            print_and_log("Checking next parent")
             return check_parents_for_matches(comment.parent(), match)
 
 def generate_reply(comment, full_afsc_dict, prefix_dict):
@@ -148,7 +156,7 @@ def process_comment(comment_text, match, afsc_dict, prefix_dict):
 
     dict_type = afsc_dict["dict_type"]
 
-    print("Whole match: " + whole_match)
+    #print("Whole match: " + whole_match)
     if prefix:
         print("Prefix: " + prefix)
     print("AFSC: " + afsc)
@@ -229,7 +237,7 @@ def process_comment(comment_text, match, afsc_dict, prefix_dict):
             comment_text.append(comment_line)
     else:
         print_and_log("Did not find {} in {} AFSCs".format(tempAFSC, dict_type))
-    print("-------")
+    print_and_log("-------")
     return comment_text
 
 
