@@ -8,7 +8,7 @@ from BotCreds import credsUserAgent,credsClientID, credsClientSecret, credsUserN
 
 from helper_functions import print_and_log
 
-DB_FILE = "./AFSCbotCommentRecord.db"
+DB_FILE = "./afscbotlogs/AFSCbotCommentRecord.db"
 PID_FILE = "AFSCbot.pid"
 
 

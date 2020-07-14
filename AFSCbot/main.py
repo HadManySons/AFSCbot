@@ -15,7 +15,7 @@ SUBREDDIT = 'AFSCbot'
 if 'SUBREDDIT' in os.environ:
     SUBREDDIT = os.getenv('SUBREDDIT')
 
-logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
+logging.basicConfig(filename='./afscbotlogs/AFSCbot.log', level=logging.INFO)
 
 print_and_log(SUBREDDIT)
 

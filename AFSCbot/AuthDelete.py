@@ -8,7 +8,7 @@ from BotCreds import credsUserAgent, credsClientID, credsClientSecret, credsPass
 
 # Initialize a logging object and have some examples below from the Python
 # Doc page
-logging.basicConfig(filename='AuthDelete.log', level=logging.INFO)
+logging.basicConfig(filename='./afscbotlogs/AuthDelete.log', level=logging.INFO)
 
 # Get the PID of this process
 pid = str(os.getpid())
