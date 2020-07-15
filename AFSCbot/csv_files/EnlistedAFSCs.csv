@@ -9,19 +9,19 @@
 1B4X1#Cyber Warfare Operations
 1C0X2#Aviation Resource Management
 1C1X1#Air Traffic Control
-1C2X1#Combat Control
-1C3X1#Command Post
-1C4X1#Tactical Air Control Party
-1C5X1#Command & Control Battle Management Ops
+1C3X1#Command and Control Operations
+1C5X1#Command and Control Battle Management Ops
 1C6X1#Space Systems Operations
 1C7X1#Airfield Management
 1C8X3#Radar, Airfield & Weather Systems (RAWS)
-1N0X1#All Source Intelligence Analyst/Operations Intelligence Specialist
+1D7X1#Cyber Defense Operations
+1N0X1#All Source Intelligence Analyst
 1N1X1#Geospatial Intelligence
 1N2X1#Signals Intelligence Analyst
 1N3X1#Cryptologic Language Analyst
 1N4X1#Fusion Analyst
 1N7X1#Human Intelligence Specialist
+1N8X1#Targeting Analyst
 1P0X1#Aircrew Flight Equipment
 1S0X1#Safety
 1T0X1#Survival, Evasion, Resistance, and Escape
@@ -29,7 +29,10 @@
 1U0X1#Remotely Piloted Aircraft Sensor Operator
 1U1X1#Remotely Piloted Aircraft Pilot
 1W0X1#Weather
-1W0X2#Special Operations Weather
+1Z1X1#Pararescue
+1Z2X1#Combat Control
+1Z3X1#Tactical Air Control Party
+1Z4X1#Special Reconnaissance
 2A0X1#Avionics Test Station and Components
 2A2X1#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems
 2A2X2#Special Operations Forces/Personnel Recover Integrated Instruments and Flight Control Systems
@@ -37,11 +40,10 @@
 2A3X3#Tactical Aircraft Maintenance
 2A3X4#Fighter Aircraft Integrated Avionics
 2A3X5#Advanced Fighter Aircraft Integrated Avionics
-2A3X7#Tactical Aircraft Maintenance
+2A3X7#Tactical Aircraft Maintenance (5th Generation)
 2A3X8#Remotely Piloted Aircraft Maintenance
 2A5X1#Airlift/Special Mission Aircraft Maintenance
 2A5X2#Helicopter/Tiltrotor Aircraft Maintenance
-2A5X3#Mobility Air Forces Electronic Warfare Systems
 2A5X4#Refuel/Bomber Aircraft Maintenance
 2A6X1#Aerospace Propulsion
 2A6X2#Aerospace Ground Equipment
@@ -75,7 +77,6 @@
 2W0X1#Munitions Systems
 2W1X1#Aircraft Armament Systems
 2W2X1#Nuclear Weapons
-3A1X1#Administration
 3D0X1#Knowledge Operations Management
 3D0X2#Cyber Systems Operations
 3D0X3#Cyber Surety
@@ -96,14 +97,14 @@
 3E6X1#Operations Management
 3E7X1#Fire Protection
 3E8X1#Explosive Ordnance Disposal
-3E9X1#U.S. Air Force Emergency Management
+3E9X1#Emergency Management
 3F0X1#Personnel
 3F1X1#Services
 3F2X1#Education and Training
 3F3X1#Manpower
 3F4X1#Equal Opportunity
 3F5X1#Administration
-3G0X1#Air National Guard Strength Management
+3G0X1#Talent Acquisition
 3H0X1#Historian
 3N0X2#Broadcast Journalist
 3N0X5#Photojournalist
@@ -143,11 +144,22 @@
 8C000#Airman & Family Readiness Center RNCO
 8D100#Language & Culture Advisor
 8F000#First Sergeant
-8G000#Honor Guard
+8G000#The United States Air Force Honor Guard
 8G100#USAF Installation Honor Guard Program Manager
 8H000#Airman Dorm Leader
-8I000#IG Superintendent, Inspections
-8M000#Postal service
+8I000#Superintendent, Inspector General
+8I100#Inspections Coordinator
+8I200#Superintendent, Complaints and Resolution
+8K000#Software Development Specialist
+8L100#Enlisted Air Advisor (Conventional Force) - Basic
+8L200#Enlisted Air Advisor (Conventional Force) Basic, Team Sergeant
+8L300#Enlisted Air Advisor (Conventional Force) Basic, Team Leader
+8L400#Enlisted Air Advisor (Conventional Force) Advanced
+8L500#Enlisted Air Advisor (Conventional Force) Advanced, Team Sergeant
+8L600#Enlisted Air Advisor (Conventional Force) Advanced, Team Leader
+8L700#Enlisted Combat Aviation Advisor (SOF)
+8L800#Enlisted Combat Aviation Advisor (SOF) Team Sergeant
+8L(00#Enlisted Combat Aviation Advisor (SOF) Team Leader
 8P000#Courier
 8P100#Defense Attaché
 8R000#Enlisted Accessions Recruiter
@@ -157,27 +169,31 @@
 8T000#Professional Military Education Instructor
 8T100#Enlisted Professional Military Education Instructional System Designer
 8U000#Unit Deployment Manager
-9A000#Awaiting Retraining-Reasons beyond Control
-9A100#Awaiting Retraining-Reasons within Control
+9A000#Disqualified for Reasons beyond Control
+9A100#Disqualified for Reasons within Control
 9A200#Awaiting Discharge/Separation/Retirement for Reasons Within Their Control
 9A300#Awaiting Discharge/Separation/Retirement for Reasons Beyond Their Control
 9A400#Disqualified Airman, Return to Duty Program
 9A500#Temporarily Ineligible for Retraining – Disqualified for Reasons Beyond Control
 9C000#CMSgt of the Air Force
 9C100#Executive Assistant to the Chief Master Sergeant of the Air Force
-9D100#Key Developmental Senior Enlisted Positions on Headquarters Air Force Staff and Air Force Senior Noncommissioned Officer Academy at Maxwell-Gunter Annex
+9D100#Key Developmental Senior Enlisted Positions
 9E000#Command Chief Master Sergeant
-9F000#First Term Airmen Center NCOIC
+9E100#First Term Airmen Center NCOIC
+9E200#Individual Mobilization Augmentee to Command Chief Master Sergeant
+9F000#First Term Airmen Center (FTAC) NCOIC
 9G100#Group Superintendent
+9H000#Academic Faculty Instructor
+9I000#Futures Airmen
 9J000#Prisoner
 9L000#Interpreter/Translator
 9L100#Enlisted Engagement Manager/International Affairs
 9M000#Military Entrance Processing Command Senior Enlisted Advisor
-9M200#International Health Specialists
-9M400#Chief, Medical Enlisted Force
+9M200#International Health Specialists (IHS)
+9M400#Chief, Medical Enlisted Force (CMEF)
 9N000#Secretary of the Air Force Enlisted Legislative Fellows
 9P000#Patient
-9R000#Civil Air Patrol USAF Reserve Assistance NCO
+9R000#Civil Air Patrol (CAP)-USAF Reserve Assistance NCO
 9S100#Scientific Applications Specialist
 9T000#Basic Enlisted Airman
 9T100#Officer Trainee
@@ -189,3 +205,8 @@
 9W200#Combat Wounded Warrior with Exemptions
 9W300#Non-Combat Wounded Warrior
 9W400#Wounded Warrior-Limited Assignment Status
+9W800#Wounded Warrior-Ambassador
+9W900#Wounded Warrior- Project Planner/Officer
+9Z000#Special Warfare Mission Support (SWMS) Chief Enlisted Manager (CEM) on Headquarters Air Force Staff, Air Force Special Warfare Division
+9Z100#Special Warfare Mission Support (SWMS) Senior Enlisted Leader, Air Force Special Warfare (AFSPECWAR)
+9Z200#Special Warfare Mission Support (SWMS) Superintendent, Air Force Special Warfare (AFSPECWAR)
