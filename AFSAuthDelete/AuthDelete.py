@@ -4,11 +4,17 @@ import time
 import os
 import sys
 from helper_functions import print_and_log
-from BotCreds import credsUserAgent, credsClientID, credsClientSecret, credsPassword, credsUserName
+
+#get creds from environment variables
+credsUserAgent = os.environ.get("AFE_USERAGENT")
+credsClientID = os.environ.get("AFE_ID")
+credsClientSecret = os.environ.get("AFE_SECRET")
+credsPassword = os.environ.get("AFE_PASSWORD")
+credsUserName = os.environ.get("AFE_USERNAME")
 
 # Initialize a logging object and have some examples below from the Python
 # Doc page
-logging.basicConfig(filename='./afscbotlogs/AuthDelete.log', level=logging.INFO)
+logging.basicConfig(filename='AuthDelete.log', level=logging.INFO)
 
 # Get the PID of this process
 pid = str(os.getpid())

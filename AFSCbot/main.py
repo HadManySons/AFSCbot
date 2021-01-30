@@ -7,17 +7,35 @@ from setup_bot import open_pid, close_pid, login, setup_database
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
 
-# 'AFSCbot' must be changed to 'airforce' or something else for a production version of the script
-# In the docker version, it will attempt to read an environment variable for SUBREDDIT,
-# otherwise it'll default to 'AFSCbot"
+credsPassword = os.environ.get('AFE_PASSWORD')
+credsUserName = os.environ.get('AFE_USERNAME')
+credsClientSecret = os.environ.get('AFE_SECRET')
+credsClientID = os.environ.get("AFE_ID")
+credsUserAgent = os.environ.get("AFE_USERAGENT")
+subreddit = os.environ.get("AFE_SUBREDDIT")
+
 #SUBREDDIT = 'airforce+airnationalguard+afrotc+airforcerecruits'
-SUBREDDIT = 'AFSCbot'
-if 'SUBREDDIT' in os.environ:
-    SUBREDDIT = os.getenv('SUBREDDIT')
+#SUBREDDIT = 'AFSCbot'
 
 logging.basicConfig(filename='./afscbotlogs/AFSCbot.log', level=logging.INFO)
 
-print_and_log(SUBREDDIT)
+print_and_log(subreddit)
+
+def checkForReplies(comment_list, rAirForceComments, permlink):
+    """
+    Checks any replies the comment in question to see if the bot
+    has already replied
+    :param comment_list: a list of comments that are replies
+    :param rAirForceComments: the comment in question
+    :param permlink: permanent link to the comment
+    :return: returns true if the comment has already been replied to, otherwise false
+    """
+    for comment in comment_list:
+        if rAirForceComments.id in comment.body:
+            print_and_log("Already processed comment: " + permlink + ", skipping")
+            print("Comment already processed, skipping")
+            return True
+    return False
 
 def main():
     # Initialize a logging object
@@ -25,26 +43,23 @@ def main():
     print_and_log("Starting script")
 
     # reddit user object
-    reddit = login()
+    reddit = login(credsUserName, credsPassword, credsClientSecret, credsClientID, credsUserAgent)
 
     # creates file tracking if script is currently running
     open_pid()
-
-    # setup pid, database, and AFSC dicts
-    conn, dbCommentRecord = setup_database()
 
     # load all the AFSCs and prefixes into dictionaries
     try:
         full_afsc_dict = get_AFSCs(reddit)
         prefix_dict = get_prefixes()
         # subreddit instance of /r/AirForce.
-        rAirForce = reddit.subreddit(SUBREDDIT)
+        rAirForce = reddit.subreddit(subreddit)
     except Exception as e:
         print_and_log("Couldn't load dicts, {}".format(e), error=True)
         close_pid()
         sys.exit(1)
 
-    print_and_log("Starting processing loop for subreddit: " + SUBREDDIT)
+    print_and_log("Starting processing loop for subreddit: " + subreddit)
     comments_seen = 0
     try:
         while True:
@@ -63,38 +78,26 @@ def main():
                     rAirForceComment.permalink)
                 print_and_log("Processing comment: " + permlink)
 
-                # Pulls all comments previously commented on and checks
-                # if the current comment has been replied to
-                dbCommentRecord.execute(
-                    "SELECT * FROM comments WHERE comment=?",
-                    (rAirForceComment.id,))
-                id_already_exists = dbCommentRecord.fetchone()
+                # Check replies to make sure the bot hasn't responded yet
+                rAirForceComment.refresh()
+                rAirForceComment.replies.replace_more()
+                if checkForReplies(rAirForceComment.replies.list(), rAirForceComment, permlink):
+                    continue
 
-                # Make sure we don't reply to the same comment twice
-                # or to the bot itself
-                if id_already_exists:
-                    print_and_log("Already replied to comment, skipping...")
-                elif rAirForceComment.author in ("AFSCbot", "CSFAbot"):
-                    print_and_log("Author was the bot, skipping...")
+                reply_text = generate_reply(rAirForceComment,
+                                                full_afsc_dict, prefix_dict)
+
+                # log that comment was prepared
+                comment_info_text = (
+                "Preparing to reply to id {} by author: {}".format(
+                    rAirForceComment.id, rAirForceComment.author))
+                print_and_log(comment_info_text)
+
+                if reply_text:
+                    send_reply(reply_text, rAirForceComment)
+
                 else:
-                    reply_text = generate_reply(rAirForceComment,
-                                                    full_afsc_dict, prefix_dict)
-
-                    # log that comment was prepared
-                    comment_info_text = (
-                    "Preparing to reply to id {} by author: {}".format(
-                        rAirForceComment.id, rAirForceComment.author))
-                    print_and_log(comment_info_text)
-
-                    if reply_text:
-                        send_reply(reply_text, rAirForceComment)
-
-                        # insert comment id into database so it wont be repeated
-                        dbCommentRecord.execute('INSERT INTO comments VALUES (?);',
-                                                (rAirForceComment.id,))
-                        conn.commit()
-                    else:
-                        print_and_log("No AFSC found, skipping...")
+                    print_and_log("No AFSC found, skipping...")
 
                 comments_seen += 1
                 print_and_log("")
@@ -106,8 +109,6 @@ def main():
         print_and_log("Exiting due to keyboard interrupt")
 
     finally:
-        conn.commit()
-        conn.close()
         close_pid()
 
 

@@ -1,16 +1,12 @@
 from pathlib import Path
 import praw
-import sqlite3
 import os
 import sys
 import time
-from BotCreds import credsUserAgent,credsClientID, credsClientSecret, credsUserName, credsPassword
 
 from helper_functions import print_and_log
 
-DB_FILE = "./afscbotlogs/AFSCbotCommentRecord.db"
 PID_FILE = "AFSCbot.pid"
-
 
 def open_pid():
     # Get the PID of this process
@@ -28,18 +24,18 @@ def close_pid():
     os.unlink(PID_FILE)
 
 
-def login():
+def login(username, password, client_secret, client_id, user_agent):
 
     # Try to login or sleep/wait until logged in, or exit if user/pass wrong
     NotLoggedIn = True
     while NotLoggedIn:
         try:
             reddit = praw.Reddit(
-                user_agent=credsUserAgent,
-                client_id=credsClientID,
-                client_secret=credsClientSecret,
-                username=credsUserName,
-                password=credsPassword)
+                user_agent=user_agent,
+                client_id=client_id,
+                client_secret=client_secret,
+                username=username,
+                password=password)
             print_and_log("Logged in")
             NotLoggedIn = False
         except praw.errors.InvalidUserPass:
@@ -49,14 +45,3 @@ def login():
             print_and_log(str(err), error=True)
             time.sleep(5)
     return reddit
-
-
-def setup_database():
-    dbFile = Path(DB_FILE)
-    # connection to database file
-    conn = sqlite3.connect(DB_FILE)
-    # database cursor object
-    dbCommentRecord = conn.cursor()
-    # check to see if table exists
-    dbCommentRecord.execute('''CREATE TABLE IF NOT EXISTS comments(comment text)''')
-    return conn, dbCommentRecord

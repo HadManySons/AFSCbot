@@ -1,5 +1,0 @@
-credsUserAgent = "An /r/AirForce AFSC matching bot"
-credsClientID = ""
-credsClientSecret = ""
-credsUserName = ""
-credsPassword = ""

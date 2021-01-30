@@ -113,7 +113,7 @@ def send_reply(comment_text, rAirForceComment):
     print_and_log("comment: {}".format(comment_text))
 
     comment_str = "\n\n".join(comment_text)
-    rAirForceComment.reply(COMMENT_HEADER + comment_str + COMMENT_FOOTER)
+    rAirForceComment.reply(COMMENT_HEADER + comment_str + COMMENT_FOOTER + " ^^^^^^" + rAirForceComment.id)
 
     print_and_log("Sent reply...")
 
