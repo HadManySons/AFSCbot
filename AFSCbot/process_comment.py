@@ -1,5 +1,4 @@
 import re
-
 from helper_functions import print_and_log
 
 ENLISTED_AFSC_REGEX = "(?:^|\s|[\,])(([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?))"

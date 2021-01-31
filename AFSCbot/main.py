@@ -3,7 +3,7 @@ import sys
 import os
 import time
 from read_csv_files import get_AFSCs, get_prefixes
-from setup_bot import open_pid, close_pid, login, setup_database
+from setup_bot import open_pid, close_pid, login
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
 
@@ -17,7 +17,7 @@ subreddit = os.environ.get("AFE_SUBREDDIT")
 #SUBREDDIT = 'airforce+airnationalguard+afrotc+airforcerecruits'
 #SUBREDDIT = 'AFSCbot'
 
-logging.basicConfig(filename='./afscbotlogs/AFSCbot.log', level=logging.INFO)
+logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
 
 print_and_log(subreddit)
 
