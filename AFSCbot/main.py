@@ -7,12 +7,12 @@ from setup_bot import open_pid, close_pid, login
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
 
-credsPassword = os.environ.get('AFE_PASSWORD')
-credsUserName = os.environ.get('AFE_USERNAME')
-credsClientSecret = os.environ.get('AFE_SECRET')
-credsClientID = os.environ.get("AFE_ID")
-credsUserAgent = os.environ.get("AFE_USERAGENT")
-subreddit = os.environ.get("AFE_SUBREDDIT")
+credsPassword = os.environ.get('AFS_PASSWORD')
+credsUserName = os.environ.get('AFS_USERNAME')
+credsClientSecret = os.environ.get('AFS_SECRET')
+credsClientID = os.environ.get("AFS_ID")
+credsUserAgent = os.environ.get("AFS_USERAGENT")
+subreddit = os.environ.get("AFS_SUBREDDIT")
 
 #SUBREDDIT = 'airforce+airnationalguard+afrotc+airforcerecruits'
 #SUBREDDIT = 'AFSCbot'
