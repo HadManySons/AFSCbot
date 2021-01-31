@@ -1,4 +1,4 @@
-FROM python:3.8.3-alpine3.12
+FROM python:3.9.1-alpine3.12
 
 RUN apk update
 RUN apk add bash
@@ -6,7 +6,6 @@ RUN apk add vim
 
 WORKDIR /app
 
-#WORKDIR /app/csv_files
 RUN mkdir -p /app/csv_files
 COPY ./csv_files/ /app/csv_files
 
@@ -18,6 +17,6 @@ COPY process_comment.py .
 COPY read_csv_files.py .
 COPY setup_bot.py .
 
-RUN pip3.8 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 CMD ["python", "main.py"]
