@@ -16,18 +16,6 @@ credsUserName = os.environ.get("AFS_USERNAME")
 # Doc page
 logging.basicConfig(filename='AuthDelete.log', level=logging.INFO)
 
-# Get the PID of this process
-pid = str(os.getpid())
-pidfile = "AuthDelete.pid"
-
-# Exit if a version of the script is already running
-if os.path.isfile(pidfile):
-    print_and_log(pidfile + " already running, exiting")
-    sys.exit()
-
-# Create the lock file for the script
-open(pidfile, 'w').write(pid)
-
 logging.info(time.strftime("%Y/%m/%d %H:%M:%S ") + "Starting script")
 
 # Try to login or sleep/wait until logged in, or exit if user/pass wrong
@@ -112,6 +100,3 @@ while True:
         print_and_log("Exception: " + str(err.with_traceback()))
         logging.error(time.strftime("%Y/%m/%d %H:%M:%S ")
                       + "Unhandled exception: " + + str(err.with_traceback()))
-
-    finally:
-        os.unlink(pidfile)
