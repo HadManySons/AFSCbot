@@ -45,9 +45,6 @@ def main():
     # reddit user object
     reddit = login(credsUserName, credsPassword, credsClientSecret, credsClientID, credsUserAgent)
 
-    # creates file tracking if script is currently running
-    open_pid()
-
     # load all the AFSCs and prefixes into dictionaries
     try:
         full_afsc_dict = get_AFSCs(reddit)
@@ -56,7 +53,6 @@ def main():
         rAirForce = reddit.subreddit(subreddit)
     except Exception as e:
         print_and_log("Couldn't load dicts, {}".format(e), error=True)
-        close_pid()
         sys.exit(1)
 
     print_and_log("Starting processing loop for subreddit: " + subreddit)
@@ -107,10 +103,6 @@ def main():
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
         print_and_log("Exiting due to keyboard interrupt")
-
-    finally:
-        close_pid()
-
 
 if __name__ == "__main__":
     main()

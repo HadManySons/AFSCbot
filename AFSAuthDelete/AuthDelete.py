@@ -2,7 +2,6 @@ import praw
 import logging
 import time
 import os
-import sys
 from helper_functions import print_and_log
 
 #get creds from environment variables
