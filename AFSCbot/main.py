@@ -14,12 +14,7 @@ credsClientID = os.environ.get("AFS_ID")
 credsUserAgent = os.environ.get("AFS_USERAGENT")
 subreddit = os.environ.get("AFS_SUBREDDIT")
 
-#SUBREDDIT = 'airforce+airnationalguard+afrotc+airforcerecruits'
-#SUBREDDIT = 'AFSCbot'
-
 logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
-
-print_and_log(subreddit)
 
 def checkForReplies(comment_list, rAirForceComments, permlink):
     """
