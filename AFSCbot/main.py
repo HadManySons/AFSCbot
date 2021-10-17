@@ -3,7 +3,7 @@ import sys
 import os
 import time
 from read_csv_files import get_AFSCs, get_prefixes
-from setup_bot import open_pid, close_pid, login
+from setup_bot import login
 from process_comment import generate_reply, send_reply
 from helper_functions import print_and_log
 
