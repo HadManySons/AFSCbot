@@ -1,6 +1,7 @@
 11BX,A,B-1
 11BX,B,B-2
 11BX,C,B-52
+11BX,D,B-21
 11BX,U,Air Liaison Officer (ALO)
 11BX,Y,General
 11BX,Z,Other
@@ -27,7 +28,7 @@
 11HX,C,UH-1N
 11HX,E,HH-60
 11HX,F,CSAR-X
-11HX,G,CVLSP
+11HX,G,MH-139
 11HX,J,HC-130J
 11HX,P,HC-130 P/N
 11HX,W,Combat Search and Rescue/General
@@ -72,6 +73,7 @@
 11RX,L,E-8
 11RX,M,MC-12
 11RX,N,RC-26B
+11RX,S,E-7
 11RX,Y,General
 11RX,Z,Other
 11SX,C,AC-130H
@@ -152,6 +154,7 @@
 12RX,K,WC/OC-135
 12RX,L,E-8
 12RX,N,RC-26B
+12RX,S,E-7 EWO
 12RX,W,EWO, General
 12RX,Y,General
 12RX,Z,Other
@@ -186,13 +189,12 @@
 12UX,U,Air Liaison Officer
 12UX,Y,General
 12UX,Z,Other
-13AX,A,Pilot
-13AX,B,Mission Specialist
 13BX,B,AWACS
 13BX,C,Air Defense
 13BX,D,Mobile Air Control
 13BX,K,JSTARS
 13BX,M,Trainer (UABMT)
+13BX,S,E-7
 13BX,U,Air Liaison Officer
 13BX,Y,General
 13BX,Z,Other
@@ -201,9 +203,8 @@
 13SX,D,Space Battle Management
 13SX,E,Space Access and Sustainment
 15WX,A,Advanced Weather Activities
-16FX,A,Attache
-16FX,C,SOUTCOME
-16FX,D,PACOM
+16FX,C,SOUTHCOM
+16FX,D,INDOPACOM
 16FX,F,CENTCOM
 16FX,G,AFRICOM
 16FX,H,EUCOM
@@ -212,6 +213,12 @@
 16KX,E,Software Engineer
 16KX,M,Product Manager
 16KX,S,Data Scientist
+16ZX,C,SOUTHCOM
+16ZX,D,INDOPACOM
+16ZX,F,CENTCOM
+16ZX,G,AFRICOM
+16ZX,H,EUCOM
+16ZX,L,Generalist
 17DX,A,Network Operations
 17DX,B,Expeditionary Communications Operations
 17DX,C,Capabilities Development
@@ -257,27 +264,28 @@
 32EX,H,Explosive Ordnance Disposal Engineer
 32EX,I,Industrial Engineer
 32EX,J,Environmental Engineer
-32EX,K,Explosive Ordnance Disposal (Non-Engineer)
 38FX,A,Analyst
 38FX,Q,Section Commander
 41AX,A,Health Facilities Architect/Engineer/Construction Manager
+42BX,Z,Special Warfare
 42GX,A,Orthopedics
 42GX,B,Otolaryngology
 42GX,C,General Surgery
 42GX,E,Emergency Medicine
 42GX,N,Psychiatry
-42GX,P,Aerospace Operational Medicine
+42GX,P,Aeromedical
 42PX,A,Clinical Neuropsychologist
-42PX,B,Health Psychologist
+42PX,B,Clinical Health Psychologist
 42PX,C,Child & Adolescent Psychologist
 42PX,D,Aviation Psychologist
 42PX,E,Operational Psychologist
+42PX,F,Investigative Psychologist
 43EX,A,General
 43EX,B,Industrial Hygiene
-43EX,C,Architecture/Medical Construction
 43EX,D,Environmental Engineering and Science
 43EX,G,Health Physics
 43EX,M,Medical Physics
+43EX,R,Radiation
 43HX,E,Medical Entomologist
 43PX,A,Clinical Pharmacy
 43TX,A,Biomedical Laboratory Science
@@ -298,6 +306,7 @@
 44EX,A,Emergency Medicine Specialist
 44FX,A,Sports Medicine
 44FX,B,Obstetrics
+44FX,C,Pain Management
 44KX,A,Adolescent Medicine
 44KX,B,Cardiology
 44KX,C,Developmental Pediatrics
@@ -337,7 +346,12 @@
 44SX,A,Dermatologic Surgery
 44SX,B,Dermatopathology
 44SX,C,Pediatric Dermatology
-44YX,A,Pediatrics
+44YX,A,Anesthesia
+44YX,E,Emergency Medicine
+44YX,K,Pediatrics
+44YX,M,Internal Medicine
+44YX,N,Neurology
+44YX,S,Surgery
 45AX,A,Cardiothoracic
 45AX,B,Pain Management
 45BX,A,Hand Surgery
@@ -384,6 +398,7 @@
 46NX,F,Neonatal Intensive Care
 46NX,G,Obstetrical
 46NX,J,Emergency/Trauma
+46NX,R,Post Anesthesia Care Unit
 46YX,A,Women’s Health Care Nurse Practitioner
 46YX,B,Pediatric Nurse Practitioner
 46YX,C,Acute Care Nurse Practitioner
@@ -408,6 +423,7 @@
 47SX,C,Maxillofacial Reconstruction
 48RX,E,Board eligable in emergency medicine
 48RX,F,Board eligable in family medicine
+48RX,K,Board eligable in pediatric medicine
 48RX,M,Board eligable in internal medicine
 61CX,N,Nuclear
 61DX,N,Nuclear

@@ -1,7 +1,7 @@
 ﻿1A0X1#In-Flight Refueling
 1A1X1#Flight Engineer
 1A2X1#Aircraft Loadmaster
-1A3X1#Airborne Mission Systems Operator
+1A3X1#Airborne Mission Systems Specialist
 1A6X1#Flight Attendant
 1A8X1#Airborne Cryptologic Language Analyst
 1A8X2#Airborne Intelligence, Surveillance, and Reconnaissance Operator
@@ -15,23 +15,28 @@
 1C7X1#Airfield Management
 1C8X3#Radar, Airfield & Weather Systems (RAWS)
 1D7X1#Cyber Defense Operations
+1D7X2#Spectrum  Defense Operations
+1D7X3#Cable and Antenna Defense Operations
+1H0X1#Aerospace Physiology
 1N0X1#All Source Intelligence Analyst
+1N0X2#Intelligence Superintendent
 1N1X1#Geospatial Intelligence
 1N2X1#Signals Intelligence Analyst
+1N2X2#Cryptologic Intelligence Superintendent
 1N3X1#Cryptologic Language Analyst
-1N4X1#Fusion Analyst
+1N4X1#Cyber Intelligence Analyst
+1N4X2#Cryptologic Analyst & Reporter
 1N7X1#Human Intelligence Specialist
 1N8X1#Targeting Analyst
 1P0X1#Aircrew Flight Equipment
 1S0X1#Safety
-1T0X1#Survival, Evasion, Resistance, and Escape
-1T2X1#Pararescue
-1U0X1#Remotely Piloted Aircraft Sensor Operator
+1T0X1#Survival, Evasion, Resistance, and Escape (SERE) Specialist
+1U0X1#Sensor Operator
 1U1X1#Remotely Piloted Aircraft Pilot
 1W0X1#Weather
 1Z1X1#Pararescue
 1Z2X1#Combat Control
-1Z3X1#Tactical Air Control Party
+1Z3X1#Tactical Air Control Party (TACP)
 1Z4X1#Special Reconnaissance
 2A0X1#Avionics Test Station and Components
 2A2X1#Special Operations Forces/Personnel Recover Integrated Communication/Navigation/Mission Systems
@@ -60,6 +65,7 @@
 2A9X1#Bomber/Special Integrated Communication/Navigation/Mission Systems
 2A9X2#Bomber/Special Integrated Instrument and Flight Control Systems
 2A9X3#Bomber/Special Electronic Warfare and Radar Surveillance Integrated Avionics
+2A9X4#Heavy Aircraft Integrated Avionics
 2F0X1#Fuels
 2G0X1#Logistics Plans
 2M0X1#Missile and Space Systems Electronics Maintenance
@@ -70,22 +76,13 @@
 2R1X1#Maintenance Management Production
 2S0X1#Materiel Management
 2T0X1#Traffic Management
-2T1X1#Vehicle Operations
+2T1X1#Ground Transportation
 2T2X1#Air Transportation
 2T3X1#Mission Generation Vehicular Equipment Maintenance
 2T3X7#Fleet Management and Analysis
 2W0X1#Munitions Systems
 2W1X1#Aircraft Armament Systems
 2W2X1#Nuclear Weapons
-3D0X1#Knowledge Operations Management
-3D0X2#Cyber Systems Operations
-3D0X3#Cyber Surety
-3D0X4#Computer Systems Programming
-3D1X1#Client Systems
-3D1X2#Cyber Transport Systems
-3D1X3#RF Transmission Systems
-3D1X4#Spectrum Operations
-3D1X7#Cable and antenna systems
 3E0X1#Electrical Systems
 3E0X2#Electrical Power Production
 3E1X1#Heating, Ventilation, AC, and Refrigeration
@@ -106,10 +103,10 @@
 3F5X1#Administration
 3G0X1#Talent Acquisition
 3H0X1#Historian
-3N0X2#Broadcast Journalist
-3N0X5#Photojournalist
+3N0X6#Public Affairs
 3N1X1#Regional Band
-3N2X1#Premier Band
+3N2X1#Premier Band - The USAF Band
+3N3X1#Premier Band - The USAF Academy Band
 3P0X1#Security Forces
 4A0X1#Health Services Management
 4A1X1#Medical Material
@@ -118,11 +115,10 @@
 4C0X1#Mental Health Service
 4D0X1#Diet Therapy
 4E0X1#Public Health
-4H0X1#Cardiopulmonary Laboratory
+4H0X1#Respiratory Care Practitioner
 4J0X2#Physical Medicine
-4M0X1#Aerospace and Operational Physiology
 4N0X1#Aerospace Medical Service
-4N1X1#Surgical Service
+4N1X1#Surgical Technologist
 4P0X1#Pharmacy
 4R0X1#Diagnostic Imaging
 4T0X1#Medical Laboratory
@@ -131,68 +127,73 @@
 4Y0X1#Dental Assistant
 4Y0X2#Dental Laboratory
 5J0X1#Paralegal
-5R0X1#Chaplain Assistant
+5R0X1#Relgious Affairs
 6C0X1#Contracting
 6F0X1#Financial Management & Comptroller
 7S0X1#Special Investigations
-8A100#Career Assistance Advisor
 8A200#Enlisted Aide
 8A300#Protocol
+8A400#Talent Management Consultant
 8B000#Military Training Instructor
 8B100#Military Training Leader
 8B200#Academy Military Training NCO
+8B300#AFROTC Training Instructor
 8C000#Airman & Family Readiness Center RNCO
 8D100#Language & Culture Advisor
 8F000#First Sergeant
 8G000#The United States Air Force Honor Guard
-8G100#USAF Installation Honor Guard Program Manager
+8G100#Base Honor Guard Program Manager
 8H000#Airman Dorm Leader
 8I000#Superintendent, Inspector General
 8I100#Inspections Coordinator
-8I200#Superintendent, Complaints and Resolution
+8I200#Complaints and Resolution Coordinator
 8K000#Software Development Specialist
-8L100#Enlisted Air Advisor (Conventional Force) - Basic
-8L200#Enlisted Air Advisor (Conventional Force) Basic, Team Sergeant
-8L300#Enlisted Air Advisor (Conventional Force) Basic, Team Leader
-8L400#Enlisted Air Advisor (Conventional Force) Advanced
-8L500#Enlisted Air Advisor (Conventional Force) Advanced, Team Sergeant
-8L600#Enlisted Air Advisor (Conventional Force) Advanced, Team Leader
-8L700#Enlisted Combat Aviation Advisor (SOF)
-8L800#Enlisted Combat Aviation Advisor (SOF) Team Sergeant
-8L(00#Enlisted Combat Aviation Advisor (SOF) Team Leader
+8L100#Enlisted Air Advisor - Basic
+8L200#Enlisted Air Advisor Basic, Team Sergeant
+8L300#Enlisted Air Advisor Basic, Team Leader
+8L400#Enlisted Air Advisor Advanced
+8L500#Enlisted Air Advisor Advanced, Team Sergeant
+8L600#Enlisted Air Advisor Advanced, Team Leader
+8L700#Enlisted Combat Aviation Advisor
+8L800#Enlisted Combat Aviation Advisor Team Sergeant
+8L900#Enlisted Combat Aviation Advisor Team Leader
 8P000#Courier
 8P100#Defense Attaché
 8R000#Enlisted Accessions Recruiter
 8R200#Second-Tier Recruiter
 8R300#Third-Tier Recruiter
 8S000#Missile Facility Manager
+8S200#Combat Crew Communications
 8T000#Professional Military Education Instructor
 8T100#Enlisted Professional Military Education Instructional System Designer
+8T200#Airman Development Advisor
 8U000#Unit Deployment Manager
-9A000#Disqualified for Reasons beyond Control
-9A100#Disqualified for Reasons within Control
+8U100#Weapons of Mass Destruction Civil Support Team (WMD-CST)
+9A000#Disqualified for Reasons Beyond Control
+9A100#Disqualified for Reasons Within Control
 9A200#Awaiting Discharge/Separation/Retirement for Reasons Within Their Control
 9A300#Awaiting Discharge/Separation/Retirement for Reasons Beyond Their Control
 9A400#Disqualified Airman, Return to Duty Program
 9A500#Temporarily Ineligible for Retraining – Disqualified for Reasons Beyond Control
 9C000#CMSgt of the Air Force
 9C100#Executive Assistant to the Chief Master Sergeant of the Air Force
-9D100#Key Developmental Senior Enlisted Positions
+9D100#AF Developmental Senior Enlisted Positions
+9D200#Key Development Senior Enlisted Positions
 9E000#Command Chief Master Sergeant
-9E100#First Term Airmen Center NCOIC
+9E100#Command Chief Executive Assistant
 9E200#Individual Mobilization Augmentee to Command Chief Master Sergeant
 9F000#First Term Airmen Center (FTAC) NCOIC
 9G100#Group Superintendent
 9H000#Academic Faculty Instructor
 9I000#Futures Airmen
 9J000#Prisoner
-9L000#Interpreter/Translator
 9L100#Enlisted Engagement Manager/International Affairs
 9M000#Military Entrance Processing Command Senior Enlisted Advisor
 9M200#International Health Specialists (IHS)
 9M400#Chief, Medical Enlisted Force (CMEF)
 9N000#Secretary of the Air Force Enlisted Legislative Fellows
 9P000#Patient
+9Q000#Reserve Force Generation and Oversight NCO
 9R000#Civil Air Patrol (CAP)-USAF Reserve Assistance NCO
 9S100#Scientific Applications Specialist
 9T000#Basic Enlisted Airman
@@ -201,12 +202,25 @@
 9T400#AFIT/EWI Enlisted Students
 9U000#Enlisted Airman Ineligible for Local Utilization
 9U100#Unallotted Enlisted Authorization
+9V000#Key Development Joint Senior Enslisted Position
+9V100#Executive Assistant to the Senior Enlisted Advisor to the Chairman of the Joint Chiefs of Staff
 9W000#Combat Wounded Warrior
 9W200#Combat Wounded Warrior with Exemptions
 9W300#Non-Combat Wounded Warrior
 9W400#Wounded Warrior-Limited Assignment Status
 9W800#Wounded Warrior-Ambassador
 9W900#Wounded Warrior- Project Planner/Officer
+9Y000#Air Force Parachute Team (AFPT) Instructor
 9Z000#Special Warfare Mission Support (SWMS) Chief Enlisted Manager (CEM) on Headquarters Air Force Staff, Air Force Special Warfare Division
 9Z100#Special Warfare Mission Support (SWMS) Senior Enlisted Leader, Air Force Special Warfare (AFSPECWAR)
 9Z200#Special Warfare Mission Support (SWMS) Superintendent, Air Force Special Warfare (AFSPECWAR)
+5C0X1#Cyber Operations (USSF)
+5I0X1#All Source Intelligence (USSF)
+5I1X1#Geospatial Intelligence Analyst (GEOINT) (USSF)
+5I2X1#Signals Intelligence Analyst (USSF)
+5I4X1#Intelligence Analyst (USSF)
+5I8X1#Targeting Analyst (USSF)
+5S0X1#Space Systems Operations (USSF)
+5Z700#Space Operations Senior Enslisted Leader
+5Z800#Space Operations Superintendent
+5Z900#Space Operations CEM

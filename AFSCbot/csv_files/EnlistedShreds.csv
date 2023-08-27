@@ -1,6 +1,6 @@
 1A0X1,B,KC-46
 1A0X1,C,KC-135
-1A0X1,D,KC-10
+1A0X1,F,KC-10
 1A1X1,A,C-5
 1A1X1,D,DV
 1A1X1,E,C-130H
@@ -23,6 +23,7 @@
 1A2X1,G,HC-130N/P
 1A2X1,H,EC-130J
 1A2X1,Q,HC-130J
+1A2X1,R,C-146
 1A2X1,S,MC-130H
 1A2X1,T,MC-130P
 1A2X1,Y,CAA
@@ -48,9 +49,9 @@
 1A8X1,J,Spanish
 1A8X1,K,Persian
 1A8X1,M,Pashto
-1A8X1,Z,Low-Flow
+1A8X1,Z,Divested Languages
 1A9X1,M,HH-60
-1A9X1,P,UH-1
+1A9X1,P,UH-1/MH-139
 1A9X1,R,NSAV
 1A9X1,U,AC-130U
 1A9X1,V,AC-130J
@@ -60,8 +61,19 @@
 1C5X1,D,Weapons Director
 1D7X1,A,Network Specialist
 1D7X1,B,System Specialist
+1D7X1,D,Security Operations
+1D7X1,E,Client Systems Operations
+1D7X1,K,Knowledge Operations
+1D7X1,M,Mission Defense Activities
+1D7X1,P,Data Operations
+1D7X1,Q,Enterprise Operations
+1D7X1,R,RF Operations
+1D7X1,W,Expeditionary Communications
+1D7X1,Z,Software Development Operations
+1D7X2,F,Spectrum Operations
+1D7X3,C,Cable and Antenna Operations
 1N1X1,A,Imagery Analysis
-1N2X1,A,Electronic
+1N2X1,A,Electronic Non-Communications Analyst
 1N2X1,C,Communications
 1N3X1,F,Arabic
 1N3X1,G,Chinese
@@ -71,29 +83,31 @@
 1N3X1,K,Persian
 1N3X1,L,Hebrew
 1N3X1,M,Pashto
-1N3X1,N,Urdu
-1N3X1,Z,Low-Flow
-1N4X1,A,Digital Network Analyst
-1N4X1,B,Analysis and Production
-1U0X1,O,RQ-4
+1N3X1,Z,Divested Languages
+1N4X1,A,Analyst
+1P0X1,A,Ejection Seat Aircraft
+1P0X1,B,Non-Ejection Seat Aircraft
+1U0X1,N,RQ-4
 1U0X1,Q,MQ-1
 1U0X1,R,MQ-9
 1U0X1,T,MC-12
 1U0X1,U,AC-130U
 1U0X1,V,AC-130J
 1U0X1,W,AC-130W
+1U0X1,Y,CAA
 1U1X1,O,RQ-4
 1U1X1,R,MQ-9
 2A0X1,K,A-10/B-2/C-17/CV-22/F-16/AFSOC Avionics Systems
 2A0X1,M,B-1/E-8/F-15 Avionics Systems
 2A0X1,P,Avionics Sensor Systems and Electronic Warfare Systems
 2A2X1,A,CV-22
+2A2X1,B,MHU-139
 2A3X3,E,A-10/U-2
 2A3X3,L,F-15
 2A3X3,M,F-16
-2A3X4,A,A-10/U-2
-2A3X4,B,F-15
-2A3X4,C,F-16
+2A3X4,A,A-10/U-2 Avionics
+2A3X4,B,F-15 Avionics
+2A3X4,C,F-16 Avionics
 2A3X5,A,F-22
 2A3X5,B,F-35
 2A3X5,C,MQ-1/MQ-9/RQ-4
@@ -107,6 +121,7 @@
 2A5X1,D,C-17
 2A5X2,B,H-60
 2A5X2,D,CV-22
+2A5X2,E,MHU-139
 2A5X4,A,Any C-135/E-3/E-8
 2A5X4,B,KC-10
 2A5X4,C,KC-46
@@ -121,21 +136,16 @@
 2A8X1,A,C-5
 2A8X1,B,C-17
 2A8X1,C,C-130/WC-130 (except SOF/PR & EC-130)
-2A8X1,D,C-12/21/27/32/37/38/39/40
-2A8X1,E,Cargo Comm/Counter/Nav Systems
+2A8X1,D,C-12/20/21/26/32/37/40
 2A8X1,F,KC-10
 2A8X1,G,KC-135
 2A8X1,H,KC-46
-2A8X1,J,Tanker Comm/Counter/Nav Systems
 2A8X2,A,C-5
 2A8X2,B,C-17
 2A8X2,C,C-130/WC-130 (except SOF/PR & EC-130)
-2A8X2,D,C-12/21/27/32/37/38/39/40
-2A8X2,E,Cargo IFCS
+2A8X2,D,C-12/20/21/26/32/37/40
 2A8X2,F,KC-10
-2A8X2,G,KC-135
-2A8X2,H,KC-46
-2A8X2,J,Tanker IFCS
+2A8X2,G,KC-46
 2A9X1,A,E-3
 2A9X1,B,E-4/VC-25
 2A9X1,C,E-8
@@ -159,6 +169,7 @@
 2A9X3,G,B-52
 2A9X3,H,EC-130 Compass Call
 2A9X3,J,VC-25
+2A9X4,A,C4ISR Mission Systems (E-3, E-4, E-7, E-8, EC-130H, RC-135, VC-25)
 2M0X1,A,ICBM
 2M0X1,B,ALCM
 2T3X1,A,Firefighting and Refueling Vehicle & Equipment Maintenance
@@ -172,32 +183,37 @@
 2W1X1,N,F-22
 2W1X1,Q,RPA (MQ-1/MQ-9)
 2W1X1,Z,All Other
+3E4X1,A,Fuel Systems Maintenance
 3N1X1,A,Clarinet
 3N1X1,B,Saxophone
 3N1X1,C,Bassoon
 3N1X1,D,Oboe
-3N1X1,E,Flute & Piccolo
+3N1X1,E,Flute
 3N1X1,F,Horn
-3N1X1,G,Cornet & Trumpet
-3N1X1,H,Baritone & Euphonium
+3N1X1,G,Trumpet
+3N1X1,H,Euphonium
 3N1X1,J,Trombone
 3N1X1,K,Tuba
 3N1X1,L,Percussion
 3N1X1,M,Piano
 3N1X1,N,Guitar
-3N1X1,P,Music Arranger
-3N1X1,Q,Bagpipe
+3N1X1,P,Arranger
+3N1X1,Q,Jazz Trumpet
 3N1X1,R,Vocalist
 3N1X1,S,Electric Bass/String Bass
-3N1X1,U,Steel Guitar
-3N1X1,V,Audio and Light Engineer
+3N1X1,U,Drum Set
+3N1X1,V,Audio Engineer
 3N1X1,Z,Instrumentalist/General (Air National Guard Bands)
 3P0X1,A,Military Working Dog Handler
 3P0X1,B,Combat Arms
+4A0X1,S,Health Information Technology
 4J0X2,A,Orthotic
 4N0X1,B,Neurodiagnostic Medical Technician
 4N0X1,C,Independent Duty Medical Technician
+4N0X1,D,Allergy/Immunization Technician
 4N0X1,F,Flight and Operational Medical Technician
+4N0X1,G,Aeromedical Evacuation Technician
+4N0X1,H,National Registry Paramedic
 4N1X1,B,Urology
 4N1X1,C,Orthopedics
 4N1X1,D,Otolaryngology
@@ -206,3 +222,18 @@
 4R0X1,C,Magnetic Resonance Imaging
 4V0X1,S,Ophthalmology
 4Y0X1,H,Dental Hygienist
+8G0X0,B,Pallbearer
+8G0X0,C,Color Guard
+8G0X0,D,Drill Team
+8R3X0,A,Flight Chief
+8R3X0,B,Graduated - Flight Chief
+8R3X0,C,Production Superintendent
+8R3X0,E,Senior Enlisted Leader
+5C0X1,D,Defensive Cyber Operations
+5C0X1,R,RF Operations
+5C0X1,S,Systems Operations
+5C0X1,N,Network Operations
+5I2X1,A,Electronic
+5I2X1,C,Communications
+5I4X1,A,Cyber Intelligence Analyst
+5I4X1,B,Cryptologic Analysis and Reporting

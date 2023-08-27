@@ -21,20 +21,22 @@
 12UX#Remotely Piloted Aircraft
 13AX#Astronaut
 13BX#Air Battle Manager
+13HX#Aerospace Physiologist
 13MX#Airfield Operations
 13NX#Nuclear and Missile Operations
 13OX#Multi-Domain Warfare Operations
 13SX#Space Operations
 14FX#Information Operations
 14NX#Intelligence
-15AX#Operations Research Analyst
-15WX#Weather
-16FX#Regional Affairs Strategist
+15AX#Operations Analyst Officer
+15WX#Weather and Enviromental Sciences
+16FX#Foreign Area Officer
 16GX#Air Force Operations Staff Officer
 16KX#Software Development Officer
 16PX#Political-Military Affairs Strategist
 16RX#Planning & Programming
-17CX#Cyberspace Operations Commander
+16ZX#Rated Foreign Area Officer
+17C0#Cyberspace Operations Commander
 17DX#Warfighter Communications Operations
 17SX#Cyberspace Effects Operations
 18AX#Attack Remotely Piloted Aircraft Pilot
@@ -43,10 +45,10 @@
 18RX#Recce Remotely Piloted Aircraft Pilot
 18SX#Special Operations RPA Pilot
 19ZX#Special Warfare
-20C0#Maintenance Group Commander or Deputy Group Commander
+20C0#Logistics Commander
 21AX#Aircraft Maintenance
 21MX#Munitions and Missile Maintenance
-21RX#Logistics Readiness Officer
+21RX#Logistics Readiness
 30C0#Support Commander
 31PX#Security Forces
 32EX#Civil Engineer
@@ -63,7 +65,6 @@
 42PX#Clinical Psychologist
 42SX#Clinical Social Worker
 42TX#Occupational Therapist
-43AX#Aerospace & Operational Physiologist
 43BX#Biomedical Scientist
 43DX#Dietitian
 43EX#Bioenvironmental Engineer
@@ -92,7 +93,7 @@
 45AX#Anesthesiologist
 45BX#Orthopedic Surgeon
 45EX#Ophthalmologist
-45GX#OB/GYN
+45GX#Gynecologic Surgery and Obstetrics
 45NX#Otorhinolaryngologist
 45PX#Physical Medicine Physician
 45SX#Surgeon
@@ -102,7 +103,7 @@
 46NX#Clinical Nurse
 46PX#Mental Health Nurse
 46SX#Operating Room Nurse
-46YX#Privileged Advanced Practice Nurse
+46YX#Advanced Practice Registered Nurse (APRN)
 47BX#Orthodontist
 47DX#Oral and Maxillofacial Pathologist
 47EX#Endodontist
@@ -123,7 +124,7 @@
 62EX#Developmental Engineer
 62S0#Materiel Leader
 63AX#Acquisition Manager
-63G0#Senior Materiel Leader
+63G0#Senior Materiel Leader-Lower Echelon
 63S0#Materiel Leader
 64PX#Contracting
 65FX#Financial Management
@@ -146,18 +147,20 @@
 88A0#Aide-de-Camp
 88B0#Protocol Officer
 88CO#Sexual Assault Response Coordinator
-89A0#Officer Air Advisor (Conventional Force) Basic
-89B0#Officer Air Advisor (Conventional Force) Basic Team Leader
-89C0#Officer Air Advisor (Conventional Force) Basic Mission Commander
-89D0#Officer Air Advisor (Conventional Force )Advanced
-89E0#Officer Air Advisor (Conventional Force) Advanced Team Leader
-89F0#Officer Air Advisor (Conventional Force) Advanced Mission Commander
-89G0#Officer Combat Aviation Advisor (SOF)
-89H0#Officer Combat Aviation Advisor (SOF) Team Leader
-89I0#Officer Combat Aviation Advisor (SOF) Mission Commander
+89A0#Officer Air Advisor Basic
+89B0#Officer Air Advisor Basic Team Leader
+89C0#Officer Air Advisor Basic Mission Commander
+89D0#Officer Air Advisor Advanced
+89E0#Officer Air Advisor Advanced Team Leader
+89F0#Officer Air Advisor Advanced Mission Commander
+89G0#Officer Combat Aviation Advisor
+89H0#Officer Combat Aviation Advisor Team Leader
+89I0#Officer Combat Aviation Advisor Mission Commander
+89W0#Weapons of Mass Destruction Civil Support Team (WMD-CST)
 90G0#General Officer
 91C0#Commander
 91W0#Wing Commander
+92F0#Foreign Area Officer (FAO) Trainee
 92J0#Nondesignated Lawyer
 92J1#AFROTC Educational Delay-Law Student
 92J2#Funded Legal Education Program Law Student
@@ -171,7 +174,7 @@
 92T0#Pilot Trainee
 92T1#Combat Systems Officer Trainee
 92T2#Air Battle Manager Trainee
-92T3#Remotely Piloted Aircraft Pilot Trainee
+92T3#RPA Pilot Trainee
 92W0#Combat Wounded Warrior
 92W2#Combat Wounded Warrior with Exemptions
 92W3#Non-Combat Wounded Warrior
@@ -181,15 +184,16 @@
 92W9#Wounded Warrior-Project Planner/Officer
 93P0#Patient
 94N0#Nuclear Weapons Custodian
-95A0#Non-Extended Active Duty AFRC or ANG USAFA Liaison Officer or CAP Liaison Officer
+95A0#Non-Extended Active Duty USAFR Academy/CAP Liaison Officer
 96A0#Disqualified Officer, Reasons Beyond Their Control
 96B0#Disqualified Officer, Reasons Within Their Control
 96D0#Officer not available in awarded AFSC for cause
 96U0#Unclassified Officer
-97E1#Executive Officer
+96V0#Unallotted
+97E0#Executive Officer
 99A0#Unspecified AFSC
 99G0#Gold Bar Diversity Recruiter
-10C#Operations Commander
+10C0#Operations Commander
 11B#Bomber Pilot
 11E#Experimental Test Pilot
 11F#Fighter Pilot
@@ -212,19 +216,21 @@
 12U#Remotely Piloted Aircraft
 13A#Astronaut
 13B#Air Battle Manager
+13H#Aerospace Physiologist
 13M#Airfield Operations
 13N#Nuclear and Missile Operations
 13O#Multi-Domain Warfare Operations
 13S#Space Operations
 14F#Information Operations
 14N#Intelligence
-15A#Operations Research Analyst
-15W#Weather
-16F#Regional Affairs Strategist
+15A#Operations Analyst Officer
+15W#Weather and Enviromental Sciences
+16F#Foreign Area Officer
 16G#Air Force Operations Staff Officer
 16K#Software Development Officer
 16P#Political-Military Affairs Strategist
 16R#Planning & Programming
+16Z#Rated Foreign Area Officer
 17C#Cyberspace Operations Commander
 17D#Warfighter Communications Operations
 17S#Cyberspace Effects Operations
@@ -234,10 +240,10 @@
 18R#Recce Remotely Piloted Aircraft Pilot
 18S#Special Operations RPA Pilot
 19Z#Special Warfare
-20C#Maintenance Group Commander or Deputy Group Commander
+20C#Logistics Commander
 21A#Aircraft Maintenance
 21M#Munitions and Missile Maintenance
-21R#Logistics Readiness Officer
+21R#Logistics Readiness
 30C#Support Commander
 31P#Security Forces
 32E#Civil Engineer
@@ -254,7 +260,6 @@
 42P#Clinical Psychologist
 42S#Clinical Social Worker
 42T#Occupational Therapist
-43A#Aerospace & Operational Physiologist
 43B#Biomedical Scientist
 43D#Dietitian
 43E#Bioenvironmental Engineer
@@ -283,7 +288,7 @@
 45A#Anesthesiologist
 45B#Orthopedic Surgeon
 45E#Ophthalmologist
-45G#OB/GYN
+45G#Gynecologic Surgery and Obstetrics
 45N#Otorhinolaryngologist
 45P#Physical Medicine Physician
 45S#Surgeon
@@ -293,7 +298,7 @@
 46N#Clinical Nurse
 46P#Mental Health Nurse
 46S#Operating Room Nurse
-46Y#Privileged Advanced Practice Nurse
+46Y#Advanced Practice Registered Nurse (APRN)
 47B#Orthodontist
 47D#Oral and Maxillofacial Pathologist
 47E#Endodontist
@@ -314,7 +319,7 @@
 62E#Developmental Engineer
 62S#Materiel Leader
 63A#Acquisition Manager
-63G#Senior Materiel Leader
+63G#Senior Materiel Leader-Lower Echelon
 63S#Materiel Leader
 64P#Contracting
 65F#Financial Management
@@ -337,18 +342,20 @@
 88A#Aide-de-Camp
 88B#Protocol Officer
 88C#Sexual Assault Response Coordinator
-89A#Officer Air Advisor (Conventional Force) Basic
-89B#Officer Air Advisor (Conventional Force) Basic Team Leader
-89C#Officer Air Advisor (Conventional Force) Basic Mission Commander
-89D#Officer Air Advisor (Conventional Force )Advanced
-89E#Officer Air Advisor (Conventional Force) Advanced Team Leader
-89F#Officer Air Advisor (Conventional Force) Advanced Mission Commander
-89G#Officer Combat Aviation Advisor (SOF)
-89H#Officer Combat Aviation Advisor (SOF) Team Leader
-89I#Officer Combat Aviation Advisor (SOF) Mission Commander
+89A#Officer Air Advisor Basic
+89B#Officer Air Advisor Basic Team Leader
+89C#Officer Air Advisor Basic Mission Commander
+89D#Officer Air Advisor Advanced
+89E#Officer Air Advisor Advanced Team Leader
+89F#Officer Air Advisor Advanced Mission Commander
+89G#Officer Combat Aviation Advisor
+89H#Officer Combat Aviation Advisor Team Leader
+89I#Officer Combat Aviation Advisor Mission Commander
+89W#Weapons of Mass Destruction Civil Support Team (WMD-CST)
 90G#General Officer
 91C#Commander
 91W#Wing Commander
+92F#Foreign Area Officer (FAO) Trainee
 92J#Nondesignated Lawyer
 92J#AFROTC Educational Delay-Law Student
 92J#Funded Legal Education Program Law Student
@@ -362,7 +369,7 @@
 92T#Pilot Trainee
 92T#Combat Systems Officer Trainee
 92T#Air Battle Manager Trainee
-92T#Remotely Piloted Aircraft Pilot Trainee
+92T#RPA Pilot Trainee
 92W#Combat Wounded Warrior
 92W#Combat Wounded Warrior with Exemptions
 92W#Non-Combat Wounded Warrior
@@ -372,11 +379,12 @@
 92W#Wounded Warrior-Project Planner/Officer
 93P#Patient
 94N#Nuclear Weapons Custodian
-95A#Non-Extended Active Duty AFRC or ANG USAFA Liaison Officer or CAP Liaison Officer
+95A#Non-Extended Active Duty USAFR Academy/CAP Liaison Officer
 96A#Disqualified Officer, Reasons Beyond Their Control
 96B#Disqualified Officer, Reasons Within Their Control
 96D#Officer not available in awarded AFSC for cause
 96U#Unclassified Officer
+96V#Unallotted
 97E#Executive Officer
 99A#Unspecified AFSC
 99G#Gold Bar Diversity Recruiter
