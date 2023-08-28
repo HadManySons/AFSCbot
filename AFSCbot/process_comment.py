@@ -2,10 +2,13 @@ import re
 from helper_functions import print_and_log
 
 ENLISTED_AFSC_REGEX = "(?:^|\s|[\,])(([A-Z]?)(\d[A-Z]\d([013579]|X)\d)([A-Z]?))"
-OFFICER_AFSC_REGEX = "(?:^|\s)(([A-Z]?)(\d\d[A-Z]([013579]|X?))([A-Z]?))"
+OFFICER_AFSC_REGEX = "(?:^|\s)(([A-Z]?)(\d\d[A-Z]([1-4]|X?))([A-Z]?))"
 
 ENLISTED_SKILL_LEVELS = ['Helper', '', 'Apprentice', '', 'Journeyman', '',
                          'Craftsman', '', 'Superintendent']
+
+OFFICER_SKILL_LEVELS = ['Entry', '', 'Intermediate', '',
+                         'Qualified', '', 'Staff']
 
 COMMENT_HEADER = ("^^You've ^^mentioned ^^an ^^AFSC, ^^here's ^^the"
                   " ^^associated ^^job ^^title:\n\n")
@@ -208,12 +211,17 @@ def process_comment(comment_text, match, afsc_dict, prefix_dict):
         # add job title
         comment_line += afsc_dict[tempAFSC]["job_title"]
 
-        # add skill level, officer skill level is ignored
+        # add skill level
         if dict_type == "enlisted":
             # if skill level given is not X or O, describe skill level given
             if skill_level != 'X' and skill_level != '0':
                 comment_line += " " + \
                 ENLISTED_SKILL_LEVELS[int(skill_level) - 1]
+        if dict_type == "officer":
+            # if skill level given is not X, describe skill level given
+            if skill_level != 'X':
+                comment_line += " " + \
+                OFFICER_SKILL_LEVELS[int(skill_level) - 1]
 
         # Is there a suffix? If so, add its title
         if suffix:
