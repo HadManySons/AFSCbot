@@ -1,5 +1,4 @@
 import logging
-from logging.handlers import RotatingFileHandler
 import sys
 import os
 import time
@@ -14,14 +13,6 @@ credsClientSecret = os.environ.get('AFS_SECRET')
 credsClientID = os.environ.get("AFS_ID")
 credsUserAgent = os.environ.get("AFS_USERAGENT")
 subreddit = os.environ.get("AFS_SUBREDDIT")
-
-#logging.basicConfig(filename='AFSCbot.log', level=logging.INFO)
-logger = logging.getLogger("Rotating Log")
-logger.setLevel(logging.INFO)
-   
-# add a rotating handler
-handler = RotatingFileHandler("AFSCbot.log", maxBytes=1024000,     backupCount=20)
-logger.addHandler(handler)
 
 def checkForReplies(comment_list, rAirForceComments, permlink):
     """
