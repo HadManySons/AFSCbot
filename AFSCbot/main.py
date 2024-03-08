@@ -96,9 +96,8 @@ def main():
     # what to do if Ctrl-C is pressed while script is running
     except KeyboardInterrupt:
         print_and_log("Exiting due to keyboard interrupt")
-    except Exception as e:
-        print_and_log(f"{e.message} --- {e.args}")
-
+    except Exception as err:
+        print_and_log(str(err.with_traceback())
 
 if __name__ == "__main__":
     main()
