@@ -4,7 +4,7 @@ A bot for /r/airforce that scans comments for a mention of an AFSC and posts the
 
 *AFS_ENVS.list needs the correct credentials inputted before the script will run*
 
-## Running as docker container##
+## Running as docker container ##
 *You need to pass the environment variables with the `--env-file` flag*
 
 To run it locally:
