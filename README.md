@@ -1,5 +1,7 @@
 # AFSCbot #
 
+[![Docker Image CI](https://github.com/HadManySons/AFSCbot/actions/workflows/docker-image.yml/badge.svg)](https://github.com/HadManySons/AFSCbot/actions/workflows/docker-image.yml)
+
 A bot for /r/airforce that scans comments for a mention of an AFSC and posts the matching job title
 
 *AFS_ENVS.list needs the correct credentials inputted before the script will run*
