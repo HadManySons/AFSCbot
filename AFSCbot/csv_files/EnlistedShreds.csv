@@ -1,33 +1,42 @@
-1A0X1,B,KC-46
-1A0X1,C,KC-135
-1A0X1,F,KC-10
-1A1X1,A,C-5
-1A1X1,D,DV
-1A1X1,E,C-130H
-1A1X1,F,KC-10
-1A1X1,G,HC-130N/P
-1A1X1,I,E-3
-1A1X1,J,E-4
-1A1X1,K,E-8
-1A1X1,L,EC-130H
-1A1X1,S,MC-130H
-1A1X1,T,MC-130P
-1A1X1,U,AC-130U
-1A1X1,W,AC-130W
-1A1X1,Y,CAA
-1A2X1,A,C-5
-1A2X1,B,C-17
-1A2X1,C,C-130J
-1A2X1,E,C-130H
-1A2X1,F,WC-130J
-1A2X1,G,HC-130N/P
-1A2X1,H,EC-130J
-1A2X1,Q,HC-130J
-1A2X1,R,C-146
-1A2X1,S,MC-130H
-1A2X1,T,MC-130P
-1A2X1,Y,CAA
-1A2X1,Z,MC-130J
+1A1X1,A,C-5 Flight Engineer
+1A1X1,B,C-5 Loadmaster
+1A1X1,C,C-17 Loadmaster
+1A1X1,D,C-130J Loadmaster
+1A1X1,E,WC-130J Loadmaster
+1A1X1,F,E-3 Flight Engineer
+1A1X1,G,KC-46 Boom Operator
+1A1X1,H,KC-135 Boom Operator
+1A1X1,I,KC-10 Boom Operator
+1A1X1,J,KC-10 Flight Engineer
+1A1X1,K,E-8 Flight Engineer
+1A1X1,L,C-130H Flight Engineer
+1A1X1,M,CEM Mobility Force Aviator
+1A1X1,N,C-130H Loadmaster
+1A1X1,O,EC-130H Flight Engineer
+1A1X1,Z,Data Mask Mobility Force Aviator
+1A1X3,A,C-5 Flight Engineer
+1A1X3,B,C-5 Loadmaster
+1A1X3,C,C-17 Loadmaster
+1A1X3,D,C-130J Loadmaster
+1A1X3,E,WC-130J Loadmaster
+1A1X3,F,KC-10 Boom Operator
+1A1X3,G,KC-10 Flight Engineer
+1A1X3,H,E-8 Flight Engineer
+1A1X3,S,C-130H Flight Engineer
+1A1X3,Z,CEM Mobility Force Aviator
+1A1X8,A,C-32/C-40 Flight Attendant
+1A1X8,B,C-32/C-40 Communications Systems Operator
+1A1X8,C,C-37 Flight Attendant
+1A1X8,D,C-37 Flight Engineer
+1A1X8,E,CEM Executive Mission Aviator
+1A1X8,F,C-37 Communications Systems Operator
+1A1X8,G,E-4 Flight Engineer
+1A1X8,H,E-4 Flight Attendant
+1A1X8,I,E-4 Communications Systems Operator/Technician/Controller
+1A1X8,J,Presidential Airlift Group, Flight Engineer
+1A1X8,K,Presidential Airlift Group, Flight Attendant
+1A1X8,L,Presidential Airlift Group, Communications System Operator
+1A1X8,Z,EMA Data Mask
 1A3X1,A,C-32/C-40
 1A3X1,D,C-37
 1A3X1,G,HC-130P/N
@@ -39,9 +48,6 @@
 1A3X1,N,RC-135
 1A3X1,O,RQ-4
 1A3X1,T,MC-130P
-1A6X1,A,C-32/C-40
-1A6X1,D,C-20/C-37
-1A6X1,J,E-4
 1A8X1,F,Arabic
 1A8X1,G,Chinese
 1A8X1,H,Korean
@@ -50,17 +56,9 @@
 1A8X1,K,Persian
 1A8X1,M,Pashto
 1A8X1,Z,Divested Languages
-1A9X1,M,HH-60
-1A9X1,P,UH-1/MH-139
-1A9X1,R,NSAV
-1A9X1,U,AC-130U
-1A9X1,V,AC-130J
-1A9X1,W,AC-130W
-1A9X1,Y,CAA
-1A9X1,Z,CV-22
 1C5X1,D,Weapons Director
-1D7X1,A,Network Specialist
-1D7X1,B,System Specialist
+1D7X1,A,Network Operations
+1D7X1,B,System Operations
 1D7X1,D,Security Operations
 1D7X1,E,Client Systems Operations
 1D7X1,K,Knowledge Operations
@@ -81,13 +79,12 @@
 1N3X1,I,Russian
 1N3X1,J,Spanish
 1N3X1,K,Persian
-1N3X1,L,Hebrew
 1N3X1,M,Pashto
 1N3X1,Z,Divested Languages
 1N4X1,A,Analyst
 1P0X1,A,Ejection Seat Aircraft
 1P0X1,B,Non-Ejection Seat Aircraft
-1U0X1,N,RQ-4
+1U0X1,K,RQ-4
 1U0X1,Q,MQ-1
 1U0X1,R,MQ-9
 1U0X1,T,MC-12
@@ -100,9 +97,7 @@
 2A0X1,K,A-10/B-2/C-17/CV-22/F-16/AFSOC Avionics Systems
 2A0X1,M,B-1/E-8/F-15 Avionics Systems
 2A0X1,P,Avionics Sensor Systems and Electronic Warfare Systems
-2A2X1,A,CV-22
-2A2X1,B,MHU-139
-2A3X3,E,A-10/U-2
+2A3X3,E,A-10
 2A3X3,L,F-15
 2A3X3,M,F-16
 2A3X4,A,A-10/U-2 Avionics
@@ -128,53 +123,18 @@
 2A5X4,D,B-52
 2A5X4,E,B-1
 2A5X4,F,B-2
+2A5X4,H,B-21
 2A6X1,C,TF33/CF6/F103/F108/F117/TFE-731/TF39/PW 2040/F138 Jet Engines (Airlift/Special Mission/B-52 aircraft)
 2A6X1,D,F100/F119/F135 Jet Engines (F-15/F-16/F-22 aircraft)
 2A6X1,E,F101/F110/F118/TF34 Jet Engines (A-10/B-1/B-2/F-16/U-2 aircraft)
 2A6X1,F,F100/F101/F110/F118/F119/F135/TF34 Jet Engines (A-10/B-1/B-2/F-15/F-16/F-22/F-35/U-2 aircraft)
 2A6X1,H,Turboprop and Turboshaft Propulsion
-2A8X1,A,C-5
-2A8X1,B,C-17
-2A8X1,C,C-130/WC-130 (except SOF/PR & EC-130)
-2A8X1,D,C-12/20/21/26/32/37/40
-2A8X1,F,KC-10
-2A8X1,G,KC-135
-2A8X1,H,KC-46
-2A8X2,A,C-5
-2A8X2,B,C-17
-2A8X2,C,C-130/WC-130 (except SOF/PR & EC-130)
-2A8X2,D,C-12/20/21/26/32/37/40
-2A8X2,F,KC-10
-2A8X2,G,KC-46
-2A9X1,A,E-3
-2A9X1,B,E-4/VC-25
-2A9X1,C,E-8
-2A9X1,D,RC-135
-2A9X1,E,B-1
-2A9X1,F,B-2
-2A9X1,G,B-52
-2A9X2,A,E-3
-2A9X2,B,E-4/VC-25
-2A9X2,C,E-8
-2A9X2,D,RC-135
-2A9X2,E,B-1
-2A9X2,F,B-2
-2A9X2,G,B-52
-2A9X3,A,E-3 Radar Surveillance
-2A9X3,B,E-3 Computer/Electronic Warfare System
-2A9X3,C,E-8
-2A9X3,D,RC-135/25 AF Systems/Carry-on EW
-2A9X3,E,B-1
-2A9X3,F,B-2
-2A9X3,G,B-52
-2A9X3,H,EC-130 Compass Call
-2A9X3,J,VC-25
 2A9X4,A,C4ISR Mission Systems (E-3, E-4, E-7, E-8, EC-130H, RC-135, VC-25)
 2M0X1,A,ICBM
 2M0X1,B,ALCM
 2T3X1,A,Firefighting and Refueling Vehicle & Equipment Maintenance
 2T3X1,C,Material Handling Equipment (MHE)/463L Maintenance
-2W1X1,C,A-10
+2W1X1,A,A-10
 2W1X1,E,F-15
 2W1X1,F,F-16
 2W1X1,J,F-35
@@ -184,6 +144,7 @@
 2W1X1,Q,RPA (MQ-1/MQ-9)
 2W1X1,Z,All Other
 3E4X1,A,Fuel Systems Maintenance
+3F3X1,M,Management Engineering/Data Analytics
 3N1X1,A,Clarinet
 3N1X1,B,Saxophone
 3N1X1,C,Bassoon
@@ -200,7 +161,7 @@
 3N1X1,P,Arranger
 3N1X1,Q,Jazz Trumpet
 3N1X1,R,Vocalist
-3N1X1,S,Electric Bass/String Bass
+3N1X1,S,String/Electric Bass
 3N1X1,U,Drum Set
 3N1X1,V,Audio Engineer
 3N1X1,Z,Instrumentalist/General (Air National Guard Bands)

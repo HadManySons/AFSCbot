@@ -39,6 +39,8 @@
 11KX,F,T-6
 11KX,H,T-44/TC-12
 11KX,J,SUPT-H
+11KX,M,AETC Air Mobility Fundamentals Course Instructor
+11KX,Q,T-7
 11KX,Y,General
 11KX,Z,Other
 11MX,A,C-5
@@ -92,6 +94,13 @@
 11SX,X,U-28
 11SX,Y,General
 11SX,Z,Other
+11TX,A,T-1
+11TX,D,T-38
+11TX,F,T-6
+11TX,G,T-7
+11TX,H,T-96
+11TX,J,TH-1
+11TX,Z,Other
 11UX,A,MQ-1
 11UX,B,MQ-9
 11UX,C,RQ-4
@@ -198,6 +207,7 @@
 13BX,U,Air Liaison Officer
 13BX,Y,General
 13BX,Z,Other
+11BX,X,Flight Test
 13SX,A,Orbital Warfare
 13SX,B,Space Electronic Warfare
 13SX,D,Space Battle Management
@@ -221,14 +231,11 @@
 16ZX,L,Generalist
 17DX,A,Network Operations
 17DX,B,Expeditionary Communications Operations
-17DX,C,Capabilities Development
-17DX,F,Software Development
+17DX,T,Technical Track
 17DX,Y,General
 17SX,A,Offensive Cyberspace Operator
 17SX,B,Defensive Cyberspace Operator
-17SX,C,Capabilities Development
-17SX,S,Software Development
-17SX,Y,General
+17SX,T,Technical Track
 18AX,A,MQ-1
 18AX,B,MQ-9
 18AX,U,Air Liaison Officer (ALO)
@@ -255,9 +262,8 @@
 21MX,I,ICBM
 21MX,N,Nuclear
 32EX,A,Architect/Architectural Engineer
-32EX,B,Readiness Engineer
+32EX,B,Readiness & Emergency Management Engineer
 32EX,C,Civil Engineer
-32EX,D,Readiness (Non-Engineer)
 32EX,E,Electrical Engineer
 32EX,F,Mechanical Engineer
 32EX,G,General Engineer
@@ -304,6 +310,7 @@
 44DX,G,Transfusion Medicine
 44DX,K,Dermatology
 44EX,A,Emergency Medicine Specialist
+44EX,E,Emergency Medicine Services Physician
 44FX,A,Sports Medicine
 44FX,B,Obstetrics
 44FX,C,Pain Management
@@ -320,11 +327,10 @@
 44KX,M,Nephrology
 44KX,N,Child Abuse
 44KX,P,Sleep Medicine
-44MX,A,Oncology
+44MX,A,Hematology/Oncology
 44MX,B,Cardiology
 44MX,C,Endocrinology
 44MX,D,Gastroenterology
-44MX,E,Hematolgy
 44MX,F,Rheumatology
 44MX,G,Pulmonary Diseases
 44MX,H,Infectious Diseases
@@ -332,8 +338,13 @@
 44MX,K,Geriatric/Palliative Care Medicine
 44MX,L,Sleep Medicine
 44NX,A,Sleep Medicine
+44NX,B,Pain Management
 44PX,A,Child Psychiatry
 44PX,B,Forensic Psychiatry
+44PX,C,Addictions Psychiatry
+44PX,D,Psychosomatic Psychiatry
+44PX,E,Neuropsychiatry
+44PX,F,Sleep Pathology
 44RX,A,Neuroradiology
 44RX,B,Special Procedures
 44RX,C,Pediatric
@@ -421,10 +432,13 @@
 47SX,A,Temporomandibular Joint
 47SX,B,Facial Esthetics
 47SX,C,Maxillofacial Reconstruction
+48AX,X,Space Medical Operations Experienced
+48GX,X,Space Medical Operations Experienced
 48RX,E,Board eligable in emergency medicine
 48RX,F,Board eligable in family medicine
 48RX,K,Board eligable in pediatric medicine
 48RX,M,Board eligable in internal medicine
+48RX,X,Space Medical Operations Experienced
 61CX,N,Nuclear
 61DX,N,Nuclear
 62EX,A,Aeronautical

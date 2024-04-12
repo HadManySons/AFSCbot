@@ -8,6 +8,7 @@
 11MX#Mobility Pilot
 11RX#Recce/Surv/Elect Warfare Pilot
 11SX#Special Operations Pilot
+11TX#Student Pilot
 11UX#Remotely Piloted Aircraft Pilot
 12BX#Bomber Combat Systems Officer
 12EX#Experimental Test Combat Systems Officer
@@ -26,6 +27,7 @@
 13NX#Nuclear and Missile Operations
 13OX#Multi-Domain Warfare Operations
 13SX#Space Operations
+13ZX#Rated Multi-Domain Warfare Officer
 14FX#Information Operations
 14NX#Intelligence
 15AX#Operations Analyst Officer
@@ -36,7 +38,6 @@
 16PX#Political-Military Affairs Strategist
 16RX#Planning & Programming
 16ZX#Rated Foreign Area Officer
-17C0#Cyberspace Operations Commander
 17DX#Warfighter Communications Operations
 17SX#Cyberspace Effects Operations
 18AX#Attack Remotely Piloted Aircraft Pilot
@@ -71,25 +72,25 @@
 43HX#Public Health
 43PX#Pharmacist
 43TX#Biomedical Laboratory
-44AX#Chief, Hospital/Clinic Services
-44BX#Preventive Medicine
+44AX#Chief of Medical Staff
+44BX#Preventive Medicine Physician
 44DX#Pathologist
-44EX#Emergency Services Physician
+44EX#Emergency Medical Physician
 44FX#Family Physician
 44GX#General Practice Physician
 44HX#Nuclear Medicine Physician
-44JX#Clinical Geneticist
+44JX#Medical Geneticist and Genomicist
 44KX#Pediatrician
-44MX#Internist
+44MX#Internal Medicine Physician
 44NX#Neurologist
 44OX#Physician
 44PX#Psychiatrist
-44RX#Diagnostic Radiologist
+44RX#Radiologist
 44SX#Dermatologist
-44TX#Radiotherapist
-44UX#Occupational Medicine
-44YX#Critical Care Medicine
-44ZX#Allergist
+44TX#Radiation Oncologist
+44UX#Occupational Medicine Physician
+44YX#Critical Care Medicine Physician
+44ZX#Allergist and Immunologist
 45AX#Anesthesiologist
 45BX#Orthopedic Surgeon
 45EX#Ophthalmologist
@@ -288,12 +289,12 @@
 45A#Anesthesiologist
 45B#Orthopedic Surgeon
 45E#Ophthalmologist
-45G#Gynecologic Surgery and Obstetrics
-45N#Otorhinolaryngologist
+45G#Gynecologic Surgeon and Obstetrician
+45N#Otorlaryngologist - Head and Neck Surgeon
 45P#Physical Medicine Physician
 45S#Surgeon
 45U#Urologist
-46A#Nurse Administrator
+46A#Nursing Administration
 46F#Flight Nurse
 46N#Clinical Nurse
 46P#Mental Health Nurse
@@ -308,13 +309,14 @@
 47P#Prosthodontist
 47S#Oral and Maxillofacial Surgeon
 48A#Aerospace Medicine Physician Specialist
-48G#General Medical Officer, Flt Surg
+48G#General Medical Officer, Flight Surgeon
+48O#Aeromedical Physician
 48R#Residency Trained Flight Surgeon
 48V#Pilot-Physician
 51J#Judge Advocate
 52R#Chaplain
 60C#Senior Materiel Leader-Upper Echelon
-61C#Chemist/Biologist
+61C#Chemist/Nuclear Chemist
 61D#Physicist/Nuclear Engineer
 62E#Developmental Engineer
 62S#Materiel Leader
@@ -324,7 +326,7 @@
 64P#Contracting
 65F#Financial Management
 65W#Cost Analysis
-71S#Special Investigator
+71S#Special Investigations
 80C#Commander, Cadet Squadron, USAFA
 81C#Instructor, Officer Training School
 81D#Air Force Reserve Officer Training Corps Detachment Commander and Professor of Aerospace Studies
@@ -342,6 +344,9 @@
 88A#Aide-de-Camp
 88B#Protocol Officer
 88C#Sexual Assault Response Coordinator
+88I#Innovation Officer
+88M#USAF Medical Pinnacle Position
+88Y#Pathfinder Officer
 89A#Officer Air Advisor Basic
 89B#Officer Air Advisor Basic Team Leader
 89C#Officer Air Advisor Basic Mission Commander
@@ -353,6 +358,7 @@
 89I#Officer Combat Aviation Advisor Mission Commander
 89W#Weapons of Mass Destruction Civil Support Team (WMD-CST)
 90G#General Officer
+91E#Wing Commander Equivalent
 91C#Commander
 91W#Wing Commander
 92F#Foreign Area Officer (FAO) Trainee
@@ -366,17 +372,17 @@
 92P#Physician Assistant Student
 92R#Chaplain Candidate
 92S#Student Officer Authorization
-92T#Pilot Trainee
-92T#Combat Systems Officer Trainee
-92T#Air Battle Manager Trainee
-92T#RPA Pilot Trainee
-92W#Combat Wounded Warrior
-92W#Combat Wounded Warrior with Exemptions
-92W#Non-Combat Wounded Warrior
-92W#Wounded Warrior-Limited Assignment Status
-92W#Wounded Warrior-Retired/Discharged
-92W#Wounded Warrior-Ambassador
-92W#Wounded Warrior-Project Planner/Officer
+92T0#Pilot Trainee
+92T1#Combat Systems Officer Trainee
+92T2#Air Battle Manager Trainee
+92T3#RPA Pilot Trainee
+92W0#Combat Wounded Warrior
+92W2#Combat Wounded Warrior with Exemptions
+92W3#Non-Combat Wounded Warrior
+92W4#Wounded Warrior-Limited Assignment Status
+92W5#Wounded Warrior-Retired/Discharged
+92W8#Wounded Warrior-Ambassador
+92W9#Wounded Warrior-Project Planner/Officer
 93P#Patient
 94N#Nuclear Weapons Custodian
 95A#Non-Extended Active Duty USAFR Academy/CAP Liaison Officer
